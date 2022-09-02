@@ -8,5 +8,5 @@ module.exports = {
     },
   },
   maxWorkers: 1,
-  modulePathIgnorePatterns: ['<rootDir>/dist/']
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
 };

@@ -19,8 +19,7 @@ export const is =
     type === String ? isString(value) : type === Number ? isNumber(value) : type === Boolean ? isBoolean(value) : type === Symbol ? isSymbol(value) : type === Array ? isArray(value) : type === Object ? isObject(value) : type === Function ? isFunction(value) : (value as any).constructor === type;
 export const haveSameProperties = <T>(o1: T, o2: T) => (isNil(o1) ? false : isNil(o2) ? false : isObject<T>(o1) && isObject<T>(o2) ? Object.keys(o1).every((property) => o2.hasOwnProperty(property)) && Object.keys(o2).every((property) => o1.hasOwnProperty(property)) : false);
 
-export const haveSameTypes = <T, S>(o1: T, o2: S) =>
-  isNil(o1) ? false : isNil(o2) ? false : isArray(o1) && !isArray(o2) ? false : !isArray(o1) && isArray(o2) ? false : isArray(o1) && isArray(o2) ? o1.length === o2.length && o1.every((value, index) => typeof value === typeof o2[index]) : typeof o1 === typeof o2;
+export const haveSameTypes = <T, S>(o1: T, o2: S) => (isNil(o1) ? false : isNil(o2) ? false : isArray(o1) && !isArray(o2) ? false : !isArray(o1) && isArray(o2) ? false : isArray(o1) && isArray(o2) ? o1.length === o2.length && o1.every((value, index) => typeof value === typeof o2[index]) : typeof o1 === typeof o2);
 
 export const getFunctionParameterCount = (fn: Function) => {
   const getParamsOnly = (fnString: string) => {

@@ -6,6 +6,4 @@ const orImpl = (...values: boolean[]) => values.some((a) => a);
 export const or =
   <V>(...operators: Operator[]): Operator =>
   (value: V) =>
-    operators
-      .map((operator) => operator(value))
-      .reduce((previousValue, currentValue, currentIndex, array) => singleOperationReducer(previousValue, currentValue, currentIndex, array, () => orImpl(...array)));
+    operators.map((operator) => operator(value)).reduce((previousValue, currentValue, currentIndex, array) => singleOperationReducer(previousValue, currentValue, currentIndex, array, () => orImpl(...array)));

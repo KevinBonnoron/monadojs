@@ -1,5 +1,5 @@
 import { Reducer } from '../../types';
-import { getOrCreateArrayAccumulator } from '../../utils';
+import { arrayAccumulator } from '../../utils';
 
 const split = <T>(accumulator: T[][], values: T[]) => {
   for (let i = 0; i < values.length; i++) {
@@ -14,8 +14,6 @@ const split = <T>(accumulator: T[][], values: T[]) => {
 };
 
 export const zip =
-  <T>(): Reducer<T> =>
-  (previousValue: T, currentValue: T, currentIndex: number) => {
-    const accumulator = getOrCreateArrayAccumulator<T[]>(previousValue as unknown as T[], currentValue as unknown as T[], currentIndex, split);
-    return split(accumulator, currentValue as unknown as T[]);
-  };
+  <T>(): Reducer<T[]> =>
+  (previousValue: T[], currentValue: T[], currentIndex: number) =>
+    arrayAccumulator<T[]>(previousValue, currentValue, currentIndex, split);

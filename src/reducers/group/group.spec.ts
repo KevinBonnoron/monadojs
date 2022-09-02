@@ -1,3 +1,4 @@
+import { prop } from '../../projections';
 import { group } from './group';
 
 describe('group', () => {
@@ -15,5 +16,14 @@ describe('group', () => {
     const expected = { M: [laurent, aurelien, paul, winston], F: [julie, sarah, judith] };
     expect(data.reduce(group('sex'))).toStrictEqual(expected);
     expect(data.reduce(group((value) => value.sex))).toStrictEqual(expected);
+    expect(data.reduce(group(prop('name')))).toStrictEqual({
+      [laurent.name]: [laurent],
+      [julie.name]: [julie],
+      [aurelien.name]: [aurelien],
+      [paul.name]: [paul],
+      [sarah.name]: [sarah],
+      [winston.name]: [winston],
+      [judith.name]: [judith],
+    });
   });
 });

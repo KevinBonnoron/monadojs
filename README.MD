@@ -24,32 +24,37 @@ yarn add monadojs
 - xor
 
 ### Mapper
+- add
 - capitalize
 - ceil
+- entries
 - floor
 - keys
 - lower
-- [match-with](examples/matchWith/index.md)
+- [match-with](examples/mappers/matchWith/index.md)
 - pow
 - replace
 - round
+- sub
 - substring
+- times
 - upper
 - values
 
 ### Operators
-- [combine](examples/combine/index.md)
+- [combine](examples/operators/combine/index.md)
 - compose
 - every
-- [filter](examples/filter/index.md)
+- [filter](examples/operators/filter/index.md)
 - find
 - identity
-- [iif](examples/iif/index.md)
+- [iif](examples/operators/iif/index.md)
 - length
-- [map](examples/map/index.md)
+- [map](examples/operators/map/index.md)
 - merge
-- [none](examples/none/index.md)
-- [reduce](examples/reduce/index.md)
+- [none](examples/operators/none/index.md)
+- [reduce](examples/operators/reduce/index.md)
+- reverse
 - shuffle
 - some
 - sort
@@ -58,10 +63,11 @@ yarn add monadojs
 ### Projections
 - exclude
 - pick
-- [prop](examples/prop/index.md)
+- [prop](examples/projections/prop/index.md)
 - props
 
 ### Reducers
+- applySpec
 - avg
 - chunk
 - flatten
@@ -72,7 +78,6 @@ yarn add monadojs
 - max
 - min
 - nth
-- reverse
 - sample
 - slice
 - sum
@@ -82,5 +87,7 @@ yarn add monadojs
 - zip
 
 ### Sorters
+- asFirst
+- asLast
 - asc
 - desc

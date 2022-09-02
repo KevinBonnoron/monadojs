@@ -8,6 +8,7 @@ export * from './length/length';
 export * from './map/map';
 export * from './none/none';
 export * from './reduce/reduce';
+export * from './reverse/reverse';
 export * from './shuffle/shuffle';
 export * from './some/some';
 export * from './sort/sort';
