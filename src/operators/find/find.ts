@@ -1,7 +1,7 @@
-import { Filter, Operator } from '../../types';
+import { Filter } from '../../types';
 import { isArray } from '../../utils';
 
 export const find =
-  <T>(predicate: Filter<T>): Operator =>
+  <T>(predicate: Filter<T>) =>
   (values: T | T[]) =>
     isArray(values) ? values.find(predicate) : predicate(values);

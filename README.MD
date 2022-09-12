@@ -15,6 +15,21 @@ yarn add monadojs
 ```
 
 ## API
+### Filters
+- empty
+- endsWith
+- eq
+- gt
+- gte
+- includes
+- lt
+- lte
+- match
+- neq
+- nil
+- ofType
+- startsWith
+
 ### Logical Operators
 - and
 - nand
@@ -38,12 +53,16 @@ yarn add monadojs
 - sub
 - substring
 - times
+- transform
 - upper
 - values
 
 ### Operators
+- applySpec
 - [combine](examples/operators/combine/index.md)
 - compose
+- concat
+- encloseIn
 - every
 - [filter](examples/operators/filter/index.md)
 - find
@@ -67,7 +86,6 @@ yarn add monadojs
 - props
 
 ### Reducers
-- applySpec
 - avg
 - chunk
 - flatten

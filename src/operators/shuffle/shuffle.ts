@@ -1,9 +1,11 @@
-import { Operator } from '../../types';
+import { isArray } from '../../utils';
 
 export const shuffle =
-  <T>(): Operator<T[]> =>
-  (values: T[]) =>
-    values
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
+  <T>() =>
+  (values: T | T[]) =>
+    isArray(values)
+      ? values
+          .map((value) => ({ value, sort: Math.random() }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(({ value }) => value)
+      : values;

@@ -4,11 +4,31 @@ export * from './public_api';
 
 declare global {
   interface Array<T> {
-    pipe<I, O>(...operators: Operator<I, O>[]): unknown;
+    pipe(): T;
+    pipe<A>(o1: Operator<T, A>): A;
+    pipe<A, B>(o1: Operator<T, A>, o2: Operator<A, B>): B;
+    pipe<A, B, C>(o1: Operator<T, A>, o2: Operator<A, B>, o3: Operator<B, C>): C;
+    pipe<A, B, C, D>(o1: Operator<T, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>): D;
+    pipe<A, B, C, D, E>(o1: Operator<T, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>): E;
+    pipe<A, B, C, D, E, F>(o1: Operator<T, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>): F;
+    pipe<A, B, C, D, E, F, G>(o1: Operator<T, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>, o7: Operator<F, G>): G;
+    pipe<A, B, C, D, E, F, G, H>(o1: Operator<T, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>, o7: Operator<F, G>, o8: Operator<G, H>): H;
+    pipe<A, B, C, D, E, F, G, H, I>(o1: Operator<T, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>, o7: Operator<F, G>, o8: Operator<G, H>, o9: Operator<H, I>): I;
+    pipe<A, B, C, D, E, F, G, H, I>(o1: Operator<T, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>, o7: Operator<F, G>, o8: Operator<G, H>, o9: Operator<H, I>, ...operators: Operator<any, any>[]): unknown;
   }
 
   interface Object {
-    pipe<I, O>(...operators: Operator<I, O>[]): unknown;
+    pipe(): this;
+    pipe<A>(o1: Operator<this, A>): A;
+    pipe<A, B>(o1: Operator<this, A>, o2: Operator<A, B>): B;
+    pipe<A, B, C>(o1: Operator<this, A>, o2: Operator<A, B>, o3: Operator<B, C>): C;
+    pipe<A, B, C, D>(o1: Operator<this, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>): D;
+    pipe<A, B, C, D, E>(o1: Operator<this, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>): E;
+    pipe<A, B, C, D, E, F>(o1: Operator<this, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>): F;
+    pipe<A, B, C, D, E, F, G>(o1: Operator<this, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>, o7: Operator<F, G>): G;
+    pipe<A, B, C, D, E, F, G, H>(o1: Operator<this, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>, o7: Operator<F, G>, o8: Operator<G, H>): H;
+    pipe<A, B, C, D, E, F, G, H, I>(o1: Operator<this, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>, o7: Operator<F, G>, o8: Operator<G, H>, o9: Operator<H, I>): I;
+    pipe<A, B, C, D, E, F, G, H, I>(o1: Operator<this, A>, o2: Operator<A, B>, o3: Operator<B, C>, o4: Operator<C, D>, o5: Operator<D, E>, o6: Operator<E, F>, o7: Operator<F, G>, o8: Operator<G, H>, o9: Operator<H, I>, ...operators: Operator<any, any>[]): unknown;
   }
 }
 
@@ -16,5 +36,12 @@ function pipeFn(this: any, ...operators: Operator[]) {
   return operators.reduce((value, operator) => operator(value), typeof this === 'object' ? this : this.slice());
 }
 
-Array.prototype.pipe = pipeFn;
-Object.prototype.pipe = pipeFn;
+Object.defineProperty(Array.prototype, 'pipe', {
+  enumerable: false,
+  value: pipeFn,
+});
+
+Object.defineProperty(Object.prototype, 'pipe', {
+  enumerable: false,
+  value: pipeFn,
+});

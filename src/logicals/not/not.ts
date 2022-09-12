@@ -1,6 +1,6 @@
 import { Operator } from '../../types';
 
 export const not =
-  <T>(operator: Operator): Operator =>
+  <T>(operator: Operator) =>
   (value: T) =>
     !operator(value);

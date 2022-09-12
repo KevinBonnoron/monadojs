@@ -1,6 +1,4 @@
-import { Operator } from '../../types';
-
 export const identity =
-  <T>(): Operator<T, T> =>
+  <T>() =>
   (value: T) =>
     value;

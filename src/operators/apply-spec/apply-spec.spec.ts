@@ -3,6 +3,6 @@ import { applySpec } from './apply-spec';
 
 describe('spec', () => {
   it('should apply spec to object', () => {
-    expect([1, 2, 3, 4].reduce(applySpec({ sum: add, multiply: times }))).toStrictEqual({ sum: 10, multiply: 24 });
+    expect(applySpec({ sum: add, multiply: times })([1, 2, 3, 4])).toStrictEqual({ sum: 10, multiply: 24 });
   });
 });

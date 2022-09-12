@@ -1,7 +1,7 @@
 import { isArray } from '../../utils';
 
-// TODO change return type to something like T[keyof T] | T[keyof T][]
-export const prop =
-  <T>(property: keyof T) =>
-  (values: T | T[]): any =>
-    isArray(values) ? values.map(prop(property)) : values[property];
+export function prop<T, P extends keyof T>(property: P): (values: T) => T[P];
+export function prop<T, P extends keyof T>(property: P): (values: T[]) => T[P][];
+export function prop<T, P extends keyof T>(property: P) {
+  return (values: T | T[]): T[P] | T[P][] => (isArray<T>(values) ? values.map(prop(property)) : values[property]);
+}

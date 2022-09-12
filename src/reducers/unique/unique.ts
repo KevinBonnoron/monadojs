@@ -1,18 +1,19 @@
-import { eq } from '../../filters/eq/eq';
-import { Reducer } from '../../types';
-import { arrayAccumulator, uncurry } from '../../utils';
+import { identity } from '../../operators';
+import { Operator, Reducer } from '../../types';
+import { arrayAccumulator, isEqual } from '../../utils';
 
 const appender =
-  <T>(compareFn: (a: T, b: T) => boolean) =>
+  <T>(operator: Operator, compareFn: (a: T, b: T) => boolean) =>
   (accumulator: T[], value: T) => {
-    if (!accumulator.some((val) => compareFn(val, value))) {
+    if (!accumulator.some((val) => compareFn(operator(val), operator(value)))) {
       accumulator.push(value);
     }
 
     return accumulator;
   };
 
+// TODO update type of compareFN which should be the return type from "operator"
 export const unique =
-  <T>(compareFn: (a: T, b: T) => boolean = uncurry(eq)): Reducer<T> =>
+  <T>(operator: Operator = identity<T>(), compareFn: (a: T, b: T) => boolean = isEqual): Reducer<T> =>
   (previousValue: T, currentValue: T, currentIndex: number) =>
-    arrayAccumulator(previousValue, currentValue, currentIndex, appender(compareFn));
+    arrayAccumulator(previousValue, currentValue, currentIndex, appender(operator, compareFn));

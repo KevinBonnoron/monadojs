@@ -7,7 +7,7 @@ describe('zip', () => {
         ['a', 'b'],
         [1, 2],
         [true, false],
-      ].reduce(zip())
+      ].reduce(zip<any>())
     ).toStrictEqual([
       ['a', 1, true],
       ['b', 2, false],

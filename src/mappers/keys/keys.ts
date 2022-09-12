@@ -1,7 +1,9 @@
-import { Mapper } from '../../types';
-import { isArray } from '../../utils';
+import { isArray, isObject } from '../../utils';
 
-export const keys =
-  <T>(): Mapper<T | T[]> =>
-  (values: T | T[]) =>
-    isArray(values) ? [...values.keys()] : Object.getOwnPropertyNames(values);
+type Key<T> = keyof T;
+
+export function keys<T>(): (values: T) => ReadonlyArray<Key<T>>;
+export function keys<T>(): (values: T[]) => ReadonlyArray<number>;
+export function keys<T>() {
+  return (values: T | T[]) => (isArray(values) ? [...values.keys()] : isObject(values) ? (Object.getOwnPropertyNames(values) as unknown as ReadonlyArray<Key<T>>) : null);
+}

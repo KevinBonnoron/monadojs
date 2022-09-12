@@ -1,6 +1,6 @@
 {
   "name": "monadojs",
-  "version": "0.0.5-rc.1",
+  "version": "0.0.5-rc.2",
   "description": "A library to perform operations on tables and objects at once",
   "main": "dist/monadojs.js",
   "module": "dist/monadojs.mjs",

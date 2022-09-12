@@ -1,8 +1,8 @@
 import { isArray } from '../../utils';
 import { prop } from '../prop/prop';
 
-// TODO change return type
-export const props =
-  <T>(...properties: (keyof T)[]) =>
-  (values: T | T[]): any =>
-    isArray(values) ? values.map(props(...properties)) : properties.map(prop).map((predicate) => predicate(values));
+export function props<T, P extends keyof T>(...properties: P[]): (values: T) => T[P][];
+export function props<T, P extends keyof T>(...properties: P[]): (values: T[]) => T[P][][];
+export function props<T, P extends keyof T>(...properties: P[]) {
+  return (values: T | T[]) => (isArray(values) ? values.map(props(...properties)) : properties.map(prop).map((predicate) => predicate(values as any)));
+}

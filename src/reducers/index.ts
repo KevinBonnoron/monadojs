@@ -8,6 +8,7 @@ export * from './join/join';
 export * from './max/max';
 export * from './min/min';
 export * from './nth/nth';
+export * from './sample/sample';
 export * from './slice/slice';
 export * from './sum/sum';
 export * from './tail/tail';

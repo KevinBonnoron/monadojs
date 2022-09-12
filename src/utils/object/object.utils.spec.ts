@@ -1,4 +1,4 @@
-import { haveSameProperties, haveSameTypes, is, isArray, isBoolean, isEmpty, isFunction, isMap, isNil, isNull, isNumber, isObject, isString, isSymbol, isUndefined } from './object.utils';
+import { haveSameProperties, haveSameTypes, is, isArray, isBoolean, isEmpty, isEqual, isFunction, isMap, isNil, isNull, isNumber, isObject, isString, isSymbol, isUndefined, propertyIn } from './object.utils';
 
 type Expectation = { value: unknown; expect: boolean };
 const checkExpectations = (fn: (value: unknown) => boolean, expectations: Expectation[]) => expectations.forEach((expectation) => expect(fn(expectation.value)).toEqual(expectation.expect));
@@ -223,6 +223,24 @@ describe('ObjectUtils', () => {
     expect(is(Dummy)({})).toBeFalsy();
   });
 
+  it('should return if value is equal', () => {
+    class Dummy {
+      constructor(readonly a: number) {}
+    }
+
+    expect(isEqual(1, 1)).toBeTruthy();
+    expect(isEqual('a', 'a')).toBeTruthy();
+    expect(isEqual(true, true)).toBeTruthy();
+    expect(isEqual([], [])).toBeTruthy();
+    expect(isEqual([1, 0, 2], [1, 0, 2])).toBeTruthy();
+    expect(isEqual([1, 0, 2], [2, 0, 1])).toBeFalsy();
+    expect(isEqual({}, {})).toBeTruthy();
+    expect(isEqual({ a: 1, b: 2 }, { a: 1, b: 2 })).toBeTruthy();
+    expect(isEqual({ a: 1, b: 2 }, { a: 2, b: 1 })).toBeFalsy();
+    expect(isEqual(NaN, NaN)).toBeTruthy();
+    expect(isEqual(new Dummy(5), new Dummy(5))).toBeTruthy();
+  });
+
   it('should return if two object have same properties', () => {
     expect(haveSameProperties({}, {})).toBeTruthy();
     expect(haveSameProperties({ a: 1 }, {})).toBeFalsy();
@@ -237,5 +255,10 @@ describe('ObjectUtils', () => {
     expect(haveSameTypes([0, 'a'], [1, 'b'])).toBeTruthy();
     expect(haveSameTypes([0, 'a'], ['a', 0])).toBeFalsy();
     expect(haveSameTypes([['a'], ['b']], [1, 2])).toBeFalsy();
+  });
+
+  it('should return if property in object', () => {
+    expect(propertyIn('equals', { equals: true })).toBeTruthy();
+    expect(propertyIn('equals', { a: true })).toBeFalsy();
   });
 });

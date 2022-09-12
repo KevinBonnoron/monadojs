@@ -1,5 +1,4 @@
-import { or } from '../../logicals/or/or';
 import { Filter } from '../../types';
-import { eq } from '../eq/eq';
+import { isNil } from '../../utils';
 
-export const nil = <T>(): Filter<T> => or(eq(null), eq(undefined));
+export const nil = <T>(): Filter<T> => isNil;

@@ -1,9 +1,9 @@
 import { Mapper } from '../../types';
+import { isArray, isObject } from '../../utils';
 
-type Entries<T> = [keyof T, any][];
+type Entry<T> = { [K in keyof T]: [K, T[K]] }[keyof T];
 
-// TODO handle array
 export const entries =
-  <T extends object>(): Mapper<T, Entries<T>> =>
-  (values: T) =>
-    Object.entries(values) as Entries<T>;
+  <T>(): Mapper<T, ReadonlyArray<Entry<T>>> =>
+  (values: T | T[]) =>
+    isArray(values) ? (values.entries() as unknown as ReadonlyArray<Entry<T>>) : isObject(values) ? (Object.entries(values) as unknown as ReadonlyArray<Entry<T>>) : [];

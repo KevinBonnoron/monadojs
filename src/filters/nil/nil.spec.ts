@@ -1,7 +1,7 @@
 import { nil } from './nil';
 
 describe('nil', () => {
-  it('should return if value is of specified type', () => {
+  it('should return if value is nil', () => {
     const anonymousArrowFn = () => {};
     const anonymousFn = function () {};
 

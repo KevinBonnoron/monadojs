@@ -1,1 +1,1 @@
-export type Operator<I = any, O = any> = (...args: I[]) => O;
+export type Operator<I = any, O = any> = (input: I) => O;
