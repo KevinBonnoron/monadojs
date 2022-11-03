@@ -10,3 +10,4 @@ export * from './match/match';
 export * from './neq/neq';
 export * from './nil/nil';
 export * from './starts-with/starts-with';
+export * from './unique/unique';

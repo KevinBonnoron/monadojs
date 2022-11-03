@@ -1,5 +1,5 @@
 ```typescript
-import { compose, filter, gt, prop, tap } from 'monadojs';
+import { pipe, filter, gt, prop, tap } from 'monadojs';
 
 const products = [
   { id: 1, label: 'Apple', price: 1.35 },
@@ -12,7 +12,7 @@ const products = [
 
 products.pipe(
   filter(
-    compose(prop('price'), gt(1.5))
+    pipe(prop('price'), gt(1.5))
   ),
   tap(console.log)
 );

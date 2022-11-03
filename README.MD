@@ -1,9 +1,7 @@
 # MonadoJs
 
 This library allow developper to do some common operations on array and objects (filtering, mapping, reducing and sorting).
-The idea came when i've wanted to do sum on nested properties of object, and having to declare intermediate variables and calling popular libraries helper functions to do what i wanted. Also i wanted to have the ability to use functions with common js functions (like filter, reducer, map...).
-
-By searching i didn't find any libraries doing operations on both data structure, so i implemented this one.
+The idea came when i've wanted to do sum on nested properties of object, and having to declare intermediate variables and calling popular libraries helper functions to do what i wanted. Also i wanted to have the ability to use the functions from the library with common js functions (like filter, reducer, map...) without the need to always use the `pipe` functions like in other libraries.
 
 # Getting started
 To install just run
@@ -31,6 +29,8 @@ yarn add monadojs
 - startsWith
 
 ### Logical Operators
+Logical operators are function that can be used in combination with `filter` operator.
+
 - and
 - nand
 - nor
@@ -58,9 +58,10 @@ yarn add monadojs
 - values
 
 ### Operators
+Operators are functions that can be applyed on both object or array.
+
 - applySpec
 - [combine](examples/operators/combine/index.md)
-- compose
 - concat
 - encloseIn
 - every
@@ -80,12 +81,16 @@ yarn add monadojs
 - tap
 
 ### Projections
+Projections are a combination of operator and mapper at the same time. It can handle arrays or object at the same time and produce a value.
+
 - exclude
 - pick
 - [prop](examples/projections/prop/index.md)
 - props
 
 ### Reducers
+Reducers are function that produce a single result by iterating over the passed array.
+
 - avg
 - chunk
 - flatten

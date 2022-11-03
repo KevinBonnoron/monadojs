@@ -1,6 +1,6 @@
 # Filter
 
-`filter` is an operator that do the same as classical **Array.filter**.. Filters can really be powerful when used with `compose` operator.
+`filter` is an operator that do the same as classical **Array.filter**.. Filters can really be powerful when used with `pipe` operator.
 
 ## Examples
 

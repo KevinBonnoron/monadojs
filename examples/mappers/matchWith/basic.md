@@ -1,5 +1,5 @@
 ```typescript
-import { compose, group, gte, lt, matchWith, prop, reduce, tap } from 'monadojs';
+import { pipe, group, gte, lt, matchWith, prop, reduce, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -13,7 +13,7 @@ const persons = [
 persons.pipe(
   reduce(
     group(
-      compose(
+      pipe(
         prop('age'),
         matchWith(new Map()
           .set(gte(18), () => 'Major')

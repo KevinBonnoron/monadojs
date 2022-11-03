@@ -1,4 +1,4 @@
-import { haveSameProperties, haveSameTypes, is, isArray, isBoolean, isEmpty, isEqual, isFunction, isMap, isNil, isNull, isNumber, isObject, isString, isSymbol, isUndefined, propertyIn } from './object.utils';
+import { haveSameProperties, haveSameTypes, is, isArray, isBoolean, isDate, isEmpty, isEqual, isFunction, isMap, isNil, isNull, isNumber, isObject, isRegExp, isString, isSymbol, isUndefined, propertyIn } from './object.utils';
 
 type Expectation = { value: unknown; expect: boolean };
 const checkExpectations = (fn: (value: unknown) => boolean, expectations: Expectation[]) => expectations.forEach((expectation) => expect(fn(expectation.value)).toEqual(expectation.expect));
@@ -10,6 +10,8 @@ const nullExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: false },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
   { value: {}, expect: false },
@@ -23,6 +25,8 @@ const undefinedExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: false },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
   { value: {}, expect: false },
@@ -36,6 +40,8 @@ const nilExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: false },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
   { value: {}, expect: false },
@@ -49,6 +55,8 @@ const stringExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: false },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
   { value: {}, expect: false },
@@ -62,6 +70,8 @@ const numberExpectations: Expectation[] = [
   { value: 0, expect: true },
   { value: false, expect: false },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
   { value: {}, expect: false },
@@ -75,6 +85,8 @@ const booleanExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: true },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
   { value: {}, expect: false },
@@ -88,7 +100,55 @@ const symbolExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: false },
   { value: Symbol(), expect: true },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
+  { value: new Map(), expect: false },
+  { value: {}, expect: false },
+  { value: () => {}, expect: false },
+  { value: function () {}, expect: false },
+];
+const dateExpectations: Expectation[] = [
+  { value: null, expect: false },
+  { value: undefined, expect: false },
+  { value: 'a', expect: false },
+  { value: 0, expect: false },
+  { value: false, expect: false },
+  { value: Symbol(), expect: false },
+  { value: new Date(), expect: true },
+  { value: new RegExp(''), expect: false },
+  { value: [], expect: false },
+  { value: new Map(), expect: false },
+  { value: {}, expect: false },
+  { value: () => {}, expect: false },
+  { value: function () {}, expect: false },
+];
+const regExpExpectations: Expectation[] = [
+  { value: null, expect: false },
+  { value: undefined, expect: false },
+  { value: 'a', expect: false },
+  { value: 0, expect: false },
+  { value: false, expect: false },
+  { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: true },
+  { value: [], expect: false },
+  { value: new Map(), expect: false },
+  { value: {}, expect: false },
+  { value: () => {}, expect: false },
+  { value: function () {}, expect: false },
+];
+
+const arrayExpectations: Expectation[] = [
+  { value: null, expect: false },
+  { value: undefined, expect: false },
+  { value: 'a', expect: false },
+  { value: 0, expect: false },
+  { value: false, expect: false },
+  { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
+  { value: [], expect: true },
   { value: new Map(), expect: false },
   { value: {}, expect: false },
   { value: () => {}, expect: false },
@@ -101,21 +161,10 @@ const mapExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: false },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: true },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-];
-const arrayExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: [], expect: true },
-  { value: new Map(), expect: false },
   { value: {}, expect: false },
   { value: () => {}, expect: false },
   { value: function () {}, expect: false },
@@ -127,6 +176,8 @@ const objectExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: false },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: true },
+  { value: new RegExp(''), expect: true },
   { value: [], expect: false },
   { value: new Map(), expect: true },
   { value: {}, expect: true },
@@ -140,6 +191,8 @@ const emptyExpectations: Expectation[] = [
   { value: 0, expect: true },
   { value: false, expect: true },
   { value: Symbol(), expect: true },
+  { value: new Date(), expect: true },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: true },
   { value: new Map(), expect: true },
   { value: {}, expect: true },
@@ -153,6 +206,8 @@ const functionExpectations: Expectation[] = [
   { value: 0, expect: false },
   { value: false, expect: false },
   { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
   { value: {}, expect: false },
@@ -189,12 +244,20 @@ describe('ObjectUtils', () => {
     checkExpectations(isSymbol, symbolExpectations);
   });
 
-  it('should return if value is map', () => {
-    checkExpectations(isMap, mapExpectations);
+  it('should return if value is date', () => {
+    checkExpectations(isDate, dateExpectations);
+  });
+
+  it('should return if value is regexp', () => {
+    checkExpectations(isRegExp, regExpExpectations);
   });
 
   it('should return if value is array', () => {
     checkExpectations(isArray, arrayExpectations);
+  });
+
+  it('should return if value is map', () => {
+    checkExpectations(isMap, mapExpectations);
   });
 
   it('should return if value is object', () => {
@@ -212,11 +275,16 @@ describe('ObjectUtils', () => {
   it('should return if value is passed type', () => {
     class Dummy {}
 
+    checkExpectations(is(null), nullExpectations);
+    checkExpectations(is(undefined), undefinedExpectations);
     checkExpectations(is(String), stringExpectations);
     checkExpectations(is(Number), numberExpectations);
     checkExpectations(is(Boolean), booleanExpectations);
     checkExpectations(is(Symbol), symbolExpectations);
+    checkExpectations(is(Date), dateExpectations);
+    checkExpectations(is(RegExp), regExpExpectations);
     checkExpectations(is(Array), arrayExpectations);
+    checkExpectations(is(Map), mapExpectations);
     checkExpectations(is(Object), objectExpectations);
     checkExpectations(is(Function), functionExpectations);
     expect(is(Dummy)(new Dummy())).toBeTruthy();

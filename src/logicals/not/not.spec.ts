@@ -6,7 +6,7 @@ describe('not', () => {
     const FALSE = () => false;
 
     // 2 inputs
-    expect(not(FALSE)()).toBeTruthy();
-    expect(not(TRUE)()).toBeFalsy();
+    expect(not(FALSE)(null)).toBeTruthy();
+    expect(not(TRUE)(null)).toBeFalsy();
   });
 });

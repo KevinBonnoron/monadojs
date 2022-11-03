@@ -1,4 +1,4 @@
-import { prop } from '../../projections';
+import { prop } from '../../mappers';
 import { group } from './group';
 
 describe('group', () => {

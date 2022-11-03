@@ -6,18 +6,18 @@ describe('or', () => {
     const FALSE = () => false;
 
     // 2 inputs
-    expect(or(FALSE, FALSE)()).toBeFalsy();
-    expect(or(FALSE, TRUE)()).toBeTruthy();
-    expect(or(TRUE, FALSE)()).toBeTruthy();
-    expect(or(TRUE, TRUE)()).toBeTruthy();
+    expect(or(FALSE, FALSE)(null)).toBeFalsy();
+    expect(or(FALSE, TRUE)(null)).toBeTruthy();
+    expect(or(TRUE, FALSE)(null)).toBeTruthy();
+    expect(or(TRUE, TRUE)(null)).toBeTruthy();
     // 3 inputs
-    expect(or(FALSE, FALSE, FALSE)()).toBeFalsy();
-    expect(or(FALSE, FALSE, TRUE)()).toBeTruthy();
-    expect(or(FALSE, TRUE, FALSE)()).toBeTruthy();
-    expect(or(FALSE, TRUE, TRUE)()).toBeTruthy();
-    expect(or(TRUE, FALSE, FALSE)()).toBeTruthy();
-    expect(or(TRUE, FALSE, TRUE)()).toBeTruthy();
-    expect(or(TRUE, TRUE, FALSE)()).toBeTruthy();
-    expect(or(TRUE, TRUE, TRUE)()).toBeTruthy();
+    expect(or(FALSE, FALSE, FALSE)(null)).toBeFalsy();
+    expect(or(FALSE, FALSE, TRUE)(null)).toBeTruthy();
+    expect(or(FALSE, TRUE, FALSE)(null)).toBeTruthy();
+    expect(or(FALSE, TRUE, TRUE)(null)).toBeTruthy();
+    expect(or(TRUE, FALSE, FALSE)(null)).toBeTruthy();
+    expect(or(TRUE, FALSE, TRUE)(null)).toBeTruthy();
+    expect(or(TRUE, TRUE, FALSE)(null)).toBeTruthy();
+    expect(or(TRUE, TRUE, TRUE)(null)).toBeTruthy();
   });
 });

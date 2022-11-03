@@ -1,10 +1,10 @@
 import { Operator, Reducer } from '../../types';
-import { isFunction, isNil, objectAccumulator } from '../../utils';
+import { isFunction, isNil, objectAccumulator, PropertyKeyAccumulator } from '../../utils';
 
 const appender =
-  <T>(groupKey: Operator<T, string> | keyof T) =>
-  (accumulator: { [key: PropertyKey]: T[] }, value: T) => {
-    const key: string = (isFunction(groupKey) ? groupKey(value) : value[groupKey]) as string;
+  <T>(predicate: Operator<T, PropertyKey> | keyof T) =>
+  (accumulator: PropertyKeyAccumulator<T>, value: T) => {
+    const key: string = (isFunction(predicate) ? predicate(value) : value[predicate]) as string;
     if (!isNil(key)) {
       if (accumulator[key] === undefined) {
         accumulator[key] = [];
@@ -17,6 +17,6 @@ const appender =
   };
 
 export const group =
-  <T>(groupKey: Operator<T, string> | keyof T): Reducer<T> =>
+  <T>(predicate: Operator<T, PropertyKey> | keyof T): Reducer<T, PropertyKeyAccumulator<T>> =>
   (previousValue: T, currentValue: T, currentIndex: number) =>
-    objectAccumulator(previousValue, currentValue, currentIndex, appender(groupKey));
+    objectAccumulator(previousValue, currentValue, currentIndex, appender(predicate));

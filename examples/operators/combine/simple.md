@@ -1,4 +1,6 @@
 ```typescript
+import { avg, combine, max, min, prop, reduce, sum, tap } from 'monadojs';
+
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
   { id: 2, firstName: 'Robert', lastName: 'Jones', age: 30, sex: 'M' },

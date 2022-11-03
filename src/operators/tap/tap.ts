@@ -1,8 +1,6 @@
-import { Operator } from '../../types';
-
 export const tap =
-  <T>(fn: Operator<T, void>) =>
-  (values: T): T => {
+  <T>(fn: (values: T) => void) =>
+  (values: T) => {
     fn(values);
     return values;
   };

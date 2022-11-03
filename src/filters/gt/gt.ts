@@ -3,5 +3,5 @@ import { isArray, isNil } from '../../utils';
 
 export const gt =
   <T>(expected: T): Filter<T> =>
-  (values: T) =>
+  (values: T | T[]) =>
     isArray<T>(values) ? values.every(gt(expected)) : isNil(values) ? false : values > expected;

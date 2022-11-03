@@ -32,16 +32,18 @@ declare global {
   }
 }
 
-function pipeFn(this: any, ...operators: Operator[]) {
+function pipeFn(this: any, ...operators: Operator<unknown, unknown>[]) {
   return operators.reduce((value, operator) => operator(value), typeof this === 'object' ? this : this.slice());
 }
 
 Object.defineProperty(Array.prototype, 'pipe', {
-  enumerable: false,
   value: pipeFn,
+  enumerable: false,
+  writable: true,
 });
 
 Object.defineProperty(Object.prototype, 'pipe', {
-  enumerable: false,
   value: pipeFn,
+  enumerable: false,
+  writable: true,
 });

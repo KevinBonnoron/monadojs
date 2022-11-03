@@ -6,18 +6,18 @@ describe('nand', () => {
     const FALSE = () => false;
 
     // 2 inputs
-    expect(nand(FALSE, FALSE)()).toBeTruthy();
-    expect(nand(FALSE, TRUE)()).toBeTruthy();
-    expect(nand(TRUE, FALSE)()).toBeTruthy();
-    expect(nand(TRUE, TRUE)()).toBeFalsy();
+    expect(nand(FALSE, FALSE)(null)).toBeTruthy();
+    expect(nand(FALSE, TRUE)(null)).toBeTruthy();
+    expect(nand(TRUE, FALSE)(null)).toBeTruthy();
+    expect(nand(TRUE, TRUE)(null)).toBeFalsy();
     // 3 inputs
-    expect(nand(FALSE, FALSE, FALSE)()).toBeTruthy();
-    expect(nand(FALSE, FALSE, TRUE)()).toBeTruthy();
-    expect(nand(FALSE, TRUE, FALSE)()).toBeTruthy();
-    expect(nand(FALSE, TRUE, TRUE)()).toBeTruthy();
-    expect(nand(TRUE, FALSE, FALSE)()).toBeTruthy();
-    expect(nand(TRUE, FALSE, TRUE)()).toBeTruthy();
-    expect(nand(TRUE, TRUE, FALSE)()).toBeTruthy();
-    expect(nand(TRUE, TRUE, TRUE)()).toBeFalsy();
+    expect(nand(FALSE, FALSE, FALSE)(null)).toBeTruthy();
+    expect(nand(FALSE, FALSE, TRUE)(null)).toBeTruthy();
+    expect(nand(FALSE, TRUE, FALSE)(null)).toBeTruthy();
+    expect(nand(FALSE, TRUE, TRUE)(null)).toBeTruthy();
+    expect(nand(TRUE, FALSE, FALSE)(null)).toBeTruthy();
+    expect(nand(TRUE, FALSE, TRUE)(null)).toBeTruthy();
+    expect(nand(TRUE, TRUE, FALSE)(null)).toBeTruthy();
+    expect(nand(TRUE, TRUE, TRUE)(null)).toBeFalsy();
   });
 });

@@ -1,4 +1,6 @@
 ```typescript
+import { pipe, gt, iif, map, prop, tap } from 'monadojs';
+
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
   { id: 2, firstName: 'Robert', lastName: 'Jones', age: 30, sex: 'M' },
@@ -10,7 +12,7 @@ const persons = [
 
 persons.pipe(
   map(
-    iif(compose(prop('age'), gt(10)), prop('firstName'), prop('lastName'))
+    iif(pipe(prop('age'), gt(10)), prop('firstName'), prop('lastName'))
   ),
   tap(console.log)
 );

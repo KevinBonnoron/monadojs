@@ -6,18 +6,18 @@ describe('and', () => {
     const FALSE = () => false;
 
     // 2 inputs
-    expect(and(FALSE, FALSE)()).toBeFalsy();
-    expect(and(FALSE, TRUE)()).toBeFalsy();
-    expect(and(TRUE, FALSE)()).toBeFalsy();
-    expect(and(TRUE, TRUE)()).toBeTruthy();
+    expect(and(FALSE, FALSE)(null)).toBeFalsy();
+    expect(and(FALSE, TRUE)(null)).toBeFalsy();
+    expect(and(TRUE, FALSE)(null)).toBeFalsy();
+    expect(and(TRUE, TRUE)(null)).toBeTruthy();
     // 3 inputs
-    expect(and(FALSE, FALSE, FALSE)()).toBeFalsy();
-    expect(and(FALSE, FALSE, TRUE)()).toBeFalsy();
-    expect(and(FALSE, TRUE, FALSE)()).toBeFalsy();
-    expect(and(FALSE, TRUE, TRUE)()).toBeFalsy();
-    expect(and(TRUE, FALSE, FALSE)()).toBeFalsy();
-    expect(and(TRUE, FALSE, TRUE)()).toBeFalsy();
-    expect(and(TRUE, TRUE, FALSE)()).toBeFalsy();
-    expect(and(TRUE, TRUE, TRUE)()).toBeTruthy();
+    expect(and(FALSE, FALSE, FALSE)(null)).toBeFalsy();
+    expect(and(FALSE, FALSE, TRUE)(null)).toBeFalsy();
+    expect(and(FALSE, TRUE, FALSE)(null)).toBeFalsy();
+    expect(and(FALSE, TRUE, TRUE)(null)).toBeFalsy();
+    expect(and(TRUE, FALSE, FALSE)(null)).toBeFalsy();
+    expect(and(TRUE, FALSE, TRUE)(null)).toBeFalsy();
+    expect(and(TRUE, TRUE, FALSE)(null)).toBeFalsy();
+    expect(and(TRUE, TRUE, TRUE)(null)).toBeTruthy();
   });
 });

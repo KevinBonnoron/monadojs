@@ -2,6 +2,6 @@ import { Filter, Operator } from '../../types';
 import { isFunction } from '../../utils';
 
 export const iif =
-  <T>(operator: Operator<T | T[], boolean> | Filter<T | T[]>, trueOperator: Operator | any, falseOperator?: Operator | any) =>
-  (values: T | T[]) =>
+  <V, T, F>(operator: Filter<V>, trueOperator: Operator<V, T>, falseOperator?: Operator<V, F>) =>
+  (values: V) =>
     operator(values) ? (isFunction(trueOperator) ? trueOperator(values) : trueOperator) : isFunction(falseOperator) ? falseOperator(values) : falseOperator;

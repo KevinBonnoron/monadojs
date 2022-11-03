@@ -1,8 +1,8 @@
-import { Reducer } from '../../types';
+import { MonoTypeReducer } from '../../types';
 import { singleOperationReducer } from '../../utils';
 
 export const chunk =
-  <T>(length: number = 2): Reducer<T> =>
+  <T>(length: number = 2): MonoTypeReducer<T> =>
   (previousValue: T, currentValue: T, currentIndex: number, array: T[]) =>
     singleOperationReducer(previousValue, currentValue, currentIndex, array, () => {
       const result: T[][] = [];

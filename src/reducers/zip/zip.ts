@@ -14,6 +14,6 @@ const split = <T>(accumulator: T[][], values: T[]) => {
 };
 
 export const zip =
-  <T>(): Reducer<T[]> =>
+  <T>(): Reducer<T[], T[][]> =>
   (previousValue: T[], currentValue: T[], currentIndex: number) =>
     arrayAccumulator<T[]>(previousValue, currentValue, currentIndex, split);

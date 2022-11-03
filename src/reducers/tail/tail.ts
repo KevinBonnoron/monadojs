@@ -1,7 +1,4 @@
-import { Reducer } from '../../types';
-import { singleOperationReducer } from '../../utils';
+import { MonoTypeReducer } from '../../types';
+import { slice } from '../slice/slice';
 
-export const tail =
-  <T>(): Reducer<T> =>
-  (previousValue: T, currentValue: T, currentIndex: number, array: T[]) =>
-    singleOperationReducer(previousValue, currentValue, currentIndex, array, () => array.slice(-1)[0]);
+export const tail = <T>(length: number = 1): MonoTypeReducer<T> => slice(-length);
