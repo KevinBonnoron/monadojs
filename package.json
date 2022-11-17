@@ -1,6 +1,6 @@
 {
   "name": "monadojs",
-  "version": "0.0.5-rc.6",
+  "version": "0.0.0-rc.8",
   "description": "A library to perform operations on arrays and objects at once",
   "main": "dist/monadojs.js",
   "module": "dist/monadojs.mjs",
