@@ -2,6 +2,6 @@ import { Operator } from '../../types';
 import { isArray } from '../../utils';
 
 export const some =
-  <T>(predicate: Operator<unknown, boolean>) =>
-  (values: T[]) =>
-    isArray(values) ? values.some(predicate) : predicate(values);
+  (predicate: Operator<unknown, boolean>) =>
+  <T>(values: T) =>
+    isArray<T>(values) ? values.some(predicate) : predicate(values);

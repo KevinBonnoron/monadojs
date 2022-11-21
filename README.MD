@@ -1,7 +1,10 @@
 # MonadoJs
 
-This library allow developper to do some common operations on arrays and objects (filtering, mapping, reducing and sorting).
-The idea came when i've wanted to do sum on nested properties of object, and having to declare intermediate variables and calling popular libraries helper functions to do what i wanted. Also i wanted to have the ability to use the functions from the library with common js functions (like filter, reducer, map...) without the need to always use the `pipe` functions like in other libraries.
+This library allow developpers to do common operations on arrays and objects (eg: filtering, mapping, reducing and sorting) without really caring on what the function is applied.
+
+The idea came when i've wanted to do sum on nested properties of object, and having to declare intermediate variables and calling popular libraries helper functions to do what i wanted.
+
+Also i wanted to have the ability to use the functions from the library with common js functions (like filter, reducer, map...) without the need to always use the `pipe` functions like in other libraries.
 
 # Getting started
 To install just run
@@ -31,7 +34,6 @@ yarn add monadojs
 
 ### Logical Operators
 Logical operators are function that can be used in combination with `filter` operator.
-
 - and
 - nand
 - nor
@@ -61,7 +63,6 @@ Logical operators are function that can be used in combination with `filter` ope
 
 ### Operators
 Operators are functions that can be applyed on both object or array.
-
 - applySpec
 - [combine](examples/operators/combine/index.md)
 - concat

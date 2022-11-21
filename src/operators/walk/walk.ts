@@ -2,14 +2,14 @@ import { MonotypeOperator } from '../../types';
 import { isArray, isObject, isPrimitive } from '../../utils';
 import { values } from '../values/values';
 
-const walkImpl = <T extends object>(value: T, operator: MonotypeOperator<T>, context: { visitedObjects: any[] } = { visitedObjects: [] }): T => {
+const walkImpl = <T extends object>(value: T, operator: MonotypeOperator<T>, context: { visitedObjects: any[] } = { visitedObjects: [] }) => {
   context.visitedObjects.push(value);
   if (isPrimitive(value)) {
     return operator(value);
   }
 
   if (isObject<T>(value)) {
-    for (const subValue of values<T>()(value)) {
+    for (const subValue of values()(value)) {
       if (context.visitedObjects.includes(subValue)) {
         continue;
       }
@@ -18,7 +18,7 @@ const walkImpl = <T extends object>(value: T, operator: MonotypeOperator<T>, con
     }
   }
 
-  if (isArray(value)) {
+  if (isArray<T>(value)) {
     for (const subValue of value) {
       walkImpl(subValue as object, operator as MonotypeOperator<any>, context);
     }
@@ -29,5 +29,5 @@ const walkImpl = <T extends object>(value: T, operator: MonotypeOperator<T>, con
 
 export const walk =
   <T extends object>(operator: MonotypeOperator<T>) =>
-  (value: T): T =>
+  (value: T) =>
     walkImpl(value, operator);

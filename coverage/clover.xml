@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1669043478291" clover="3.2.0">
+  <project timestamp="1669043478291" name="All files">
+    <metrics statements="260" coveredstatements="253" conditionals="277" coveredconditionals="230" methods="162" coveredmethods="162" elements="699" coveredelements="645" complexity="0" loc="260" ncloc="260" packages="61" files="61" classes="61"/>
+    <package name="filters.empty">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="empty.ts" path="/workspaces/monadojs/src/filters/empty/empty.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+      </file>
+    </package>
+    <package name="filters.ends-with">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="ends-with.ts" path="/workspaces/monadojs/src/filters/ends-with/ends-with.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="7" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="filters.eq">
+      <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="eq.ts" path="/workspaces/monadojs/src/filters/eq/eq.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="42" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="filters.gt">
+      <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="gt.ts" path="/workspaces/monadojs/src/filters/gt/gt.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="16" type="cond" truecount="3" falsecount="1"/>
+      </file>
+    </package>
+    <package name="filters.gte">
+      <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="gte.ts" path="/workspaces/monadojs/src/filters/gte/gte.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="5" count="16" type="cond" truecount="3" falsecount="1"/>
+      </file>
+    </package>
+    <package name="filters.includes">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="includes.ts" path="/workspaces/monadojs/src/filters/includes/includes.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="filters.lt">
+      <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="lt.ts" path="/workspaces/monadojs/src/filters/lt/lt.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="16" type="cond" truecount="3" falsecount="1"/>
+      </file>
+    </package>
+    <package name="filters.lte">
+      <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="lte.ts" path="/workspaces/monadojs/src/filters/lte/lte.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="16" type="cond" truecount="3" falsecount="1"/>
+      </file>
+    </package>
+    <package name="filters.match">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="match.ts" path="/workspaces/monadojs/src/filters/match/match.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="13" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="filters.nil">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="nil.ts" path="/workspaces/monadojs/src/filters/nil/nil.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+      </file>
+    </package>
+    <package name="filters.of-type">
+      <metrics statements="3" coveredstatements="3" conditionals="20" coveredconditionals="19" methods="2" coveredmethods="2"/>
+      <file name="of-type.ts" path="/workspaces/monadojs/src/filters/of-type/of-type.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="20" coveredconditionals="19" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="5" count="130" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="filters.starts-with">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="starts-with.ts" path="/workspaces/monadojs/src/filters/starts-with/starts-with.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="7" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="filters.unique">
+      <metrics statements="3" coveredstatements="3" conditionals="5" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <file name="unique.ts" path="/workspaces/monadojs/src/filters/unique/unique.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="5" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="4" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="64" type="cond" truecount="3" falsecount="1"/>
+      </file>
+    </package>
+    <package name="mappers.minus">
+      <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="minus.ts" path="/workspaces/monadojs/src/mappers/minus/minus.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="6" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="mappers.modulo">
+      <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="modulo.ts" path="/workspaces/monadojs/src/mappers/modulo/modulo.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="25" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="mappers.plus">
+      <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="plus.ts" path="/workspaces/monadojs/src/mappers/plus/plus.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="8" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="mappers.pow">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="pow.ts" path="/workspaces/monadojs/src/mappers/pow/pow.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="mappers.prop">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="prop.ts" path="/workspaces/monadojs/src/mappers/prop/prop.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="17" type="stmt"/>
+      </file>
+    </package>
+    <package name="mappers.range">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="range.ts" path="/workspaces/monadojs/src/mappers/range/range.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="mappers.replace">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="replace.ts" path="/workspaces/monadojs/src/mappers/replace/replace.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="2" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="mappers.round">
+      <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="round.ts" path="/workspaces/monadojs/src/mappers/round/round.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="13" type="stmt"/>
+      </file>
+    </package>
+    <package name="mappers.substring">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="substring.ts" path="/workspaces/monadojs/src/mappers/substring/substring.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="2" count="6" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="mappers.times">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="times.ts" path="/workspaces/monadojs/src/mappers/times/times.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="mappers.upper">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="upper.ts" path="/workspaces/monadojs/src/mappers/upper/upper.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="9" type="stmt"/>
+      </file>
+    </package>
+    <package name="operators">
+      <metrics statements="27" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/workspaces/monadojs/src/operators/index.ts">
+        <metrics statements="27" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="4" count="11" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="6" count="11" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="8" count="11" type="stmt"/>
+        <line num="9" count="11" type="stmt"/>
+        <line num="10" count="11" type="stmt"/>
+        <line num="11" count="11" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+        <line num="14" count="11" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
+        <line num="16" count="11" type="stmt"/>
+        <line num="17" count="11" type="stmt"/>
+        <line num="18" count="11" type="stmt"/>
+        <line num="19" count="11" type="stmt"/>
+        <line num="20" count="11" type="stmt"/>
+        <line num="21" count="11" type="stmt"/>
+        <line num="22" count="11" type="stmt"/>
+        <line num="23" count="11" type="stmt"/>
+        <line num="24" count="11" type="stmt"/>
+        <line num="25" count="11" type="stmt"/>
+        <line num="26" count="11" type="stmt"/>
+        <line num="27" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="operators.filter">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="filter.ts" path="/workspaces/monadojs/src/operators/filter/filter.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="4" count="12" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="operators.find">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="find.ts" path="/workspaces/monadojs/src/operators/find/find.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="4" count="11" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="operators.find-index">
+      <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <file name="find-index.ts" path="/workspaces/monadojs/src/operators/find-index/find-index.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="4" count="11" type="cond" truecount="4" falsecount="0"/>
+      </file>
+    </package>
+    <package name="operators.identity">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="identity.ts" path="/workspaces/monadojs/src/operators/identity/identity.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="173" type="stmt"/>
+      </file>
+    </package>
+    <package name="operators.iif">
+      <metrics statements="5" coveredstatements="5" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+      <file name="iif.ts" path="/workspaces/monadojs/src/operators/iif/iif.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="cond" truecount="5" falsecount="1"/>
+      </file>
+    </package>
+    <package name="operators.index-of">
+      <metrics statements="5" coveredstatements="5" conditionals="10" coveredconditionals="7" methods="3" coveredmethods="3"/>
+      <file name="index-of.ts" path="/workspaces/monadojs/src/operators/index-of/index-of.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="10" coveredconditionals="7" methods="3" coveredmethods="3"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="4" type="cond" truecount="5" falsecount="1"/>
+      </file>
+    </package>
+    <package name="operators.keys">
+      <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="keys.ts" path="/workspaces/monadojs/src/operators/keys/keys.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="1" count="13" type="stmt"/>
+        <line num="7" count="13" type="stmt"/>
+        <line num="8" count="5" type="cond" truecount="3" falsecount="1"/>
+      </file>
+    </package>
+    <package name="operators.length">
+      <metrics statements="2" coveredstatements="2" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <file name="length.ts" path="/workspaces/monadojs/src/operators/length/length.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="3" count="12" type="cond" truecount="4" falsecount="2"/>
+      </file>
+    </package>
+    <package name="operators.map">
+      <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
+      <file name="map.ts" path="/workspaces/monadojs/src/operators/map/map.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="4" type="cond" truecount="1" falsecount="1"/>
+      </file>
+    </package>
+    <package name="operators.reduce">
+      <metrics statements="3" coveredstatements="3" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+      <file name="reduce.ts" path="/workspaces/monadojs/src/operators/reduce/reduce.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="7" count="8" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="operators.reverse">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="reverse.ts" path="/workspaces/monadojs/src/operators/reverse/reverse.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="3" count="12" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="operators.some">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="some.ts" path="/workspaces/monadojs/src/operators/some/some.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="4" count="12" type="cond" truecount="1" falsecount="1"/>
+      </file>
+    </package>
+    <package name="operators.sort">
+      <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="4"/>
+      <file name="sort.ts" path="/workspaces/monadojs/src/operators/sort/sort.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="4"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="8" type="cond" truecount="3" falsecount="1"/>
+      </file>
+    </package>
+    <package name="operators.tap">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="tap.ts" path="/workspaces/monadojs/src/operators/tap/tap.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="operators.values">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="values.ts" path="/workspaces/monadojs/src/operators/values/values.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="13" type="stmt"/>
+        <line num="3" count="13" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="operators.walk">
+      <metrics statements="16" coveredstatements="14" conditionals="5" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <file name="walk.ts" path="/workspaces/monadojs/src/operators/walk/walk.ts">
+        <metrics statements="16" coveredstatements="14" conditionals="5" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="5" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="7" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="11" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="21" count="5" type="cond" truecount="0" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="30" count="12" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.avg">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="avg.ts" path="/workspaces/monadojs/src/reducers/avg/avg.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.chunk">
+      <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="chunk.ts" path="/workspaces/monadojs/src/reducers/chunk/chunk.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="23" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.first">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="first.ts" path="/workspaces/monadojs/src/reducers/first/first.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.flatten">
+      <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="flatten.ts" path="/workspaces/monadojs/src/reducers/flatten/flatten.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.head">
+      <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="head.ts" path="/workspaces/monadojs/src/reducers/head/head.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="6" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="reducers.join">
+      <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="join.ts" path="/workspaces/monadojs/src/reducers/join/join.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.last">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="last.ts" path="/workspaces/monadojs/src/reducers/last/last.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.max">
+      <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+      <file name="max.ts" path="/workspaces/monadojs/src/reducers/max/max.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="3" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.min">
+      <metrics statements="2" coveredstatements="2" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="min.ts" path="/workspaces/monadojs/src/reducers/min/min.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="1" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="3" count="8" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="reducers.nth">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="nth.ts" path="/workspaces/monadojs/src/reducers/nth/nth.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.sample">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="sample.ts" path="/workspaces/monadojs/src/reducers/sample/sample.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="90" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.slice">
+      <metrics statements="3" coveredstatements="3" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+      <file name="slice.ts" path="/workspaces/monadojs/src/reducers/slice/slice.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="42" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="reducers.sum">
+      <metrics statements="3" coveredstatements="3" conditionals="9" coveredconditionals="8" methods="3" coveredmethods="3"/>
+      <file name="sum.ts" path="/workspaces/monadojs/src/reducers/sum/sum.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="9" coveredconditionals="8" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="9" type="cond" truecount="7" falsecount="1"/>
+        <line num="5" count="9" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="reducers.tail">
+      <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="tail.ts" path="/workspaces/monadojs/src/reducers/tail/tail.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="6" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="reducers.zip">
+      <metrics statements="8" coveredstatements="8" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="zip.ts" path="/workspaces/monadojs/src/reducers/zip/zip.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="sorters.asc">
+      <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="asc.ts" path="/workspaces/monadojs/src/sorters/asc/asc.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="18" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="sorters.desc">
+      <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="desc.ts" path="/workspaces/monadojs/src/sorters/desc/desc.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="18" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/workspaces/monadojs/src/utils/index.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="65" type="stmt"/>
+        <line num="2" count="65" type="stmt"/>
+        <line num="3" count="65" type="stmt"/>
+        <line num="4" count="65" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils.object">
+      <metrics statements="47" coveredstatements="44" conditionals="120" coveredconditionals="97" methods="30" coveredmethods="30"/>
+      <file name="object.utils.ts" path="/workspaces/monadojs/src/utils/object/object.utils.ts">
+        <metrics statements="47" coveredstatements="44" conditionals="120" coveredconditionals="97" methods="30" coveredmethods="30"/>
+        <line num="3" count="385" type="stmt"/>
+        <line num="4" count="386" type="stmt"/>
+        <line num="5" count="359" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="133" type="stmt"/>
+        <line num="7" count="118" type="stmt"/>
+        <line num="8" count="67" type="stmt"/>
+        <line num="9" count="67" type="stmt"/>
+        <line num="10" count="67" type="stmt"/>
+        <line num="11" count="67" type="stmt"/>
+        <line num="12" count="67" type="stmt"/>
+        <line num="13" count="67" type="stmt"/>
+        <line num="14" count="67" type="cond" truecount="4" falsecount="0"/>
+        <line num="15" count="67" type="stmt"/>
+        <line num="16" count="570" type="stmt"/>
+        <line num="17" count="229" type="cond" truecount="3" falsecount="0"/>
+        <line num="18" count="67" type="cond" truecount="13" falsecount="1"/>
+        <line num="19" count="138" type="stmt"/>
+        <line num="20" count="67" type="stmt"/>
+        <line num="21" count="158" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="67" type="cond" truecount="10" falsecount="2"/>
+        <line num="36" count="67" type="cond" truecount="8" falsecount="2"/>
+        <line num="38" count="67" type="cond" truecount="12" falsecount="6"/>
+        <line num="40" count="67" type="stmt"/>
+        <line num="42" count="67" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="44" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="49" count="6" type="stmt"/>
+        <line num="52" count="6" type="cond" truecount="0" falsecount="1"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="56" count="6" type="stmt"/>
+        <line num="57" count="6" type="stmt"/>
+        <line num="58" count="54" type="cond" truecount="4" falsecount="0"/>
+        <line num="59" count="6" type="stmt"/>
+        <line num="60" count="6" type="stmt"/>
+        <line num="62" count="54" type="cond" truecount="4" falsecount="0"/>
+        <line num="63" count="6" type="stmt"/>
+        <line num="64" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="65" count="6" type="stmt"/>
+        <line num="68" count="48" type="cond" truecount="1" falsecount="3"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="71" count="48" type="cond" truecount="1" falsecount="3"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="48" type="cond" truecount="5" falsecount="0"/>
+        <line num="75" count="12" type="stmt"/>
+        <line num="79" count="6" type="cond" truecount="2" falsecount="2"/>
+      </file>
+    </package>
+    <package name="utils.reducer">
+      <metrics statements="16" coveredstatements="14" conditionals="16" coveredconditionals="12" methods="3" coveredmethods="3"/>
+      <file name="reducer.utils.ts" path="/workspaces/monadojs/src/utils/reducer/reducer.utils.ts">
+        <metrics statements="16" coveredstatements="14" conditionals="16" coveredconditionals="12" methods="3" coveredmethods="3"/>
+        <line num="1" count="65" type="stmt"/>
+        <line num="5" count="65" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="cond" truecount="6" falsecount="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="65" type="stmt"/>
+        <line num="18" count="21" type="stmt"/>
+        <line num="20" count="21" type="cond" truecount="3" falsecount="1"/>
+        <line num="21" count="21" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="21" type="stmt"/>
+        <line num="29" count="311" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+  </project>
+</coverage>

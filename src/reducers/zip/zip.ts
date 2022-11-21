@@ -1,4 +1,3 @@
-import { Reducer } from '../../types';
 import { arrayAccumulator } from '../../utils';
 
 const split = <T>(accumulator: T[][], values: T[]) => {
@@ -14,6 +13,6 @@ const split = <T>(accumulator: T[][], values: T[]) => {
 };
 
 export const zip =
-  (): Reducer =>
+  () =>
   <T>(previousValue: T[], currentValue: T[], currentIndex: number) =>
     arrayAccumulator<T[]>(previousValue, currentValue, currentIndex, split);

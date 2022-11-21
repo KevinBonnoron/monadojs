@@ -1,19 +1,8 @@
-import { MonoTypeReducer } from '../../types';
 import { isNumber, isString } from '../../utils';
 
-const sumImpl = <T>(a: T, b: T): T => {
-  if (isNumber(a) && isNumber(b)) {
-    return (a + b) as T;
-  }
-
-  if (isString(a) && isString(b)) {
-    return (a + b) as T;
-  }
-
-  return null as T;
-};
+const sumImpl = <T extends number | string>(a: T, b: T) => (isNumber(a) && isNumber(b) ? a + b : isString(a) && isString(b) ? a + b : a) as T;
 
 export const sum =
-  <T>(sumFn: (a: T, b: T) => T = sumImpl): MonoTypeReducer<T> =>
+  <T extends number | string>(sumFn: (a: T, b: T) => T = sumImpl) =>
   (previousValue: T, currentValue: T) =>
     sumFn(previousValue, currentValue);

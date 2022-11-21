@@ -1,15 +1,8 @@
 import { MonoTypeReducer } from '../../types';
-import { isNumber, isString } from '../../utils';
 
-const maxImpl = <T>(a: T, b: T): T => {
-  if ((isNumber(a) && isNumber(b)) || (isString(a) && isString(b))) {
-    return a > b ? a : b;
-  }
-
-  return null as T;
-};
+const maxImpl = <T extends number | string>(a: T, b: T): T => (a > b ? a : b);
 
 export const max =
-  <T>(maxFn: (a: T, b: T) => T = maxImpl): MonoTypeReducer<T> =>
+  <T extends number | string>(maxFn: (a: T, b: T) => T = maxImpl): MonoTypeReducer<T> =>
   (previousValue: T, currentValue: T) =>
     maxFn(previousValue, currentValue);

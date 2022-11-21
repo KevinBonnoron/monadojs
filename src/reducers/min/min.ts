@@ -1,15 +1,6 @@
-import { MonoTypeReducer } from '../../types';
-import { isNumber, isString } from '../../utils';
-
-const minImpl = <T>(a: T, b: T): T => {
-  if ((isNumber(a) && isNumber(b)) || (isString(a) && isString(b))) {
-    return a < b ? a : b;
-  }
-
-  return null as T;
-};
+const minImpl = <T extends string | number>(a: T, b: T): T => (a < b ? a : b);
 
 export const min =
-  <T>(minFn: (a: T, b: T) => T = minImpl): MonoTypeReducer<T> =>
+  <T extends string | number>(minFn: (a: T, b: T) => T = minImpl) =>
   (previousValue: T, currentValue: T) =>
     minFn(previousValue, currentValue);

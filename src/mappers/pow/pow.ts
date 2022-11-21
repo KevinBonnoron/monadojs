@@ -1,4 +1,4 @@
 export const pow =
-  <T extends number>(power: number) =>
-  (value: T) =>
+  (power: number) =>
+  <T extends number>(value: T) =>
     Math.pow(value, power);

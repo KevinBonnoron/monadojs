@@ -1,4 +1,4 @@
 export const modulo =
-  <T extends number>(amount: number = 1) =>
-  (value: T) =>
+  (amount: number = 1) =>
+  <T extends number>(value: T) =>
     value % amount;

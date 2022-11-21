@@ -1,4 +1,4 @@
 export const times =
-  <T extends number>(amount: number) =>
-  (value: T) =>
+  (amount: number) =>
+  <T extends number>(value: T) =>
     value * amount;

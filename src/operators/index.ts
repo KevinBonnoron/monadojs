@@ -8,7 +8,7 @@ export * from './filter/filter';
 export * from './find-index/find-index';
 export * from './find/find';
 export * from './identity/identity';
-export * from './iif/iff';
+export * from './iif/iif';
 export * from './index-of/index-of';
 export * from './keys/keys';
 export * from './length/length';

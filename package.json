@@ -16,12 +16,12 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "jest --onlyChanged",
+    "test": "jest --coverage --onlyChanged",
     "test:watch": "jest --onlyChanged --watch",
     "prebuild": "rimraf dist/**",
     "build": "rollup -c",
     "prepack": "yarn build",
-    "release": "release-it"
+    "release": "release-it --only-version"
   },
   "keywords": [],
   "author": "Kevin Bonnoron <2421321+KevinBonnoron@users.noreply.github.com>",

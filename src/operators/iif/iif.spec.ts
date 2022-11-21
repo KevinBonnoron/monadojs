@@ -1,15 +1,16 @@
-import { eq } from '../../filters';
-import { iif } from './iff';
+import { isFalse, isTrue } from '../../utils';
+import { iif } from './iif';
+
+const mapTo = (value: string) => () => value;
 
 describe('iif', () => {
-  it('should apply operator if condition is met', () => {
-    const isTrue = eq(true);
-    const isFalse = eq(false);
-    const mapTo = (value: string) => () => value;
-    const mapInvert = (value: boolean) => !value;
+  it('should return trueValue when condition is met', () => {
+    expect(iif(isTrue, mapTo('a'))(true)).toEqual('a');
+    expect(iif(isFalse, mapTo('a'))(true)).toEqual(undefined);
+  });
 
+  it('should return trueValue when condition is met else falseValue', () => {
     expect(iif(isTrue, mapTo('a'), mapTo('b'))(true)).toEqual('a');
-    expect(iif(isTrue, mapInvert)(true)).toEqual(false);
     expect(iif(isFalse, mapTo('a'), mapTo('b'))(true)).toEqual('b');
   });
 });

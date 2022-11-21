@@ -1,4 +1,4 @@
 export const replace =
-  <T extends string>(search: string | RegExp, replacement: string) =>
-  (values: T) =>
+  (search: string | RegExp, replacement: string) =>
+  <T extends string>(values: T) =>
     values.replace(search, replacement);

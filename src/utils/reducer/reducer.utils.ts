@@ -26,4 +26,4 @@ export const objectAccumulator = <T, U = any>(previousValue: T | U, currentValue
   return appender(accumulator, currentValue);
 };
 
-export const singleOperationReducer = <T>(previousValue: T, currentValue: T, currentIndex: number, array: T[], operation: () => any) => (currentIndex > 1 ? previousValue : operation());
+export const singleOperationReducer = <T>(previousValue: T, _currentValue: T, currentIndex: number, _array: T[], operation: () => any) => (currentIndex > 1 ? previousValue : operation());

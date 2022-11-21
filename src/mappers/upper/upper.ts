@@ -1,4 +1,4 @@
 export const upper =
-  <T extends string>() =>
-  (value: T) =>
+  () =>
+  <T extends string>(value: T) =>
     value.toUpperCase();

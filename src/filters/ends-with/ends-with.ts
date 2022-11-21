@@ -1,7 +1,6 @@
-import { Filter } from '../../types';
 import { isArray } from '../../utils';
 
 export const endsWith =
-  <T extends string>(expected: string): Filter<T | T[]> =>
-  (values: T | T[]): values is T =>
-    isArray(values) ? values.every(endsWith(expected)) : values.endsWith(expected);
+  (expected: string) =>
+  <T extends string>(values: T): values is T =>
+    isArray<T>(values) ? values.every(endsWith(expected)) : values.endsWith(expected);

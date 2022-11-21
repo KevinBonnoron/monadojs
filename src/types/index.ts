@@ -1,4 +1,5 @@
 export * from './filter.type';
+export * from './language.type';
 export * from './mapper.type';
 export * from './no-undefined-field.type';
 export * from './operator.type';

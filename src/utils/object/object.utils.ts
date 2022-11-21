@@ -1,4 +1,4 @@
-import { NoUndefinedField, Type } from '../../types';
+import { AllTypes, NoUndefinedField, Primitive } from '../../types';
 
 export const isNull = (value: any): value is null => value === null;
 export const isUndefined = (value: any): value is undefined => value === undefined;
@@ -11,14 +11,14 @@ export const isFalse = (value: any): value is false => value === false;
 export const isSymbol = (value: any): value is symbol => typeof value === 'symbol';
 export const isDate = (value: any): value is Date => value instanceof Date;
 export const isRegExp = (value: any): value is RegExp => Object.prototype.toString.call(value) === '[object RegExp]';
-export const isPrimitive = (value: any): value is string | number | boolean | symbol => isString(value) || isNumber(value) || isBoolean(value) || isSymbol(value);
+export const isPrimitive = (value: any): value is Primitive => isString(value) || isNumber(value) || isBoolean(value) || isSymbol(value);
 export const isMap = <K, V>(value: any): value is Map<K, V> => value instanceof Map;
 export const isArray = <T>(value: any): value is T[] => Array.isArray(value);
 export const isObject = <T>(value: any): value is T & object => typeof value === 'object' && !isArray(value) && !isNil(value);
 export const isEmpty = <T>(value: any): value is Required<NoUndefinedField<T>> => (isNil(value) ? true : isPrimitive(value) ? true : isFunction(value) ? true : isArray(value) ? value.length === 0 : isDate(value) ? !isNaN(Number(value)) : isRegExp(value) ? false : isObject<any>(value) ? Object.keys(value).length === 0 : false);
 export const isFunction = (value: any): value is (...args: any[]) => any => typeof value === 'function';
 export const is =
-  <T>(type: null | undefined | String | Number | Boolean | Date | RegExp | Symbol | unknown[] | Map<unknown, unknown> | Object | Function | Type<T>) =>
+  <T>(type: AllTypes) =>
   (value: unknown): value is T =>
     type === null ? isNull(value) : type === undefined ? isUndefined(value) : type === String ? isString(value) : type === Number ? isNumber(value) : type === Boolean ? isBoolean(value) : type === Symbol ? isSymbol(value) : type === Date ? isDate(value) : type === RegExp ? isRegExp(value) : type === Array ? isArray(value) : type === Map ? isMap(value) : type === Object ? isObject(value) : type === Function ? isFunction(value) : (value as any).constructor === type;
 
