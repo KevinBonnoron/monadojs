@@ -36,14 +36,12 @@ function pipeFn(this: any, ...operators: Operator<unknown, unknown>[]) {
   return operators.reduce((value, operator) => operator(value), typeof this === 'object' ? this : this.slice());
 }
 
-Object.defineProperty(Array.prototype, 'pipe', {
+const PIPE_PROPERTY_DESCRIPTOR: PropertyDescriptor = {
   value: pipeFn,
   enumerable: false,
   writable: true,
-});
+  configurable: true,
+};
 
-Object.defineProperty(Object.prototype, 'pipe', {
-  value: pipeFn,
-  enumerable: false,
-  writable: true,
-});
+Object.defineProperty(Array.prototype, 'pipe', PIPE_PROPERTY_DESCRIPTOR);
+Object.defineProperty(Object.prototype, 'pipe', PIPE_PROPERTY_DESCRIPTOR);

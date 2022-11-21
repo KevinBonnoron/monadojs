@@ -1,7 +1,8 @@
 import dts from 'rollup-plugin-dts';
 import esbuild from 'rollup-plugin-esbuild';
+import packageConfig from './package.json' assert { type: 'json' };
 
-const name = require('./package.json').main.replace(/\.js$/, '');
+const name = packageConfig.main.replace(/\.js$/, '');
 
 const bundle = (config) => ({
   ...config,

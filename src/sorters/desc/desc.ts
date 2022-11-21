@@ -1,5 +1,5 @@
-import { identity } from '../../operators/identity/identity';
-import { Sorter } from '../../types';
+import { identity } from '../../operators';
+import { Operator, Sorter } from '../../types';
 import { compare, sorter } from '../../utils';
 
-export const desc = <T>(prop: (a: T) => any = identity<T>()): Sorter<T> => sorter((a: T, b: T) => compare(prop(b), prop(a)));
+export const desc = <T, S>(prop: Operator<T, S> = identity<T>() as Operator<T, any>): Sorter<T> => sorter((a: T, b: T) => compare(prop(b), prop(a)));

@@ -1,1 +1,1 @@
-export type Filter<T> = (value: T, index?: number, array?: T[]) => boolean;
+export type Filter<T = any> = (value: T, index?: number, array?: T[]) => boolean;

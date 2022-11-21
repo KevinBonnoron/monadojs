@@ -1,5 +1,6 @@
 export * from './capitalize/capitalize';
 export * from './ceil/ceil';
+export * from './clone/clone';
 export * from './divide/divide';
 export * from './floor/floor';
 export * from './lower/lower';

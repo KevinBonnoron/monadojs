@@ -1,6 +1,6 @@
 # MonadoJs
 
-This library allow developper to do some common operations on array and objects (filtering, mapping, reducing and sorting).
+This library allow developper to do some common operations on arrays and objects (filtering, mapping, reducing and sorting).
 The idea came when i've wanted to do sum on nested properties of object, and having to declare intermediate variables and calling popular libraries helper functions to do what i wanted. Also i wanted to have the ability to use the functions from the library with common js functions (like filter, reducer, map...) without the need to always use the `pipe` functions like in other libraries.
 
 # Getting started
@@ -27,6 +27,7 @@ yarn add monadojs
 - nil
 - ofType
 - startsWith
+- unique
 
 ### Logical Operators
 Logical operators are function that can be used in combination with `filter` operator.
@@ -39,23 +40,24 @@ Logical operators are function that can be used in combination with `filter` ope
 - xor
 
 ### Mapper
-- add
 - capitalize
 - ceil
-- entries
+- divide
 - floor
-- keys
 - lower
 - [match-with](examples/mappers/matchWith/index.md)
+- minus
+- modulo
+- plus
 - pow
+- [prop](examples/mappers/prop/index.md)
+- range
 - replace
 - round
-- sub
 - substring
 - times
 - transform
 - upper
-- values
 
 ### Operators
 Operators are functions that can be applyed on both object or array.
@@ -64,40 +66,45 @@ Operators are functions that can be applyed on both object or array.
 - [combine](examples/operators/combine/index.md)
 - concat
 - encloseIn
+- entries
 - every
 - [filter](examples/operators/filter/index.md)
 - find
 - identity
 - [iif](examples/operators/iif/index.md)
+- indexOf
+- keys
 - length
 - [map](examples/operators/map/index.md)
 - merge
 - [none](examples/operators/none/index.md)
+- pipe
 - [reduce](examples/operators/reduce/index.md)
 - reverse
 - shuffle
 - some
 - sort
 - tap
+- values
+- walk
 
 ### Projections
 Projections are a combination of operator and mapper at the same time. It can handle arrays or object at the same time and produce a value.
 
 - exclude
 - pick
-- [prop](examples/projections/prop/index.md)
-- props
 
 ### Reducers
 Reducers are function that produce a single result by iterating over the passed array.
 
 - avg
 - chunk
+- first
 - flatten
 - group
 - head
-- heads
 - join
+- last
 - max
 - min
 - nth
@@ -105,8 +112,6 @@ Reducers are function that produce a single result by iterating over the passed 
 - slice
 - sum
 - tail
-- tails
-- unique
 - zip
 
 ### Sorters

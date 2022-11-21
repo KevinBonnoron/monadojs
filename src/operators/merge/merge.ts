@@ -1,5 +1,6 @@
 import { Operator } from '../../types';
 import { isArray, isObject } from '../../utils';
+import { entries } from '../entries/entries';
 
 const mergeImpl = <T, V>(target: T, ...sources: V[]): any => {
   if (!sources.length) {
@@ -8,13 +9,13 @@ const mergeImpl = <T, V>(target: T, ...sources: V[]): any => {
 
   const source = sources.shift();
   if (isObject(target) && isObject(source)) {
-    for (const [key, value] of Object.entries(source)) {
+    for (const [key, value] of entries<V>()(source)) {
       if (isObject(value)) {
-        if ((target as any)[key] === undefined) {
+        if ((target as V)[key] === undefined) {
           Object.assign(target, { [key]: {} });
         }
 
-        mergeImpl((target as any)[key], value);
+        mergeImpl((target as V)[key], value);
       } else {
         Object.assign(target, { [key]: value });
       }
@@ -26,5 +27,5 @@ const mergeImpl = <T, V>(target: T, ...sources: V[]): any => {
 
 export const merge =
   <T, V>(...sources: V[]): Operator<T, T & V> =>
-  (values: T | T[]) =>
-    isArray(values) ? values.map(merge(sources)) : mergeImpl(values, ...sources);
+  (values: T) =>
+    isArray<T>(values) ? values.map(merge(sources)) : mergeImpl(values, ...sources);

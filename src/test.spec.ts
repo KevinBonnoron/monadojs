@@ -1,5 +1,7 @@
+import { eq } from './filters';
 import './index';
-import { reduce, tap } from './operators';
+import { prop } from './mappers';
+import { map, pipe } from './operators';
 
 interface DateLabelCount {
   date: string;
@@ -11,6 +13,7 @@ describe('test', () => {
   it('should do complex test', () => {
     const values: DateLabelCount[] = [
       { date: '2020-01', label: 'other', count: 1 },
+      { date: '2020-01', label: 'other', count: 3 },
       { date: '2020-01', label: 'google', count: 13 },
       { date: '2020-02', label: 'other', count: 2 },
       { date: '2020-02', label: 'google', count: 14 },
@@ -36,8 +39,10 @@ describe('test', () => {
       { date: '2020-12', label: 'google', count: 24 },
     ];
 
+    const elements = [0, 1, 2, 3];
+
     const labelCountDateSumReducer = (accumulator: DateLabelCount[], value: DateLabelCount) => {
-      let matchElement = accumulator.find((element: DateLabelCount) => element.date === value.date);
+      let matchElement = accumulator.find(pipe(prop('date'), eq(value.date)));
       if (matchElement === undefined) {
         matchElement = {
           ...value,
@@ -51,10 +56,11 @@ describe('test', () => {
       return accumulator;
     };
 
-    const results = values.pipe(
-      //filter(pipe(prop('label'), eq('other'))),
-      reduce(labelCountDateSumReducer, []),
-      tap(console.log)
+    const fn = pipe(
+      map(prop('date'))
+      //tap(console.log)
     );
+
+    const pipeResults = fn(values);
   });
 });

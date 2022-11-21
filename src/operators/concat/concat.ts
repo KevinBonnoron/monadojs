@@ -1,6 +1,6 @@
 import { isArray } from '../../utils';
 
 export const concat =
-  <T>(...sources: T[]) =>
-  (values: T | T[]) =>
-    isArray(values) ? values.concat(...sources) : [values].concat(...sources);
+  <S>(...sources: S[]) =>
+  <T>(values: T) =>
+    isArray<T>(values) ? values.concat(...(sources as unknown as T[])) : [values].concat(...(sources as unknown as T[]));

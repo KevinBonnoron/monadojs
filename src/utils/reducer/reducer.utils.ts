@@ -1,6 +1,6 @@
 import { haveSameProperties, haveSameTypes, isArray, isObject } from '../object/object.utils';
 
-export type PropertyKeyAccumulator<T> = { [key: PropertyKey]: T[] };
+export type PropertyKeyAccumulator<T> = { [P in keyof T]: T[] } & any;
 
 export const arrayAccumulator = <T>(previousValue: T, currentValue: T, currentIndex: number, appender: (accumulator: T[], value: T) => T[]) => {
   let accumulator: T[] = [];
@@ -14,12 +14,12 @@ export const arrayAccumulator = <T>(previousValue: T, currentValue: T, currentIn
   return appender(accumulator, currentValue);
 };
 
-export const objectAccumulator = <T>(previousValue: T, currentValue: T, currentIndex: number, appender: (accumulator: PropertyKeyAccumulator<T>, value: T) => PropertyKeyAccumulator<T>) => {
-  let accumulator: PropertyKeyAccumulator<T> = {};
+export const objectAccumulator = <T, U = any>(previousValue: T | U, currentValue: T, currentIndex: number, appender: (accumulator: U, value: T) => U) => {
+  let accumulator: U = {} as U;
   // If previousValue is ArrayOrMap and currentValue not, then we passed the accumulator
-  if (isObject<PropertyKeyAccumulator<T>>(previousValue) && !haveSameProperties(previousValue, currentValue)) {
+  if (isObject<U>(previousValue) && !haveSameProperties(previousValue, currentValue)) {
     accumulator = previousValue;
-  } else if (currentIndex === 1) {
+  } else if (isObject<T>(previousValue) && currentIndex === 1) {
     appender(accumulator, previousValue);
   }
 

@@ -1,4 +1,4 @@
-import { haveSameProperties, haveSameTypes, is, isArray, isBoolean, isDate, isEmpty, isEqual, isFunction, isMap, isNil, isNull, isNumber, isObject, isRegExp, isString, isSymbol, isUndefined, propertyIn } from './object.utils';
+import { haveSameProperties, haveSameTypes, is, isArray, isBoolean, isDate, isEmpty, isEqual, isFalse, isFunction, isMap, isNil, isNull, isNumber, isObject, isRegExp, isString, isSymbol, isTrue, isUndefined, propertyIn } from './object.utils';
 
 type Expectation = { value: unknown; expect: boolean };
 const checkExpectations = (fn: (value: unknown) => boolean, expectations: Expectation[]) => expectations.forEach((expectation) => expect(fn(expectation.value)).toEqual(expectation.expect));
@@ -138,7 +138,6 @@ const regExpExpectations: Expectation[] = [
   { value: () => {}, expect: false },
   { value: function () {}, expect: false },
 ];
-
 const arrayExpectations: Expectation[] = [
   { value: null, expect: false },
   { value: undefined, expect: false },
@@ -270,6 +269,16 @@ describe('ObjectUtils', () => {
 
   it('should return if value is function', () => {
     checkExpectations(isFunction, functionExpectations);
+  });
+
+  it('should return if value is true', () => {
+    expect(isTrue(true)).toBeTruthy();
+    expect(isTrue(false)).toBeFalsy();
+  });
+
+  it('should return if value is false', () => {
+    expect(isFalse(true)).toBeFalsy();
+    expect(isFalse(false)).toBeTruthy();
   });
 
   it('should return if value is passed type', () => {
