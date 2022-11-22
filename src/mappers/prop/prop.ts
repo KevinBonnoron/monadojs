@@ -1,4 +1,4 @@
 export const prop =
-  <T, P extends keyof T>(property: P) =>
-  (value: T) =>
-    value[property];
+  (property: string) =>
+  <T extends object, P extends keyof T>(value: T) =>
+    value[property as P];
