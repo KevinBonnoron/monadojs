@@ -1,5 +1,5 @@
 import { Sorter } from '../../types';
-import { isArray, isNil, isNumber, isString } from '../object/object.utils';
+import { isArray, isDate, isNil, isNumber, isString } from '../object/object.utils';
 
 export interface SorterOptions {
   nullsAs: 'first' | 'last';
@@ -16,7 +16,7 @@ export const compare = <T>(a: T, b: T, options?: SorterOptions) => {
     }
   }
 
-  return isString(a) && isString(b) ? a.localeCompare(b) : isNumber(a) && isNumber(b) ? a - b : 0;
+  return isString(a) && isString(b) ? a.localeCompare(b) : isDate(a) && isDate(b) ? a.getTime() - b.getTime() : isNumber(a) && isNumber(b) ? a - b : 0;
 };
 
 export const sorter =
