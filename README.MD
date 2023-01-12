@@ -23,9 +23,9 @@ yarn add monadojs
 - gt
 - gte
 - includes
+- [like](examples/filters/like/index.md)
 - lt
 - lte
-- match
 - neq
 - nil
 - ofType
@@ -47,7 +47,7 @@ Logical operators are function that can be used in combination with `filter` ope
 - divide
 - floor
 - lower
-- [match-with](examples/mappers/matchWith/index.md)
+- [match](examples/mappers/match/index.md)
 - minus
 - modulo
 - plus
@@ -116,7 +116,5 @@ Reducers are function that produce a single result by iterating over the passed 
 - zip
 
 ### Sorters
-- asFirst
-- asLast
 - asc
 - desc

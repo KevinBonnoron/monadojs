@@ -1,3 +1,5 @@
+This example show how to compute avg, sum, min & max from the same inputs at once.
+
 ```typescript
 import { avg, combine, max, min, prop, reduce, sum, tap } from 'monadojs';
 

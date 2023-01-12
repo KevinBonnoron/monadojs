@@ -1,5 +1,7 @@
+This example show how to use `match` as a grouping function
+
 ```typescript
-import { pipe, group, gte, lt, matchWith, prop, reduce, tap } from 'monadojs';
+import { pipe, group, gte, lt, match, prop, reduce, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -15,7 +17,7 @@ persons.pipe(
     group(
       pipe(
         prop('age'),
-        matchWith(new Map()
+        match(new Map()
           .set(gte(18), () => 'Major')
           .set(lt(18), () => 'Minor')
         ),

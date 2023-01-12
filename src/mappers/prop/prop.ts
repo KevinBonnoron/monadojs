@@ -1,4 +1,6 @@
+const propImpl = <T, P extends keyof T>(value: T, property: P) => value[property];
+
 export const prop =
-  (property: string) =>
-  <T extends object, P extends keyof T>(value: T) =>
-    value[property as P];
+  <P>(property: P) =>
+  <T>(value: T) =>
+    propImpl(value, property as keyof T);
