@@ -10,11 +10,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  none(
-    pipe(prop('firstName'), eq('Christopher'))
-  ),
-  tap(console.log)
-);
+persons.pipe(none(pipe(prop('firstName'), eq('Christopher'))), tap(console.log));
 
 // true
+```

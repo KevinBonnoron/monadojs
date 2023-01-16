@@ -1,7 +1,7 @@
 import { prop } from '../../mappers';
 import { identity } from '../../operators';
 import { Operator, Sorter } from '../../types';
-import { compare, isFunction, isPropertyKey, sorter, SorterOptions } from '../../utils';
+import { compare, isFunction, isPropertyKey, SorterOptions, ɵsorter } from '../../utils';
 
 export function asc<T>(options?: SorterOptions): Sorter<T>;
 export function asc<T>(predicate: keyof T, options?: SorterOptions): Sorter<T>;
@@ -17,5 +17,5 @@ export function asc<T>(predicate?: keyof T | Operator | SorterOptions, options?:
     options = predicate;
   }
 
-  return sorter((a: T, b: T) => compare(operator(a), operator(b), options));
+  return ɵsorter((a: T, b: T) => compare(options)(operator(a), operator(b)));
 }

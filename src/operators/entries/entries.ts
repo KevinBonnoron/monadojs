@@ -1,9 +1,14 @@
-import { Mapper } from '../../types';
-import { isArray, isObject } from '../../utils';
+import { isArray, isMap, isObject } from '../../utils';
 
 type Entry<T> = { [K in keyof T]: [K, T[K]] }[keyof T];
 
 export const entries =
-  <T>(): Mapper<T, ReadonlyArray<Entry<T>>> =>
-  (values: T) =>
-    isArray<T>(values) ? (values.entries() as unknown as ReadonlyArray<Entry<T>>) : isObject<T>(values) ? (Object.entries(values) as unknown as ReadonlyArray<Entry<T>>) : [];
+  <T>() =>
+  (value: T) =>
+    isArray<T>(value)
+      ? ([...value.entries()] as unknown as ReadonlyArray<Entry<T>>)
+      : isMap(value)
+      ? ([...value.entries()] as unknown as ReadonlyArray<Entry<T>>)
+      : isObject<T>(value)
+      ? (Object.entries(value) as unknown as ReadonlyArray<Entry<T>>)
+      : [];

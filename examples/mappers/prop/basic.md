@@ -10,10 +10,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  prop('age'),
-  tap(console.log)
-);
+persons.pipe(prop('age'), tap(console.log));
 
 // [ 15, 30, 19, 26, 52, 7 ]
 ```

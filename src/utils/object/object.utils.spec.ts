@@ -1,5 +1,29 @@
 import { Just, Nothing } from '../maybe/maybe.utils';
-import { functionParameterCount, functionParameterParser, haveSameProperties, haveSameTypes, isArray, isBoolean, isDate, isEmpty, isEqual, isFalse, isFunction, isMap, isMaybe, isNil, isNull, isNumber, isObject, isRegExp, isString, isSymbol, isTrue, isType, isUndefined, propertyIn } from './object.utils';
+import {
+  getTypeDefault,
+  haveSameProperties,
+  haveSameType,
+  isArray,
+  isBoolean,
+  isDate,
+  isEmpty,
+  isEqual,
+  isFalse,
+  isFunction,
+  isMap,
+  isMaybe,
+  isNil,
+  isNull,
+  isNumber,
+  isObject,
+  isRegExp,
+  isString,
+  isSymbol,
+  isTrue,
+  isType,
+  isUndefined,
+  propertyIn,
+} from './object.utils';
 
 type Expectation = { value: unknown; expect: boolean };
 const checkExpectations = (fn: (value: unknown) => boolean, expectations: Expectation[]) =>
@@ -358,6 +382,18 @@ describe('ObjectUtils', () => {
     expect(isType(Dummy)({})).toBeFalsy();
   });
 
+  it('should return type default', () => {
+    expect(getTypeDefault('a')).toStrictEqual('');
+    expect(getTypeDefault(1)).toStrictEqual(0);
+    expect(getTypeDefault(true)).toStrictEqual(false);
+    expect(getTypeDefault(Symbol())).toStrictEqual(null);
+    expect(getTypeDefault(new Date('2020-01-01'))).toStrictEqual(new Date());
+    expect(getTypeDefault([0, 1])).toStrictEqual([]);
+    expect(getTypeDefault(new Map([[0, 1]]))).toStrictEqual(new Map());
+    expect(getTypeDefault(new Set([0, 1]))).toStrictEqual(new Set());
+    expect(getTypeDefault({ a: 1 })).toStrictEqual({});
+  });
+
   it('should return if value is equal', () => {
     class Dummy {
       constructor(readonly a: number) {}
@@ -386,27 +422,14 @@ describe('ObjectUtils', () => {
   });
 
   it('should return if two object have same types', () => {
-    expect(haveSameTypes([0, 'a'], [0, 'a'])).toBeTruthy();
-    expect(haveSameTypes([0, 'a'], [1, 'b'])).toBeTruthy();
-    expect(haveSameTypes([0, 'a'], ['a', 0])).toBeFalsy();
-    expect(haveSameTypes([['a'], ['b']], [1, 2])).toBeFalsy();
+    expect(haveSameType([0, 'a'], [0, 'a'])).toBeTruthy();
+    expect(haveSameType([0, 'a'], [1, 'b'])).toBeTruthy();
+    expect(haveSameType([0, 'a'], ['a', 0])).toBeFalsy();
+    expect(haveSameType([['a'], ['b']], [1, 2])).toBeFalsy();
   });
 
   it('should return if property is present in object', () => {
     expect(propertyIn('equals', { equals: true })).toBeTruthy();
     expect(propertyIn('equals', { a: true })).toBeFalsy();
-  });
-
-  it('should return the function number of parameter', () => {
-    function oneRequiredParameterFn(a: number) {}
-    function oneRequiredParameterAndOneDefaultParameterFn(a: number, b = 5) {}
-
-    expect(functionParameterCount(oneRequiredParameterFn)).toStrictEqual(1);
-    //expect(functionParameterCount(oneRequiredParameterAndOneDefaultParameterFn)).toStrictEqual(1);
-  });
-
-  it('should work', () => {
-    const oneRequiredParameterFn = (a: number, b = '"') => {};
-    console.log(functionParameterParser(oneRequiredParameterFn));
   });
 });

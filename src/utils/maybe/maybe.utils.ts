@@ -1,5 +1,5 @@
 import { pipe } from '../../operators/pipe/pipe';
-import { Maybe, MonotypeOperator } from '../../types';
+import { AnyFunction, Maybe, MonotypeOperator } from '../../types';
 import { isMaybe, isNil } from '../object/object.utils';
 
 interface DefaultMaybe<T> extends Maybe<T> {}
@@ -16,11 +16,11 @@ abstract class DefaultMaybe<T> implements Maybe<T> {
     return this.expect('unwrap called on Nothing');
   }
 
-  unwrapOr(defaultValue: T) {
+  unwrapOr<V>(defaultValue: V) {
     return this.isNothing ? defaultValue : this.value;
   }
 
-  unwrapOrElse(fn: () => T) {
+  unwrapOrElse<E>(fn: AnyFunction<E>) {
     return this.isNothing ? fn() : this.value;
   }
 

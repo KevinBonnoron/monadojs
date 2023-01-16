@@ -1,7 +1,7 @@
 import { prop } from '../../mappers';
 import { identity } from '../../operators';
 import { Operator, Sorter } from '../../types';
-import { compare, isFunction, isPropertyKey, sorter, SorterOptions } from '../../utils';
+import { compare, isFunction, isPropertyKey, SorterOptions, ɵsorter } from '../../utils';
 
 export function desc<T>(options?: SorterOptions): Sorter<T>;
 export function desc<T>(predicate: keyof T, options?: SorterOptions): Sorter<T>;
@@ -22,5 +22,5 @@ export function desc<T>(predicate?: keyof T | Operator | SorterOptions, options?
     options.nullsAs = options.nullsAs === 'first' ? 'last' : 'first';
   }
 
-  return sorter((a: T, b: T) => compare(operator(b), operator(a), options));
+  return ɵsorter((a: T, b: T) => compare(options)(operator(b), operator(a)));
 }

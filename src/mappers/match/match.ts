@@ -8,11 +8,11 @@ interface Match<T, S> {
 
 export const match =
   <T, S>(matches: Match<T, S>[]) =>
-  (values: T) => {
+  (value: T) => {
     for (const match of matches) {
-      let currentValue = values;
-      if (isMaybe(values)) {
-        currentValue = values.value;
+      let currentValue = value;
+      if (isMaybe(value)) {
+        currentValue = value.value;
       }
 
       const returnResult = () => {
@@ -28,10 +28,14 @@ export const match =
         if (matchJust(currentValue)) {
           return returnResult();
         }
-      } else if ((isFunction(match.if) && match.if(currentValue)) || (isMaybe(match.if) && match.if.equals(currentValue)) || (isRegExp(match.if) && isString(currentValue) && match.if.test(currentValue))) {
+      } else if (
+        (isFunction(match.if) && match.if(currentValue)) ||
+        (isMaybe(match.if) && match.if.equals(currentValue)) ||
+        (isRegExp(match.if) && isString(currentValue) && match.if.test(currentValue))
+      ) {
         return returnResult();
       }
     }
 
-    return values;
+    return value;
   };

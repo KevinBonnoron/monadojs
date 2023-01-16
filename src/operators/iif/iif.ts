@@ -3,5 +3,11 @@ import { isFunction } from '../../utils';
 
 export const iif =
   (operator: Filter, trueOperator: Operator, falseOperator?: Operator) =>
-  <T>(values: T) =>
-    operator(values) ? (isFunction(trueOperator) ? trueOperator(values) : trueOperator) : isFunction(falseOperator) ? falseOperator(values) : falseOperator;
+  <T>(value: T) =>
+    operator(value)
+      ? isFunction(trueOperator)
+        ? trueOperator(value)
+        : trueOperator
+      : isFunction(falseOperator)
+      ? falseOperator(value)
+      : falseOperator;

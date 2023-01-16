@@ -6,4 +6,8 @@ const norImpl = (...values: boolean[]) => !values.some((value) => value);
 export const nor =
   <T>(...operators: Filter<T>[]) =>
   (value: T) =>
-    operators.map((operator) => operator(value)).reduce((previousValue, currentValue, currentIndex, array) => singleOperationReducer(previousValue, currentValue, currentIndex, array, () => norImpl(...array)));
+    operators
+      .map((operator) => operator(value))
+      .reduce((previousValue, currentValue, currentIndex, array) =>
+        singleOperationReducer(previousValue, currentValue, currentIndex, array, () => norImpl(...array))
+      );

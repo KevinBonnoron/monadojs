@@ -1,4 +1,4 @@
 export const encloseIn =
   <P extends string>(key: P) =>
-  <T>(values: T) =>
-    ({ [key]: values } as Record<P, T>);
+  <T>(value: T) =>
+    ({ [key]: value } as Record<P, T>);

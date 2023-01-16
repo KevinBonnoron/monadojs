@@ -12,20 +12,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  reduce(
-    group(
-      pipe(
-        prop('age'),
-        match(new Map()
-          .set(gte(18), () => 'Major')
-          .set(lt(18), () => 'Minor')
-        ),
-      )
-    ),
-  ),
-  tap(console.log)
-);
+persons.pipe(reduce(group(pipe(prop('age'), match(new Map().set(gte(18), () => 'Major').set(lt(18), () => 'Minor'))))), tap(console.log));
 
 /*
 {
@@ -41,3 +28,4 @@ persons.pipe(
   ]
 }
 */
+```

@@ -7,8 +7,8 @@ describe('MaybeUtils', () => {
     const expectErrorMessage = 'value expected';
 
     expect(Just(0).expect(expectErrorMessage)).toStrictEqual(0);
-    expect(() => Just<any>(null).expect(expectErrorMessage)).toThrowError(expectErrorMessage);
-    expect(() => Just<any>(undefined).expect(expectErrorMessage)).toThrowError(expectErrorMessage);
+    expect(() => Just(null).expect(expectErrorMessage)).toThrowError(expectErrorMessage);
+    expect(() => Just(undefined).expect(expectErrorMessage)).toThrowError(expectErrorMessage);
     expect(() => Nothing.expect(expectErrorMessage)).toThrowError(expectErrorMessage);
   });
 
@@ -16,23 +16,23 @@ describe('MaybeUtils', () => {
     const unwrapErrorMessage = 'unwrap called on Nothing';
 
     expect(Just(0).unwrap()).toStrictEqual(0);
-    expect(() => Just<any>(null).unwrap()).toThrowError(unwrapErrorMessage);
-    expect(() => Just<any>(undefined).unwrap()).toThrowError(unwrapErrorMessage);
+    expect(() => Just(null).unwrap()).toThrowError(unwrapErrorMessage);
+    expect(() => Just(undefined).unwrap()).toThrowError(unwrapErrorMessage);
     expect(() => Nothing.unwrap()).toThrowError(unwrapErrorMessage);
   });
 
   it('should unwrap or return defaultValue if value is Nothing', () => {
     expect(Just(0).unwrapOr(1)).toStrictEqual(0);
-    expect(Just<any>(null).unwrapOr(1)).toStrictEqual(1);
-    expect(Just<any>(undefined).unwrapOr(1)).toStrictEqual(1);
+    expect(Just(null).unwrapOr(1)).toStrictEqual(1);
+    expect(Just(undefined).unwrapOr(1)).toStrictEqual(1);
     expect(Nothing.unwrapOr(1)).toStrictEqual(1);
   });
 
   it('should unwrap or call fallback function if value is Nothing', () => {
     const fallbackFn = () => 1;
     expect(Just(0).unwrapOrElse(fallbackFn)).toStrictEqual(0);
-    expect(Just<any>(null).unwrapOrElse(fallbackFn)).toStrictEqual(1);
-    expect(Just<any>(undefined).unwrapOrElse(fallbackFn)).toStrictEqual(1);
+    expect(Just(null).unwrapOrElse(fallbackFn)).toStrictEqual(1);
+    expect(Just(undefined).unwrapOrElse(fallbackFn)).toStrictEqual(1);
     expect(Nothing.unwrapOrElse(fallbackFn)).toStrictEqual(1);
   });
 

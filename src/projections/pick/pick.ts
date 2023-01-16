@@ -1,8 +1,9 @@
-import { isArray } from '../../utils';
+import { isArray, isObject } from '../../utils';
 
-const pickImpl = <T extends object>(object: T, properties: (keyof T)[]) => properties.reduce((accumulator, property) => ({ ...accumulator, [property]: object[property] }), {} as Partial<T>);
+const pickImpl = <T, P extends keyof T>(object: T, properties: P[]) =>
+  properties.reduce((accumulator, property) => ({ ...accumulator, [property]: object[property] }), {} as Partial<T>);
 
 export const pick =
-  <T extends object>(...properties: (keyof T)[]) =>
-  (values: T) =>
-    isArray<T>(values) ? values.map((value) => pickImpl(value, properties)) : pickImpl(values, properties);
+  <T = any, P extends keyof T = any>(...properties: P[]) =>
+  (value: T): Partial<T> =>
+    isArray<T>(value) ? value.map(pick(...properties)) : isObject<T>(value) ? pickImpl(value, properties) : (value as any);

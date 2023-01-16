@@ -2,6 +2,12 @@ import { isArray, isObject } from '../../utils';
 import { keys } from '../keys/keys';
 
 export const indexOf =
-  (value: any) =>
-  <T>(values: T) =>
-    isArray<T>(values) ? values.indexOf(value) : isObject<T>(values) ? keys()(values).find((key) => values[key] === value) ?? -1 : values === value ? 0 : -1;
+  (searchedValue: any) =>
+  <T>(value: T) =>
+    isArray<T>(value)
+      ? value.indexOf(searchedValue)
+      : isObject<T>(value)
+      ? keys()(value).find((key) => value[key] === searchedValue) ?? -1
+      : value === searchedValue
+      ? 0
+      : -1;

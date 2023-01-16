@@ -1,6 +1,6 @@
-import { isArray } from '../../utils';
+import { isArray, isMap, isObject } from '../../utils';
 
 export const values =
   () =>
-  <T extends object>(values: T) =>
-    isArray<T>(values) ? [...values.values()] : Object.values(values);
+  <T extends object>(value: T) =>
+    isArray<T>(value) ? [...value.values()] : isMap(value) ? [...value.values()] : isObject<T>(value) ? Object.values(value) : value;

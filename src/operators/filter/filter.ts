@@ -1,7 +1,8 @@
 import { Filter } from '../../types';
-import { isArray } from '../../utils';
+import { isArray, isMap } from '../../utils';
+import { values } from '../values/values';
 
 export const filter =
   (predicate: Filter) =>
-  <T>(values: T) =>
-    (isArray<T>(values) ? values.filter(predicate) : [values].filter(predicate)) as T;
+  <T>(value: T) =>
+    isArray<T>(value) ? (value.filter(predicate) as T) : isMap(value) ? values()(value).filter(predicate) : ([value].filter(predicate) as T);

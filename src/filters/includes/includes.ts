@@ -1,6 +1,6 @@
-import { isArray } from '../../utils';
+import { isArray, isMap } from '../../utils';
 
 export const includes =
   (searchedValue: any) =>
-  <T>(values: T) =>
-    isArray<T>(values) ? values.includes(searchedValue) : values === searchedValue;
+  <T>(value: T) =>
+    isArray<T>(value) ? value.includes(searchedValue) : isMap(value) ? [...value.values()].includes(searchedValue) : value === searchedValue;

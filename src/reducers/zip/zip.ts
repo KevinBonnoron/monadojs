@@ -1,12 +1,12 @@
 import { arrayAccumulator } from '../../utils';
 
-const split = <T>(accumulator: T[][], values: T[]) => {
-  for (let i = 0; i < values.length; i++) {
+const split = <T>(accumulator: T[][], value: T[]) => {
+  for (let i = 0; i < value.length; i++) {
     if (accumulator[i] === undefined) {
       accumulator[i] = [];
     }
 
-    accumulator[i].push(values[i]);
+    accumulator[i].push(value[i]);
   }
 
   return accumulator;

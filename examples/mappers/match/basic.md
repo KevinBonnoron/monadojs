@@ -14,11 +14,13 @@ const persons = [
 
 persons.pipe(
   map(
-    match(new Map([
-      [(value: any) => value.sex === 'M', (value: any) => `Mr ${value.firstName} ${value.lastName}`],
-      [(value: any) => value.sex === 'F' && value.age < 18, (value: any) => `Miss ${value.firstName} ${value.lastName}`],
-      [(value: any) => value.sex === 'F', (value: any) => `Mrs ${value.firstName} ${value.lastName}`],
-    ]))
+    match(
+      new Map([
+        [(value: any) => value.sex === 'M', (value: any) => `Mr ${value.firstName} ${value.lastName}`],
+        [(value: any) => value.sex === 'F' && value.age < 18, (value: any) => `Miss ${value.firstName} ${value.lastName}`],
+        [(value: any) => value.sex === 'F', (value: any) => `Mrs ${value.firstName} ${value.lastName}`],
+      ])
+    )
   ),
   tap(console.log)
 );

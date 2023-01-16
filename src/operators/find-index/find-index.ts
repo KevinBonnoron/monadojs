@@ -3,5 +3,5 @@ import { isArray } from '../../utils';
 
 export const findIndex =
   <T>(predicate: Filter<T>) =>
-  (values: T) =>
-    isArray<T>(values) ? values.findIndex(predicate) : predicate(values) ? 0 : -1;
+  (value: T) =>
+    isArray<T>(value) ? value.findIndex(predicate) : predicate(value) ? 0 : -1;

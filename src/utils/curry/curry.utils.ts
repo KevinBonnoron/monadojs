@@ -1,4 +1,5 @@
-import { functionParameterParser, isFunction } from '../object/object.utils';
+import { functionParameterParser } from '../function/function.utils';
+import { isFunction } from '../object/object.utils';
 
 type Curry<T> = (arg: T) => Curry<T> | any;
 
@@ -31,10 +32,22 @@ type RemainingParameters<PROVIDED extends any[], EXPECTED extends any[]> =
     : // else there are no more arguments
       [];
 
-type CurriedFunctionOrReturnValue<PROVIDED extends any[], FN extends (...args: any[]) => any> = RemainingParameters<PROVIDED, Parameters<FN>> extends [any, ...any[]] ? CurriedFunction<PROVIDED, FN> : ReturnType<FN>;
-type CurriedFunction<PROVIDED extends any[], FN extends (...args: any[]) => any> = <NEW_ARGS extends PartialTuple<RemainingParameters<PROVIDED, Parameters<FN>>>>(...args: NEW_ARGS) => CurriedFunctionOrReturnValue<[...PROVIDED, ...NEW_ARGS], FN>;
+type CurriedFunctionOrReturnValue<PROVIDED extends any[], FN extends (...args: any[]) => any> = RemainingParameters<
+  PROVIDED,
+  Parameters<FN>
+> extends [any, ...any[]]
+  ? CurriedFunction<PROVIDED, FN>
+  : ReturnType<FN>;
+type CurriedFunction<PROVIDED extends any[], FN extends (...args: any[]) => any> = <
+  NEW_ARGS extends PartialTuple<RemainingParameters<PROVIDED, Parameters<FN>>>
+>(
+  ...args: NEW_ARGS
+) => CurriedFunctionOrReturnValue<[...PROVIDED, ...NEW_ARGS], FN>;
 
-export const curry = <FN extends (...args: any[]) => any, STARTING_ARGS extends PartialParameters<FN>>(targetFn: FN, ...existingArgs: STARTING_ARGS): CurriedFunction<STARTING_ARGS, FN> => {
+export const curry = <FN extends (...args: any[]) => any, STARTING_ARGS extends PartialParameters<FN>>(
+  targetFn: FN,
+  ...existingArgs: STARTING_ARGS
+): CurriedFunction<STARTING_ARGS, FN> => {
   return function (...args: any[]) {
     const totalArgs = [...existingArgs, ...args];
     const parameters = functionParameterParser(targetFn);

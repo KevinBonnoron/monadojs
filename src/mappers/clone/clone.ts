@@ -1,10 +1,10 @@
 import { entries } from '../../operators';
 import { isArray, isObject } from '../../utils';
 
-const cloneImpl = <T>(values: T) => {
+const cloneImpl = <T>(object: T) => {
   const cloned: T = {} as T;
 
-  for (const [key, value] of entries<T>()(values)) {
+  for (const [key, value] of entries<T>()(object)) {
     if (isObject(value)) {
       cloned[key] = clone()(value);
     } else {
@@ -17,5 +17,5 @@ const cloneImpl = <T>(values: T) => {
 
 export const clone =
   () =>
-  <T>(values: T): T =>
-    isArray<T>(values) ? ([...values.map(clone())] as T) : isObject<T>(values) ? cloneImpl<T>(values) : values;
+  <T>(value: T): T =>
+    isArray<T>(value) ? ([...value.map(clone())] as T) : isObject<T>(value) ? cloneImpl<T>(value) : value;

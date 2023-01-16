@@ -12,16 +12,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  prop('age'),
-  combine(
-    reduce(avg()),
-    reduce(sum()),
-    reduce(min()),
-    reduce(max())
-  ),
-  tap(console.log)
-);
+persons.pipe(prop('age'), combine(reduce(avg()), reduce(sum()), reduce(min()), reduce(max())), tap(console.log));
 
 // [ 24.833333333333332, 149, 7, 52 ]
 ```

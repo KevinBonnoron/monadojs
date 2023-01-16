@@ -3,5 +3,5 @@ import { isArray } from '../../utils';
 
 export const none =
   <T>(predicate: Filter<T>) =>
-  (values: T) =>
-    isArray<T>(values) ? !values.some(predicate) : !predicate(values);
+  (value: T) =>
+    isArray<T>(value) ? !value.some(predicate) : !predicate(value);

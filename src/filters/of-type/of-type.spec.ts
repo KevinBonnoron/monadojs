@@ -1,7 +1,8 @@
 import { ofType } from './of-type';
 
 type Expectation = { value: unknown; expect: boolean };
-const checkExpectations = (fn: (value: unknown) => boolean, expectations: Expectation[]) => expectations.forEach((expectation) => expect(fn(expectation.value)).toEqual(expectation.expect));
+const checkExpectations = (fn: (value: unknown) => boolean, expectations: Expectation[]) =>
+  expectations.forEach((expectation) => expect(fn(expectation.value)).toEqual(expectation.expect));
 
 const stringExpectations: Expectation[] = [
   { value: null, expect: false },

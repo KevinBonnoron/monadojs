@@ -10,15 +10,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  filter(
-    pipe(
-      prop('firstName'),
-      like(/J/)
-    )
-  ),
-  tap(console.log),
-);
+persons.pipe(filter(pipe(prop('firstName'), like(/J/))), tap(console.log));
 /*
 [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },

@@ -1,28 +1,38 @@
 import { values } from './values';
 
 describe('values', () => {
-  it('should return values of values', () => {
-    expect([[1, 2, 3]].map(values())).toStrictEqual([[1, 2, 3]]);
+  const anonymousFn = function () {};
+  const anonymousArrayFn = () => {};
+
+  it('should return array values', () => {
+    expect(values()([1, true, 'a', [], {}, anonymousFn, anonymousArrayFn])).toStrictEqual([1, true, 'a', [], {}, anonymousFn, anonymousArrayFn]);
+  });
+
+  it('should return map values', () => {
     expect(
-      [
-        [1, 2, 3],
-        [4, 5, 6],
-      ].map(values())
-    ).toStrictEqual([
-      [1, 2, 3],
-      [4, 5, 6],
+      values()(
+        new Map<any, any>([
+          ['a', 1],
+          ['b', true],
+          ['c', 'a'],
+          ['d', []],
+          ['e', {}],
+          ['f', anonymousFn],
+          ['g', anonymousArrayFn],
+        ])
+      )
+    ).toStrictEqual([1, true, 'a', [], {}, anonymousFn, anonymousArrayFn]);
+  });
+
+  it('should return object values', () => {
+    expect(values()({ a: 1, b: true, c: 'a', d: [], e: {}, f: anonymousFn, g: anonymousArrayFn })).toStrictEqual([
+      1,
+      true,
+      'a',
+      [],
+      {},
+      anonymousFn,
+      anonymousArrayFn,
     ]);
-    expect([{ a: 1, b: 2 }].map(values())).toStrictEqual([[1, 2]]);
-    expect(values()([1, 2, 3])).toStrictEqual([1, 2, 3]);
-    expect(
-      values()([
-        [1, 2, 3],
-        [4, 5, 6],
-      ])
-    ).toStrictEqual([
-      [1, 2, 3],
-      [4, 5, 6],
-    ]);
-    expect(values()({ a: 1, b: 2 })).toStrictEqual([1, 2]);
   });
 });

@@ -10,12 +10,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  reduce(
-    group(prop('sex'))
-  ),
-  tap(console.log)
-);
+persons.pipe(reduce(group(prop('sex'))), tap(console.log));
 
 /*
 {

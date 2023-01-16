@@ -2,7 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', { isolatedModules: true }]
+    '^.+\\.tsx?$': ['ts-jest', { isolatedModules: true }],
   },
   maxWorkers: 1,
   modulePathIgnorePatterns: ['<rootDir>/dist/'],

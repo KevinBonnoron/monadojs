@@ -1,6 +1,6 @@
 export const tap =
   (fn: Function) =>
-  <T>(values: T) => {
-    fn(values);
-    return values;
+  <T>(value: T) => {
+    fn(value);
+    return value;
   };

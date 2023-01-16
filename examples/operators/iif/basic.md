@@ -10,11 +10,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  map(
-    iif(pipe(prop('age'), gt(10)), prop('firstName'), prop('lastName'))
-  ),
-  tap(console.log)
-);
+persons.pipe(map(iif(pipe(prop('age'), gt(10)), prop('firstName'), prop('lastName'))), tap(console.log));
 
 // [ 'James', 'Robert', 'Mary', 'John', 'Patricia', 'Smith' ]
+```
