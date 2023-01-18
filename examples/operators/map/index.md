@@ -1,6 +1,6 @@
-# Mapper
+# Map
 
-`map` is an operator that do the same as classical **Array.map**.
+`map` is an operator that do the same as classical **Array.prototype.map**.
 
 ## Examples
 

@@ -1,4 +1,4 @@
-This example show how to use custom reducer function (note: using `props` & `map` would be a better choice here).
+This example show how to use custom reducer function (note: using `map` & `prop` would be a better choice here).
 
 ```typescript
 import { reduce, tap } from 'monadojs';

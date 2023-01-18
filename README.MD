@@ -17,6 +17,25 @@ npm install monadojs
 yarn add monadojs
 ```
 
+Then every object and array should have a `pipe` method.
+
+```typescript
+import { prop, tap } from 'monadojs';
+
+const persons = [
+  { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
+  { id: 2, firstName: 'Robert', lastName: 'Jones', age: 30, sex: 'M' },
+  { id: 3, firstName: 'Mary', lastName: 'Williams', age: 19, sex: 'F' },
+  { id: 4, firstName: 'John', lastName: 'David', age: 26, sex: 'M' },
+  { id: 5, firstName: 'Patricia', lastName: 'Brown', age: 52, sex: 'F' },
+  { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
+];
+
+persons.pipe(prop('firstName'), tap(console.log));
+// You still can use regular functions
+console.log(persons.map(prop('firstName')));
+```
+
 ## API
 
 ### Filters
@@ -110,7 +129,7 @@ Projections are a combination of operator and mapper at the same time. It can ha
 
 ### Reducers
 
-Reducers are function that produce a single result by iterating over the passed array.
+Reducers are functions that produce a single result by iterating over the passed array.
 
 - avg
 - chunk
