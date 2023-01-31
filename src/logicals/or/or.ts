@@ -1,5 +1,5 @@
 import { Filter } from '../../types';
-import { singleOperationReducer } from '../../utils';
+import { ɵsingleOperationReducer } from '../../utils';
 
 const orImpl = (...values: boolean[]) => values.some((a) => a);
 
@@ -9,5 +9,5 @@ export const or =
     operators
       .map((operator) => operator(value))
       .reduce((previousValue, currentValue, currentIndex, array) =>
-        singleOperationReducer(previousValue, currentValue, currentIndex, array, () => orImpl(...array))
+        ɵsingleOperationReducer(previousValue, currentValue, currentIndex, array, () => orImpl(...array))
       );

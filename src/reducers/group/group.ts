@@ -1,5 +1,5 @@
 import { Operator } from '../../types';
-import { isFunction, isNil, objectAccumulator, PropertyKeyAccumulator } from '../../utils';
+import { isFunction, isNil, PropertyKeyAccumulator, ɵobjectAccumulator } from '../../utils';
 
 const appender =
   <T>(predicate: Operator<T, PropertyKey> | keyof T) =>
@@ -19,4 +19,4 @@ const appender =
 export const group =
   <T>(predicate: Operator | keyof T) =>
   (previousValue: T | PropertyKeyAccumulator<T>, currentValue: T, currentIndex: number) =>
-    objectAccumulator(previousValue, currentValue, currentIndex, appender(predicate));
+    ɵobjectAccumulator(previousValue, currentValue, currentIndex, appender(predicate));

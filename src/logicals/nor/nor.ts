@@ -1,5 +1,5 @@
 import { Filter } from '../../types';
-import { singleOperationReducer } from '../../utils';
+import { ɵsingleOperationReducer } from '../../utils';
 
 const norImpl = (...values: boolean[]) => !values.some((value) => value);
 
@@ -9,5 +9,5 @@ export const nor =
     operators
       .map((operator) => operator(value))
       .reduce((previousValue, currentValue, currentIndex, array) =>
-        singleOperationReducer(previousValue, currentValue, currentIndex, array, () => norImpl(...array))
+        ɵsingleOperationReducer(previousValue, currentValue, currentIndex, array, () => norImpl(...array))
       );

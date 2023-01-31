@@ -27,7 +27,7 @@ describe('includes', () => {
     ).toBeFalsy();
   });
 
-  it('should return if it includes value', () => {
+  it('should return if primitive includes value', () => {
     expect(includes(1)(1)).toBeTruthy();
     expect(includes(0)(1)).toBeFalsy();
   });

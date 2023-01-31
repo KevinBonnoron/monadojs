@@ -1,6 +1,3 @@
-import { singleOperationReducer } from '../../utils';
+import { nth } from '../nth/nth';
 
-export const first =
-  () =>
-  <T>(previousValue: T, currentValue: T, currentIndex: number, array: T[]) =>
-    singleOperationReducer(previousValue, currentValue, currentIndex, array, () => array.slice(0)[0]);
+export const first = () => nth(0);

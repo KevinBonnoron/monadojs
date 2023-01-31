@@ -1,4 +1,4 @@
-import { arrayAccumulator } from '../../utils';
+import { ɵarrayAccumulator } from '../../utils';
 
 const split = <T>(accumulator: T[][], value: T[]) => {
   for (let i = 0; i < value.length; i++) {
@@ -15,4 +15,4 @@ const split = <T>(accumulator: T[][], value: T[]) => {
 export const zip =
   () =>
   <T>(previousValue: T[], currentValue: T[], currentIndex: number) =>
-    arrayAccumulator<T[]>(previousValue, currentValue, currentIndex, split);
+    ɵarrayAccumulator<T[]>(previousValue, currentValue, currentIndex, split);

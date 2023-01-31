@@ -204,3 +204,6 @@ export const haveSameType = <T, S>(o1: T, o2: S) =>
     : typeof o1 === typeof o2;
 
 export const propertyIn = <T>(property: keyof T, value: unknown): value is T => !isUndefined((value as any)[property]);
+
+export const TRUE = () => true;
+export const FALSE = () => false;

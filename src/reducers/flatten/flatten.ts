@@ -1,6 +1,6 @@
-import { singleOperationReducer } from '../../utils';
+import { ɵsingleOperationReducer } from '../../utils';
 
 export const flatten =
   (depth: number = 1) =>
   <T>(previousValue: T, currentValue: T, currentIndex: number, array: T[]) =>
-    singleOperationReducer(previousValue, currentValue, currentIndex, array, () => array.flat(depth));
+    ɵsingleOperationReducer(previousValue, currentValue, currentIndex, array, () => array.flat(depth));
