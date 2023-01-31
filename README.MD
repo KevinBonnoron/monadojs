@@ -45,6 +45,7 @@ console.log(persons.map(prop('firstName')));
 - eq
 - gt
 - gte
+- iin
 - includes
 - [like](examples/filters/like/index.md)
 - lt

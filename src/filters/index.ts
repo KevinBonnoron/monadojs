@@ -3,6 +3,7 @@ export * from './ends-with/ends-with';
 export * from './eq/eq';
 export * from './gt/gt';
 export * from './gte/gte';
+export * from './iin/iin';
 export * from './includes/includes';
 export * from './like/like';
 export * from './lt/lt';
