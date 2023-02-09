@@ -3,5 +3,5 @@ import { isArray } from '../../utils';
 
 export const every =
   (predicate: Operator<unknown, boolean>) =>
-  <T>(value: T) =>
-    isArray<T>(value) ? value.every(predicate) : predicate(value);
+  <T>(source: T) =>
+    isArray<T>(source) ? source.every(predicate) : predicate(source);

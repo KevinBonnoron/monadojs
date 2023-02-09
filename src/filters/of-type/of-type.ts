@@ -3,25 +3,25 @@ import { isArray, isBoolean, isDate, isFunction, isMap, isNumber, isObject, isRe
 
 export const ofType =
   (type: Types) =>
-  <T>(value: T) =>
+  <T>(source: T) =>
     type === 'string'
-      ? isString(value)
+      ? isString(source)
       : type === 'number'
-      ? isNumber(value)
+      ? isNumber(source)
       : type === 'boolean'
-      ? isBoolean(value)
+      ? isBoolean(source)
       : type === 'symbol'
-      ? isSymbol(value)
+      ? isSymbol(source)
       : type === 'object'
-      ? isObject(value)
+      ? isObject(source)
       : type === 'function'
-      ? isFunction(value)
+      ? isFunction(source)
       : type === 'array'
-      ? isArray(value)
+      ? isArray(source)
       : type === 'date'
-      ? isDate(value)
+      ? isDate(source)
       : type === 'map'
-      ? isMap(value)
+      ? isMap(source)
       : type === 'regexp'
-      ? isRegExp(value)
+      ? isRegExp(source)
       : false;

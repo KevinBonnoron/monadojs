@@ -65,6 +65,7 @@ export const isPropertyKey = (value: any): value is PropertyKey => isString(valu
 export const isPrimitive = (value: any): value is Primitive => isPropertyKey(value) || isBoolean(value);
 export const isMap = <K, V>(value: any): value is Map<K, V> => value instanceof Map;
 export const isSet = <V>(value: any): value is Set<V> => value instanceof Set;
+export const isCollection = <K, V>(value: any): value is Map<K, V> | Set<V> => isMap(value) || isSet(value);
 export const isArray = <T>(value: any): value is T[] => Array.isArray(value);
 export const isObject = <T>(value: any): value is T & object => typeof value === 'object' && !isArray(value) && !isNil(value);
 
@@ -89,6 +90,11 @@ export const isEmpty = <T>(value: any): value is Required<NoUndefinedField<T>> =
     : isObject(value)
     ? Object.keys(value).length === 0
     : false;
+/**
+ *
+ * @param value
+ * @returns
+ */
 export const isFunction = (value: any): value is AnyFunction => typeof value === 'function';
 export const isEnum =
   <T extends object>(enumClass: T) =>

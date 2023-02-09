@@ -5,9 +5,9 @@ const xorImpl = (...values: boolean[]) => values.reduce((a, b) => a !== b);
 
 export const xor =
   <T>(...operators: Filter<T>[]) =>
-  (value: T) =>
+  (source: T) =>
     operators
-      .map((operator) => operator(value))
+      .map((operator) => operator(source))
       .reduce((previousValue, currentValue, currentIndex, array) =>
         ɵsingleOperationReducer(previousValue, currentValue, currentIndex, array, () => xorImpl(...array))
       );

@@ -2,5 +2,5 @@ import { isArray } from '../../utils';
 
 export const shift =
   () =>
-  <T>(value: T) =>
-    isArray(value) ? value.shift() : value;
+  <T>(source: T) =>
+    isArray(source) ? source.shift() : source;

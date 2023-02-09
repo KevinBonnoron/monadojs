@@ -1,7 +1,9 @@
-import { Filter } from '../../types';
-import { isArray, isNil } from '../../utils';
+import { or } from '../../logicals';
+import { isArray, isNumber, isString } from '../../utils';
+
+const isStringOrNumber = or(isString, isNumber);
 
 export const gte =
-  <T = number | string>(expected: T): Filter<T> =>
-  (value: T) =>
-    isArray<T>(value) ? value.every(gte(expected)) : isNil(value) ? false : value >= expected;
+  (expected: number | string) =>
+  <T = number | string>(source: T): boolean =>
+    isArray<T>(source) ? source.every(gte(expected)) : isStringOrNumber(source) ? source >= expected : false;

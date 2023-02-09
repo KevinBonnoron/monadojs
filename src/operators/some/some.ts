@@ -7,5 +7,5 @@ const someValueImpl = <T>(searchedValue: any, value: T) =>
 
 export const some =
   <V>(predicate: V | Operator<unknown, boolean>) =>
-  <T>(value: T) =>
-    isFunction(predicate) ? someFilterImpl(predicate, value) : someValueImpl(predicate, value);
+  <T>(source: T) =>
+    isFunction(predicate) ? someFilterImpl(predicate, source) : someValueImpl(predicate, source);

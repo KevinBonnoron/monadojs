@@ -54,7 +54,6 @@ console.log(persons.map(prop('firstName')));
 - nil
 - ofType
 - startsWith
-- unique
 
 ### Logical Operators
 
@@ -118,6 +117,7 @@ Operators are functions that can be applyed on both object or array.
 - some
 - sort
 - tap
+- [unique](examples/operators/unique/index.md)
 - values
 - walk
 

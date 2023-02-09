@@ -1,22 +1,46 @@
 import { lt } from './lt';
 
 describe('lt', () => {
-  it('should return numbers less than the passed ones', () => {
-    expect([0, 1, 2, 3].filter(lt(1))).toStrictEqual([0]);
-    expect(lt(1)(0)).toBeTruthy();
-    expect(lt(1)(1)).toBeFalsy();
-    expect(lt(1)(2)).toBeFalsy();
+  describe('number', () => {
+    const source = [1, 2, 3];
+
+    it('should return true', () => {
+      const operator = lt(4);
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should not return true', () => {
+      const operator = lt(3);
+      expect(operator(source)).toBeFalsy();
+    });
   });
 
-  it('should return strings less than or equals to the passed ones', () => {
-    expect(['a', 'b', 'c', 'd'].filter(lt('b'))).toStrictEqual(['a']);
-    expect(lt('b')('a')).toBeTruthy();
-    expect(lt('b')('b')).toBeFalsy();
-    expect(lt('b')('c')).toBeFalsy();
+  describe('string', () => {
+    const source = ['a', 'b', 'c'];
+
+    it('should return true', () => {
+      const operator = lt('d');
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should not return true', () => {
+      const operator = lt('c');
+      expect(operator(source)).toBeFalsy();
+    });
   });
 
-  it('should return false for nil values', () => {
-    expect(lt(1)(null as any)).toBeFalsy();
-    expect(lt(1)(undefined as any)).toBeFalsy();
+  describe('others', () => {
+    const operator = lt(0);
+
+    it('should not return true', () => {
+      expect(operator('a')).toBeFalsy();
+      expect(operator(['a'])).toBeFalsy();
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(new Set('a'))).toBeFalsy();
+      expect(operator(new RegExp('a'))).toBeFalsy();
+      expect(operator(() => {})).toBeFalsy();
+    });
   });
 });

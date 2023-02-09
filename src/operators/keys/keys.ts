@@ -4,11 +4,11 @@ type Key<T> = keyof T;
 
 export const keys =
   <T>() =>
-  (value: T) =>
-    isArray<T>(value)
-      ? ([...value.keys()] as unknown as ReadonlyArray<Key<T>>)
-      : isMap(value)
-      ? ([...value.keys()] as unknown as ReadonlyArray<Key<T>>)
-      : isObject<T>(value)
-      ? (Object.keys(value) as unknown as ReadonlyArray<Key<T>>)
+  (source: T) =>
+    isArray<T>(source)
+      ? ([...source.keys()] as unknown as ReadonlyArray<Key<T>>)
+      : isMap(source)
+      ? ([...source.keys()] as unknown as ReadonlyArray<Key<T>>)
+      : isObject<T>(source)
+      ? (Object.keys(source) as unknown as ReadonlyArray<Key<T>>)
       : [];

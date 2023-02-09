@@ -2,5 +2,5 @@ import { isArray } from '../../utils';
 
 export const reverse =
   () =>
-  <T>(value: T) =>
-    isArray<T>(value) ? [...value].reverse() : value;
+  <T>(source: T) =>
+    isArray<T>(source) ? [...source].reverse() : source;

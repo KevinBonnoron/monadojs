@@ -5,9 +5,9 @@ const andImpl = (...values: boolean[]) => values.every((a) => a);
 
 export const and =
   <T>(...operators: Filter<T>[]) =>
-  (value: T) =>
+  (source: T) =>
     operators
-      .map((operator) => operator(value))
+      .map((operator) => operator(source))
       .reduce((previousValue, currentValue, currentIndex, array) =>
         ɵsingleOperationReducer(previousValue, currentValue, currentIndex, array, () => andImpl(...array))
       );

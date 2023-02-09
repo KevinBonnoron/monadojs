@@ -2,5 +2,5 @@ import { isArray } from '../../utils';
 
 export const pop =
   () =>
-  <T>(value: T) =>
-    isArray(value) ? value.pop() : value;
+  <T>(source: T) =>
+    isArray(source) ? source.pop() : source;

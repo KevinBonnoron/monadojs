@@ -1,4 +1,4 @@
 export const trunc =
   () =>
-  <T extends number>(value: T) =>
-    Math.trunc(value);
+  <T extends number>(source: T) =>
+    Math.trunc(source);

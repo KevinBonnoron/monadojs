@@ -1,4 +1,4 @@
 export const floor =
   () =>
-  <T extends number>(value: T) =>
-    Math.floor(value);
+  <T extends number>(source: T) =>
+    Math.floor(source);

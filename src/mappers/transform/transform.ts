@@ -6,8 +6,8 @@ type Transformation<T, S> = { [key: PropertyKey]: Mapper<T, S> | Transformation<
 
 export const transform =
   <T extends object, S>(transformations: Transformation<T[keyof T], S>) =>
-  (value: T) =>
-    entries<T>()(value).reduce(
+  (source: T) =>
+    entries<T>()(source).reduce(
       (object, [key, value]) => {
         if (transformations[key]) {
           const transformation = transformations[key];
@@ -20,5 +20,5 @@ export const transform =
 
         return object;
       },
-      { ...value }
+      { ...source }
     );

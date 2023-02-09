@@ -1,5 +1,5 @@
 import { entries } from '../../operators';
-import { isArray, isObject } from '../../utils';
+import { isArray, isDate, isMap, isObject, isSet } from '../../utils';
 
 const cloneImpl = <T>(object: T) => {
   const cloned: T = {} as T;
@@ -17,5 +17,15 @@ const cloneImpl = <T>(object: T) => {
 
 export const clone =
   () =>
-  <T>(value: T): T =>
-    isArray<T>(value) ? ([...value.map(clone())] as T) : isObject<T>(value) ? cloneImpl<T>(value) : value;
+  <T>(source: T): T =>
+    isArray<T>(source)
+      ? ([...source.map(clone())] as T)
+      : isMap(source)
+      ? (new Map([...source].map(clone())) as T)
+      : isSet(source)
+      ? (new Set([...source].map(clone())) as T)
+      : isDate(source)
+      ? (new Date(+source) as T)
+      : isObject<T>(source)
+      ? cloneImpl<T>(source)
+      : source;

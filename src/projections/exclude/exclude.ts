@@ -12,5 +12,5 @@ const excludeImpl = <T, P extends keyof T>(value: T, ...properties: P[]) =>
 
 export const exclude =
   <T = any, P extends keyof T = any>(...properties: P[]) =>
-  (value: T): Partial<T> =>
-    isArray<T>(value) ? value.map(exclude(...properties)) : isObject<T>(value) ? excludeImpl(value, ...properties) : (value as any);
+  (source: T): Partial<T> =>
+    isArray<T>(source) ? source.map(exclude(...properties)) : isObject<T>(source) ? excludeImpl(source, ...properties) : (source as any);

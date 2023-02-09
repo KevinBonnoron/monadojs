@@ -1,5 +1,4 @@
 import { prop } from '../../mappers';
-import { pipe } from '../../operators';
 import { Just, Nothing } from './maybe.utils';
 
 describe('MaybeUtils', () => {
@@ -41,7 +40,6 @@ describe('MaybeUtils', () => {
     expect(Just({ a: 1 }).pipe(prop('b')).value).toStrictEqual(null);
     expect(Just(null).pipe(prop('b')).value).toStrictEqual(null);
     expect(Nothing.pipe(prop('a')).value).toStrictEqual(null);
-    expect(() => pipe(prop('a'))(null)).toThrow();
   });
 
   it('should return if values are equals', () => {

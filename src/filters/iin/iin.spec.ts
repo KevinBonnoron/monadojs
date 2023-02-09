@@ -20,4 +20,11 @@ describe('iin', () => {
     expect(operator(1)).toBeTruthy();
     expect(operator(0)).toBeFalsy();
   });
+
+  it('should return if value is in set', () => {
+    const operator = iin(new Set([1, 2, 3]));
+
+    expect(operator(1)).toBeTruthy();
+    expect(operator(0)).toBeFalsy();
+  });
 });

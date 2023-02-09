@@ -1,4 +1,4 @@
 export const identity =
   () =>
-  <T>(value: T) =>
-    value;
+  <T>(source: T) =>
+    source;

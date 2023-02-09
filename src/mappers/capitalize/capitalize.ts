@@ -3,5 +3,5 @@ import { upper } from '../upper/upper';
 
 export const capitalize =
   () =>
-  <T extends string>(value: T) =>
-    `${upper()(value.charAt(0))}${lower()(value.slice(1))}`;
+  <T extends string>(source: T) =>
+    `${upper()(source.charAt(0))}${lower()(source.slice(1))}`;

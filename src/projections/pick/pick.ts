@@ -5,5 +5,5 @@ const pickImpl = <T, P extends keyof T>(object: T, properties: P[]) =>
 
 export const pick =
   <T = any, P extends keyof T = any>(...properties: P[]) =>
-  (value: T): Partial<T> =>
-    isArray<T>(value) ? value.map(pick(...properties)) : isObject<T>(value) ? pickImpl(value, properties) : (value as any);
+  (source: T): Partial<T> =>
+    isArray<T>(source) ? source.map(pick(...properties)) : isObject<T>(source) ? pickImpl(source, properties) : (source as any);

@@ -1,4 +1,4 @@
 export const ceil =
   () =>
-  <T extends number>(value: T) =>
-    Math.ceil(value);
+  <T extends number>(source: T) =>
+    Math.ceil(source);

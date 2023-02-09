@@ -25,5 +25,6 @@ export * from './shuffle/shuffle';
 export * from './some/some';
 export * from './sort/sort';
 export * from './tap/tap';
+export * from './unique/unique';
 export * from './values/values';
 export * from './walk/walk';

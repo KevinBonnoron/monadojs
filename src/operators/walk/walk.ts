@@ -29,5 +29,5 @@ const walkImpl = <T extends object>(value: T, operator: MonotypeOperator<T>, con
 
 export const walk =
   <T extends object>(operator: MonotypeOperator<T>) =>
-  (value: T) =>
-    walkImpl(value, operator);
+  (source: T) =>
+    walkImpl(source, operator);

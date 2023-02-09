@@ -2,11 +2,11 @@ import { pop } from './pop';
 
 describe('pop', () => {
   it('should return first element of array', () => {
-    const input = [0, 1, 2, 3];
+    const source = [0, 1, 2, 3];
     const operator = pop();
     const expected = 3;
 
-    expect(operator(input)).toStrictEqual(expected);
-    expect(input).toStrictEqual([0, 1, 2]);
+    expect(operator(source)).toStrictEqual(expected);
+    expect(source).toStrictEqual([0, 1, 2]);
   });
 });

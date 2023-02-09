@@ -8,11 +8,11 @@ interface Match<T, S> {
 
 export const match =
   <T, S>(matches: Match<T, S>[]) =>
-  (value: T) => {
+  (source: T) => {
     for (const match of matches) {
-      let currentValue = value;
-      if (isMaybe(value)) {
-        currentValue = value.value;
+      let currentValue = source;
+      if (isMaybe(source)) {
+        currentValue = source.value;
       }
 
       const returnResult = () => {
@@ -37,5 +37,5 @@ export const match =
       }
     }
 
-    return value;
+    return source;
   };

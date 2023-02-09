@@ -1,10 +1,35 @@
 import { endsWith } from './ends-with';
 
 describe('ends-with', () => {
-  it('should return if string ends with other string', () => {
-    expect(endsWith('c')('abc')).toBeTruthy();
-    expect(endsWith('b')('abc')).toBeFalsy();
-    expect(endsWith('c')(['abc', 'bac'])).toBeTruthy();
-    expect(endsWith('b')(['abc', 'bac'])).toBeFalsy();
+  describe('string', () => {
+    const source = 'abc';
+
+    it('should return true', () => {
+      const operator = endsWith('c');
+
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should not return true', () => {
+      const operator = endsWith('a');
+
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('array', () => {
+    const source = ['abc', 'bac'];
+
+    it('should return true', () => {
+      const operator = endsWith('c');
+
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should not return true', () => {
+      const operator = endsWith('a');
+
+      expect(operator(source)).toBeFalsy();
+    });
   });
 });

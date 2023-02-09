@@ -1,6 +1,8 @@
-import { isArray, isMap } from '../../utils';
+import { includes } from '../includes/includes';
+
+type Container<T> = Array<T> | Map<any, T> | Set<T>;
 
 export const iin =
-  <C>(container: C) =>
-  <T>(value: T) =>
-    isArray<T>(container) ? container.includes(value) : isMap<unknown, T>(container) ? [...container.values()].includes(value) : false;
+  <T>(container: Container<T>) =>
+  (source: T) =>
+    includes(source)(container);

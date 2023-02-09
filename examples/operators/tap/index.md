@@ -4,4 +4,4 @@
 
 ## Examples
 
-- [basic](./basic.md)
+- [Basic](./basic.md)
