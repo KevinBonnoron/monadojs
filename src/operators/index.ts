@@ -1,4 +1,5 @@
 export * from './apply-spec/apply-spec';
+export * from './catch-error/catch-error';
 export * from './combine/combine';
 export * from './concat/concat';
 export * from './enclose-in/enclose-in';
@@ -25,6 +26,7 @@ export * from './shuffle/shuffle';
 export * from './some/some';
 export * from './sort/sort';
 export * from './tap/tap';
+export * from './throw-error/throw-error';
 export * from './unique/unique';
 export * from './values/values';
 export * from './walk/walk';

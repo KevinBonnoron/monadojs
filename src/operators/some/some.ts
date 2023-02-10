@@ -1,11 +1,13 @@
-import { Filter, Operator } from '../../types';
+import { eq } from '../../filters';
+import { Filter } from '../../types';
 import { isArray, isFunction } from '../../utils';
 
-const someFilterImpl = <T>(predicate: Filter<unknown>, value: T) => (isArray<T>(value) ? value.some(predicate) : predicate(value));
-const someValueImpl = <T>(searchedValue: any, value: T) =>
-  isArray<T>(value) ? value.some((value) => value === searchedValue) : value === searchedValue;
-
 export const some =
-  <V>(predicate: V | Operator<unknown, boolean>) =>
-  <T>(source: T) =>
-    isFunction(predicate) ? someFilterImpl(predicate, source) : someValueImpl(predicate, source);
+  <V>(predicate: V | Filter) =>
+  <T>(source: T) => {
+    if (!isFunction(predicate)) {
+      predicate = eq(predicate);
+    }
+
+    return isArray<T>(source) ? source.some(predicate) : predicate(source);
+  };

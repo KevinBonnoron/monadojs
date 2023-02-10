@@ -1,3 +1,4 @@
+import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { iin } from './iin';
 
 describe('iin', () => {
@@ -9,20 +10,14 @@ describe('iin', () => {
   });
 
   it('should return if value is in map', () => {
-    const operator = iin(
-      new Map([
-        ['a', 1],
-        ['b', 2],
-        ['c', 3],
-      ])
-    );
+    const operator = iin(DEFAULT_MAP);
 
-    expect(operator(1)).toBeTruthy();
-    expect(operator(0)).toBeFalsy();
+    expect(operator('a')).toBeTruthy();
+    expect(operator('d')).toBeFalsy();
   });
 
   it('should return if value is in set', () => {
-    const operator = iin(new Set([1, 2, 3]));
+    const operator = iin(DEFAULT_SET);
 
     expect(operator(1)).toBeTruthy();
     expect(operator(0)).toBeFalsy();

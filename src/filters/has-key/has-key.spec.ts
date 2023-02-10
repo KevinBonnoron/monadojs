@@ -1,3 +1,4 @@
+import { DEFAULT_MAP } from '../../../tests/test.data';
 import { hasKey } from './has-key';
 
 describe('has-key', () => {
@@ -16,19 +17,15 @@ describe('has-key', () => {
   });
 
   describe('map', () => {
-    const source = new Map([
-      ['a', 1],
-      ['b', 2],
-      ['c', 3],
-    ]);
+    const source = DEFAULT_MAP;
 
     it('should return true', () => {
-      const operator = hasKey('a');
+      const operator = hasKey(0);
       expect(operator(source)).toBeTruthy();
     });
 
     it('should not return true', () => {
-      const operator = hasKey('d');
+      const operator = hasKey(3);
       expect(operator(source)).toBeFalsy();
     });
   });

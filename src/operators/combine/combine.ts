@@ -1,4 +1,6 @@
+import { not } from '../../logicals';
 import { MonotypeOperator, Operator } from '../../types';
+import { ɵisCatchOperator } from '../catch-error/catch-error';
 
 /**
  * Call all operators one after the other combining the result of all
@@ -26,5 +28,18 @@ export function combine<A, B, C, D, E, F, G>(
   o6: Operator<A, G>
 ): Operator<A, [B, C, D, E, F, G]>;
 export function combine(...operators: MonotypeOperator[]) {
-  return (values: unknown) => operators.reduce((accumulator, operator) => accumulator.concat([operator(values)]), [] as any[]);
+  return (source: unknown) => {
+    const catchOperator = operators.find(ɵisCatchOperator);
+    return operators.filter(not(ɵisCatchOperator)).reduce((accumulator, operator) => {
+      try {
+        return accumulator.concat([operator(source)]);
+      } catch (e) {
+        if (catchOperator) {
+          return catchOperator(e);
+        }
+
+        throw e;
+      }
+    }, [] as any[]);
+  };
 }

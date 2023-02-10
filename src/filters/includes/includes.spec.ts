@@ -1,3 +1,4 @@
+import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { includes } from './includes';
 
 describe('includes', () => {
@@ -16,25 +17,7 @@ describe('includes', () => {
   });
 
   describe('map', () => {
-    const source = new Map([
-      ['a', 1],
-      ['b', 2],
-      ['c', 3],
-    ]);
-
-    it('should return true', () => {
-      const operator = includes(1);
-      expect(operator(source)).toBeTruthy();
-    });
-
-    it('should not return true', () => {
-      const operator = includes(0);
-      expect(operator(source)).toBeFalsy();
-    });
-  });
-
-  describe('set', () => {
-    const source = new Set(['a', 'b', 'c']);
+    const source = DEFAULT_MAP;
 
     it('should return true', () => {
       const operator = includes('a');
@@ -43,6 +26,20 @@ describe('includes', () => {
 
     it('should not return true', () => {
       const operator = includes('d');
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('set', () => {
+    const source = DEFAULT_SET;
+
+    it('should return true', () => {
+      const operator = includes(1);
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should not return true', () => {
+      const operator = includes(4);
       expect(operator(source)).toBeFalsy();
     });
   });

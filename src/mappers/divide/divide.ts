@@ -1,4 +1,6 @@
+import { isArray, isNumber } from '../../utils';
+
 export const divide =
-  (amount: number = 1) =>
-  <T extends number>(source: T) =>
-    source / amount;
+  <O>(amount: number = 1) =>
+  <T>(source: T): O =>
+    isArray<number>(source) ? (source.map(divide(amount)) as O) : isNumber(source) ? ((source / amount) as O) : (NaN as O);

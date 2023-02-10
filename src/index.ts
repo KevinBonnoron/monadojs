@@ -1,3 +1,4 @@
+import { pipe } from './operators';
 import { Operator } from './types';
 
 export * from './public_api';
@@ -116,7 +117,7 @@ declare global {
 }
 
 function pipeFn(this: any, ...operators: Operator<unknown, unknown>[]) {
-  return operators.reduce((value, operator) => operator(value), typeof this === 'object' ? this : this.slice());
+  return pipe(...operators)(typeof this === 'object' ? this : this.slice());
 }
 
 const PIPE_PROPERTY_DESCRIPTOR: PropertyDescriptor = {

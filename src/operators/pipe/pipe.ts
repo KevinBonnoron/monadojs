@@ -1,4 +1,6 @@
+import { not } from '../../logicals';
 import { MonotypeOperator, Operator } from '../../types';
+import { ɵisCatchOperator } from '../catch-error/catch-error';
 
 export function pipe<A>(): Operator<A, A>;
 export function pipe<A, B>(o1: Operator<A, B>): Operator<A, B>;
@@ -41,5 +43,18 @@ export function pipe<A, B, C, D, E, F, G, H, I>(
 ): Operator<A, I>;
 export function pipe<A, B>(...operators: MonotypeOperator[]): Operator<A, B>;
 export function pipe(...operators: MonotypeOperator[]) {
-  return (value: unknown) => operators.reduce((value, operator) => operator(value), value);
+  return (source: unknown) => {
+    const catchOperator = operators.find(ɵisCatchOperator);
+    return operators.filter(not(ɵisCatchOperator)).reduce((value, operator) => {
+      try {
+        return operator(value);
+      } catch (e: unknown) {
+        if (catchOperator) {
+          return catchOperator(e);
+        }
+
+        throw e;
+      }
+    }, source);
+  };
 }

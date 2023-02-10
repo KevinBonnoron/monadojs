@@ -1,7 +1,13 @@
-import { Operator } from '../../types';
-import { isArray } from '../../utils';
+import { eq } from '../../filters';
+import { Filter } from '../../types';
+import { isArray, isFunction } from '../../utils';
 
 export const every =
-  (predicate: Operator<unknown, boolean>) =>
-  <T>(source: T) =>
-    isArray<T>(source) ? source.every(predicate) : predicate(source);
+  <V>(predicate: V | Filter) =>
+  <T>(source: T) => {
+    if (!isFunction(predicate)) {
+      predicate = eq(predicate);
+    }
+
+    return isArray<T>(source) ? source.every(predicate) : predicate(source);
+  };

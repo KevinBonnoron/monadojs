@@ -1,16 +1,23 @@
 import { one } from './one';
 
 describe('one', () => {
-  it('should return if one element matches', () => {
-    const array: any[] = [];
-    const object = {};
-    const values = [1, 'a', true, object, array, null, undefined, 'a'];
+  const array: any[] = [];
+  const object = {};
+  const source = [1, 'a', true, object, array, null, undefined, 'a'];
 
-    expect(one((value) => value === 1)(values)).toBeTruthy();
-    expect(one((value) => value === 0)(values)).toBeFalsy();
-    expect(one((value) => value === 'a')(values)).toBeFalsy();
+  it('should return if one element matches filter', () => {
+    expect(one((value: any) => value === 1)(source)).toBeTruthy();
+    expect(one((value: any) => value === 0)(source)).toBeFalsy();
+    expect(one((value: any) => value === 'a')(source)).toBeFalsy();
+    expect(one((value: any) => value === 'a')('a')).toBeTruthy();
+    expect(one((value: any) => value === 'a')(1)).toBeFalsy();
+  });
 
-    expect(one((value) => value === 'a')('a')).toBeTruthy();
-    expect(one((value) => value === 'a')(1)).toBeFalsy();
+  it('should return if one element matches value', () => {
+    expect(one(1)(source)).toBeTruthy();
+    expect(one(0)(source)).toBeFalsy();
+    expect(one('a')(source)).toBeFalsy();
+    expect(one('a')('a')).toBeTruthy();
+    expect(one('a')(1)).toBeFalsy();
   });
 });

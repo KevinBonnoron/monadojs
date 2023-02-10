@@ -1,28 +1,29 @@
 import { some } from './some';
 
-const array: any[] = [];
-const object = {};
-
 describe('some', () => {
-  it('should return if some element matches filter', () => {
-    expect(some((value) => value === 1)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some((value) => value === 'a')([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some((value) => value === true)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some((value) => value === object)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some((value) => value === array)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some((value) => value === null)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some((value) => value === undefined)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some((value) => value === 0)([1, 'a', true, object, array, null, undefined])).toBeFalsy();
+  const array: any[] = [];
+  const object = {};
+  const source = [1, 'a', true, object, array, null, undefined];
+
+  it('should return if some elements matches filter', () => {
+    expect(some((value: any) => value === 1)(source)).toBeTruthy();
+    expect(some((value: any) => value === 'a')(source)).toBeTruthy();
+    expect(some((value: any) => value === true)(source)).toBeTruthy();
+    expect(some((value: any) => value === object)(source)).toBeTruthy();
+    expect(some((value: any) => value === array)(source)).toBeTruthy();
+    expect(some((value: any) => value === null)(source)).toBeTruthy();
+    expect(some((value: any) => value === undefined)(source)).toBeTruthy();
+    expect(some((value: any) => value === 0)(source)).toBeFalsy();
   });
 
-  it('should return if some element matches values', () => {
-    expect(some(1)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some('a')([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some(true)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some(object)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some(array)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some(null)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some(undefined)([1, 'a', true, object, array, null, undefined])).toBeTruthy();
-    expect(some(0)([1, 'a', true, object, array, null, undefined])).toBeFalsy();
+  it('should return if some elements matches value', () => {
+    expect(some(1)(source)).toBeTruthy();
+    expect(some('a')(source)).toBeTruthy();
+    expect(some(true)(source)).toBeTruthy();
+    expect(some(object)(source)).toBeTruthy();
+    expect(some(array)(source)).toBeTruthy();
+    expect(some(null)(source)).toBeTruthy();
+    expect(some(undefined)(source)).toBeTruthy();
+    expect(some(0)(source)).toBeFalsy();
   });
 });

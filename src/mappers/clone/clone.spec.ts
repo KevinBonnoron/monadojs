@@ -1,3 +1,4 @@
+import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { clone } from './clone';
 
 describe('clone', () => {
@@ -12,13 +13,13 @@ describe('clone', () => {
   });
 
   it('should clone object', () => {
-    const source = { a: { b: 1, c: { d: 2 } } };
+    const source: any = { a: { b: 1, c: { d: 2 } } };
     const cloned = operator(source);
 
     expect(cloned).not.toBe(source);
     expect(cloned).toStrictEqual(source);
 
-    source.a.b = 5;
+    source.d = 5;
     expect(cloned).not.toStrictEqual(source);
   });
 
@@ -34,28 +35,24 @@ describe('clone', () => {
   });
 
   it('should clone Map', () => {
-    const source = new Map([
-      ['a', 1],
-      ['b', 2],
-      ['c', 3],
-    ]);
+    const source = DEFAULT_MAP;
     const cloned = operator(source);
 
     expect(cloned).not.toBe(source);
     expect(cloned).toStrictEqual(source);
 
-    source.set('a', 4);
+    source.set(3, 'a');
     expect(cloned).not.toStrictEqual(source);
   });
 
   it('should clone Set', () => {
-    const source = new Set(['a', 'b', 'c']);
+    const source = DEFAULT_SET;
     const cloned = operator(source);
 
     expect(cloned).not.toBe(source);
     expect(cloned).toStrictEqual(source);
 
-    source.add('d');
+    source.add(4);
     expect(cloned).not.toStrictEqual(source);
   });
 });

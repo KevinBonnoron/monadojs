@@ -83,6 +83,8 @@ export const isEmpty = <T>(value: any): value is Required<NoUndefinedField<T>> =
     ? false
     : isArray(value)
     ? value.length === 0
+    : isCollection(value)
+    ? [...value].length === 0
     : isDate(value)
     ? !isNaN(Number(value))
     : isRegExp(value)
