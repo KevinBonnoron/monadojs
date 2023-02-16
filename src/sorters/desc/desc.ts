@@ -17,7 +17,7 @@ export function desc<T>(predicate?: keyof T | Operator | SorterOptions, options?
     options = predicate;
   }
 
-  // We flip the `nullsAs` options for desc as we want to ignore
+  // We flip the `nullsAs` options for desc
   if (options?.nullsAs) {
     options.nullsAs = options.nullsAs === 'first' ? 'last' : 'first';
   }

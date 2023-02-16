@@ -1,13 +1,13 @@
 # Filters
 Ensure every .spec.ts files have the same pattern (gt is a good example).
 - [ ] empty
-- [ ] ends-with
-- [ ] eq
+- [x] ends-with
+- [x] eq
 - [x] gt
 - [x] gte
-- [ ] has-key
+- [x] has-key
 - [ ] iin
-- [ ] includes
+- [x] includes
 - [ ] like
 - [x] lt
 - [x] lte
@@ -22,7 +22,7 @@ All operators should handle Map & Set as `source`.
 - [ ] apply-spec
 - [x] catch-error (not affected)
 - [ ] combine
-- [ ] concat
+- [x] concat
 - [x] enclose-in
 - [x] entries
 - [ ] every

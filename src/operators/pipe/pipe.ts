@@ -1,4 +1,4 @@
-import { not } from '../../logicals';
+import { not } from '../../logicals/not/not';
 import { MonotypeOperator, Operator } from '../../types';
 import { ɵisCatchOperator } from '../catch-error/catch-error';
 

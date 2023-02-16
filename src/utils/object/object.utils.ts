@@ -1,4 +1,4 @@
-import { AllTypes, AnyFunction, Maybe, NoUndefinedField, Primitive } from '../../types';
+import { AllTypes, AnyFunction, Maybe, nil, NoUndefinedField, Primitive } from '../../types';
 
 /**
  * Type guard for `value === null`
@@ -17,7 +17,7 @@ export const isUndefined = (value: any): value is undefined => value === undefin
  * @param value any
  * @returns boolean
  */
-export const isNil = (value: any): value is null | undefined => isNull(value) || isUndefined(value);
+export const isNil = (value: any): value is nil => isNull(value) || isUndefined(value);
 /**
  * Type guard for `typeof value === 'string'`
  * @param value any
@@ -70,7 +70,14 @@ export const isArray = <T>(value: any): value is T[] => Array.isArray(value);
 export const isObject = <T>(value: any): value is T & object => typeof value === 'object' && !isArray(value) && !isNil(value);
 
 /**
- * Return if passed `value` is empty. Should return true for : null, undefined, [], Invalid Date, {}
+ * Check if passed `value` is empty.
+ *
+ * Return true for :
+ * - null,
+ * - undefined,
+ * - [],
+ * - Invalid Date
+ * - {}
  * @param value
  * @returns boolean
  */
@@ -212,6 +219,8 @@ export const haveSameType = <T, S>(o1: T, o2: S) =>
     : typeof o1 === typeof o2;
 
 export const propertyIn = <T>(property: keyof T, value: unknown): value is T => !isUndefined((value as any)[property]);
+
+export const coalesce = (...values: unknown[]) => values.find((value) => !isNil(value));
 
 export const TRUE = () => true;
 export const FALSE = () => false;

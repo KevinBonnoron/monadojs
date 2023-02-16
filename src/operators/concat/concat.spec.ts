@@ -1,9 +1,38 @@
+import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { concat } from './concat';
 
 describe('concat', () => {
-  it('should concat values', () => {
-    expect(concat(['a'])(['b'])).toStrictEqual(['b', 'a']);
-    expect(concat(['a'])('b')).toStrictEqual(['b', 'a']);
-    expect(concat([['a', 'c'], ['d']])(['b'])).toStrictEqual(['b', ['a', 'c'], ['d']]);
+  describe('array', () => {
+    const source = DEFAULT_ARRAY;
+
+    it('should concat', () => {
+      const operator = concat(4);
+      expect(operator(source)).toStrictEqual([1, 2, 3, 4]);
+    });
+  });
+
+  describe('map', () => {
+    const source = DEFAULT_MAP;
+
+    it('should concat', () => {
+      const operator = concat([3, 'd']);
+      expect(operator(source)).toStrictEqual(
+        new Map([
+          [0, 'a'],
+          [1, 'b'],
+          [2, 'c'],
+          [3, 'd'],
+        ])
+      );
+    });
+  });
+
+  describe('set', () => {
+    const source = DEFAULT_SET;
+
+    it('should concat', () => {
+      const operator = concat(4);
+      expect(operator(source)).toStrictEqual(new Set([1, 2, 3, 4]));
+    });
   });
 });

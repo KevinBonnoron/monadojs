@@ -92,6 +92,7 @@ Logical operators are function that can be used in combination with `filter` ope
 Operators are functions that can be applyed on both object or array.
 
 - applySpec
+- catch-error
 - [combine](examples/operators/combine/index.md)
 - concat
 - encloseIn
@@ -117,6 +118,8 @@ Operators are functions that can be applyed on both object or array.
 - some
 - sort
 - tap
+- throw-error
+- [to](examples/operators/to/index.md)
 - [unique](examples/operators/unique/index.md)
 - values
 - walk

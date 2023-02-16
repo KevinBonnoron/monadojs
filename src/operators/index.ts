@@ -27,6 +27,7 @@ export * from './some/some';
 export * from './sort/sort';
 export * from './tap/tap';
 export * from './throw-error/throw-error';
+export * from './to/to';
 export * from './unique/unique';
 export * from './values/values';
 export * from './walk/walk';

@@ -1,6 +1,6 @@
-import { identity } from '..';
 import { Operator } from '../../types';
 import { isArray, isMap } from '../../utils';
+import { identity } from '../identity/identity';
 
 export const unique =
   (operator: Operator = identity() as Operator) =>

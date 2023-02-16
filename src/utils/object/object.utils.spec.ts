@@ -1,5 +1,6 @@
 import { Just, Nothing } from '../maybe/maybe.utils';
 import {
+  coalesce,
   getTypeDefault,
   haveSameProperties,
   haveSameType,
@@ -431,5 +432,9 @@ describe('ObjectUtils', () => {
   it('should return if property is present in object', () => {
     expect(propertyIn('equals', { equals: true })).toBeTruthy();
     expect(propertyIn('equals', { a: true })).toBeFalsy();
+  });
+
+  it('should return first non nil value', () => {
+    expect(coalesce(null, undefined, 0, 'a', false, Symbol(), {}, [], new Date())).toStrictEqual(0);
   });
 });
