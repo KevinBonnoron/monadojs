@@ -2,7 +2,7 @@ import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { filter } from './filter';
 
 describe('filter', () => {
-  describe('array', () => {
+  describe('Array', () => {
     const source = [0, 1, 2, 3];
 
     it('should filter', () => {
@@ -13,7 +13,7 @@ describe('filter', () => {
     });
   });
 
-  describe('map', () => {
+  describe('Map', () => {
     const source = DEFAULT_MAP;
 
     it('should filter', () => {
@@ -32,7 +32,7 @@ describe('filter', () => {
     });
   });
 
-  describe('set', () => {
+  describe('Set', () => {
     const source = DEFAULT_SET;
 
     it('should filter', () => {
@@ -43,7 +43,7 @@ describe('filter', () => {
     });
   });
 
-  describe('object', () => {
+  describe('Object', () => {
     const source = { a: 0, b: 1, c: 2, d: 3 };
 
     it('should filter object', () => {

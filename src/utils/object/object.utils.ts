@@ -2,72 +2,84 @@ import { AllTypes, AnyFunction, Maybe, nil, NoUndefinedField, Primitive } from '
 
 /**
  * Type guard for `value === null`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isNull = (value: any): value is null => value === null;
 /**
  * Type guard for `value === undefined`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isUndefined = (value: any): value is undefined => value === undefined;
 /**
  * Type guard for `value === null || value === undefined`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isNil = (value: any): value is nil => isNull(value) || isUndefined(value);
 /**
  * Type guard for `typeof value === 'string'`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isString = (value: any): value is string => typeof value === 'string';
 /**
  * Type guard for `typeof value === 'number'`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isNumber = (value: any): value is number => typeof value === 'number';
 /**
  * Type guard for `typeof value === 'boolean'`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isBoolean = (value: any): value is boolean => typeof value === 'boolean';
 /**
  * Type guard for `value === true`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isTrue = (value: any): value is true => value === true;
 /**
  * Type guard for `value === false`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isFalse = (value: any): value is false => value === false;
 /**
  * Type guard for `typeof value === 'symbol'`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isSymbol = (value: any): value is symbol => typeof value === 'symbol';
 /**
  * Type guard for `value instanceof Date`
- * @param value any
+ * @param value
  * @returns boolean
  */
 export const isDate = (value: any): value is Date => value instanceof Date;
+/**
+ * Type guard for `typeof value === 'function'`
+ * @param value
+ * @returns boolean
+ */
+export const isFunction = (value: any): value is AnyFunction => typeof value === 'function';
 export const isRegExp = (value: any): value is RegExp => Object.prototype.toString.call(value) === '[object RegExp]';
 export const isPropertyKey = (value: any): value is PropertyKey => isString(value) || isNumber(value) || isSymbol(value);
 export const isPrimitive = (value: any): value is Primitive => isPropertyKey(value) || isBoolean(value);
 export const isMap = <K, V>(value: any): value is Map<K, V> => value instanceof Map;
 export const isSet = <V>(value: any): value is Set<V> => value instanceof Set;
-export const isCollection = <K, V>(value: any): value is Map<K, V> | Set<V> => isMap(value) || isSet(value);
+export const isCollection = <V, K = any>(value: any): value is Map<K, V> | Set<V> => isMap<K, V>(value) || isSet<V>(value);
 export const isArray = <T>(value: any): value is T[] => Array.isArray(value);
-export const isObject = <T>(value: any): value is T & object => typeof value === 'object' && !isArray(value) && !isNil(value);
+/**
+ * Type guard for `typeof value === 'object' && !Array.isArray(value)
+ * @param value
+ * @returns boolean
+ */
+export const isObject = <T>(value: any): value is T & object => !isNil(value) && typeof value === 'object' && !isArray(value);
+export const isPlainObject = <T>(value: any): value is T & object => isObject(value) && !isDate(value) && !isRegExp(value) && !isCollection(value);
 
 /**
  * Check if passed `value` is empty.
@@ -99,12 +111,6 @@ export const isEmpty = <T>(value: any): value is Required<NoUndefinedField<T>> =
     : isObject(value)
     ? Object.keys(value).length === 0
     : false;
-/**
- *
- * @param value
- * @returns
- */
-export const isFunction = (value: any): value is AnyFunction => typeof value === 'function';
 export const isEnum =
   <T extends object>(enumClass: T) =>
   (value: unknown): value is T[keyof T] =>

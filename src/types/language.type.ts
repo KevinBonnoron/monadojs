@@ -6,3 +6,4 @@ export type ObjectTypes = object | Function | Array<unknown> | Date | Map<unknow
 export type AllTypes = Primitive | ObjectTypes | null | undefined;
 export type Collection<T = unknown> = Map<unknown, T> | Set<T>;
 export type nil = null | undefined;
+export type UnwrapValue<T> = T extends Array<infer V> ? V : T extends Set<infer V> ? V : T extends Map<unknown, infer V> ? V : never;

@@ -2,7 +2,7 @@ import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { reduce } from './reduce';
 
 describe('reduce', () => {
-  describe('array', () => {
+  describe('Array', () => {
     it('reduce values', () => {
       const minReducer = (a: number, b: number) => (a > b ? b : a);
       const source = [1, 2, 3];
@@ -12,7 +12,7 @@ describe('reduce', () => {
     });
   });
 
-  describe('map', () => {
+  describe('Map', () => {
     it('reduce values', () => {
       const minReducer = ([a]: [number], [b]: [number]) => [a > b ? b : a] as [number];
       const source = DEFAULT_MAP;
@@ -22,7 +22,7 @@ describe('reduce', () => {
     });
   });
 
-  describe('set', () => {
+  describe('Set', () => {
     it('reduce values', () => {
       const minReducer = (a: number, b: number) => (a > b ? b : a);
       const source = DEFAULT_SET;

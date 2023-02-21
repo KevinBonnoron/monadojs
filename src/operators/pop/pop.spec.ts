@@ -2,7 +2,7 @@ import { DEFAULT_MAP } from '../../../tests/test.data';
 import { pop } from './pop';
 
 describe('pop', () => {
-  describe('array', () => {
+  describe('Array', () => {
     it('should return last element', () => {
       const source = [0, 1, 2, 3];
       const operator = pop();
@@ -13,7 +13,7 @@ describe('pop', () => {
     });
   });
 
-  describe('map', () => {
+  describe('Map', () => {
     it('should return last element', () => {
       const source = DEFAULT_MAP;
       const operator = pop();
@@ -29,7 +29,7 @@ describe('pop', () => {
     });
   });
 
-  describe('set', () => {
+  describe('Set', () => {
     it('should return last element', () => {
       const source = new Set([0, 1, 2, 3]);
       const operator = pop();

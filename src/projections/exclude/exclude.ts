@@ -1,5 +1,5 @@
 import { keys } from '../../operators';
-import { isArray, isObject } from '../../utils';
+import { isArray, isPlainObject } from '../../utils';
 
 const excludeImpl = <T, P extends keyof T>(value: T, ...properties: P[]) =>
   keys<T>()(value).reduce((object, key) => {
@@ -11,6 +11,6 @@ const excludeImpl = <T, P extends keyof T>(value: T, ...properties: P[]) =>
   }, {} as Partial<T>);
 
 export const exclude =
-  <T = any, P extends keyof T = any>(...properties: P[]) =>
-  (source: T): Partial<T> =>
-    isArray<T>(source) ? source.map(exclude(...properties)) : isObject<T>(source) ? excludeImpl(source, ...properties) : (source as any);
+  <P extends keyof T, T = any>(...properties: P[]) =>
+  <S extends T>(source: S): Exclude<S, P> =>
+    isArray<S>(source) ? source.map(exclude(...properties)) : isPlainObject<S>(source) ? excludeImpl(source, ...properties) : (source as any);

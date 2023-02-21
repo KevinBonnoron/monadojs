@@ -1,25 +1,50 @@
 import { prop } from './prop';
 
 describe('prop', () => {
-  it('should return object property', () => {
-    const source = { name: 'value' };
-    const operator = prop('name');
-    const expected = 'value';
+  describe('Object', () => {
+    const operator = prop('a', 4);
 
-    expect(operator(source)).toStrictEqual(expected);
-    expect([source].map(operator)).toStrictEqual([expected]);
+    it('should return property', () => {
+      const source = { a: 1, b: 2, c: 3 };
+      const expected = 1;
+
+      expect(operator(source)).toStrictEqual(expected);
+      expect([source].map(operator)).toStrictEqual([expected]);
+    });
+
+    it('should return defaultValue', () => {
+      const source = { b: 2, c: 3 };
+      const expected = 4;
+
+      expect(operator(source)).toStrictEqual(expected);
+      expect([source].map(operator)).toStrictEqual([expected]);
+    });
   });
 
-  it('should return Map key', () => {
-    const source = new Map([
-      ['a', 1],
-      ['b', 2],
-      ['c', 3],
-    ]);
-    const operator = prop('a');
-    const expected = 1;
+  describe('Map', () => {
+    const operator = prop('a', 4);
 
-    expect(operator(source)).toStrictEqual(expected);
-    expect([source].map(operator)).toStrictEqual([expected]);
+    it('should return property', () => {
+      const source = new Map([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3],
+      ]);
+      const expected = 1;
+
+      expect(operator(source)).toStrictEqual(expected);
+      expect([source].map(operator)).toStrictEqual([expected]);
+    });
+
+    it('should return defaultValue', () => {
+      const source = new Map([
+        ['b', 2],
+        ['c', 3],
+      ]);
+      const expected = 4;
+
+      expect(operator(source)).toStrictEqual(expected);
+      expect([source].map(operator)).toStrictEqual([expected]);
+    });
   });
 });

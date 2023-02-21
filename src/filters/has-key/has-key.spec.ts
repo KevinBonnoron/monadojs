@@ -2,7 +2,7 @@ import { DEFAULT_MAP } from '../../../tests/test.data';
 import { hasKey } from './has-key';
 
 describe('has-key', () => {
-  describe('object', () => {
+  describe('Object', () => {
     const source = { a: 1, b: 2, c: 3 };
 
     it('should return true', () => {
@@ -16,7 +16,7 @@ describe('has-key', () => {
     });
   });
 
-  describe('map', () => {
+  describe('Map', () => {
     const source = DEFAULT_MAP;
 
     it('should return true', () => {

@@ -1,6 +1,5 @@
+import { UnwrapValue } from '../../types';
 import { isArray, isCollection, isMap, isSet } from '../../utils';
-
-type UnwrapValue<T> = T extends Array<infer V> ? V : T extends Set<infer V> ? V : never;
 
 const toSet = <T>(source: T): Set<T> => (isArray(source) || isMap(source) ? new Set([...source]) : source) as Set<T>;
 

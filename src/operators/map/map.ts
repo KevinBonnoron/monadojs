@@ -1,12 +1,14 @@
-import { Mapper } from '../../types';
+import { Mapper, UnwrapValue } from '../../types';
 import { isArray, isObject } from '../../utils';
 import { entries } from '../entries/entries';
 
-export const map =
-  <O = any>(predicate: Mapper) =>
-  <T>(source: T): O =>
-    isArray<T>(source)
-      ? source.map<O>(predicate)
-      : isObject<T>(source)
-      ? entries<T>()(source).reduce((object, [key, value]) => ({ ...object, [key]: predicate(value as T, key as any) }), {} as O)
+export function map<S, O>(predicate: Mapper<UnwrapValue<S>, O>): (source: S) => O[];
+export function map<O, T = any>(predicate: Mapper<T, O>): <S>(source: S) => O[];
+export function map(predicate: Mapper) {
+  return (source: unknown) =>
+    isArray(source)
+      ? source.map(predicate)
+      : isObject(source)
+      ? entries<any>()(source).reduce((object, [key, value]) => ({ ...object, [key]: predicate(value, key as any) }), {})
       : predicate(source);
+}

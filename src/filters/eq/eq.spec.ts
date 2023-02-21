@@ -43,7 +43,7 @@ describe('eq', () => {
     });
   });
 
-  describe('array', () => {
+  describe('Array', () => {
     const source = ['a', 'b', 'c'];
 
     it('should return true', () => {
@@ -57,7 +57,7 @@ describe('eq', () => {
     });
   });
 
-  describe('object', () => {
+  describe('Object', () => {
     const source = { a: 1, b: 2, c: 3 };
 
     it('should return true', () => {

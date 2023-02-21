@@ -17,7 +17,7 @@ describe('ends-with', () => {
     });
   });
 
-  describe('array', () => {
+  describe('Array', () => {
     const source = ['abc', 'bac'];
 
     it('should return true', () => {

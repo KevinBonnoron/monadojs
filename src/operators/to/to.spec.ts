@@ -2,7 +2,7 @@ import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.dat
 import { to } from './to';
 
 describe('to', () => {
-  describe('set', () => {
+  describe('Set', () => {
     const operator = to(Set);
 
     it('should convert array', () => {
@@ -24,7 +24,7 @@ describe('to', () => {
     });
   });
 
-  describe('array', () => {
+  describe('Array', () => {
     const operator = to(Array);
 
     it('should convert set', () => {
@@ -46,7 +46,7 @@ describe('to', () => {
     });
   });
 
-  describe('map', () => {
+  describe('Map', () => {
     const operator = to(Map, (value) => `${value}`);
 
     it('should convert set', () => {

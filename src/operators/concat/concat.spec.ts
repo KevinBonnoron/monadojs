@@ -2,7 +2,7 @@ import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.dat
 import { concat } from './concat';
 
 describe('concat', () => {
-  describe('array', () => {
+  describe('Array', () => {
     const source = DEFAULT_ARRAY;
 
     it('should concat', () => {
@@ -11,7 +11,7 @@ describe('concat', () => {
     });
   });
 
-  describe('map', () => {
+  describe('Map', () => {
     const source = DEFAULT_MAP;
 
     it('should concat', () => {
@@ -27,7 +27,7 @@ describe('concat', () => {
     });
   });
 
-  describe('set', () => {
+  describe('Set', () => {
     const source = DEFAULT_SET;
 
     it('should concat', () => {

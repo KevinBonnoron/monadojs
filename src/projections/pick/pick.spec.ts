@@ -52,4 +52,23 @@ describe('pick', () => {
       expect(source).toStrictEqual({ a: 1, b: 2, c: 3 });
     });
   });
+
+  describe('others', () => {
+    it('should return the input', () => {
+      const operator = pick('a');
+      const anonymousFn = function () {};
+      const anonymousArrowFn = () => {};
+
+      expect(operator(1)).toStrictEqual(1);
+      expect(operator('a')).toStrictEqual('a');
+      expect(operator(null)).toStrictEqual(null);
+      expect(operator(undefined)).toStrictEqual(undefined);
+      expect(operator(new Date())).toStrictEqual(new Date());
+      expect(operator(new Set('a'))).toStrictEqual(new Set('a'));
+      expect(operator(new Map([['a', 1]]))).toStrictEqual(new Map([['a', 1]]));
+      expect(operator(new RegExp('a'))).toStrictEqual(new RegExp('a'));
+      expect(operator(anonymousFn)).toStrictEqual(anonymousFn);
+      expect(operator(anonymousArrowFn)).toStrictEqual(anonymousArrowFn);
+    });
+  });
 });

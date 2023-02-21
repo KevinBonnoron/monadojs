@@ -2,7 +2,7 @@ import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { includes } from './includes';
 
 describe('includes', () => {
-  describe('array', () => {
+  describe('Array', () => {
     const source = [1, 2, 3];
 
     it('should return true', () => {
@@ -16,7 +16,7 @@ describe('includes', () => {
     });
   });
 
-  describe('map', () => {
+  describe('Map', () => {
     const source = DEFAULT_MAP;
 
     it('should return true', () => {
@@ -30,7 +30,7 @@ describe('includes', () => {
     });
   });
 
-  describe('set', () => {
+  describe('Set', () => {
     const source = DEFAULT_SET;
 
     it('should return true', () => {

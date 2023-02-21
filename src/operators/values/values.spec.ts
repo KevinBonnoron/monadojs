@@ -2,12 +2,12 @@ import { values } from './values';
 
 describe('values', () => {
   const anonymousFn = function () {};
-  const anonymousArrayFn = () => {};
+  const anonymousArrowFn = () => {};
 
   it('should return array values', () => {
-    const source = [1, true, 'a', [], {}, anonymousFn, anonymousArrayFn];
+    const source = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
     const operator = values();
-    const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrayFn];
+    const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
 
     expect(operator(source)).toStrictEqual(expected);
   });
@@ -20,26 +20,26 @@ describe('values', () => {
       ['d', []],
       ['e', {}],
       ['f', anonymousFn],
-      ['g', anonymousArrayFn],
+      ['g', anonymousArrowFn],
     ]);
     const operator = values();
-    const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrayFn];
+    const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
 
     expect(operator(source)).toStrictEqual(expected);
   });
 
   it('should return set values', () => {
-    const source = new Set([1, true, 'a', [], {}, anonymousFn, anonymousArrayFn]);
+    const source = new Set([1, true, 'a', [], {}, anonymousFn, anonymousArrowFn]);
     const operator = values();
-    const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrayFn];
+    const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
 
     expect(operator(source)).toStrictEqual(expected);
   });
 
   it('should return object values', () => {
-    const source = { a: 1, b: true, c: 'a', d: [], e: {}, f: anonymousFn, g: anonymousArrayFn };
+    const source = { a: 1, b: true, c: 'a', d: [], e: {}, f: anonymousFn, g: anonymousArrowFn };
     const operator = values();
-    const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrayFn];
+    const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
 
     expect(operator(source)).toStrictEqual(expected);
   });

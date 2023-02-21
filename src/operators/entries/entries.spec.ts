@@ -2,53 +2,85 @@ import { entries } from './entries';
 
 describe('entries', () => {
   const anonymousFn = function () {};
-  const anonymousArrayFn = () => {};
+  const anonymousArrowFn = () => {};
 
-  it('should return array entries', () => {
-    expect(entries()([1, true, 'a', [], {}, anonymousFn, anonymousArrayFn])).toStrictEqual([
-      [0, 1],
-      [1, true],
-      [2, 'a'],
-      [3, []],
-      [4, {}],
-      [5, anonymousFn],
-      [6, anonymousArrayFn],
-    ]);
+  describe('Array', () => {
+    const operator = entries();
+
+    it('should return entries', () => {
+      const source = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
+      const expected = [
+        [0, 1],
+        [1, true],
+        [2, 'a'],
+        [3, []],
+        [4, {}],
+        [5, anonymousFn],
+        [6, anonymousArrowFn],
+      ];
+      expect(operator(source)).toStrictEqual(expected);
+    });
   });
 
-  it('should return map entries', () => {
-    expect(
-      entries()(
-        new Map<any, any>([
-          ['a', 1],
-          ['b', true],
-          ['c', 'a'],
-          ['d', []],
-          ['e', {}],
-          ['f', anonymousFn],
-          ['g', anonymousArrayFn],
-        ])
-      )
-    ).toStrictEqual([
-      ['a', 1],
-      ['b', true],
-      ['c', 'a'],
-      ['d', []],
-      ['e', {}],
-      ['f', anonymousFn],
-      ['g', anonymousArrayFn],
-    ]);
+  describe('Map', () => {
+    const operator = entries();
+
+    it('should return entries', () => {
+      const source = new Map<any, any>([
+        ['a', 1],
+        ['b', true],
+        ['c', 'a'],
+        ['d', []],
+        ['e', {}],
+        ['f', anonymousFn],
+        ['g', anonymousArrowFn],
+      ]);
+      const expected = [
+        ['a', 1],
+        ['b', true],
+        ['c', 'a'],
+        ['d', []],
+        ['e', {}],
+        ['f', anonymousFn],
+        ['g', anonymousArrowFn],
+      ];
+      expect(operator(source)).toStrictEqual(expected);
+    });
   });
 
-  it('should return object entries', () => {
-    expect(entries()({ a: 1, b: true, c: 'a', d: [], e: {}, f: anonymousFn, g: anonymousArrayFn })).toStrictEqual([
-      ['a', 1],
-      ['b', true],
-      ['c', 'a'],
-      ['d', []],
-      ['e', {}],
-      ['f', anonymousFn],
-      ['g', anonymousArrayFn],
-    ]);
+  describe('Set', () => {
+    const operator = entries();
+
+    it('should return entries', () => {
+      const source = new Set<any>([1, true, 'a', [], {}, anonymousFn, anonymousArrowFn]);
+      const expected = [
+        [0, 1],
+        [1, true],
+        [2, 'a'],
+        [3, []],
+        [4, {}],
+        [5, anonymousFn],
+        [6, anonymousArrowFn],
+      ];
+      expect(operator(source)).toStrictEqual(expected);
+    });
+  });
+
+  describe('Object', () => {
+    const operator = entries();
+
+    it('should return entries', () => {
+      const source = { a: 1, b: true, c: 'a', d: [], e: {}, f: anonymousFn, g: anonymousArrowFn };
+      const expected = [
+        ['a', 1],
+        ['b', true],
+        ['c', 'a'],
+        ['d', []],
+        ['e', {}],
+        ['f', anonymousFn],
+        ['g', anonymousArrowFn],
+      ];
+      expect(operator(source)).toStrictEqual(expected);
+    });
   });
 });

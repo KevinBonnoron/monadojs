@@ -1,26 +1,25 @@
-import { MonotypeOperator } from '../../types';
-import { isArray, isObject, isPrimitive } from '../../utils';
+import { includes } from '../../filters';
+import { Operator } from '../../types';
+import { isArray, isMap, isObject, isPrimitive, isSet } from '../../utils';
+import { entries } from '../entries/entries';
 import { values } from '../values/values';
 
-const walkImpl = <T extends object>(value: T, operator: MonotypeOperator<T>, context: { visitedObjects: any[] } = { visitedObjects: [] }) => {
-  context.visitedObjects.push(value);
-  if (isPrimitive(value)) {
-    return operator(value);
-  }
-
-  if (isObject<T>(value)) {
-    for (const subValue of values()(value)) {
-      if (context.visitedObjects.includes(subValue)) {
-        continue;
-      }
-
-      walkImpl(subValue, operator as MonotypeOperator<typeof subValue>, context);
+const walkImpl = <T>(value: T, operator: Operator<T, void>, context: { visitedObjects: any[] } = { visitedObjects: [] }) => {
+  if (!includes(value)(context.visitedObjects)) {
+    if (!isPrimitive(value)) {
+      context.visitedObjects.push(value);
     }
-  }
 
-  if (isArray<T>(value)) {
-    for (const subValue of value) {
-      walkImpl(subValue as object, operator as MonotypeOperator<any>, context);
+    operator(value);
+
+    if (isMap<any, T>(value)) {
+      for (const subValue of entries()(value)) {
+        walkImpl<any>(subValue, operator, context);
+      }
+    } else if (isObject<T>(value) || isArray<T>(value) || isSet<T>(value)) {
+      for (const subValue of values()(value)) {
+        walkImpl<any>(subValue, operator, context);
+      }
     }
   }
 
@@ -28,6 +27,6 @@ const walkImpl = <T extends object>(value: T, operator: MonotypeOperator<T>, con
 };
 
 export const walk =
-  <T extends object>(operator: MonotypeOperator<T>) =>
-  (source: T) =>
+  (operator: Operator<any, void>) =>
+  <T>(source: T) =>
     walkImpl(source, operator);
