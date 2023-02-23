@@ -1,4 +1,4 @@
-import { AllTypes, AnyFunction, Maybe, nil, NoUndefinedField, Primitive } from '../../types';
+import { AllTypes, AnyFunction, Collection, Maybe, nil, NoUndefinedField, Primitive } from '../../types';
 
 /**
  * Type guard for `value === null`
@@ -71,10 +71,10 @@ export const isPropertyKey = (value: any): value is PropertyKey => isString(valu
 export const isPrimitive = (value: any): value is Primitive => isPropertyKey(value) || isBoolean(value);
 export const isMap = <K, V>(value: any): value is Map<K, V> => value instanceof Map;
 export const isSet = <V>(value: any): value is Set<V> => value instanceof Set;
-export const isCollection = <V, K = any>(value: any): value is Map<K, V> | Set<V> => isMap<K, V>(value) || isSet<V>(value);
+export const isCollection = <V, K = any>(value: any): value is Collection<V, K> => isMap<K, V>(value) || isSet<V>(value);
 export const isArray = <T>(value: any): value is T[] => Array.isArray(value);
 /**
- * Type guard for `typeof value === 'object' && !Array.isArray(value)
+ * Type guard for value && `typeof value === 'object' && !Array.isArray(value)
  * @param value
  * @returns boolean
  */
@@ -118,7 +118,7 @@ export const isEnum =
 export const isMaybe = (value: any): value is Maybe => hasProperties<Maybe>(value, 'pipe', 'isJust', 'isNothing', 'equals');
 export const isType =
   <T>(type: AllTypes) =>
-  (value: unknown): value is T =>
+  (value: any): value is T =>
     type === null
       ? isNull(value)
       : type === undefined
@@ -139,6 +139,8 @@ export const isType =
       ? isArray(value)
       : type === Map
       ? isMap(value)
+      : type === Maybe
+      ? isMaybe(value)
       : type === Object
       ? isObject(value)
       : type === Function

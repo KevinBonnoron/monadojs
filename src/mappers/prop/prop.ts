@@ -1,5 +1,6 @@
 import { isMap, isObject } from '../../utils';
 
+type Getter<S, P> = (source: S) => P extends keyof S ? S[P] : never;
 type PropertyType<S, P extends PropertyKey> = S extends Record<P, infer O> ? O : never;
 
 /**
@@ -9,9 +10,9 @@ type PropertyType<S, P extends PropertyKey> = S extends Record<P, infer O> ? O :
  * @param defaultValue
  * @returns any
  */
-export function prop<S, P extends keyof S>(property: P, defaultValue?: any): (source: S) => S[P];
-export function prop<P extends PropertyKey>(property: P, defaultValue?: any): <S, O = PropertyType<S, P>>(source: S) => O;
+export function prop<P extends keyof S, S>(property: P, defaultValue?: any): Getter<S, P>;
+export function prop<P extends PropertyKey>(property: P, defaultValue?: any): <S extends object, O = PropertyType<S, P>>(source: S) => O;
 export function prop(property: unknown, defaultValue?: unknown) {
-  return (source: unknown) =>
+  return (source: any) =>
     isMap(source) ? source.get(property) ?? defaultValue : isObject(source) ? source[property as keyof typeof source] ?? defaultValue : defaultValue;
 }

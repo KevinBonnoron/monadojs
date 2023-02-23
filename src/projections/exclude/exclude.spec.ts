@@ -58,12 +58,13 @@ describe('exclude', () => {
       const operator = exclude('a');
       const anonymousFn = function () {};
       const anonymousArrowFn = () => {};
+      const date = new Date();
 
       expect(operator(1)).toStrictEqual(1);
       expect(operator('a')).toStrictEqual('a');
       expect(operator(null)).toStrictEqual(null);
       expect(operator(undefined)).toStrictEqual(undefined);
-      expect(operator(new Date())).toStrictEqual(new Date());
+      expect(operator(date)).toStrictEqual(date);
       expect(operator(new Set('a'))).toStrictEqual(new Set('a'));
       expect(operator(new Map([['a', 1]]))).toStrictEqual(new Map([['a', 1]]));
       expect(operator(new RegExp('a'))).toStrictEqual(new RegExp('a'));

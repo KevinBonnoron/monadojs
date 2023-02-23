@@ -1,9 +1,9 @@
-import { Mapper, UnwrapValue } from '../../types';
+import { Mapper } from '../../types';
 import { isArray, isObject } from '../../utils';
 import { entries } from '../entries/entries';
 
-export function map<S, O>(predicate: Mapper<UnwrapValue<S>, O>): (source: S) => O[];
-export function map<O, T = any>(predicate: Mapper<T, O>): <S>(source: S) => O[];
+export function map<T, S extends Array<T>, O>(predicate: Mapper<T, O>): (source: S) => O[];
+export function map<T = any>(predicate: Mapper<T, any>): <S, O>(source: S) => O[];
 export function map(predicate: Mapper) {
   return (source: unknown) =>
     isArray(source)

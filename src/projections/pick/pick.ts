@@ -4,6 +4,6 @@ const pickImpl = <T, P extends keyof T>(object: T, properties: P[]) =>
   properties.reduce((accumulator, property) => ({ ...accumulator, [property]: object[property] }), {} as Partial<T>);
 
 export const pick =
-  <P extends keyof T, T = any>(...properties: P[]) =>
-  <S extends T>(source: S): Pick<S, P> =>
+  <P extends keyof S, S = any>(...properties: P[]) =>
+  (source: S): Pick<S, P> =>
     isArray<S>(source) ? source.map(pick(...properties)) : isPlainObject<S>(source) ? pickImpl(source, properties) : (source as any);
