@@ -16,10 +16,18 @@ const mergeImpl = <T, V>(target: T, ...sources: V[]): any => {
         }
 
         mergeImpl((target as V)[key], value);
+      } else if (isArray(value)) {
+        if ((target as V)[key] === undefined) {
+          Object.assign(target, { [key]: [] });
+        }
+
+        mergeImpl((target as V)[key], value);
       } else {
         Object.assign(target, { [key]: value });
       }
     }
+  } else if (isArray(target) && isArray(source)) {
+    target.push(...source);
   }
 
   return mergeImpl(target, ...sources);
