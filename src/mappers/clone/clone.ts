@@ -7,6 +7,8 @@ const cloneImpl = <T>(object: T) => {
   for (const [key, value] of entries<T>()(object)) {
     if (isObject(value)) {
       cloned[key] = clone()(value);
+    } else if (isArray(value)) {
+      cloned[key] = value.map(clone()) as any;
     } else {
       cloned[key] = value;
     }
