@@ -11,4 +11,5 @@ export * from './lt/lt';
 export * from './lte/lte';
 export * from './neq/neq';
 export * from './nil/nil';
+export * from './of-type/of-type';
 export * from './starts-with/starts-with';
