@@ -1,10 +1,8 @@
+import { FALSE, TRUE } from '../../utils';
 import { nand } from './nand';
 
 describe('nand', () => {
   it('should return nand of values', () => {
-    const TRUE = () => true;
-    const FALSE = () => false;
-
     // 2 inputs
     expect(nand(FALSE, FALSE)(null)).toBeTruthy();
     expect(nand(FALSE, TRUE)(null)).toBeTruthy();

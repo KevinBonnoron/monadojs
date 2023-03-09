@@ -40,11 +40,14 @@ console.log(persons.map(prop('firstName')));
 
 ### Filters
 
+- after
+- before
 - empty
 - endsWith
 - eq
 - gt
 - gte
+- has-key
 - iin
 - includes
 - [like](examples/filters/like/index.md)

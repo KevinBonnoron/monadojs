@@ -1,10 +1,8 @@
+import { FALSE, TRUE } from '../../utils';
 import { and } from './and';
 
 describe('and', () => {
   it('should return and of values', () => {
-    const TRUE = () => true;
-    const FALSE = () => false;
-
     // 2 inputs
     expect(and(FALSE, FALSE)(null)).toBeFalsy();
     expect(and(FALSE, TRUE)(null)).toBeFalsy();

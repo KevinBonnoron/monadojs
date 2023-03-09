@@ -1,5 +1,7 @@
 # Filters
 Ensure every .spec.ts files have the same pattern (gt is a good example).
+- [ ] after
+- [ ] before
 - [ ] empty
 - [x] ends-with
 - [x] eq

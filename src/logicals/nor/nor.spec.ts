@@ -1,10 +1,8 @@
+import { FALSE, TRUE } from '../../utils';
 import { nor } from './nor';
 
 describe('nor', () => {
   it('should return nor of values', () => {
-    const TRUE = () => true;
-    const FALSE = () => false;
-
     // 2 inputs
     expect(nor(FALSE, FALSE)(null)).toBeTruthy();
     expect(nor(FALSE, TRUE)(null)).toBeFalsy();

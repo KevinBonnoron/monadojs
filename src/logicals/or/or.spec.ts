@@ -1,10 +1,8 @@
+import { FALSE, TRUE } from '../../utils';
 import { or } from './or';
 
 describe('or', () => {
   it('should return or of values', () => {
-    const TRUE = () => true;
-    const FALSE = () => false;
-
     // 2 inputs
     expect(or(FALSE, FALSE)(null)).toBeFalsy();
     expect(or(FALSE, TRUE)(null)).toBeTruthy();

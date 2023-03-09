@@ -153,7 +153,7 @@ export const toString = (value: unknown) => (isSymbol(value) ? 'Symbol' : `${val
 export const toNumber = (value: unknown) => (isSymbol(value) ? NaN : parseInt(value as string));
 export const toBoolean = (value: unknown) => (isNumber(value) ? value !== 0 : isArray(value) ? value.length > 0 : !isNil(value));
 export const toSymbol = (_value: unknown) => Symbol();
-export const toDate = (value: unknown) => new Date(value as string | number | Date);
+export const toDate = (value: unknown) => (isString(value) || isNumber(value) || isDate(value) ? new Date(value) : new Date(NaN));
 export const toRegExp = (value: unknown) => new RegExp(value as string | RegExp);
 export const toArray = (value: unknown) => [value];
 export const toFunction = (value: unknown) => () => value;

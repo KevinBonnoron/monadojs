@@ -1,10 +1,8 @@
+import { FALSE, TRUE } from '../../utils';
 import { xor } from './xor';
 
 describe('xor', () => {
   it('should return xor of values', () => {
-    const TRUE = () => true;
-    const FALSE = () => false;
-
     // 2 inputs
     expect(xor(FALSE, FALSE)(null)).toBeFalsy();
     expect(xor(FALSE, TRUE)(null)).toBeTruthy();
