@@ -1,4 +1,4 @@
-import { DEFAULT_MAP } from '../../../tests/test.data';
+import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { hasKey } from './has-key';
 
 describe('has-key', () => {
@@ -36,12 +36,13 @@ describe('has-key', () => {
     it('should not return true', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(1)).toBeFalsy();
-      expect(operator(['a'])).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(DEFAULT_ARRAY)).toBeFalsy();
       expect(operator(null)).toBeFalsy();
       expect(operator(undefined)).toBeFalsy();
       expect(operator(new Date())).toBeFalsy();
-      expect(operator(new Set('a'))).toBeFalsy();
       expect(operator(new RegExp('a'))).toBeFalsy();
+      expect(operator(DEFAULT_SET)).toBeFalsy();
       expect(operator(function () {})).toBeFalsy();
       expect(operator(() => {})).toBeFalsy();
     });

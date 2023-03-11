@@ -1,7 +1,7 @@
 import { eq } from '../../filters';
 import { findIndex } from './find-index';
 
-describe('find', () => {
+describe('findIndex', () => {
   it('should find indexes', () => {
     expect(findIndex(eq(true))(true)).toBe(0);
     expect(findIndex(eq(true))(false)).toBe(-1);

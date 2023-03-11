@@ -5,3 +5,4 @@ export const DEFAULT_MAP = new Map([
   [2, 'c'],
 ]);
 export const DEFAULT_SET = new Set([1, 2, 3]);
+export const DEFAULT_DATE = new Date('2020-01-01T00:00:00Z');

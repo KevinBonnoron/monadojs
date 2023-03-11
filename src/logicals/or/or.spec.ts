@@ -1,3 +1,5 @@
+import { nil } from '../../filters';
+import { filter, throwError } from '../../operators';
 import { FALSE, TRUE } from '../../utils';
 import { or } from './or';
 
@@ -17,5 +19,9 @@ describe('or', () => {
     expect(or(TRUE, FALSE, TRUE)(null)).toBeTruthy();
     expect(or(TRUE, TRUE, FALSE)(null)).toBeTruthy();
     expect(or(TRUE, TRUE, TRUE)(null)).toBeTruthy();
+  });
+
+  it('should return when one operand is true', () => {
+    filter(or(nil(), throwError(new Error('should not happend'))))(undefined);
   });
 });

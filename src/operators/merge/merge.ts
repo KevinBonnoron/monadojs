@@ -34,6 +34,6 @@ const mergeImpl = <T, V>(target: T, ...sources: V[]): any => {
 };
 
 export const merge =
-  <T, V>(...sources: V[]): Operator<T, T & V> =>
-  (source: T) =>
-    isArray<T>(source) ? source.map(merge(sources)) : mergeImpl(source, ...sources);
+  <S, V>(...sources: V[]): Operator<S, S & V> =>
+  (source: S) =>
+    isArray<S>(source) ? source.map(merge(sources)) : mergeImpl(source, ...sources);

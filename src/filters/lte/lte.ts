@@ -5,5 +5,5 @@ const isStringOrNumber = or(isString, isNumber);
 
 export const lte =
   (expected: number | string) =>
-  <T = number | string>(source: T): boolean =>
-    isArray<T>(source) ? source.every(lte(expected)) : isStringOrNumber(source) ? source <= expected : false;
+  <S = number | string>(source: S): boolean =>
+    isArray<S>(source) ? source.every(lte(expected)) : isStringOrNumber(source) ? source <= expected : false;

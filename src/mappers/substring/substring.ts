@@ -1,4 +1,4 @@
 export const substring =
   (start: number, length?: number) =>
-  <T extends string>(source: T) =>
+  <S extends string>(source: S) =>
     source.substring(start, length !== undefined ? start + length : undefined);

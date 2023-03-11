@@ -55,6 +55,12 @@ export const isFalse = (value: any): value is false => value === false;
  */
 export const isSymbol = (value: any): value is symbol => typeof value === 'symbol';
 /**
+ * Type guard for `value instanceof Promise`
+ * @param value
+ * @returns
+ */
+export const isPromise = <T>(value: any): value is Promise<T> => value instanceof Promise;
+/**
  * Type guard for `value instanceof Date`
  * @param value
  * @returns boolean
@@ -104,6 +110,8 @@ export const isEmpty = <T>(value: any): value is Required<NoUndefinedField<T>> =
     ? value.length === 0
     : isCollection(value)
     ? [...value].length === 0
+    : isPromise(value)
+    ? false
     : isDate(value)
     ? !isNaN(Number(value))
     : isRegExp(value)
@@ -131,6 +139,8 @@ export const isType =
       ? isBoolean(value)
       : type === Symbol
       ? isSymbol(value)
+      : type === Promise
+      ? isPromise(value)
       : type === Date
       ? isDate(value)
       : type === RegExp
@@ -145,7 +155,7 @@ export const isType =
       ? isObject(value)
       : type === Function
       ? isFunction(value)
-      : (value as any).constructor === type;
+      : value?.constructor === type;
 
 export const toNull = (_value: unknown) => null;
 export const toUndefined = (_value: unknown) => undefined;
@@ -199,16 +209,29 @@ export const getTypeDefault = (value: unknown) =>
     ? {}
     : null;
 
-export const isEqual = <T, V>(o1: T, o2: V): boolean =>
-  isArray(o1) && isArray(o2)
-    ? o1.length !== o2.length
-      ? false
-      : o1.every((value, index) => isEqual(value, o2[index]))
-    : isObject(o1) && isObject(o2)
-    ? Object.keys(o1).length !== Object.keys(o2).length
-      ? false
-      : Object.entries(o1).every(([key, value]) => isEqual(value, o2[key as keyof V]))
-    : Object.is(o1, o2);
+export const isEqual = <T, V>(o1: T, o2: V): boolean => {
+  if (isArray(o1) && isArray(o2)) {
+    return o1.length === o2.length && o1.every((value, index) => isEqual(value, o2[index]));
+  }
+
+  if (isMap(o1) && isMap(o2)) {
+    return o1.size === o2.size && [...o1].every(([key, value]) => isEqual(value, o2.get(key)));
+  }
+
+  if (isSet(o1) && isSet(o2)) {
+    return o1.size === o2.size && [...o1].every((value, index) => isEqual(value, [...o2][index]));
+  }
+
+  if (isDate(o1) && isDate(o2)) {
+    return o1.getTime() === o2.getTime();
+  }
+
+  if (isPlainObject(o1) && isPlainObject(o2)) {
+    return Object.keys(o1).length === Object.keys(o2).length && Object.entries(o1).every(([key, value]) => isEqual(value, o2[key as keyof V]));
+  }
+
+  return Object.is(o1, o2);
+};
 export const hasProperties = <T>(value: T, ...properties: (keyof T)[]) =>
   !isNil(value) && isObject(value) && properties.every((property) => property in value);
 export const haveSameProperties = (o1: any, o2: any) => hasProperties(o2, ...Object.keys(o1)) && hasProperties(o1, ...Object.keys(o2));
@@ -232,3 +255,5 @@ export const coalesce = (...values: unknown[]) => values.find((value) => !isNil(
 
 export const TRUE = () => true;
 export const FALSE = () => false;
+export const STRICT_EQUALITY = (a: any, b: any) => a === b;
+export const LOOSE_EQUALITY = (a: any, b: any) => a == b;

@@ -3,11 +3,11 @@ import { Filter } from '../../types';
 import { isArray, isFunction } from '../../utils';
 
 export const every =
-  <V>(predicate: V | Filter) =>
-  <T>(source: T) => {
+  <P>(predicate: P | Filter) =>
+  <S>(source: S) => {
     if (!isFunction(predicate)) {
       predicate = eq(predicate);
     }
 
-    return isArray<T>(source) ? source.every(predicate) : predicate(source);
+    return isArray<S>(source) ? source.every(predicate) : predicate(source);
   };

@@ -2,6 +2,10 @@ import { Maybe } from '../../types';
 import { Just, Nothing } from '../../utils';
 import { ofType } from './of-type';
 
+class DummyClass {
+  a!: number;
+}
+
 type Expectation = { value: unknown; expect: boolean };
 const checkExpectations = (fn: (value: unknown) => boolean, expectations: Expectation[]) =>
   expectations.forEach((expectation) => expect(fn(expectation.value)).toEqual(expectation.expect));
@@ -22,6 +26,7 @@ const stringExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const numberExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -39,6 +44,7 @@ const numberExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const booleanExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -56,6 +62,7 @@ const booleanExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const symbolExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -73,6 +80,7 @@ const symbolExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const dateExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -90,6 +98,7 @@ const dateExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const regExpExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -107,6 +116,7 @@ const regExpExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const arrayExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -124,6 +134,7 @@ const arrayExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const mapExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -141,6 +152,7 @@ const mapExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const objectExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -158,6 +170,7 @@ const objectExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: true },
   { value: Nothing, expect: true },
+  { value: new DummyClass(), expect: true },
 ];
 const functionExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -175,6 +188,7 @@ const functionExpectations: Expectation[] = [
   { value: function () {}, expect: true },
   { value: Just(''), expect: false },
   { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: false },
 ];
 const maybeExpectations: Expectation[] = [
   { value: null, expect: false },
@@ -192,6 +206,25 @@ const maybeExpectations: Expectation[] = [
   { value: function () {}, expect: false },
   { value: Just(''), expect: true },
   { value: Nothing, expect: true },
+  { value: new DummyClass(), expect: false },
+];
+const dummyClassExpectations: Expectation[] = [
+  { value: null, expect: false },
+  { value: undefined, expect: false },
+  { value: 'a', expect: false },
+  { value: 0, expect: false },
+  { value: false, expect: false },
+  { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: new RegExp(''), expect: false },
+  { value: [], expect: false },
+  { value: new Map(), expect: false },
+  { value: {}, expect: false },
+  { value: () => {}, expect: false },
+  { value: function () {}, expect: false },
+  { value: Just(''), expect: false },
+  { value: Nothing, expect: false },
+  { value: new DummyClass(), expect: true },
 ];
 
 describe('of-type', () => {
@@ -207,5 +240,6 @@ describe('of-type', () => {
     checkExpectations(ofType(Object), objectExpectations);
     checkExpectations(ofType(Function), functionExpectations);
     checkExpectations(ofType(Maybe), maybeExpectations);
+    checkExpectations(ofType(DummyClass), dummyClassExpectations);
   });
 });

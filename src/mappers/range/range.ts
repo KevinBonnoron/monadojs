@@ -11,5 +11,5 @@
  */
 export const range =
   (inMin: number, inMax: number, outMin: number, outMax: number) =>
-  <T extends number>(source: T) =>
+  <S extends number>(source: S) =>
     ((source - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;

@@ -1,6 +1,15 @@
-import { isArray, isNil, isObject } from '../../utils';
+import { isArray, isMap, isNil, isPlainObject } from '../../utils';
+import { keys } from '../keys/keys';
 
 export const length =
   () =>
-  <T>(source: T) =>
-    isNil(source) ? 0 : isArray<T>(source) ? source.length : isObject<T>(source) ? Object.keys(source).length : 0;
+  <S>(source: S) =>
+    isNil(source)
+      ? 0
+      : isArray<S>(source)
+      ? source.length
+      : isMap(source)
+      ? keys()(source).length
+      : isPlainObject<S>(source)
+      ? keys()(source).length
+      : 0;

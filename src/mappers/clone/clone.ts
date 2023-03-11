@@ -19,15 +19,15 @@ const cloneImpl = <T>(object: T) => {
 
 export const clone =
   () =>
-  <T>(source: T): T =>
-    isArray<T>(source)
-      ? ([...source.map(clone())] as T)
+  <S>(source: S): S =>
+    isArray<S>(source)
+      ? ([...source.map(clone())] as S)
       : isMap(source)
-      ? (new Map([...source].map(clone())) as T)
+      ? (new Map([...source].map(clone())) as S)
       : isSet(source)
-      ? (new Set([...source].map(clone())) as T)
+      ? (new Set([...source].map(clone())) as S)
       : isDate(source)
-      ? (new Date(+source) as T)
-      : isObject<T>(source)
-      ? cloneImpl<T>(source)
+      ? (new Date(+source) as S)
+      : isObject<S>(source)
+      ? cloneImpl<S>(source)
       : source;

@@ -1,3 +1,4 @@
+import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { exclude } from './exclude';
 
 describe('exclude', () => {
@@ -60,13 +61,14 @@ describe('exclude', () => {
       const anonymousArrowFn = () => {};
       const date = new Date();
 
-      expect(operator(1)).toStrictEqual(1);
       expect(operator('a')).toStrictEqual('a');
+      expect(operator(1)).toStrictEqual(1);
+      expect(operator(true)).toStrictEqual(true);
       expect(operator(null)).toStrictEqual(null);
       expect(operator(undefined)).toStrictEqual(undefined);
       expect(operator(date)).toStrictEqual(date);
-      expect(operator(new Set('a'))).toStrictEqual(new Set('a'));
-      expect(operator(new Map([['a', 1]]))).toStrictEqual(new Map([['a', 1]]));
+      expect(operator(DEFAULT_SET)).toStrictEqual(DEFAULT_SET);
+      expect(operator(DEFAULT_MAP)).toStrictEqual(DEFAULT_MAP);
       expect(operator(new RegExp('a'))).toStrictEqual(new RegExp('a'));
       expect(operator(anonymousFn)).toStrictEqual(anonymousFn);
       expect(operator(anonymousArrowFn)).toStrictEqual(anonymousArrowFn);

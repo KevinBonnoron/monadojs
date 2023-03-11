@@ -1,3 +1,4 @@
+import { LOOSE_EQUALITY } from '../../utils';
 import { neq } from './neq';
 
 describe('neq', () => {
@@ -6,6 +7,8 @@ describe('neq', () => {
     const object = {};
 
     expect(neq(1)(0)).toBeTruthy();
+    expect(neq(1)('1')).toBeTruthy();
+    expect(neq(1, LOOSE_EQUALITY)('1')).toBeFalsy();
     expect(neq('a')('b')).toBeTruthy();
     expect(neq(array)(array)).toBeFalsy();
     expect(neq(object)(object)).toBeFalsy();

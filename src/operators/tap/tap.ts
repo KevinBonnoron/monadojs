@@ -1,6 +1,6 @@
 export const tap =
   (fn: Function) =>
-  <T>(source: T) => {
+  <S>(source: S) => {
     fn(source);
     return source;
   };

@@ -4,8 +4,8 @@ import { ɵsingleOperationReducer } from '../../utils';
 const norImpl = (...values: boolean[]) => !values.some((value) => value);
 
 export const nor =
-  <T>(...operators: Filter<T>[]) =>
-  (source: T) =>
+  <S>(...operators: Filter<S>[]) =>
+  (source: S) =>
     operators
       .map((operator) => operator(source))
       .reduce((previousValue, currentValue, currentIndex, array) =>

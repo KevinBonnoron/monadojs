@@ -1,4 +1,4 @@
 export const lower =
   () =>
-  <T extends string>(source: T) =>
+  <S extends string>(source: S) =>
     source.toLowerCase();

@@ -3,5 +3,5 @@ import { Just } from '../../utils';
 
 export const maybe =
   () =>
-  <T>(source: T): Maybe<T> =>
+  <S>(source: S): Maybe<S> =>
     Just(source);

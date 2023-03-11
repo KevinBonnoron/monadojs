@@ -1,3 +1,4 @@
+import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { gte } from './gte';
 
 describe('gte', () => {
@@ -34,12 +35,14 @@ describe('gte', () => {
 
     it('should not return true', () => {
       expect(operator('a')).toBeFalsy();
-      expect(operator(['a'])).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
       expect(operator(null)).toBeFalsy();
       expect(operator(undefined)).toBeFalsy();
       expect(operator(new Date())).toBeFalsy();
       expect(operator(new Set('a'))).toBeFalsy();
       expect(operator(new RegExp('a'))).toBeFalsy();
+      expect(operator(DEFAULT_MAP)).toBeFalsy();
+      expect(operator(DEFAULT_SET)).toBeFalsy();
       expect(operator(() => {})).toBeFalsy();
     });
   });

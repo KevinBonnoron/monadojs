@@ -2,10 +2,11 @@ import { DEFAULT_MAP } from '../../../tests/test.data';
 import { shift } from './shift';
 
 describe('shift', () => {
+  const operator = shift();
+
   describe('Array', () => {
     it('should return first element', () => {
       const source = [0, 1, 2, 3];
-      const operator = shift();
       const expected = 0;
 
       expect(operator(source)).toStrictEqual(expected);
@@ -16,7 +17,6 @@ describe('shift', () => {
   describe('Map', () => {
     it('should return first element', () => {
       const source = DEFAULT_MAP;
-      const operator = shift();
       const expected = [0, 'a'];
 
       expect(operator(source)).toStrictEqual(expected);
@@ -32,7 +32,6 @@ describe('shift', () => {
   describe('Set', () => {
     it('should return first element', () => {
       const source = new Set([0, 1, 2, 3]);
-      const operator = shift();
       const expected = 0;
 
       expect(operator(source)).toStrictEqual(expected);

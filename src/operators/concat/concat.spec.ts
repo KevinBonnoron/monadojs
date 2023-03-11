@@ -8,6 +8,7 @@ describe('concat', () => {
     it('should concat', () => {
       const operator = concat(4);
       expect(operator(source)).toStrictEqual([1, 2, 3, 4]);
+      expect(source).toStrictEqual([1, 2, 3]);
     });
   });
 
@@ -24,6 +25,13 @@ describe('concat', () => {
           [3, 'd'],
         ])
       );
+      expect(source).toStrictEqual(
+        new Map([
+          [0, 'a'],
+          [1, 'b'],
+          [2, 'c'],
+        ])
+      );
     });
   });
 
@@ -33,6 +41,7 @@ describe('concat', () => {
     it('should concat', () => {
       const operator = concat(4);
       expect(operator(source)).toStrictEqual(new Set([1, 2, 3, 4]));
+      expect(source).toStrictEqual(new Set([1, 2, 3]));
     });
   });
 });

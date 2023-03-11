@@ -2,12 +2,12 @@ import { entries } from '../../operators/entries/entries';
 import { Mapper } from '../../types';
 import { isFunction } from '../../utils';
 
-type Transformation<T, S> = { [key: PropertyKey]: Mapper<T, S> | Transformation<any, any> };
+type Transformation<S, O> = { [key: PropertyKey]: Mapper<S, O> | Transformation<any, any> };
 
 export const transform =
-  <T extends object, S>(transformations: Transformation<T[keyof T], S>) =>
-  (source: T) =>
-    entries<T>()(source).reduce(
+  <S extends object, O>(transformations: Transformation<S[keyof S], O>) =>
+  (source: S) =>
+    entries<S>()(source).reduce(
       (object, [key, value]) => {
         if (transformations[key]) {
           const transformation = transformations[key];

@@ -17,6 +17,7 @@ import {
   isNull,
   isNumber,
   isObject,
+  isPromise,
   isRegExp,
   isString,
   isSymbol,
@@ -45,6 +46,7 @@ const nullExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -62,6 +64,7 @@ const undefinedExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -79,6 +82,7 @@ const nilExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -96,6 +100,7 @@ const stringExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -113,6 +118,7 @@ const numberExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -130,6 +136,7 @@ const booleanExpectations: Expectation[] = [
   { value: false, expect: true },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -147,6 +154,7 @@ const symbolExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: true },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -164,6 +172,25 @@ const dateExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: true },
+  { value: Promise.resolve(), expect: false },
+  { value: new RegExp(''), expect: false },
+  { value: [], expect: false },
+  { value: new Map(), expect: false },
+  { value: {}, expect: false },
+  { value: () => {}, expect: false },
+  { value: function () {}, expect: false },
+  { value: Just(1), expect: false },
+  { value: Nothing, expect: false },
+];
+const promiseExpectations: Expectation[] = [
+  { value: null, expect: false },
+  { value: undefined, expect: false },
+  { value: 'a', expect: false },
+  { value: 0, expect: false },
+  { value: false, expect: false },
+  { value: Symbol(), expect: false },
+  { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: true },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -181,6 +208,7 @@ const regExpExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: true },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -198,6 +226,7 @@ const arrayExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: true },
   { value: new Map(), expect: false },
@@ -215,6 +244,7 @@ const mapExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: true },
@@ -232,6 +262,7 @@ const objectExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: true },
+  { value: Promise.resolve(), expect: true },
   { value: new RegExp(''), expect: true },
   { value: [], expect: false },
   { value: new Map(), expect: true },
@@ -249,6 +280,7 @@ const emptyExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: true },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: true },
   { value: new Map(), expect: true },
@@ -266,6 +298,7 @@ const functionExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -283,6 +316,7 @@ const maybeExpectations: Expectation[] = [
   { value: false, expect: false },
   { value: Symbol(), expect: false },
   { value: new Date(), expect: false },
+  { value: Promise.resolve(), expect: false },
   { value: new RegExp(''), expect: false },
   { value: [], expect: false },
   { value: new Map(), expect: false },
@@ -324,6 +358,10 @@ describe('ObjectUtils', () => {
 
   it('should return if value is date', () => {
     checkExpectations(isDate, dateExpectations);
+  });
+
+  it('should return if value is promise', () => {
+    checkExpectations(isPromise, promiseExpectations);
   });
 
   it('should return if value is regexp', () => {
@@ -406,6 +444,38 @@ describe('ObjectUtils', () => {
     expect(isEqual([], [])).toBeTruthy();
     expect(isEqual([1, 0, 2], [1, 0, 2])).toBeTruthy();
     expect(isEqual([1, 0, 2], [2, 0, 1])).toBeFalsy();
+    expect(
+      isEqual(
+        new Map([
+          [0, 'a'],
+          [1, 'b'],
+          [2, 'c'],
+        ]),
+        new Map([
+          [0, 'a'],
+          [1, 'b'],
+          [2, 'c'],
+        ])
+      )
+    ).toBeTruthy();
+    expect(
+      isEqual(
+        new Map([
+          [0, 'a'],
+          [1, 'b'],
+          [2, 'c'],
+        ]),
+        new Map([
+          [0, 'c'],
+          [1, 'b'],
+          [2, 'a'],
+        ])
+      )
+    ).toBeFalsy();
+    expect(isEqual(new Set([1, 2, 3]), new Set([1, 2, 3]))).toBeTruthy();
+    expect(isEqual(new Set([1, 2, 3]), new Set([3, 2, 1]))).toBeFalsy();
+    expect(isEqual(new Date('2020-01-01T00:00:00Z'), new Date('2020-01-01T00:00:00Z'))).toBeTruthy();
+    expect(isEqual(new Date('2020-01-01T00:00:00Z'), new Date('2020-01-01T00:00:01Z'))).toBeFalsy();
     expect(isEqual({}, {})).toBeTruthy();
     expect(isEqual({ a: 1, b: 2 }, { a: 1, b: 2 })).toBeTruthy();
     expect(isEqual({ a: 1, b: 2 }, { a: 2, b: 1 })).toBeFalsy();

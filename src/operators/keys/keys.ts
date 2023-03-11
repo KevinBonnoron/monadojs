@@ -1,14 +1,14 @@
-import { isArray, isMap, isObject } from '../../utils';
+import { isArray, isMap, isPlainObject } from '../../utils';
 
 type Key<T> = keyof T;
 
 export const keys =
-  <T>() =>
-  (source: T) =>
-    isArray<T>(source)
-      ? ([...source.keys()] as unknown as ReadonlyArray<Key<T>>)
+  <S>() =>
+  (source: S) =>
+    isArray<S>(source)
+      ? ([...source.keys()] as unknown as ReadonlyArray<Key<S>>)
       : isMap(source)
-      ? ([...source.keys()] as unknown as ReadonlyArray<Key<T>>)
-      : isObject<T>(source)
-      ? (Object.keys(source) as unknown as ReadonlyArray<Key<T>>)
+      ? ([...source.keys()] as unknown as ReadonlyArray<Key<S>>)
+      : isPlainObject<S>(source)
+      ? (Object.keys(source) as unknown as ReadonlyArray<Key<S>>)
       : [];

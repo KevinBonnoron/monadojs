@@ -9,5 +9,5 @@ const collectionPopImpl = (collection: Collection) => {
 
 export const pop =
   () =>
-  <T>(source: T) =>
+  <S>(source: S) =>
     isArray(source) ? source.pop() : isCollection(source) ? collectionPopImpl(source) : source;

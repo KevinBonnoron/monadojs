@@ -1,14 +1,14 @@
 import { Filter, Mapper, matchJust, Maybe } from '../../types';
 import { isFunction, isMaybe, isRegExp, isString, Just } from '../../utils';
 
-interface Match<T, S> {
-  if: Filter<T> | Maybe<T> | typeof Just | RegExp;
-  then: S | Mapper<T, S>;
+interface Match<S, O> {
+  if: Filter<S> | Maybe<S> | typeof Just | RegExp;
+  then: O | Mapper<S, O>;
 }
 
 export const match =
-  <T, S>(matches: Match<T, S>[]) =>
-  (source: T) => {
+  <S, O>(matches: Match<S, O>[]) =>
+  (source: S) => {
     for (const match of matches) {
       let currentValue = source;
       if (isMaybe(source)) {
