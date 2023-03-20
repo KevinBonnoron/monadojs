@@ -7,6 +7,7 @@ export * from './head/head';
 export * from './join/join';
 export * from './last/last';
 export * from './max/max';
+export * from './median/median';
 export * from './min/min';
 export * from './nth/nth';
 export * from './sample/sample';

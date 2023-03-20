@@ -46,4 +46,11 @@ describe('match', () => {
 
     expect(values.map(match(matches))).toStrictEqual(['a', 'b', Nothing, Nothing]);
   });
+
+  it('should return values that match default', () => {
+    const values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const matches = [{ if: pipe(modulo(3), eq(0)), then: 'zero' }, { then: 'one' }];
+
+    expect(values.map(match(matches))).toStrictEqual(['zero', 'one', 'one', 'zero', 'one', 'one', 'zero', 'one', 'one', 'zero']);
+  });
 });

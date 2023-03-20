@@ -27,6 +27,7 @@ export function combine<A, B, C, D, E, F, G>(
   o5: Operator<A, F>,
   o6: Operator<A, G>
 ): Operator<A, [B, C, D, E, F, G]>;
+export function combine<A, B>(...operators: MonotypeOperator[]): Operator<A, B>;
 export function combine(...operators: MonotypeOperator[]) {
   return (source: unknown) => {
     const catchOperator = operators.find(ɵisCatchOperator);

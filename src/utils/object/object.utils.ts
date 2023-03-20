@@ -257,3 +257,6 @@ export const TRUE = () => true;
 export const FALSE = () => false;
 export const STRICT_EQUALITY = (a: any, b: any) => a === b;
 export const LOOSE_EQUALITY = (a: any, b: any) => a == b;
+
+export const isFirst = <T>(value: T, values: T[]) => isEqual(value, values[0]);
+export const isLast = <T>(value: T, values: T[]) => isEqual(value, values[values.length - 1]);

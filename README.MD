@@ -17,10 +17,10 @@ npm install monadojs
 yarn add monadojs
 ```
 
-Then every object and array should have a `pipe` method.
+Then you can start using the library:
 
 ```typescript
-import { prop, tap } from 'monadojs';
+import { prop, tap, pipe } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -31,7 +31,18 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(prop('firstName'), tap(console.log));
+persons.pipe(
+  prop('firstName'),
+  tap(console.log)
+);
+
+// Or
+
+pipe(
+  prop('firstName'),
+  tap(console.log)
+)(persons);
+
 // You still can use regular functions
 console.log(persons.map(prop('firstName')));
 ```
@@ -44,7 +55,7 @@ console.log(persons.map(prop('firstName')));
 - before
 - empty
 - endsWith
-- eq
+- [eq](examples/filters/eq/advanced.md)
 - gt
 - gte
 - has-key
@@ -120,7 +131,7 @@ Operators are functions that can be applyed on both object or array.
 - shuffle
 - some
 - sort
-- tap
+- [tap](examples/operators/tap/index.md)
 - throw-error
 - [to](examples/operators/to/index.md)
 - [unique](examples/operators/unique/index.md)
@@ -147,6 +158,7 @@ Reducers are functions that produce a single result by iterating over the passed
 - join
 - last
 - max
+- median
 - min
 - nth
 - sample

@@ -27,14 +27,6 @@ describe('group', () => {
         {}
       )
     ).toStrictEqual(expected);
-    expect(data.reduce(group(prop('name')), {})).toStrictEqual({
-      [laurent.name]: [laurent],
-      [julie.name]: [julie],
-      [aurelien.name]: [aurelien],
-      [paul.name]: [paul],
-      [sarah.name]: [sarah],
-      [winston.name]: [winston],
-      [judith.name]: [judith],
-    });
+    expect(data.reduce(group(prop('sex')), {})).toStrictEqual(expected);
   });
 });

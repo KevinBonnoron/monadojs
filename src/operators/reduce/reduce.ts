@@ -13,7 +13,7 @@ export function reduce<U>(predicate: Reducer<U, U>, initialValue: U): <T>(value:
 export function reduce<S, U extends S>(predicate: Reducer<S, U>, initialValue?: U) {
   return (source: S) =>
     isEmpty(source)
-      ? source
+      ? initialValue
       : isArray(source)
       ? arrayReduceImpl(source, predicate, initialValue)
       : isCollection(source)

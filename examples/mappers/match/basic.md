@@ -1,7 +1,7 @@
 This example show how to convert an array of person to a single string with
 
 ```typescript
-import { map, match, tap } from 'monadojs';
+import { eq, lt, map, match, pipe, prop, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -14,13 +14,11 @@ const persons = [
 
 persons.pipe(
   map(
-    match(
-      new Map([
-        [(value: any) => value.sex === 'M', (value: any) => `Mr ${value.firstName} ${value.lastName}`],
-        [(value: any) => value.sex === 'F' && value.age < 18, (value: any) => `Miss ${value.firstName} ${value.lastName}`],
-        [(value: any) => value.sex === 'F', (value: any) => `Mrs ${value.firstName} ${value.lastName}`],
-      ])
-    )
+    match([
+      { if: pipe(prop('sex', eq('M'))), then: (value: any) => `Mr ${value.firstName} ${value.lastName}` },
+      { if: pipe(prop('age', lt(18))), then: (value: any) => `Miss ${value.firstName} ${value.lastName}` },
+      { then: (value: any) => `Mrs ${value.firstName} ${value.lastName}` },
+    ])
   ),
   tap(console.log)
 );

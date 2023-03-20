@@ -12,8 +12,27 @@ describe('sort', () => {
       expect(operator(source)).toStrictEqual(expected);
     });
 
+    it('should sort Set', () => {
+      const source = new Set([0, 2, 3, 1]);
+      const operator = sort(ascSort);
+      const expected = new Set([0, 1, 2, 3]);
+
+      expect(operator(source)).toStrictEqual(expected);
+    });
+
+    it('should not sort Map', () => {
+      const source = new Map([
+        ['a', 2],
+        ['b', 1],
+      ]);
+      const operator = sort(ascSort);
+      const expected = source;
+
+      expect(operator(source)).toStrictEqual(expected);
+    });
+
     it('should not sort object', () => {
-      const source = { a: 1, b: 2 };
+      const source = { a: 2, b: 1 };
       const operator = sort(ascSort);
       const expected = source;
 
@@ -32,8 +51,27 @@ describe('sort', () => {
       expect(operator(source)).toStrictEqual(expected);
     });
 
+    it('should sort Set', () => {
+      const source = new Set([0, 2, 3, 1]);
+      const operator = sort(descSort);
+      const expected = new Set([3, 2, 1, 0]);
+
+      expect(operator(source)).toStrictEqual(expected);
+    });
+
+    it('should not sort Map', () => {
+      const source = new Map([
+        ['a', 2],
+        ['b', 1],
+      ]);
+      const operator = sort(descSort);
+      const expected = source;
+
+      expect(operator(source)).toStrictEqual(expected);
+    });
+
     it('should not sort object', () => {
-      const source = { a: 1, b: 2 };
+      const source = { a: 2, b: 1 };
       const operator = sort(descSort);
       const expected = source;
 
