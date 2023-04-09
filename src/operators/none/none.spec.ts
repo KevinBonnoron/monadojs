@@ -1,29 +1,60 @@
+import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { eq } from '../../filters';
 import { none } from './none';
 
 describe('none', () => {
-  const array: any[] = [];
-  const object = {};
-  const source = [1, 'a', true, object, array, null, undefined];
+  describe('Array', () => {
+    const source = DEFAULT_ARRAY;
 
-  it('should return if none element matches filter', () => {
-    expect(none((value) => value === 0)(source)).toBeTruthy();
-    expect(none((value) => value === 1)(source)).toBeFalsy();
-    expect(none((value) => value === 'a')(source)).toBeFalsy();
-    expect(none((value) => value === true)(source)).toBeFalsy();
-    expect(none((value) => value === object)(source)).toBeFalsy();
-    expect(none((value) => value === array)(source)).toBeFalsy();
-    expect(none((value) => value === null)(source)).toBeFalsy();
-    expect(none((value) => value === undefined)(source)).toBeFalsy();
+    it('should return true', () => {
+      expect(none(eq(0))(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(none(eq(1))(source)).toBeFalsy();
+      expect(none(1)(source)).toBeFalsy();
+      expect(none(eq(2))(source)).toBeFalsy();
+      expect(none(2)(source)).toBeFalsy();
+      expect(none(eq(3))(source)).toBeFalsy();
+      expect(none(3)(source)).toBeFalsy();
+    });
   });
 
-  it('should return if none element matches value', () => {
-    expect(none(0)(source)).toBeTruthy();
-    expect(none(1)(source)).toBeFalsy();
-    expect(none('a')(source)).toBeFalsy();
-    expect(none(true)(source)).toBeFalsy();
-    expect(none(object)(source)).toBeFalsy();
-    expect(none(array)(source)).toBeFalsy();
-    expect(none(null)(source)).toBeFalsy();
-    expect(none(undefined)(source)).toBeFalsy();
+  describe('Set', () => {
+    const source = DEFAULT_SET;
+
+    it('should return true', () => {
+      expect(none(eq(0))(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(none(eq(1))(source)).toBeFalsy();
+      expect(none(1)(source)).toBeFalsy();
+      expect(none(eq(2))(source)).toBeFalsy();
+      expect(none(2)(source)).toBeFalsy();
+      expect(none(eq(3))(source)).toBeFalsy();
+      expect(none(3)(source)).toBeFalsy();
+    });
+  });
+
+  describe('Map', () => {
+    const source = DEFAULT_MAP;
+    const valueEq =
+      (expected: any) =>
+      ([_, value]: [key: any, value: any]) =>
+        value === expected;
+
+    it('should return true', () => {
+      expect(none(valueEq('d'))(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(none(valueEq('a'))(source)).toBeFalsy();
+      expect(none([1, 'a'])(source)).toBeFalsy();
+      expect(none(valueEq('b'))(source)).toBeFalsy();
+      expect(none([2, 'b'])(source)).toBeFalsy();
+      expect(none(valueEq('c'))(source)).toBeFalsy();
+      expect(none([3, 'c'])(source)).toBeFalsy();
+    });
   });
 });

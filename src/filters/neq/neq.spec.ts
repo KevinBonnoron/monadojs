@@ -1,18 +1,190 @@
+import { DEFAULT_ARRAY, DEFAULT_DATE, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
 import { LOOSE_EQUALITY } from '../../utils';
 import { neq } from './neq';
 
 describe('neq', () => {
-  it('should return if values are not equals', () => {
-    const array: any[] = [];
-    const object = {};
+  describe('null', () => {
+    const source = null;
 
-    expect(neq(1)(0)).toBeTruthy();
-    expect(neq(1)('1')).toBeTruthy();
-    expect(neq(1, LOOSE_EQUALITY)('1')).toBeFalsy();
-    expect(neq('a')('b')).toBeTruthy();
-    expect(neq(array)(array)).toBeFalsy();
-    expect(neq(object)(object)).toBeFalsy();
-    expect(neq(null)(undefined)).toBeTruthy();
-    expect(neq(undefined)(null)).toBeTruthy();
+    it('should return true', () => {
+      const operator = neq({});
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(null);
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('undefined', () => {
+    const source = undefined;
+
+    it('should return true', () => {
+      const operator = neq({});
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(undefined);
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('string', () => {
+    const source = 'a';
+
+    it('should return true', () => {
+      const operator = neq('b');
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq('a');
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('number', () => {
+    const source = 1;
+
+    it('should return true', () => {
+      const operator = neq(0);
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false for number string', () => {
+      const operator = neq('1', LOOSE_EQUALITY);
+      expect(operator(source)).toBeFalsy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(1);
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('boolean', () => {
+    const source = true;
+
+    it('should return true', () => {
+      const operator = neq(false);
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(true);
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('symbol', () => {
+    const source = Symbol('SYMBOL');
+
+    it('should return true', () => {
+      const operator = neq(Symbol('SYMBOL'));
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(source);
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('Date', () => {
+    const source = DEFAULT_DATE;
+
+    it('should return true', () => {
+      const operator = neq(new Date('2020-01-01T00:00:01Z'));
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(new Date('2020-01-01T00:00:00Z'));
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('RexExp', () => {
+    const source = /[0-9]/g;
+
+    it('should return true', () => {
+      const operator = neq(new RegExp('[0-9]'));
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(new RegExp('[0-9]', 'g'));
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('Array', () => {
+    const source = DEFAULT_ARRAY;
+
+    it('should return true', () => {
+      const operator = neq([3, 2, 1]);
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq([1, 2, 3]);
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('Set', () => {
+    const source = DEFAULT_SET;
+
+    it('should return true', () => {
+      const operator = neq(new Set([3, 2, 1]));
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(new Set([1, 2, 3]));
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('Map', () => {
+    const source = DEFAULT_MAP;
+
+    it('should return true', () => {
+      const operator = neq(
+        new Map([
+          [1, 'c'],
+          [2, 'b'],
+          [3, 'a'],
+        ])
+      );
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq(
+        new Map([
+          [1, 'a'],
+          [2, 'b'],
+          [3, 'c'],
+        ])
+      );
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('PlainObject', () => {
+    const source = DEFAULT_PLAIN_OBJECT;
+
+    it('should return true', () => {
+      const operator = neq({ a: 1, c: 3 });
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = neq({ a: 1, b: 2, c: 3 });
+      expect(operator(source)).toBeFalsy();
+    });
   });
 });

@@ -1,15 +1,56 @@
+import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
 import { map } from './map';
 
-const plusOne = (value: number) => value + 1;
-
 describe('map', () => {
-  it('should map an array', () => {
-    const value = [0, 1, 2, 3];
-    expect(map(plusOne)(value)).toStrictEqual([1, 2, 3, 4]);
+  describe('Array', () => {
+    const plusOne = (value: number) => value + 1;
+    const operator = map(plusOne);
+
+    it('should map', () => {
+      const source = DEFAULT_ARRAY;
+      const expected = [2, 3, 4];
+
+      expect(operator(source)).toStrictEqual(expected);
+    });
   });
 
-  it('should map an object', () => {
-    const value = { a: 0, b: 1, c: 2, d: 3 };
-    expect(map(plusOne)(value)).toStrictEqual({ a: 1, b: 2, c: 3, d: 4 });
+  describe('Set', () => {
+    const plusOne = (value: number) => value + 1;
+    const operator = map(plusOne);
+
+    it('should map', () => {
+      const source = DEFAULT_SET;
+      const expected = new Set([2, 3, 4]);
+
+      expect(operator(source)).toStrictEqual(expected);
+    });
+  });
+
+  describe('Map', () => {
+    const plusOne = ([key, value]: [key: number, value: string]) => [key + 1, value];
+    const operator = map(plusOne);
+
+    it('should map', () => {
+      const source = DEFAULT_MAP;
+      const expected = new Map([
+        [2, 'a'],
+        [3, 'b'],
+        [4, 'c'],
+      ]);
+
+      expect(operator(source)).toStrictEqual(expected);
+    });
+  });
+
+  describe('PlainObject', () => {
+    const plusOne = (value: number) => value + 1;
+    const operator = map(plusOne);
+
+    it('should map', () => {
+      const source = DEFAULT_PLAIN_OBJECT;
+      const expected = { a: 2, b: 3, c: 4 };
+
+      expect(operator(source)).toStrictEqual(expected);
+    });
   });
 });

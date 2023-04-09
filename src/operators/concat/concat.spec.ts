@@ -16,20 +16,20 @@ describe('concat', () => {
     const source = DEFAULT_MAP;
 
     it('should concat', () => {
-      const operator = concat([3, 'd']);
+      const operator = concat([4, 'd']);
       expect(operator(source)).toStrictEqual(
         new Map([
-          [0, 'a'],
-          [1, 'b'],
-          [2, 'c'],
-          [3, 'd'],
+          [1, 'a'],
+          [2, 'b'],
+          [3, 'c'],
+          [4, 'd'],
         ])
       );
       expect(source).toStrictEqual(
         new Map([
-          [0, 'a'],
-          [1, 'b'],
-          [2, 'c'],
+          [1, 'a'],
+          [2, 'b'],
+          [3, 'c'],
         ])
       );
     });

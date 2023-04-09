@@ -84,12 +84,16 @@ Logical operators are function that can be used in combination with `filter` ope
 
 - capitalize
 - ceil
+- clone
 - divide
+- exclude
 - floor
 - lower
-- [match](examples/mappers/match/index.md)
+- math
+- maybe
 - minus
 - modulo
+- pick
 - plus
 - pow
 - [prop](examples/mappers/prop/index.md)
@@ -99,6 +103,7 @@ Logical operators are function that can be used in combination with `filter` ope
 - substring
 - times
 - transform
+- trunc
 - upper
 
 ### Operators
@@ -115,11 +120,15 @@ Operators are functions that can be applyed on both object or array.
 - [filter](examples/operators/filter/index.md)
 - find
 - findIndex
+- freeze
+- get
+- groupBy
 - identity
 - [iif](examples/operators/iif/index.md)
 - indexOf
 - keys
 - length
+- [match](examples/operators/match/index.md)
 - [map](examples/operators/map/index.md)
 - merge
 - [none](examples/operators/none/index.md)
@@ -127,6 +136,7 @@ Operators are functions that can be applyed on both object or array.
 - pop
 - [reduce](examples/operators/reduce/index.md)
 - reverse
+- seal
 - shift
 - shuffle
 - some
@@ -138,13 +148,6 @@ Operators are functions that can be applyed on both object or array.
 - values
 - walk
 
-### Projections
-
-Projections are a combination of operator and mapper at the same time. It can handle arrays or object at the same time and produce a value.
-
-- exclude
-- pick
-
 ### Reducers
 
 Reducers are functions that produce a single result by iterating over the passed array.
@@ -153,7 +156,6 @@ Reducers are functions that produce a single result by iterating over the passed
 - chunk
 - first
 - flatten
-- group
 - head
 - join
 - last

@@ -1,5 +1,5 @@
 ```typescript
-import { group, prop, reduce, tap } from 'monadojs';
+import { groupBy, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -10,7 +10,10 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(reduce(group(prop('sex'))), tap(console.log));
+persons.pipe(
+  groupBy('sex'),
+  tap(console.log)
+);
 
 /*
 {

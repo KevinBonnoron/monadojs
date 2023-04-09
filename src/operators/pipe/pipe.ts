@@ -45,10 +45,12 @@ export function pipe<A, B>(...operators: MonotypeOperator[]): Operator<A, B>;
 export function pipe(...operators: MonotypeOperator[]) {
   return (source: unknown) => {
     const catchOperator = operators.find(ɵisCatchOperator);
-    return operators.filter(not(ɵisCatchOperator)).reduce((value, operator) => {
+    return operators.filter(not(ɵisCatchOperator)).reduce((value, operator, _, array) => {
       try {
         return operator(value);
       } catch (e: unknown) {
+        // Early eject reducer
+        array.splice(1);
         if (catchOperator) {
           return catchOperator(e);
         }

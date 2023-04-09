@@ -16,7 +16,7 @@ describe('catch-error', () => {
     ];
 
     const operator = pipe(
-      map((person) => `${person.age} ${person.sex}`),
+      map((person: any) => `${person.age} ${person.sex}`),
       catchError(() => [])
     );
 

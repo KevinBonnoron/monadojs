@@ -1,16 +1,16 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
 import { hasKey } from './has-key';
 
 describe('has-key', () => {
-  describe('Object', () => {
-    const source = { a: 1, b: 2, c: 3 };
+  describe('PlainObject', () => {
+    const source = DEFAULT_PLAIN_OBJECT;
 
     it('should return true', () => {
       const operator = hasKey('a');
       expect(operator(source)).toBeTruthy();
     });
 
-    it('should not return true', () => {
+    it('should return false', () => {
       const operator = hasKey('d');
       expect(operator(source)).toBeFalsy();
     });
@@ -20,12 +20,12 @@ describe('has-key', () => {
     const source = DEFAULT_MAP;
 
     it('should return true', () => {
-      const operator = hasKey(0);
+      const operator = hasKey(1);
       expect(operator(source)).toBeTruthy();
     });
 
-    it('should not return true', () => {
-      const operator = hasKey(3);
+    it('should return false', () => {
+      const operator = hasKey(0);
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -33,7 +33,7 @@ describe('has-key', () => {
   describe('others', () => {
     const operator = hasKey('a');
 
-    it('should not return true', () => {
+    it('should return false', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(1)).toBeFalsy();
       expect(operator(true)).toBeFalsy();

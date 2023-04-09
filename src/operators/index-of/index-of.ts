@@ -1,13 +1,15 @@
-import { isArray, isObject } from '../../utils';
-import { keys } from '../keys/keys';
+import { eq } from '../../filters';
+import { isCollection, isMap, isPlainObject } from '../../utils';
 
 export const indexOf =
-  (searchedValue: any) =>
+  (searchElement: any, fromIndex?: number) =>
   <S>(source: S) =>
-    isArray<S>(source)
-      ? source.indexOf(searchedValue)
-      : isObject<S>(source)
-      ? keys()(source).find((key) => source[key] === searchedValue) ?? -1
-      : source === searchedValue
+    isMap(source)
+      ? [...source.keys()][[...source.values()].indexOf(searchElement, fromIndex)] ?? -1
+      : isCollection<S>(source)
+      ? [...source.values()].indexOf(searchElement, fromIndex)
+      : isPlainObject(source)
+      ? Object.keys(source)[Object.values(source).findIndex(eq(searchElement), fromIndex)] ?? -1
+      : source === searchElement
       ? 0
       : -1;

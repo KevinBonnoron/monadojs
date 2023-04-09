@@ -1,6 +1,6 @@
 import { eq } from '../../filters';
 import { Filter } from '../../types';
-import { isArray, isFunction } from '../../utils';
+import { isCollection, isFunction } from '../../utils';
 
 export const none =
   <P>(predicate: P | Filter) =>
@@ -9,5 +9,5 @@ export const none =
       predicate = eq(predicate);
     }
 
-    return isArray<S>(source) ? !source.some(predicate) : !predicate(source);
+    return isCollection(source) ? ![...source].some(predicate) : !predicate(source);
   };

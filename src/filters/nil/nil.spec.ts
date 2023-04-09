@@ -1,19 +1,38 @@
 import { nil } from './nil';
 
 describe('nil', () => {
-  it('should return if value is nil', () => {
-    const anonymousArrowFn = () => {};
-    const anonymousFn = function () {};
+  const operator = nil();
 
-    expect([null, undefined, 1, 'a', true, [], anonymousArrowFn, anonymousFn].filter(nil())).toStrictEqual([null, undefined]);
-    expect(nil()(null)).toBeTruthy();
-    expect(nil()(undefined)).toBeTruthy();
-    expect(nil()(1)).toBeFalsy();
-    expect(nil()('a')).toBeFalsy();
-    expect(nil()(true)).toBeFalsy();
-    expect(nil()([])).toBeFalsy();
-    expect(nil()(anonymousArrowFn)).toBeFalsy();
-    expect(nil()(anonymousFn)).toBeFalsy();
-    expect(nil()([null, undefined, 1, 'a', true, [], anonymousArrowFn, anonymousFn])).toBeFalsy();
+  describe('null', () => {
+    it('should return true', () => {
+      expect(operator(null)).toBeTruthy();
+    });
+  });
+
+  describe('undefined', () => {
+    it('should return true', () => {
+      expect(operator(undefined)).toBeTruthy();
+    });
+  });
+
+  describe('nil', () => {
+    expect(operator(undefined)).toBeTruthy();
+  });
+
+  describe('others', () => {
+    it('should return false', () => {
+      const anonymousArrowFn = () => {};
+      const anonymousFn = function () {};
+
+      expect([null, undefined, 1, 'a', true, [], anonymousArrowFn, anonymousFn].filter(operator)).toStrictEqual([null, undefined]);
+
+      expect(operator(1)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator([null, undefined, 1, 'a', true, [], anonymousArrowFn, anonymousFn])).toBeFalsy();
+    });
   });
 });

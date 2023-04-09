@@ -4,11 +4,13 @@ import { upper } from '../upper/upper';
 import { transform } from './transform';
 
 describe('transform', () => {
-  it('should transform object', () => {
-    expect(transform({ a: upper(), b: lower(), c: { d: plus(1) } })({ a: 'abc', b: 'DEF', c: { d: 1 } })).toStrictEqual({
-      a: 'ABC',
-      b: 'def',
-      c: { d: 2 },
+  describe('PlainObject', () => {
+    it('should transform', () => {
+      const source = { a: 'abc', b: 'DEF', c: { d: 1 } };
+      const operator = transform({ a: upper(), b: lower(), c: { d: plus(1) } });
+      const expected = { a: 'ABC', b: 'def', c: { d: 2 } };
+
+      expect(operator(source)).toStrictEqual(expected);
     });
   });
 });

@@ -1,6 +1,6 @@
 import { eq } from '../../filters';
 import { Filter } from '../../types';
-import { isArray, isFunction } from '../../utils';
+import { isCollection, isFunction } from '../../utils';
 
 export const one =
   <P>(predicate: P | Filter) =>
@@ -9,5 +9,5 @@ export const one =
       predicate = eq(predicate);
     }
 
-    return isArray<S>(source) ? source.filter(predicate).length === 1 : predicate(source);
+    return isCollection<S>(source) ? [...source].filter(predicate).length === 1 : predicate(source);
   };

@@ -10,23 +10,7 @@ describe('ends-with', () => {
       expect(operator(source)).toBeTruthy();
     });
 
-    it('should not return true', () => {
-      const operator = endsWith('a');
-
-      expect(operator(source)).toBeFalsy();
-    });
-  });
-
-  describe('Array', () => {
-    const source = ['abc', 'bac'];
-
-    it('should return true', () => {
-      const operator = endsWith('c');
-
-      expect(operator(source)).toBeTruthy();
-    });
-
-    it('should not return true', () => {
+    it('should return false', () => {
       const operator = endsWith('a');
 
       expect(operator(source)).toBeFalsy();

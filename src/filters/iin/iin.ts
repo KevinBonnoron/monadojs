@@ -1,6 +1,6 @@
 import { includes } from '../includes/includes';
 
-type Container<T> = Array<T> | Map<any, T> | Set<T>;
+type Container<T> = Array<T> | Map<any, T> | Set<T> | string;
 
 export const iin =
   <S>(container: Container<S>) =>

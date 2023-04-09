@@ -1,6 +1,6 @@
-import { isArray, isString } from '../../utils';
+import { isString } from '../../utils';
 
 export const endsWith =
-  (expected: string) =>
+  <E>(expected: E) =>
   <S>(source: S): boolean =>
-    isArray<S>(source) ? source.every(endsWith(expected)) : isString(source) ? source.endsWith(expected) : false;
+    isString(source) ? source.endsWith(expected as string) : false;

@@ -18,7 +18,7 @@
     "prepare": "husky install",
     "test": "jest --coverage --onlyChanged",
     "test:watch": "jest --onlyChanged --watch",
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist/** && rimraf build/** && tsc --project tsconfig.type-check.json",
     "build": "rollup -c",
     "prepack": "yarn build",
     "release": "release-it --only-version"

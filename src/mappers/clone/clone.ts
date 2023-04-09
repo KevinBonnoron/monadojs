@@ -1,14 +1,14 @@
-import { entries } from '../../operators';
-import { isArray, isDate, isMap, isObject, isSet } from '../../utils';
+import { entries } from '../../operators/entries/entries';
+import { isArray, isCollection, isDate, isObject, ɵcopyCollection } from '../../utils';
 
 const cloneImpl = <T>(object: T) => {
-  const cloned: T = {} as T;
+  const cloned: any = {};
 
-  for (const [key, value] of entries<T>()(object)) {
+  for (const [key, value] of entries()(object as any)) {
     if (isObject(value)) {
       cloned[key] = clone()(value);
     } else if (isArray(value)) {
-      cloned[key] = value.map(clone()) as any;
+      cloned[key] = value.map(clone());
     } else {
       cloned[key] = value;
     }
@@ -20,12 +20,8 @@ const cloneImpl = <T>(object: T) => {
 export const clone =
   () =>
   <S>(source: S): S =>
-    isArray<S>(source)
-      ? ([...source.map(clone())] as S)
-      : isMap(source)
-      ? (new Map([...source].map(clone())) as S)
-      : isSet(source)
-      ? (new Set([...source].map(clone())) as S)
+    isCollection(source)
+      ? (ɵcopyCollection(source, [...source].map(clone())) as S)
       : isDate(source)
       ? (new Date(+source) as S)
       : isObject<S>(source)

@@ -1,9 +1,5 @@
-import { isMaybe, isNil } from '../utils/object/object.utils';
 import { AnyFunction } from './any-function.type';
 import { Operator } from './operator.type';
-
-export const matchJust = (value: unknown) => (isMaybe(value) && value.isJust) || !isNil(value);
-export const matchNothing = (value: unknown) => (isMaybe(value) && value.isNothing) || isNil(value);
 
 export interface Maybe<T = any> {
   expect(error: string): T;

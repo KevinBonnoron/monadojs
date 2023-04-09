@@ -2,244 +2,413 @@ import { Maybe } from '../../types';
 import { Just, Nothing } from '../../utils';
 import { ofType } from './of-type';
 
-class DummyClass {
-  a!: number;
-}
-
-type Expectation = { value: unknown; expect: boolean };
-const checkExpectations = (fn: (value: unknown) => boolean, expectations: Expectation[]) =>
-  expectations.forEach((expectation) => expect(fn(expectation.value)).toEqual(expectation.expect));
-
-const stringExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: true },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const numberExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: true },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const booleanExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: true },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const symbolExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: true },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const dateExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: true },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const regExpExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: true },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const arrayExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: true },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const mapExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: true },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const objectExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: true },
-  { value: new RegExp(''), expect: true },
-  { value: [], expect: false },
-  { value: new Map(), expect: true },
-  { value: {}, expect: true },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: true },
-  { value: Nothing, expect: true },
-  { value: new DummyClass(), expect: true },
-];
-const functionExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: true },
-  { value: function () {}, expect: true },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: false },
-];
-const maybeExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: true },
-  { value: Nothing, expect: true },
-  { value: new DummyClass(), expect: false },
-];
-const dummyClassExpectations: Expectation[] = [
-  { value: null, expect: false },
-  { value: undefined, expect: false },
-  { value: 'a', expect: false },
-  { value: 0, expect: false },
-  { value: false, expect: false },
-  { value: Symbol(), expect: false },
-  { value: new Date(), expect: false },
-  { value: new RegExp(''), expect: false },
-  { value: [], expect: false },
-  { value: new Map(), expect: false },
-  { value: {}, expect: false },
-  { value: () => {}, expect: false },
-  { value: function () {}, expect: false },
-  { value: Just(''), expect: false },
-  { value: Nothing, expect: false },
-  { value: new DummyClass(), expect: true },
-];
-
 describe('of-type', () => {
-  it('should return if value is of specified type', () => {
-    checkExpectations(ofType(String), stringExpectations);
-    checkExpectations(ofType(Number), numberExpectations);
-    checkExpectations(ofType(Boolean), booleanExpectations);
-    checkExpectations(ofType(Symbol), symbolExpectations);
-    checkExpectations(ofType(Date), dateExpectations);
-    checkExpectations(ofType(RegExp), regExpExpectations);
-    checkExpectations(ofType(Array), arrayExpectations);
-    checkExpectations(ofType(Map), mapExpectations);
-    checkExpectations(ofType(Object), objectExpectations);
-    checkExpectations(ofType(Function), functionExpectations);
-    checkExpectations(ofType(Maybe), maybeExpectations);
-    checkExpectations(ofType(DummyClass), dummyClassExpectations);
+  const anonymousArrowFn = () => {};
+  const anonymousFn = function () {};
+  const emptyResolvedPromise = Promise.resolve();
+
+  describe('null', () => {
+    const operator = ofType(null);
+
+    it('should return true', () => {
+      expect(operator(null)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('undefined', () => {
+    const operator = ofType(undefined);
+
+    it('should return true', () => {
+      expect(operator(undefined)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('string', () => {
+    const operator = ofType(String);
+
+    it('should return true', () => {
+      expect(operator('a')).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('number', () => {
+    const operator = ofType(Number);
+
+    it('should return true', () => {
+      expect(operator(0)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('boolean', () => {
+    const operator = ofType(Boolean);
+
+    it('should return true', () => {
+      expect(operator(true)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('symbol', () => {
+    const operator = ofType(Symbol);
+
+    it('should return true', () => {
+      expect(operator(Symbol())).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('Date', () => {
+    const operator = ofType(Date);
+
+    it('should return true', () => {
+      expect(operator(new Date())).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('Promise', () => {
+    const operator = ofType(Promise);
+
+    it('should return true', () => {
+      expect(operator(emptyResolvedPromise)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('RegExp', () => {
+    const operator = ofType(RegExp);
+
+    it('should return true', () => {
+      expect(operator(new RegExp(''))).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('Array', () => {
+    const operator = ofType(Array);
+
+    it('should return true', () => {
+      expect(operator([])).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('Set', () => {
+    const operator = ofType(Set);
+
+    it('should return true', () => {
+      expect(operator(new Set())).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('Map', () => {
+    const operator = ofType(Map);
+
+    it('should return true', () => {
+      expect(operator(new Map())).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('Object', () => {
+    const operator = ofType(Object);
+
+    it('should return true', () => {
+      expect(operator(new Date())).toBeTruthy();
+      expect(operator(emptyResolvedPromise)).toBeTruthy();
+      expect(operator(new RegExp(''))).toBeTruthy();
+      expect(operator(new Set())).toBeTruthy();
+      expect(operator(new Map())).toBeTruthy();
+      expect(operator({})).toBeTruthy();
+      expect(operator(Just(1))).toBeTruthy();
+      expect(operator(Nothing)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator([])).toBeFalsy();
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+    });
+  });
+
+  describe('Function', () => {
+    const operator = ofType(Function);
+
+    it('should return true', () => {
+      expect(operator(anonymousArrowFn)).toBeTruthy();
+      expect(operator(anonymousFn)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('Maybe', () => {
+    const operator = ofType(Maybe);
+
+    it('should return true', () => {
+      expect(operator(Just(1))).toBeTruthy();
+      expect(operator(Nothing)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(new Date())).toBeFalsy();
+      expect(operator(emptyResolvedPromise)).toBeFalsy();
+      expect(operator(new RegExp(''))).toBeFalsy();
+      expect(operator([])).toBeFalsy();
+      expect(operator(new Set())).toBeFalsy();
+      expect(operator(new Map())).toBeFalsy();
+      expect(operator({})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+    });
   });
 });

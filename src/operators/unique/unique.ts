@@ -1,12 +1,16 @@
+import { eq } from '../../filters';
 import { Operator } from '../../types';
-import { isArray, isMap } from '../../utils';
+import { isCollection, isMap, ɵcopyCollection } from '../../utils';
+import { findIndex } from '../find-index/find-index';
 import { identity } from '../identity/identity';
+import { pipe } from '../pipe/pipe';
 
 export const unique =
   (operator: Operator = identity()) =>
-  <S>(source: S) =>
-    (isArray<S>(source)
-      ? source.filter((value, index, array) => array.findIndex((v) => operator(v) === operator(value)) === index)
-      : isMap<any, S>(source)
-      ? new Map([...source].filter(([_, value], index, array) => array.findIndex(([, v]) => operator(v) === operator(value)) === index))
-      : source) as S;
+  <S>(source: S) => {
+    // For Map we must extract the value
+    const valueOperator = isMap(source) ? ([, value]: any) => operator(value) : operator;
+    const uniqueImpl = (value: any, index: number, array: any) => findIndex(pipe(valueOperator, eq(valueOperator(value))))(array) === index;
+
+    return isCollection(source) ? ɵcopyCollection(source, [...source].filter(uniqueImpl)) : source;
+  };

@@ -1,11 +1,33 @@
+import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { combine } from './combine';
 
 describe('combine', () => {
-  it('should combile operators', () => {
-    const mapTo = (value: number) => () => value;
+  const mapToOperator = (value: number) => () => value;
 
-    expect(combine(mapTo(5), mapTo(10))(1)).toStrictEqual([5, 10]);
-    expect(combine(mapTo(5), mapTo(10))([1, 2])).toStrictEqual([5, 10]);
-    expect(combine(mapTo(5), mapTo(10))(null)).toStrictEqual([5, 10]);
+  describe('Array', () => {
+    const source = DEFAULT_ARRAY;
+
+    it('should map each element to a specific value', () => {
+      const expected = [5, 10];
+      expect(combine(mapToOperator(5), mapToOperator(10))(source)).toStrictEqual(expected);
+    });
+  });
+
+  describe('Set', () => {
+    const source = DEFAULT_SET;
+
+    it('should map each element to a specific value', () => {
+      const expected = [5, 10];
+      expect(combine(mapToOperator(5), mapToOperator(10))(source)).toStrictEqual(expected);
+    });
+  });
+
+  describe('Map', () => {
+    const source = DEFAULT_MAP;
+
+    it('should map each element to a specific value', () => {
+      const expected = [5, 10];
+      expect(combine(mapToOperator(5), mapToOperator(10))(source)).toStrictEqual(expected);
+    });
   });
 });

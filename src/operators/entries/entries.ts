@@ -1,16 +1,18 @@
-import { isArray, isMap, isObject, isSet } from '../../utils';
+import { isArray, isMap, isPlainObject, isSet } from '../../utils';
 
-type Entry<T> = { [K in keyof T]: [K, T[K]] }[keyof T];
+function entriesImpl<V>(source: V[] | Set<V>): IterableIterator<[number, V]>;
+function entriesImpl<K, V>(source: Map<K, V>): IterableIterator<[K, V]>;
+function entriesImpl<K extends PropertyKey, V>(source: Record<K, V>): IterableIterator<[K, V]>;
+function entriesImpl(source: unknown) {
+  return isArray(source)
+    ? [...source].entries()
+    : isSet(source)
+    ? [...source].entries()
+    : isMap(source)
+    ? source.entries()
+    : isPlainObject(source)
+    ? [...Object.entries(source)]
+    : [].entries();
+}
 
-export const entries =
-  <S>() =>
-  (source: S) =>
-    isArray<S>(source)
-      ? ([...source.entries()] as unknown as ReadonlyArray<Entry<S>>)
-      : isMap(source)
-      ? ([...source.entries()] as unknown as ReadonlyArray<Entry<S>>)
-      : isSet(source)
-      ? ([...source].map((value, index) => [index, value]) as unknown as ReadonlyArray<Entry<S>>)
-      : isObject<S>(source)
-      ? (Object.entries(source) as unknown as ReadonlyArray<Entry<S>>)
-      : [];
+export const entries = () => entriesImpl;

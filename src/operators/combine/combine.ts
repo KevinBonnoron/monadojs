@@ -31,10 +31,12 @@ export function combine<A, B>(...operators: MonotypeOperator[]): Operator<A, B>;
 export function combine(...operators: MonotypeOperator[]) {
   return (source: unknown) => {
     const catchOperator = operators.find(ɵisCatchOperator);
-    return operators.filter(not(ɵisCatchOperator)).reduce((accumulator, operator) => {
+    return operators.filter(not(ɵisCatchOperator)).reduce((accumulator, operator, _, array) => {
       try {
         return accumulator.concat([operator(source)]);
       } catch (e) {
+        // Early eject reducer
+        array.splice(1);
         if (catchOperator) {
           return catchOperator(e);
         }

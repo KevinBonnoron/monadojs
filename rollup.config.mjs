@@ -5,8 +5,6 @@ import esbuild from 'rollup-plugin-esbuild';
 import typescript from 'rollup-plugin-typescript';
 import packageConfig from './package.json' assert { type: 'json' };
 
-const name = packageConfig.main.replace(/\.cjs$/, '');
-
 const bundle = (config) => ({
   ...config,
   input: 'src/index.ts',
@@ -17,7 +15,7 @@ export default [
     plugins: [esbuild(), terser()],
     output: [
       {
-        file: `${name}.mjs`,
+        file: packageConfig.module,
         format: 'es',
         sourcemap: true,
       },
@@ -27,7 +25,7 @@ export default [
     plugins: [typescript(), commonjs(), terser()],
     output: [
       {
-        file: `${name}.cjs`,
+        file: packageConfig.main,
         format: 'commonjs',
         sourcemap: true,
       }
@@ -36,7 +34,7 @@ export default [
   bundle({
     plugins: [dts()],
     output: {
-      file: `${name}.d.ts`,
+      file: packageConfig.types,
       format: 'es',
     },
   }),

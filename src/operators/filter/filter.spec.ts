@@ -13,6 +13,17 @@ describe('filter', () => {
     });
   });
 
+  describe('Set', () => {
+    const source = DEFAULT_SET;
+
+    it('should filter', () => {
+      const keepGreaterThan = (threshold: number) => (value: number) => value > threshold;
+      const operator = filter(keepGreaterThan(1));
+
+      expect(operator(source)).toStrictEqual(new Set([2, 3]));
+    });
+  });
+
   describe('Map', () => {
     const source = DEFAULT_MAP;
 
@@ -25,25 +36,14 @@ describe('filter', () => {
 
       expect(operator(source)).toStrictEqual(
         new Map([
-          [1, 'b'],
-          [2, 'c'],
+          [2, 'b'],
+          [3, 'c'],
         ])
       );
     });
   });
 
-  describe('Set', () => {
-    const source = DEFAULT_SET;
-
-    it('should filter', () => {
-      const keepGreaterThan = (threshold: number) => (value: number) => value > threshold;
-      const operator = filter(keepGreaterThan(1));
-
-      expect(operator(source)).toStrictEqual(new Set([2, 3]));
-    });
-  });
-
-  describe('Object', () => {
+  describe('PlainObject', () => {
     const source = { a: 0, b: 1, c: 2, d: 3 };
 
     it('should filter object', () => {

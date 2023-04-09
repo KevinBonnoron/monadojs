@@ -1,13 +1,7 @@
 import { Filter } from '../../types';
-import { isArray, isMap, isSet } from '../../utils';
+import { isCollection, ɵcopyCollection } from '../../utils';
 
 export const filter =
   (predicate: Filter) =>
   <S>(source: S) =>
-    (isArray(source)
-      ? source.filter(predicate)
-      : isMap(source)
-      ? new Map([...source].filter(predicate))
-      : isSet(source)
-      ? new Set([...source].filter(predicate))
-      : [source].filter(predicate)) as S;
+    isCollection(source) ? (ɵcopyCollection(source, [...source].filter(predicate)) as S) : ([source].filter(predicate) as S);

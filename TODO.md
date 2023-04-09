@@ -1,55 +1,42 @@
-# Filters
-Ensure every .spec.ts files have the same pattern (gt is a good example).
-- [ ] after
-- [ ] before
-- [ ] empty
-- [x] ends-with
-- [x] eq
-- [x] gt
-- [x] gte
-- [x] has-key
-- [ ] iin
-- [x] includes
-- [ ] like
-- [x] lt
-- [x] lte
-- [ ] neq
-- [ ] nil
-- [ ] of-type
-- [ ] starts-with
-
 # Operators
 All operators should handle Map & Set as `source`.
 
 - [ ] apply-spec
 - [x] catch-error (not affected)
-- [ ] combine
+- [x] combine
 - [x] concat
 - [x] enclose-in
 - [x] entries
-- [ ] every
+- [x] every
 - [x] filter
-- [ ] find
-- [ ] find-index
-- [ ] identity
-- [ ] iif
-- [ ] index-of
-- [ ] keys
-- [ ] map
+- [x] find
+- [x] find-index
+- [ ] freeze
+- [ ] get
+- [x] group-by
+- [x] identity
+- [x] iif
+- [x] index-of
+- [x] keys
+- [x] length
+- [x] map
+- [ ] match
 - [ ] merge
-- [ ] none
-- [ ] one
-- [ ] pipe
+- [x] none
+- [x] one
+- [x] pipe
 - [x] pop
 - [x] reduce
-- [ ] reverse
+- [x] reverse
+- [ ] seal
 - [x] shift
 - [x] shuffle (not affected)
-- [ ] some
+- [x] some
 - [x] sort (not affected)
 - [x] tap
 - [x] throw-error (not affected)
-- [ ] unique
+- [ ] to
+- [x] unique
 - [x] values
 - [ ] walk
 

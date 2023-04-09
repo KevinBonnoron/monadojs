@@ -17,7 +17,7 @@ describe('reduce', () => {
       const minReducer = ([a]: [number], [b]: [number]) => [a > b ? b : a] as [number];
       const source = DEFAULT_MAP;
 
-      expect(reduce(minReducer)(source)).toEqual([0]);
+      expect(reduce(minReducer)(source)).toEqual([1]);
       expect(reduce(minReducer, [-1])(source)).toEqual([-1]);
     });
   });

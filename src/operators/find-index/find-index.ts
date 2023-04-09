@@ -1,13 +1,15 @@
-import { eq } from '../../filters';
-import { Filter } from '../../types';
-import { isArray, isFunction } from '../../utils';
+import { Filter } from '../../types/filter.type';
+import { isCollection, isMap, isPlainObject } from '../../utils/object/object.utils';
 
 export const findIndex =
-  <P>(predicate: P | Filter) =>
-  <S>(source: S) => {
-    if (!isFunction(predicate)) {
-      predicate = eq(predicate);
-    }
-
-    return isArray<S>(source) ? source.findIndex(predicate) : predicate(source) ? 0 : -1;
-  };
+  (predicate: Filter) =>
+  <S>(source: S): PropertyKey =>
+    isMap(source)
+      ? ([...source.keys()][[...source.values()].findIndex(predicate)] as PropertyKey) ?? -1
+      : isCollection(source)
+      ? [...source.values()].findIndex(predicate)
+      : isPlainObject(source)
+      ? Object.keys(source)[Object.values(source).findIndex(predicate)] ?? -1
+      : predicate(source)
+      ? 0
+      : -1;

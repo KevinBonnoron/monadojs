@@ -5,7 +5,7 @@ import { entries } from '../entries/entries';
 type Specs<T, V = any> = Record<keyof T, (...args: any[]) => Mapper<any, V>>;
 
 const applySpecImpl = <T, V>(specs: Specs<T>, accumulator: T, value: V) => {
-  for (const [key, mapper] of entries<Specs<T>>()(specs)) {
+  for (const [key, mapper] of entries()(specs)) {
     if (isUndefined(accumulator[key])) {
       accumulator[key] = value as any;
     } else {

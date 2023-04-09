@@ -1,6 +1,6 @@
-import { isArray } from '../../utils';
+import { isCollection, ɵcopyCollection } from '../../utils';
 
 export const reverse =
   () =>
   <S>(source: S) =>
-    isArray<S>(source) ? [...source].reverse() : source;
+    isCollection(source) ? (ɵcopyCollection(source, [...source].reverse()) as S) : source;

@@ -6,7 +6,58 @@ describe('walk', () => {
 
   beforeEach(() => fn.mockRestore());
 
-  describe('Object', () => {
+  describe('Array', () => {
+    const operator = walk(fn);
+
+    it('should walk', () => {
+      const source = DEFAULT_ARRAY;
+
+      expect(operator(source)).toStrictEqual(source);
+      expect(fn).toHaveBeenCalledTimes(4);
+      expect(fn).toHaveBeenCalledWith(source);
+      expect(fn).toHaveBeenCalledWith(1);
+      expect(fn).toHaveBeenCalledWith(2);
+      expect(fn).toHaveBeenCalledWith(3);
+    });
+  });
+
+  describe('Set', () => {
+    const operator = walk(fn);
+
+    it('should walk', () => {
+      const source = DEFAULT_SET;
+
+      expect(operator(source)).toStrictEqual(source);
+      expect(fn).toHaveBeenCalledTimes(4);
+      expect(fn).toHaveBeenCalledWith(source);
+      expect(fn).toHaveBeenCalledWith(1);
+      expect(fn).toHaveBeenCalledWith(2);
+      expect(fn).toHaveBeenCalledWith(3);
+    });
+  });
+
+  describe('Map', () => {
+    const operator = walk(fn);
+
+    it('should walk', () => {
+      const source = DEFAULT_MAP;
+
+      expect(operator(source)).toStrictEqual(source);
+      expect(fn).toHaveBeenCalledTimes(10);
+      expect(fn).toHaveBeenCalledWith(source);
+      expect(fn).toHaveBeenCalledWith([1, 'a']);
+      expect(fn).toHaveBeenCalledWith(1);
+      expect(fn).toHaveBeenCalledWith('a');
+      expect(fn).toHaveBeenCalledWith([2, 'b']);
+      expect(fn).toHaveBeenCalledWith(2);
+      expect(fn).toHaveBeenCalledWith('b');
+      expect(fn).toHaveBeenCalledWith([3, 'c']);
+      expect(fn).toHaveBeenCalledWith(3);
+      expect(fn).toHaveBeenCalledWith('c');
+    });
+  });
+
+  describe('PlainObject', () => {
     const operator = walk(fn);
 
     it('should walk', () => {
@@ -28,57 +79,6 @@ describe('walk', () => {
       source.g = child;
 
       expect(() => operator(source)).not.toThrow(RangeError);
-    });
-  });
-
-  describe('Array', () => {
-    const operator = walk(fn);
-
-    it('should walk', () => {
-      const source = DEFAULT_ARRAY;
-
-      expect(operator(source)).toStrictEqual(source);
-      expect(fn).toHaveBeenCalledTimes(4);
-      expect(fn).toHaveBeenCalledWith(source);
-      expect(fn).toHaveBeenCalledWith(1);
-      expect(fn).toHaveBeenCalledWith(2);
-      expect(fn).toHaveBeenCalledWith(3);
-    });
-  });
-
-  describe('Map', () => {
-    const operator = walk(fn);
-
-    it('should walk', () => {
-      const source = DEFAULT_MAP;
-
-      expect(operator(source)).toStrictEqual(source);
-      expect(fn).toHaveBeenCalledTimes(10);
-      expect(fn).toHaveBeenCalledWith(source);
-      expect(fn).toHaveBeenCalledWith([0, 'a']);
-      expect(fn).toHaveBeenCalledWith(0);
-      expect(fn).toHaveBeenCalledWith('a');
-      expect(fn).toHaveBeenCalledWith([1, 'b']);
-      expect(fn).toHaveBeenCalledWith(1);
-      expect(fn).toHaveBeenCalledWith('b');
-      expect(fn).toHaveBeenCalledWith([2, 'c']);
-      expect(fn).toHaveBeenCalledWith(2);
-      expect(fn).toHaveBeenCalledWith('c');
-    });
-  });
-
-  describe('Set', () => {
-    const operator = walk(fn);
-
-    it('should walk', () => {
-      const source = DEFAULT_SET;
-
-      expect(operator(source)).toStrictEqual(source);
-      expect(fn).toHaveBeenCalledTimes(4);
-      expect(fn).toHaveBeenCalledWith(source);
-      expect(fn).toHaveBeenCalledWith(1);
-      expect(fn).toHaveBeenCalledWith(2);
-      expect(fn).toHaveBeenCalledWith(3);
     });
   });
 

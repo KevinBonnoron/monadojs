@@ -1,11 +1,12 @@
+import { DEFAULT_PLAIN_OBJECT } from '../../../tests/test.data';
 import { prop } from './prop';
 
 describe('prop', () => {
-  describe('Object', () => {
+  describe('PlainObject', () => {
     const operator = prop('a', 4);
 
     it('should return property', () => {
-      const source = { a: 1, b: 2, c: 3 };
+      const source = DEFAULT_PLAIN_OBJECT;
       const expected = 1;
 
       expect(operator(source)).toStrictEqual(expected);
@@ -13,34 +14,7 @@ describe('prop', () => {
     });
 
     it('should return defaultValue', () => {
-      const source = { b: 2, c: 3 };
-      const expected = 4;
-
-      expect(operator(source)).toStrictEqual(expected);
-      expect([source].map(operator)).toStrictEqual([expected]);
-    });
-  });
-
-  describe('Map', () => {
-    const operator = prop('a', 4);
-
-    it('should return property', () => {
-      const source = new Map([
-        ['a', 1],
-        ['b', 2],
-        ['c', 3],
-      ]);
-      const expected = 1;
-
-      expect(operator(source)).toStrictEqual(expected);
-      expect([source].map(operator)).toStrictEqual([expected]);
-    });
-
-    it('should return defaultValue', () => {
-      const source = new Map([
-        ['b', 2],
-        ['c', 3],
-      ]);
+      const source = { a: undefined, b: 2, c: 3 };
       const expected = 4;
 
       expect(operator(source)).toStrictEqual(expected);

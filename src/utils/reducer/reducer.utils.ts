@@ -30,6 +30,28 @@ export const ɵarrayAccumulator = <T>(previousValue: T, currentValue: T, current
  * @param appender
  * @returns
  */
+export const ɵobjectAccumulator2 =
+  <T, U = any>(appender: (accumulator: U, value: T) => U) =>
+  (previousValue: T | U, currentValue: T, currentIndex: number, array: T[]) => {
+    let accumulator: U = {} as U;
+    // If previousValue is ArrayOrMap and currentValue not, then we passed the accumulator
+    if (isObject<U>(previousValue) && !haveSameProperties(previousValue, currentValue)) {
+      accumulator = previousValue;
+    } else if (isObject<T>(previousValue) && currentIndex === 1) {
+      appender(accumulator, previousValue);
+    }
+
+    return appender(accumulator, currentValue);
+  };
+
+/**
+ * @private
+ * @param previousValue
+ * @param currentValue
+ * @param currentIndex
+ * @param appender
+ * @returns
+ */
 export const ɵobjectAccumulator = <T, U = any>(
   previousValue: T | U,
   currentValue: T,

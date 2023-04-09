@@ -1,6 +1,18 @@
-import { isArray, isCollection, isObject } from '../../utils';
+import { isArray, isMap, isPlainObject, isSet } from '../../utils';
 
-export const values =
-  () =>
-  <S extends object>(source: S) =>
-    isArray<S>(source) ? [...source.values()] : isCollection(source) ? [...source.values()] : isObject(source) ? Object.values(source) : source;
+function valuesImpl<V>(source: V[] | Set<V>): IterableIterator<V>;
+function valuesImpl<K, V>(source: Map<K, V>): IterableIterator<V>;
+function valuesImpl<K extends PropertyKey, V>(source: Record<K, V>): IterableIterator<any>;
+function valuesImpl(source: unknown) {
+  return isArray(source)
+    ? [...source].values()
+    : isSet(source)
+    ? [...source].values()
+    : isMap(source)
+    ? source.values()
+    : isPlainObject(source)
+    ? [...Object.values(source)]
+    : [].values();
+}
+
+export const values = () => valuesImpl;

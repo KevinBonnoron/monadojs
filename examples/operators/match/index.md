@@ -4,4 +4,5 @@
 
 ## Examples
 
+- [basic](advanced.md)
 - [advanced](advanced.md)

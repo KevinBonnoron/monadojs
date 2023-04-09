@@ -8,10 +8,10 @@ const collectionReduceImpl = <T, U>(source: Collection<T>, predicate: Reducer, i
 const defaultReduceImpl = <S, U>(source: S, predicate: Reducer, initialValue?: U) =>
   isUndefined(initialValue) ? predicate(source, undefined as S, 1, [source]) : predicate(source, initialValue, 1, [source, initialValue]);
 
-export function reduce(predicate: Reducer): <T, U>(value: T) => U;
-export function reduce<U>(predicate: Reducer<U, U>, initialValue: U): <T>(value: T) => U;
-export function reduce<S, U extends S>(predicate: Reducer<S, U>, initialValue?: U) {
-  return (source: S) =>
+export function reduce<S, U>(predicate: Reducer<U, S>): (source: S) => U;
+export function reduce<S, U>(predicate: Reducer<S, U>, initialValue: U): (source: S) => U;
+export function reduce(predicate: Reducer, initialValue?: unknown) {
+  return (source: unknown) =>
     isEmpty(source)
       ? initialValue
       : isArray(source)

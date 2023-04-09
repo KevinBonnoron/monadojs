@@ -1,7 +1,7 @@
-This example show how to convert an array of person to a single string with
+This example show how to use `match` to convert an array of person into an array of string depending of gender.
 
 ```typescript
-import { eq, lt, map, match, pipe, prop, tap } from 'monadojs';
+import { eq, lt, match, pipe, prop, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -13,13 +13,11 @@ const persons = [
 ];
 
 persons.pipe(
-  map(
-    match([
-      { if: pipe(prop('sex', eq('M'))), then: (value: any) => `Mr ${value.firstName} ${value.lastName}` },
-      { if: pipe(prop('age', lt(18))), then: (value: any) => `Miss ${value.firstName} ${value.lastName}` },
-      { then: (value: any) => `Mrs ${value.firstName} ${value.lastName}` },
-    ])
-  ),
+  match([
+    { if: pipe(prop('sex', eq('M'))), then: (value: any) => `Mr ${value.firstName} ${value.lastName}` },
+    { if: pipe(prop('age', lt(18))), then: (value: any) => `Miss ${value.firstName} ${value.lastName}` },
+    { then: (value: any) => `Mrs ${value.firstName} ${value.lastName}` },
+  ]),
   tap(console.log)
 );
 /*

@@ -1,13 +1,35 @@
+import { DEFAULT_ARRAY, DEFAULT_DATE, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { like } from './like';
 
 describe('like', () => {
-  it('should match regex', () => {
-    expect(like(/[0-9]/)('1')).toBeTruthy();
-    expect(like(/[a-z]/)('a')).toBeTruthy();
-    expect(like(/true/)('true')).toBeTruthy();
-    expect(like(/false/)('false')).toBeTruthy();
-    expect(like(/[a-z]/)(['a', 'b', 'c'])).toBeTruthy();
-    expect(like(/[a-z]/)('A')).toBeFalsy();
-    expect(['1', '2', 'a', 'b'].filter(like(/[0-9]/)));
+  describe('string', () => {
+    const operator = like(/[a-z]/);
+
+    it('should return true', () => {
+      const source = 'abc';
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const source = '123';
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('others', () => {
+    const operator = like(/[0-9]/);
+
+    it('should return false', () => {
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(null)).toBeFalsy();
+      expect(operator(undefined)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(DEFAULT_ARRAY)).toBeFalsy();
+      expect(operator(DEFAULT_SET)).toBeFalsy();
+      expect(operator(DEFAULT_MAP)).toBeFalsy();
+      expect(operator(new RegExp('a'))).toBeFalsy();
+      expect(operator(() => {})).toBeFalsy();
+    });
   });
 });

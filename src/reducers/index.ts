@@ -2,7 +2,6 @@ export * from './avg/avg';
 export * from './chunk/chunk';
 export * from './first/first';
 export * from './flatten/flatten';
-export * from './group/group';
 export * from './head/head';
 export * from './join/join';
 export * from './last/last';

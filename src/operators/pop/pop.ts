@@ -2,6 +2,10 @@ import { Collection } from '../../types';
 import { isArray, isCollection } from '../../utils';
 
 const collectionPopImpl = (collection: Collection) => {
+  if (isArray(collection)) {
+    return collection.pop();
+  }
+
   const result = [...collection].pop();
   collection.delete([...collection.keys()].pop());
   return result;
@@ -10,4 +14,4 @@ const collectionPopImpl = (collection: Collection) => {
 export const pop =
   () =>
   <S>(source: S) =>
-    isArray(source) ? source.pop() : isCollection(source) ? collectionPopImpl(source) : source;
+    isCollection(source) ? collectionPopImpl(source) : source;

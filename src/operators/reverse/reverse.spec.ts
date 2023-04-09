@@ -1,8 +1,34 @@
+import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { reverse } from './reverse';
 
 describe('reverse', () => {
-  it('should reverse array', () => {
-    expect(reverse()([0, 1, 2])).toStrictEqual([2, 1, 0]);
-    expect(reverse()(0)).toStrictEqual(0);
+  const operator = reverse();
+
+  describe('Array', () => {
+    const source = DEFAULT_ARRAY;
+
+    it('should reverse', () => {
+      expect(operator(source)).toStrictEqual([3, 2, 1]);
+    });
+  });
+
+  describe('Set', () => {
+    const source = DEFAULT_SET;
+
+    it('should reverse', () => {
+      expect(operator([...source])).toStrictEqual([3, 2, 1]);
+    });
+  });
+
+  describe('Map', () => {
+    const source = DEFAULT_MAP;
+
+    it('should reverse', () => {
+      expect(operator([...source])).toStrictEqual([
+        [3, 'c'],
+        [2, 'b'],
+        [1, 'a'],
+      ]);
+    });
   });
 });

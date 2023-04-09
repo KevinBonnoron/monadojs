@@ -1,3 +1,4 @@
+import { clone } from '../../mappers/clone/clone';
 import { Operator } from '../../types';
 import { isArray, isObject } from '../../utils';
 import { entries } from '../entries/entries';
@@ -9,7 +10,7 @@ const mergeImpl = <T, V>(target: T, ...sources: V[]): any => {
 
   const source = sources.shift();
   if (isObject(target) && isObject(source)) {
-    for (const [key, value] of entries<V>()(source)) {
+    for (const [key, value] of entries()(source)) {
       if (isObject(value)) {
         if ((target as V)[key] === undefined) {
           Object.assign(target, { [key]: {} });
@@ -36,4 +37,4 @@ const mergeImpl = <T, V>(target: T, ...sources: V[]): any => {
 export const merge =
   <S, V>(...sources: V[]): Operator<S, S & V> =>
   (source: S) =>
-    isArray<S>(source) ? source.map(merge(sources)) : mergeImpl(source, ...sources);
+    isArray<S>(source) ? clone()(source).map(merge(sources)) : mergeImpl(clone()(source), ...sources);

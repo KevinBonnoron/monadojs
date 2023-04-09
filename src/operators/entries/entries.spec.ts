@@ -18,7 +18,7 @@ describe('entries', () => {
         [5, anonymousFn],
         [6, anonymousArrowFn],
       ];
-      expect(operator(source)).toStrictEqual(expected);
+      expect([...operator(source)]).toStrictEqual(expected);
     });
   });
 
@@ -44,7 +44,7 @@ describe('entries', () => {
         ['f', anonymousFn],
         ['g', anonymousArrowFn],
       ];
-      expect(operator(source)).toStrictEqual(expected);
+      expect([...operator(source)]).toStrictEqual(expected);
     });
   });
 
@@ -62,11 +62,11 @@ describe('entries', () => {
         [5, anonymousFn],
         [6, anonymousArrowFn],
       ];
-      expect(operator(source)).toStrictEqual(expected);
+      expect([...operator(source)]).toStrictEqual(expected);
     });
   });
 
-  describe('Object', () => {
+  describe('PlainObject', () => {
     const operator = entries();
 
     it('should return entries', () => {
@@ -80,7 +80,7 @@ describe('entries', () => {
         ['f', anonymousFn],
         ['g', anonymousArrowFn],
       ];
-      expect(operator(source)).toStrictEqual(expected);
+      expect([...operator(source)]).toStrictEqual(expected);
     });
   });
 });

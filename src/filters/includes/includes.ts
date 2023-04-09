@@ -1,6 +1,6 @@
-import { isArray, isCollection, isEqual } from '../../utils';
+import { isArray, isCollection, isEqual, isString } from '../../utils';
 
-type Container<T> = Array<T> | Map<any, T> | Set<T>;
+type Container<T> = Array<T> | Map<any, T> | Set<T> | string;
 
 /**
  * Return true if `source` contains `searchElement` or is equal to it
@@ -14,4 +14,6 @@ export const includes =
       ? source.includes(searchElement)
       : isCollection(source)
       ? [...source.values()].includes(searchElement)
+      : isString(source)
+      ? source.includes(searchElement as string)
       : isEqual(source, searchElement);

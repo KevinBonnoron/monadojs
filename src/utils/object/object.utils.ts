@@ -1,4 +1,4 @@
-import { AllTypes, AnyFunction, Collection, Maybe, nil, NoUndefinedField, Primitive } from '../../types';
+import { AllTypes, AnyFunction, Collection, Maybe, nil, NoUndefinedField, PrimitiveTypes } from '../../types';
 
 /**
  * Type guard for `value === null`
@@ -6,18 +6,21 @@ import { AllTypes, AnyFunction, Collection, Maybe, nil, NoUndefinedField, Primit
  * @returns boolean
  */
 export const isNull = (value: any): value is null => value === null;
+
 /**
  * Type guard for `value === undefined`
  * @param value
  * @returns boolean
  */
 export const isUndefined = (value: any): value is undefined => value === undefined;
+
 /**
  * Type guard for `value === null || value === undefined`
  * @param value
  * @returns boolean
  */
 export const isNil = (value: any): value is nil => isNull(value) || isUndefined(value);
+
 /**
  * Type guard for `typeof value === 'string'`
  * @param value
@@ -30,67 +33,91 @@ export const isString = (value: any): value is string => typeof value === 'strin
  * @returns boolean
  */
 export const isNumber = (value: any): value is number => typeof value === 'number';
+
 /**
  * Type guard for `typeof value === 'boolean'`
  * @param value
  * @returns boolean
  */
 export const isBoolean = (value: any): value is boolean => typeof value === 'boolean';
+
 /**
  * Type guard for `value === true`
  * @param value
  * @returns boolean
  */
 export const isTrue = (value: any): value is true => value === true;
+
 /**
  * Type guard for `value === false`
  * @param value
  * @returns boolean
  */
 export const isFalse = (value: any): value is false => value === false;
+
 /**
  * Type guard for `typeof value === 'symbol'`
  * @param value
  * @returns boolean
  */
 export const isSymbol = (value: any): value is symbol => typeof value === 'symbol';
-/**
- * Type guard for `value instanceof Promise`
- * @param value
- * @returns
- */
-export const isPromise = <T>(value: any): value is Promise<T> => value instanceof Promise;
+
 /**
  * Type guard for `value instanceof Date`
  * @param value
  * @returns boolean
  */
 export const isDate = (value: any): value is Date => value instanceof Date;
+
 /**
- * Type guard for `typeof value === 'function'`
+ * Type guard for `value instanceof Promise`
  * @param value
- * @returns boolean
+ * @returns
  */
-export const isFunction = (value: any): value is AnyFunction => typeof value === 'function';
+export const isPromise = <T>(value: any): value is Promise<T> => value instanceof Promise;
+
 export const isRegExp = (value: any): value is RegExp => Object.prototype.toString.call(value) === '[object RegExp]';
-export const isPropertyKey = (value: any): value is PropertyKey => isString(value) || isNumber(value) || isSymbol(value);
-export const isPrimitive = (value: any): value is Primitive => isPropertyKey(value) || isBoolean(value);
-export const isMap = <K, V>(value: any): value is Map<K, V> => value instanceof Map;
-export const isSet = <V>(value: any): value is Set<V> => value instanceof Set;
-export const isCollection = <V, K = any>(value: any): value is Collection<V, K> => isMap<K, V>(value) || isSet<V>(value);
+
 export const isArray = <T>(value: any): value is T[] => Array.isArray(value);
+
+export const isSet = <V>(value: any): value is Set<V> => value instanceof Set;
+
+export const isMap = <K, V>(value: any): value is Map<K, V> => value instanceof Map;
+
 /**
  * Type guard for value && `typeof value === 'object' && !Array.isArray(value)
  * @param value
  * @returns boolean
  */
 export const isObject = <T>(value: any): value is T & object => !isNil(value) && typeof value === 'object' && !isArray(value);
-export const isPlainObject = <T>(value: any): value is T & object => isObject(value) && !isDate(value) && !isRegExp(value) && !isCollection(value);
+export const isPlainObject = <T>(value: any): value is T & object =>
+  isObject(value) && !isDate(value) && !isRegExp(value) && !isCollection(value) && !isPromise(value) && !isMaybe(value);
+
+/**
+ * Type guard for `typeof value === 'function'`
+ * @param value
+ * @returns boolean
+ */
+export const isFunction = (value: any): value is AnyFunction => typeof value === 'function';
+
+export const isMaybe = (value: any): value is Maybe => hasProperties<Maybe>(value, 'pipe', 'isJust', 'isNothing', 'equals');
+
+export const isPropertyKey = (value: any): value is PropertyKey => isString(value) || isNumber(value) || isSymbol(value);
+
+export const isPrimitive = (value: any): value is PrimitiveTypes => isPropertyKey(value) || isBoolean(value);
+
+export const isCollection = <V, K = any>(value: any): value is Collection<V, K> => isArray(value) || isMap<K, V>(value) || isSet<V>(value);
+
+export const isIterable = <T>(value: any): value is Iterable<T> => !isNil(value) && isFunction(value[Symbol.iterator]);
+
+export const isIterator = <T>(value: any): value is Iterator<T> =>
+  !isNil(value) && isFunction(value[Symbol.iterator]) && value[Symbol.iterator].call(value) === value;
 
 /**
  * Check if passed `value` is empty.
  *
  * Return true for :
+ * - ''
  * - null,
  * - undefined,
  * - [],
@@ -102,6 +129,8 @@ export const isPlainObject = <T>(value: any): value is T & object => isObject(va
 export const isEmpty = <T>(value: any): value is Required<NoUndefinedField<T>> =>
   isNil(value)
     ? true
+    : isString(value)
+    ? value.length === 0
     : isPrimitive(value)
     ? false
     : isFunction(value)
@@ -123,7 +152,6 @@ export const isEnum =
   <T extends object>(enumClass: T) =>
   (value: unknown): value is T[keyof T] =>
     Object.values(enumClass).includes(value);
-export const isMaybe = (value: any): value is Maybe => hasProperties<Maybe>(value, 'pipe', 'isJust', 'isNothing', 'equals');
 export const isType =
   <T>(type: AllTypes) =>
   (value: any): value is T =>
@@ -210,24 +238,41 @@ export const getTypeDefault = (value: unknown) =>
     : null;
 
 export const isEqual = <T, V>(o1: T, o2: V): boolean => {
-  if (isArray(o1) && isArray(o2)) {
-    return o1.length === o2.length && o1.every((value, index) => isEqual(value, o2[index]));
+  const notBoth = (fn: (value: any) => boolean) => (fn(o1) && !fn(o2)) || (!fn(o1) && fn(o2));
+  if (notBoth(isDate) || notBoth(isPromise) || notBoth(isArray) || notBoth(isSet) || notBoth(isMap) || notBoth(isMaybe) || notBoth(isRegExp)) {
+    return false;
   }
 
-  if (isMap(o1) && isMap(o2)) {
-    return o1.size === o2.size && [...o1].every(([key, value]) => isEqual(value, o2.get(key)));
+  if (isArray(o1) && isArray(o2)) {
+    return o1.length === o2.length && o1.every((value, index) => isEqual(value, o2[index]));
   }
 
   if (isSet(o1) && isSet(o2)) {
     return o1.size === o2.size && [...o1].every((value, index) => isEqual(value, [...o2][index]));
   }
 
+  if (isMap(o1) && isMap(o2)) {
+    return o1.size === o2.size && [...o1].every(([key, value]) => isEqual(value, o2.get(key)));
+  }
+
   if (isDate(o1) && isDate(o2)) {
     return o1.getTime() === o2.getTime();
   }
 
+  if (isMaybe(o1) && isMaybe(o2)) {
+    return isEqual(o1.unwrap(), o2.unwrap());
+  }
+
+  if (isRegExp(o1) && isRegExp(o2)) {
+    return o1.source === o2.source && o1.flags === o2.flags;
+  }
+
+  if (isPromise(o1) && isPromise(o2)) {
+    return Object.getOwnPropertySymbols(o1).every((symbol) => (o1 as any)[symbol] === (o2 as any)[symbol]);
+  }
+
   if (isPlainObject(o1) && isPlainObject(o2)) {
-    return Object.keys(o1).length === Object.keys(o2).length && Object.entries(o1).every(([key, value]) => isEqual(value, o2[key as keyof V]));
+    return haveSameProperties(o1, o2) && haveSameSymbols(o1, o2);
   }
 
   return Object.is(o1, o2);
@@ -235,6 +280,9 @@ export const isEqual = <T, V>(o1: T, o2: V): boolean => {
 export const hasProperties = <T>(value: T, ...properties: (keyof T)[]) =>
   !isNil(value) && isObject(value) && properties.every((property) => property in value);
 export const haveSameProperties = (o1: any, o2: any) => hasProperties(o2, ...Object.keys(o1)) && hasProperties(o1, ...Object.keys(o2));
+
+export const haveSameSymbols = (o1: any, o2: any) =>
+  hasProperties(o2, ...Object.getOwnPropertySymbols(o1)) && hasProperties(o1, ...Object.getOwnPropertySymbols(o2));
 
 export const haveSameType = <T, S>(o1: T, o2: S) =>
   isNil(o1)
@@ -260,3 +308,6 @@ export const LOOSE_EQUALITY = (a: any, b: any) => a == b;
 
 export const isFirst = <T>(value: T, values: T[]) => isEqual(value, values[0]);
 export const isLast = <T>(value: T, values: T[]) => isEqual(value, values[values.length - 1]);
+
+export const ɵcopyCollection = (collection: Collection, values: any) =>
+  isArray(collection) ? [...values] : isSet(collection) ? new Set(values) : new Map(values);
