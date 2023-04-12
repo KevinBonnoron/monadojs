@@ -2,40 +2,33 @@ import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '.
 import { map } from './map';
 
 describe('map', () => {
-  describe('Array', () => {
-    const plusOne = (value: number) => value + 1;
-    const operator = map(plusOne);
+  const operator = map((value: number) => `${value}a`);
 
+  describe('Array', () => {
     it('should map', () => {
       const source = DEFAULT_ARRAY;
-      const expected = [2, 3, 4];
+      const expected = ['1a', '2a', '3a'];
 
       expect(operator(source)).toStrictEqual(expected);
     });
   });
 
   describe('Set', () => {
-    const plusOne = (value: number) => value + 1;
-    const operator = map(plusOne);
-
     it('should map', () => {
       const source = DEFAULT_SET;
-      const expected = new Set([2, 3, 4]);
+      const expected = new Set(['1a', '2a', '3a']);
 
       expect(operator(source)).toStrictEqual(expected);
     });
   });
 
   describe('Map', () => {
-    const plusOne = ([key, value]: [key: number, value: string]) => [key + 1, value];
-    const operator = map(plusOne);
-
     it('should map', () => {
       const source = DEFAULT_MAP;
       const expected = new Map([
-        [2, 'a'],
-        [3, 'b'],
-        [4, 'c'],
+        [1, 'aa'],
+        [2, 'ba'],
+        [3, 'ca'],
       ]);
 
       expect(operator(source)).toStrictEqual(expected);
@@ -43,12 +36,9 @@ describe('map', () => {
   });
 
   describe('PlainObject', () => {
-    const plusOne = (value: number) => value + 1;
-    const operator = map(plusOne);
-
     it('should map', () => {
       const source = DEFAULT_PLAIN_OBJECT;
-      const expected = { a: 2, b: 3, c: 4 };
+      const expected = { a: '1a', b: '2a', c: '3a' };
 
       expect(operator(source)).toStrictEqual(expected);
     });

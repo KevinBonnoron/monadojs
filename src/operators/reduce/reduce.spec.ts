@@ -1,43 +1,52 @@
-import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
 import { reduce } from './reduce';
 
 describe('reduce', () => {
   describe('Array', () => {
-    it('reduce values', () => {
-      const minReducer = (a: number, b: number) => (a > b ? b : a);
-      const source = [1, 2, 3];
+    const source = DEFAULT_ARRAY;
 
-      expect(reduce(minReducer)(source)).toEqual(1);
-      expect(reduce(minReducer, -1)(source)).toEqual(-1);
+    it('should reduce values without initial value', () => {
+      const operator = reduce((a: number, b: number) => (a > b ? b : a));
+
+      expect(operator(source)).toEqual(1);
     });
-  });
 
-  describe('Map', () => {
-    it('reduce values', () => {
-      const minReducer = ([a]: [number], [b]: [number]) => [a > b ? b : a] as [number];
-      const source = DEFAULT_MAP;
+    it('should reduce values with initial value', () => {
+      const operator = reduce((a: number, b: number) => (a > b ? b : a), -1);
 
-      expect(reduce(minReducer)(source)).toEqual([1]);
-      expect(reduce(minReducer, [-1])(source)).toEqual([-1]);
+      expect(operator(source)).toEqual(-1);
     });
   });
 
   describe('Set', () => {
-    it('reduce values', () => {
-      const minReducer = (a: number, b: number) => (a > b ? b : a);
-      const source = DEFAULT_SET;
+    const source = DEFAULT_SET;
 
-      expect(reduce(minReducer)(source)).toEqual(1);
-      expect(reduce(minReducer, -1)(source)).toEqual(-1);
+    it('should reduce values without initial value', () => {
+      const operator = reduce((a: number, b: number) => (a > b ? b : a));
+
+      expect(operator(source)).toEqual(1);
+    });
+
+    it('should reduce values with initial value', () => {
+      const operator = reduce((a: number, b: number) => (a > b ? b : a), -1);
+
+      expect(operator(source)).toEqual(-1);
     });
   });
 
-  describe('number', () => {
-    it('reduce values', () => {
-      const minReducer = (a: number, b: number) => (a > b ? b : a);
+  describe('Map', () => {
+    const source = DEFAULT_MAP;
 
-      expect(reduce(minReducer)(0)).toEqual(0);
-      expect(reduce(minReducer, -1)(0)).toEqual(-1);
+    it('should reduce values without initial value', () => {
+      const operator = reduce(([a, v1]: [number, string], [b, v2]: [number, string]) => [a > b ? b : a, v1]);
+
+      expect(operator(source)).toEqual([1, 'a']);
+    });
+
+    it('should reduce values with initial value', () => {
+      const operator = reduce(([a, v1]: [number, string], [b, v2]: [number, string]) => [a > b ? b : a, v1], [-1, '']);
+
+      expect(operator(source)).toEqual([-1, '']);
     });
   });
 });

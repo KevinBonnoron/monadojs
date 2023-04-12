@@ -1,18 +1,26 @@
-import { pipe, reduce } from '../../operators';
+import { reduce } from '../../operators';
 import { max } from './max';
 
 describe('max', () => {
-  it('should return the max of number elements', () => {
-    const values = [1, 3, 2];
-    const expected = 3;
-    expect(values.reduce(max())).toStrictEqual(expected);
-    expect(pipe(reduce(max()))(values)).toStrictEqual(expected);
+  describe('string', () => {
+    it('should return the max', () => {
+      const source: string[] = ['a', 'c', 'b'];
+      const operator = max<string>();
+      const expected = 'c';
+
+      expect(source.reduce(operator)).toStrictEqual(expected);
+      expect(reduce(operator)(source)).toStrictEqual(expected);
+    });
   });
 
-  it('should return the max of string elements', () => {
-    const values = ['a', 'c', 'b'];
-    const expected = 'c';
-    expect(values.reduce(max())).toStrictEqual(expected);
-    expect(pipe(reduce(max()))(values)).toStrictEqual(expected);
+  describe('number', () => {
+    it('should return the max', () => {
+      const source = [1, 3, 2];
+      const operator = max<number>();
+      const expected = 3;
+
+      expect(source.reduce(operator)).toStrictEqual(expected);
+      expect(reduce(operator)(source)).toStrictEqual(expected);
+    });
   });
 });

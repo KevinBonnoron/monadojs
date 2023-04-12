@@ -1,4 +1,1 @@
-export const times =
-  (amount: number) =>
-  <S extends number>(source: S) =>
-    source * amount;
+export const times = (amount: number) => (source: number) => source * amount;

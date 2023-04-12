@@ -34,4 +34,21 @@ describe('get', () => {
       expect(operator(source)).toStrictEqual(2);
     });
   });
+
+  it('should compile', () => {
+    const source = {
+      a: {
+        b: {
+          c: 1,
+        },
+      },
+      d: [2],
+    };
+
+    const a: { b: { c: number } } = get('a')(source);
+    const b: { c: number } = get('b')(source);
+    const c: number = get('a.b.c')(source);
+    // TODO check for array access get('d[0]')(source)
+    const d: number = get('d[0]')(source);
+  });
 });

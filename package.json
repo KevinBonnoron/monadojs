@@ -16,9 +16,9 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "jest --coverage --onlyChanged",
+    "test": "jest --coverage",
     "test:watch": "jest --onlyChanged --watch",
-    "prebuild": "rimraf dist/** && rimraf build/** && tsc --project tsconfig.type-check.json",
+    "prebuild": "rimraf dist/**",
     "build": "rollup -c",
     "prepack": "yarn build",
     "release": "release-it --only-version"
