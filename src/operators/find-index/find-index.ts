@@ -1,5 +1,5 @@
 import { Filter } from '../../types/filter.type';
-import { isCollection, isMap, isPlainObject } from '../../utils/object/object.utils';
+import { isCollection, isMap, isPlainObject } from '../../utils/object';
 
 export const findIndex =
   (predicate: Filter) =>

@@ -1,5 +1,5 @@
 import { Sorter } from '../../types';
-import { isArray, isDate, isNil, isNumber, isString } from '../object/object.utils';
+import { isArray, isDate, isNil, isNumber, isString } from '../object';
 
 export interface SorterOptions {
   nullsAs: 'first' | 'last';

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { lower } from '../lower/lower';
 import { plus } from '../plus/plus';
 import { upper } from '../upper/upper';

@@ -1,21 +1,8 @@
-import { DEFAULT_ARRAY, DEFAULT_DATE, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_DATE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { lt } from './lt';
 
 describe('lt', () => {
-  describe('number', () => {
-    const source = 3;
-
-    it('should return true', () => {
-      const operator = lt(4);
-      expect(operator(source)).toBeTruthy();
-    });
-
-    it('should return false', () => {
-      const operator = lt(3);
-      expect(operator(source)).toBeFalsy();
-    });
-  });
-
   describe('string', () => {
     const source = 'c';
 
@@ -30,6 +17,20 @@ describe('lt', () => {
     });
   });
 
+  describe('number', () => {
+    const source = 3;
+
+    it('should return true', () => {
+      const operator = lt(4);
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = lt(3);
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
   describe('others', () => {
     const operator = lt(0);
 
@@ -39,9 +40,9 @@ describe('lt', () => {
       expect(operator(null)).toBeFalsy();
       expect(operator(undefined)).toBeFalsy();
       expect(operator(DEFAULT_DATE)).toBeFalsy();
-      expect(operator(DEFAULT_ARRAY)).toBeFalsy();
-      expect(operator(DEFAULT_SET)).toBeFalsy();
-      expect(operator(DEFAULT_MAP)).toBeFalsy();
+      expect(operator(NUMBER_ARRAY)).toBeFalsy();
+      expect(operator(NUMBER_SET)).toBeFalsy();
+      expect(operator(NUMBER_MAP)).toBeFalsy();
       expect(operator(() => {})).toBeFalsy();
     });
   });

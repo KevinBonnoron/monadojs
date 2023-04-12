@@ -12,10 +12,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  unique(prop('sex')),
-  tap(console.log)
-);
+persons.pipe(unique(prop('sex')), tap(console.log));
 
 /*
 [

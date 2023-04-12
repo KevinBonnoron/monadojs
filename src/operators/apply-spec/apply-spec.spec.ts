@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { plus, times } from '../../mappers';
 import { applySpec } from './apply-spec';
 

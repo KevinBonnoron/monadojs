@@ -1,18 +1,17 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { eq } from '../../filters';
 import { some } from './some';
 
 describe('some', () => {
   describe('Array', () => {
-    const source = DEFAULT_ARRAY;
+    const source = NUMBER_ARRAY;
 
     it('should return true', () => {
       expect(some(eq(1))(source)).toBeTruthy();
       expect(some(1)(source)).toBeTruthy();
-      expect(some(eq(2))(source)).toBeTruthy();
-      expect(some(2)(source)).toBeTruthy();
-      expect(some(eq(3))(source)).toBeTruthy();
-      expect(some(3)(source)).toBeTruthy();
+      expect(some(eq(9))(source)).toBeTruthy();
+      expect(some(9)(source)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -21,15 +20,13 @@ describe('some', () => {
   });
 
   describe('Set', () => {
-    const source = DEFAULT_SET;
+    const source = NUMBER_SET;
 
     it('should return true', () => {
       expect(some(eq(1))(source)).toBeTruthy();
       expect(some(1)(source)).toBeTruthy();
-      expect(some(eq(2))(source)).toBeTruthy();
-      expect(some(2)(source)).toBeTruthy();
-      expect(some(eq(3))(source)).toBeTruthy();
-      expect(some(3)(source)).toBeTruthy();
+      expect(some(eq(9))(source)).toBeTruthy();
+      expect(some(9)(source)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -38,19 +35,17 @@ describe('some', () => {
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
+    const source = NUMBER_MAP;
     const valueEq =
       (expected: any) =>
       ([_, value]: [key: any, value: any]) =>
         value === expected;
 
     it('should return true', () => {
-      expect(some(valueEq('a'))(source)).toBeTruthy();
-      expect(some([1, 'a'])(source)).toBeTruthy();
-      expect(some(valueEq('b'))(source)).toBeTruthy();
-      expect(some([2, 'b'])(source)).toBeTruthy();
-      expect(some(valueEq('c'))(source)).toBeTruthy();
-      expect(some([3, 'c'])(source)).toBeTruthy();
+      expect(some(valueEq(1))(source)).toBeTruthy();
+      expect(some([0, 1])(source)).toBeTruthy();
+      expect(some(valueEq(9))(source)).toBeTruthy();
+      expect(some([8, 9])(source)).toBeTruthy();
     });
 
     it('should return false', () => {

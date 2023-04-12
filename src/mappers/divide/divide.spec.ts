@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { divide } from './divide';
 
 describe('divide', () => {

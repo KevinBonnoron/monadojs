@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { median } from './median';
 
 describe('median', () => {

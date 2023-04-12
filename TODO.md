@@ -1,4 +1,5 @@
 # Operators
+
 All operators should handle Map & Set as `source`.
 
 - [ ] apply-spec
@@ -41,4 +42,5 @@ All operators should handle Map & Set as `source`.
 - [ ] walk
 
 # Global
+
 Every file must have a matching ".spec.ts" file.

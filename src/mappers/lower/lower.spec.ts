@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { lower } from './lower';
 
 describe('lower', () => {

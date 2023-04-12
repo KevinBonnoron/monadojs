@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { avg } from './avg';
 
 describe('avg', () => {

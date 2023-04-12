@@ -12,14 +12,9 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-const firstNameEq = (firstName: string) => pipe(prop('firstName'), eq(firstName))
+const firstNameEq = (firstName: string) => pipe(prop('firstName'), eq(firstName));
 
-persons.pipe(
-  filter(
-    firstNameEq('James')
-  ),
-  tap(console.log)
-);
+persons.pipe(filter(firstNameEq('James')), tap(console.log));
 /*
 [ { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' } ]
 */

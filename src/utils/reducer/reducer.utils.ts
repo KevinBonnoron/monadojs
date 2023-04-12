@@ -1,4 +1,4 @@
-import { haveSameProperties, haveSameType, isArray, isObject } from '../object/object.utils';
+import { haveSameProperties, haveSameType, isArray, isObject } from '../object';
 
 export type PropertyKeyAccumulator<T> = { [P in keyof T]: T[] } & any;
 

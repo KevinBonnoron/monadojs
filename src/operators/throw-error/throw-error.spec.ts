@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { throwError } from './throw-error';
 
 describe('throw-error', () => {

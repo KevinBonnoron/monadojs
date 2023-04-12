@@ -1,4 +1,5 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { iin } from './iin';
 
 describe('iin', () => {
@@ -20,7 +21,7 @@ describe('iin', () => {
     const source = 1;
 
     it('should return true', () => {
-      const operator = iin(DEFAULT_ARRAY);
+      const operator = iin(NUMBER_ARRAY);
       expect(operator(source)).toBeTruthy();
     });
 
@@ -30,30 +31,30 @@ describe('iin', () => {
     });
   });
 
-  describe('Map', () => {
-    const operator = iin(DEFAULT_MAP);
+  describe('Set', () => {
+    const operator = iin(NUMBER_SET);
 
     it('should return true', () => {
-      const source = 'a';
+      const source = 1;
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const source = 'd';
+      const source = 10;
       expect(operator(source)).toBeFalsy();
     });
   });
 
-  describe('Set', () => {
-    const source = 1;
+  describe('Map', () => {
+    const operator = iin(NUMBER_MAP);
 
     it('should return true', () => {
-      const operator = iin(DEFAULT_SET);
+      const source = 1;
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = iin(new Set([4, 5, 6]));
+      const source = 10;
       expect(operator(source)).toBeFalsy();
     });
   });

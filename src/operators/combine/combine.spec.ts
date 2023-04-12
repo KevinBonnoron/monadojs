@@ -1,11 +1,12 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { combine } from './combine';
 
 describe('combine', () => {
   const mapToOperator = (value: number) => () => value;
 
   describe('Array', () => {
-    const source = DEFAULT_ARRAY;
+    const source = NUMBER_ARRAY;
 
     it('should map each element to a specific value', () => {
       const expected = [5, 10];
@@ -14,7 +15,7 @@ describe('combine', () => {
   });
 
   describe('Set', () => {
-    const source = DEFAULT_SET;
+    const source = NUMBER_SET;
 
     it('should map each element to a specific value', () => {
       const expected = [5, 10];
@@ -23,7 +24,7 @@ describe('combine', () => {
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
+    const source = NUMBER_MAP;
 
     it('should map each element to a specific value', () => {
       const expected = [5, 10];

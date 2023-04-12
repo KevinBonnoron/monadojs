@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { endsWith } from './ends-with';
 
 describe('ends-with', () => {

@@ -1,11 +1,12 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { eq } from '../../filters';
 import { isNumber, isString } from '../../utils';
 import { every } from './every';
 
 describe('every', () => {
   describe('Array', () => {
-    const source = DEFAULT_ARRAY;
+    const source = NUMBER_ARRAY;
 
     it('should return true', () => {
       expect(every(isNumber)(source)).toBeTruthy();
@@ -17,7 +18,7 @@ describe('every', () => {
   });
 
   describe('Set', () => {
-    const source = DEFAULT_SET;
+    const source = NUMBER_SET;
 
     it('should return true', () => {
       expect(every(isNumber)(source)).toBeTruthy();
@@ -29,7 +30,7 @@ describe('every', () => {
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
+    const source = NUMBER_MAP;
     const keyIsString =
       () =>
       ([key]: [key: any]) =>

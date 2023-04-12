@@ -1,4 +1,4 @@
-import { person } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
 import { pick } from './pick';
 
 describe('pick', () => {
@@ -20,18 +20,5 @@ describe('pick', () => {
       expect(operator(source)).toStrictEqual(expected);
       expect(source).toStrictEqual({ a: 1, b: 2, c: 3 });
     });
-  });
-
-  it('should compile', () => {
-    const personWithId: { id: number } = pick('id')(person);
-    const personWithName: { name: string } = pick('name')(person);
-    const personWithBirthDate: { birthDate: Date } = pick('birthDate')(person);
-    const personWithIdAndName: { id: number; name: string } = pick('id', 'name')(person);
-    const personWithIdAndNameAndBirthDate: { id: number; name: string; birthDate: Date } = pick('id', 'name', 'birthDate')(person);
-
-    // @ts-expect-error
-    pick('id')({ noId: 0 });
-    // @ts-expect-error
-    pick('Id')(person);
   });
 });

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { seal } from './seal';
 
 describe('seal', () => {

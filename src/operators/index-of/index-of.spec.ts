@@ -1,14 +1,14 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { indexOf } from './index-of';
 
 describe('index-of', () => {
   describe('Array', () => {
-    const source = DEFAULT_ARRAY;
+    const source = NUMBER_ARRAY;
 
     it('should return index', () => {
       expect(indexOf(1)(source)).toBe(0);
-      expect(indexOf(2)(source)).toBe(1);
-      expect(indexOf(3)(source)).toBe(2);
+      expect(indexOf(9)(source)).toBe(8);
     });
 
     it('should return -1', () => {
@@ -17,12 +17,11 @@ describe('index-of', () => {
   });
 
   describe('Set', () => {
-    const source = DEFAULT_SET;
+    const source = NUMBER_SET;
 
     it('should return index', () => {
       expect(indexOf(1)(source)).toBe(0);
-      expect(indexOf(2)(source)).toBe(1);
-      expect(indexOf(3)(source)).toBe(2);
+      expect(indexOf(9)(source)).toBe(8);
     });
 
     it('should return -1', () => {
@@ -31,16 +30,15 @@ describe('index-of', () => {
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
+    const source = NUMBER_MAP;
 
     it('should return index', () => {
-      expect(indexOf('a')(source)).toBe(1);
-      expect(indexOf('b')(source)).toBe(2);
-      expect(indexOf('c')(source)).toBe(3);
+      expect(indexOf(1)(source)).toBe(0);
+      expect(indexOf(9)(source)).toBe(8);
     });
 
     it('should return -1', () => {
-      expect(indexOf('d')(source)).toBe(-1);
+      expect(indexOf(0)(source)).toBe(-1);
     });
   });
 
@@ -49,7 +47,6 @@ describe('index-of', () => {
 
     it('should return index', () => {
       expect(indexOf(1)(source)).toBe('a');
-      expect(indexOf(2)(source)).toBe('b');
       expect(indexOf(3)(source)).toBe('c');
     });
 

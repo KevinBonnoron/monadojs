@@ -1,6 +1,6 @@
 import { pipe } from '../../operators/pipe/pipe';
 import { AnyFunction, Maybe, MonotypeOperator } from '../../types';
-import { isMaybe, isNil } from '../object/object.utils';
+import { isMaybe, isNil } from '../object';
 
 interface DefaultMaybe<T> extends Maybe<T> {}
 abstract class DefaultMaybe<T> implements Maybe<T> {

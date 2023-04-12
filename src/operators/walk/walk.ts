@@ -1,6 +1,6 @@
 import { includes } from '../../filters/includes/includes';
 import { Operator } from '../../types/operator.type';
-import { isArray, isMap, isObject, isPrimitive, isSet } from '../../utils/object/object.utils';
+import { isArray, isMap, isObject, isPrimitive, isSet } from '../../utils/object';
 import { entries } from '../entries/entries';
 import { values } from '../values/values';
 

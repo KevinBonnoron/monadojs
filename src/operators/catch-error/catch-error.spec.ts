@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { map } from '../map/map';
 import { pipe } from '../pipe/pipe';
 import { catchError } from './catch-error';
@@ -12,7 +13,7 @@ describe('catch-error', () => {
       { id: 4, firstName: 'John', lastName: 'David', age: 26, sex: 'M' },
       undefined,
       { id: 5, firstName: 'Patricia', lastName: 'Brown', age: 52, sex: 'F' },
-      { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
+      { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' }
     ];
 
     const operator = pipe(

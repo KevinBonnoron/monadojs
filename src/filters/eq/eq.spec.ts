@@ -1,4 +1,5 @@
-import { DEFAULT_ARRAY, DEFAULT_DATE, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { LOOSE_EQUALITY } from '../../utils';
 import { eq } from './eq';
 
@@ -121,55 +122,55 @@ describe('eq', () => {
   });
 
   describe('Array', () => {
-    const source = DEFAULT_ARRAY;
+    const source = NUMBER_ARRAY;
 
     it('should return true', () => {
-      const operator = eq([1, 2, 3]);
+      const operator = eq([1, 2, 3, 4, 5, 6, 7, 8, 9]);
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = eq([3, 2, 1]);
+      const operator = eq([]);
       expect(operator(source)).toBeFalsy();
     });
   });
 
   describe('Set', () => {
-    const source = DEFAULT_SET;
+    const source = NUMBER_SET;
 
     it('should return true', () => {
-      const operator = eq(new Set([1, 2, 3]));
+      const operator = eq(new Set([1, 2, 3, 4, 5, 6, 7, 8, 9]));
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = eq(new Set([3, 2, 1]));
+      const operator = eq(new Set());
       expect(operator(source)).toBeFalsy();
     });
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
+    const source = NUMBER_MAP;
 
     it('should return true', () => {
       const operator = eq(
         new Map([
-          [1, 'a'],
-          [2, 'b'],
-          [3, 'c'],
+          [0, 1],
+          [1, 2],
+          [2, 3],
+          [3, 4],
+          [4, 5],
+          [5, 6],
+          [6, 7],
+          [7, 8],
+          [8, 9]
         ])
       );
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = eq(
-        new Map([
-          [1, 'c'],
-          [2, 'b'],
-          [3, 'a'],
-        ])
-      );
+      const operator = eq(new Map());
       expect(operator(source)).toBeFalsy();
     });
   });

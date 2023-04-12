@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { functionParameterParser } from './function.utils';
 
 describe('FunctionUtils', () => {

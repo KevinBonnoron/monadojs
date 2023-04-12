@@ -11,12 +11,7 @@ const persons = [
 ];
 
 const ageGreaterThan = (age: number) => pipe(prop('age'), gt(age));
-persons.pipe(
-  map(
-    iif(ageGreaterThan(10), prop('firstName'), prop('lastName'))
-  ),
-  tap(console.log)
-);
+persons.pipe(map(iif(ageGreaterThan(10), prop('firstName'), prop('lastName'))), tap(console.log));
 
 // [ 'James', 'Robert', 'Mary', 'John', 'Patricia', 'Smith' ]
 ```

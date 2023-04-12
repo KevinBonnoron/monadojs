@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { replace } from './replace';
 
 describe('replace', () => {

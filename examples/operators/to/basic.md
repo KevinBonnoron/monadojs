@@ -12,10 +12,7 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  to(Set),
-  tap(console.log)
-);
+persons.pipe(to(Set), tap(console.log));
 
 /*
 Set(6) {

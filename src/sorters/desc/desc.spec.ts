@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { desc } from './desc';
 
 describe('desc', () => {
@@ -8,7 +9,7 @@ describe('desc', () => {
       { name: 'd' },
       { name: 'c' },
       { name: 'b' },
-      { name: 'a' },
+      { name: 'a' }
     ]);
     expect([new Date('2020-01-01'), new Date('2020-02-01')].sort(desc())).toStrictEqual([new Date('2020-02-01'), new Date('2020-01-01')]);
     expect(desc()(1, 2)).toStrictEqual(1);

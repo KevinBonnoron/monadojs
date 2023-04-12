@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { chunk } from './chunk';
 
 const ONE_ELEMENT = [0];
@@ -14,7 +15,7 @@ describe('chunk', () => {
       [2, 3],
       [4, 5],
       [6, 7],
-      [8, 9],
+      [8, 9]
     ]);
   });
 
@@ -31,7 +32,7 @@ describe('chunk', () => {
     expect(NINE_ELEMENTS.reduce(operator)).toStrictEqual([
       [0, 1, 2],
       [3, 4, 5],
-      [6, 7, 8],
+      [6, 7, 8]
     ]);
     expect(TEN_ELEMENTS.reduce(operator)).toStrictEqual([[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]);
   });
@@ -43,7 +44,7 @@ describe('chunk', () => {
     expect(TEN_ELEMENTS.reduce(operator)).toStrictEqual([
       [0, 1, 2, 3],
       [4, 5, 6, 7],
-      [8, 9],
+      [8, 9]
     ]);
   });
 });

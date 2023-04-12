@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { floor } from './floor';
 
 describe('floor', () => {

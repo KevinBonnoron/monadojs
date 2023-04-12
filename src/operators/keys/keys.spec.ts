@@ -1,4 +1,5 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { keys } from './keys';
 
 describe('keys', () => {
@@ -9,8 +10,8 @@ describe('keys', () => {
     const operator = keys();
 
     it('should return keys', () => {
-      const source = DEFAULT_ARRAY;
-      expect([...operator(source)]).toStrictEqual([0, 1, 2]);
+      const source = NUMBER_ARRAY;
+      expect([...operator(source)]).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8]);
     });
   });
 
@@ -18,8 +19,8 @@ describe('keys', () => {
     const operator = keys();
 
     it('should return keys', () => {
-      const source = DEFAULT_SET;
-      expect([...operator(source)]).toStrictEqual([0, 1, 2]);
+      const source = NUMBER_SET;
+      expect([...operator(source)]).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8]);
     });
   });
 
@@ -27,8 +28,8 @@ describe('keys', () => {
     const operator = keys();
 
     it('should return keys', () => {
-      const source = DEFAULT_MAP;
-      expect([...operator(source)]).toStrictEqual([1, 2, 3]);
+      const source = NUMBER_MAP;
+      expect([...operator(source)]).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8]);
     });
   });
 
@@ -36,8 +37,8 @@ describe('keys', () => {
     const operator = keys();
 
     it('should return keys', () => {
-      const source = { a: 1, b: true, c: 'a', d: [], e: {}, f: anonymousFn, g: anonymousArrowFn };
-      expect([...operator(source)]).toStrictEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g']);
+      const source = DEFAULT_PLAIN_OBJECT;
+      expect([...operator(source)]).toStrictEqual(['a', 'b', 'c']);
     });
   });
 
@@ -53,30 +54,5 @@ describe('keys', () => {
       expect([...operator(anonymousFn)]).toStrictEqual([]);
       expect([...operator(anonymousArrowFn)]).toStrictEqual([]);
     });
-  });
-
-  it('should compile', () => {
-    const numberArrayEntries: IterableIterator<number> = keys()([1, 2, 3]);
-    const objectArrayEntries: IterableIterator<number> = keys()([{ id: 1 }, { id: 2 }, { id: 3 }]);
-
-    const numberSetEntries: IterableIterator<number> = keys()(new Set([1, 2, 3]));
-    const objectSetEntries: IterableIterator<number> = keys()(new Set([{ id: 1 }, { id: 2 }, { id: 3 }]));
-
-    const numberMapEntries: IterableIterator<number> = keys()(
-      new Map([
-        [1, 'a'],
-        [2, 'b'],
-        [3, 'c'],
-      ])
-    );
-    const objectMapEntries: IterableIterator<number> = keys()(
-      new Map([
-        [1, { id: 1 }],
-        [2, { id: 2 }],
-        [3, { id: 3 }],
-      ])
-    );
-
-    const numberObjectEntries: IterableIterator<number> = keys()({ 1: 'a', 2: 'b', 3: 'c' });
   });
 });

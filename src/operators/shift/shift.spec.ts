@@ -1,4 +1,5 @@
-import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { shift } from './shift';
 
 describe('shift', () => {
@@ -16,24 +17,30 @@ describe('shift', () => {
 
   describe('Set', () => {
     it('should return first element', () => {
-      const source = DEFAULT_SET;
+      const source = NUMBER_SET;
       const expected = 1;
 
       expect(operator(source)).toStrictEqual(expected);
-      expect(source).toStrictEqual(new Set([2, 3]));
+      expect(source).toStrictEqual(new Set([2, 3, 4, 5, 6, 7, 8, 9]));
     });
   });
 
   describe('Map', () => {
     it('should return first element', () => {
-      const source = DEFAULT_MAP;
-      const expected = [1, 'a'];
+      const source = NUMBER_MAP;
+      const expected = [0, 1];
 
       expect(operator(source)).toStrictEqual(expected);
       expect(source).toStrictEqual(
         new Map([
-          [2, 'b'],
-          [3, 'c'],
+          [1, 2],
+          [2, 3],
+          [3, 4],
+          [4, 5],
+          [5, 6],
+          [6, 7],
+          [7, 8],
+          [8, 9]
         ])
       );
     });

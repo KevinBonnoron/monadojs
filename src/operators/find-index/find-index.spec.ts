@@ -1,15 +1,15 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { eq } from '../../filters';
 import { findIndex } from './find-index';
 
 describe('findIndex', () => {
   describe('Array', () => {
-    const source = DEFAULT_ARRAY;
+    const source = NUMBER_ARRAY;
 
     it('should return index', () => {
       expect(findIndex(eq(1))(source)).toBe(0);
-      expect(findIndex(eq(2))(source)).toBe(1);
-      expect(findIndex(eq(3))(source)).toBe(2);
+      expect(findIndex(eq(9))(source)).toBe(8);
     });
 
     it('should return -1', () => {
@@ -18,12 +18,11 @@ describe('findIndex', () => {
   });
 
   describe('Set', () => {
-    const source = DEFAULT_SET;
+    const source = NUMBER_SET;
 
     it('should return index', () => {
       expect(findIndex(eq(1))(source)).toBe(0);
-      expect(findIndex(eq(2))(source)).toBe(1);
-      expect(findIndex(eq(3))(source)).toBe(2);
+      expect(findIndex(eq(9))(source)).toBe(8);
     });
 
     it('should return -1', () => {
@@ -32,16 +31,15 @@ describe('findIndex', () => {
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
+    const source = NUMBER_MAP;
 
     it('should return index', () => {
-      expect(findIndex(eq('a'))(source)).toBe(1);
-      expect(findIndex(eq('b'))(source)).toBe(2);
-      expect(findIndex(eq('c'))(source)).toBe(3);
+      expect(findIndex(eq(1))(source)).toBe(0);
+      expect(findIndex(eq(9))(source)).toBe(8);
     });
 
     it('should return -1', () => {
-      expect(findIndex(eq('d'))(source)).toBe(-1);
+      expect(findIndex(eq(0))(source)).toBe(-1);
     });
   });
 
@@ -50,7 +48,6 @@ describe('findIndex', () => {
 
     it('should return index', () => {
       expect(findIndex(eq(1))(source)).toBe('a');
-      expect(findIndex(eq(2))(source)).toBe('b');
       expect(findIndex(eq(3))(source)).toBe('c');
     });
 

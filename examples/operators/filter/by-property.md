@@ -12,12 +12,7 @@ const products = [
   { id: 6, label: 'Stawberry', price: 8.6 },
 ];
 
-products.pipe(
-  filter(
-    pipe(prop('price'), gt(1.5))
-  ),
-  tap(console.log)
-);
+products.pipe(filter(pipe(prop('price'), gt(1.5))), tap(console.log));
 
 /*
 [

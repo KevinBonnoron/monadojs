@@ -1,4 +1,5 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { includes } from './includes';
 
 describe('includes', () => {
@@ -17,7 +18,21 @@ describe('includes', () => {
   });
 
   describe('Array', () => {
-    const source = DEFAULT_ARRAY;
+    const source = NUMBER_ARRAY;
+
+    it('should return true', () => {
+      const operator = includes(1);
+      expect(operator(source)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const operator = includes(0);
+      expect(operator(source)).toBeFalsy();
+    });
+  });
+
+  describe('Set', () => {
+    const source = NUMBER_SET;
 
     it('should return true', () => {
       const operator = includes(1);
@@ -31,21 +46,7 @@ describe('includes', () => {
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
-
-    it('should return true', () => {
-      const operator = includes('a');
-      expect(operator(source)).toBeTruthy();
-    });
-
-    it('should return false', () => {
-      const operator = includes('d');
-      expect(operator(source)).toBeFalsy();
-    });
-  });
-
-  describe('Set', () => {
-    const source = DEFAULT_SET;
+    const source = NUMBER_MAP;
 
     it('should return true', () => {
       const operator = includes(1);
@@ -53,7 +54,7 @@ describe('includes', () => {
     });
 
     it('should return false', () => {
-      const operator = includes(4);
+      const operator = includes(10);
       expect(operator(source)).toBeFalsy();
     });
   });

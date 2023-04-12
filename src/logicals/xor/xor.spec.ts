@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { FALSE, TRUE } from '../../utils';
 import { xor } from './xor';
 

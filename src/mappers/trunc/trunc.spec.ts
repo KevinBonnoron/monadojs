@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { trunc } from './trunc';
 
 describe('trunc', () => {

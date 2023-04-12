@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { Just, Nothing } from '../../utils';
 import { maybe } from './maybe';
 

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { nil } from './nil';
 
 describe('nil', () => {
@@ -16,7 +17,9 @@ describe('nil', () => {
   });
 
   describe('nil', () => {
-    expect(operator(undefined)).toBeTruthy();
+    it('should return true', () => {
+      expect(operator(undefined)).toBeTruthy();
+    });
   });
 
   describe('others', () => {

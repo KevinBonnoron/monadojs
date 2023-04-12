@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { curry, uncurry } from './curry.utils';
 
 describe('CurryUtils', () => {

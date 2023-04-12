@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { prop } from '../../mappers';
 import { Just, Nothing } from './maybe.utils';
 

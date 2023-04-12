@@ -1,4 +1,5 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { length } from './length';
 
 describe('length', () => {
@@ -6,8 +7,8 @@ describe('length', () => {
     const operator = length();
 
     it('should return the length', () => {
-      const source = DEFAULT_ARRAY;
-      expect(operator(source)).toStrictEqual(3);
+      const source = NUMBER_ARRAY;
+      expect(operator(source)).toStrictEqual(9);
     });
   });
 
@@ -15,8 +16,8 @@ describe('length', () => {
     const operator = length();
 
     it('should return the length', () => {
-      const source = DEFAULT_SET;
-      expect(operator(source)).toStrictEqual(3);
+      const source = NUMBER_SET;
+      expect(operator(source)).toStrictEqual(9);
     });
   });
 
@@ -24,8 +25,8 @@ describe('length', () => {
     const operator = length();
 
     it('should return the length', () => {
-      const source = DEFAULT_MAP;
-      expect(operator(source)).toStrictEqual(3);
+      const source = NUMBER_MAP;
+      expect(operator(source)).toStrictEqual(9);
     });
   });
 

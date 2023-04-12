@@ -1,4 +1,5 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { map } from './map';
 
 describe('map', () => {
@@ -6,8 +7,8 @@ describe('map', () => {
 
   describe('Array', () => {
     it('should map', () => {
-      const source = DEFAULT_ARRAY;
-      const expected = ['1a', '2a', '3a'];
+      const source = NUMBER_ARRAY;
+      const expected = ['1a', '2a', '3a', '4a', '5a', '6a', '7a', '8a', '9a'];
 
       expect(operator(source)).toStrictEqual(expected);
     });
@@ -15,8 +16,8 @@ describe('map', () => {
 
   describe('Set', () => {
     it('should map', () => {
-      const source = DEFAULT_SET;
-      const expected = new Set(['1a', '2a', '3a']);
+      const source = NUMBER_SET;
+      const expected = new Set(['1a', '2a', '3a', '4a', '5a', '6a', '7a', '8a', '9a']);
 
       expect(operator(source)).toStrictEqual(expected);
     });
@@ -24,11 +25,17 @@ describe('map', () => {
 
   describe('Map', () => {
     it('should map', () => {
-      const source = DEFAULT_MAP;
+      const source = NUMBER_MAP;
       const expected = new Map([
-        [1, 'aa'],
-        [2, 'ba'],
-        [3, 'ca'],
+        [0, '1a'],
+        [1, '2a'],
+        [2, '3a'],
+        [3, '4a'],
+        [4, '5a'],
+        [5, '6a'],
+        [6, '7a'],
+        [7, '8a'],
+        [8, '9a']
       ]);
 
       expect(operator(source)).toStrictEqual(expected);

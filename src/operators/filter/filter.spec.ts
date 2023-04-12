@@ -1,4 +1,5 @@
-import { DEFAULT_MAP, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { filter } from './filter';
 
 describe('filter', () => {
@@ -14,30 +15,36 @@ describe('filter', () => {
   });
 
   describe('Set', () => {
-    const source = DEFAULT_SET;
+    const source = NUMBER_SET;
 
     it('should filter', () => {
       const keepGreaterThan = (threshold: number) => (value: number) => value > threshold;
       const operator = filter(keepGreaterThan(1));
 
-      expect(operator(source)).toStrictEqual(new Set([2, 3]));
+      expect(operator(source)).toStrictEqual(new Set([2, 3, 4, 5, 6, 7, 8, 9]));
     });
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
+    const source = NUMBER_MAP;
 
     it('should filter', () => {
       const keepGreaterThan =
-        (threshold: string) =>
-        ([, value]: string) =>
+        (threshold: number) =>
+        ([, value]: [number, number]) =>
           value > threshold;
-      const operator = filter(keepGreaterThan('a'));
+      const operator = filter(keepGreaterThan(1));
 
       expect(operator(source)).toStrictEqual(
         new Map([
-          [2, 'b'],
-          [3, 'c'],
+          [1, 2],
+          [2, 3],
+          [3, 4],
+          [4, 5],
+          [5, 6],
+          [6, 7],
+          [7, 8],
+          [8, 9]
         ])
       );
     });

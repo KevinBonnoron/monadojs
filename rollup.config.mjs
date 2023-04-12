@@ -28,8 +28,8 @@ export default [
         file: packageConfig.main,
         format: 'commonjs',
         sourcemap: true,
-      }
-    ]
+      },
+    ],
   }),
   bundle({
     plugins: [dts()],

@@ -1,4 +1,4 @@
-import { isArray, isFunction, isPlainObject, isSet } from '../object/object.utils';
+import { isArray, isFunction, isPlainObject, isSet } from '../object';
 
 interface ArrayInterceptor<T> {
   push?: (value: T) => boolean;
@@ -61,14 +61,14 @@ const proxyfyArray = <T>(array: T[], interceptors?: ArrayInterceptor<T>): T[] =>
   new Proxy(array, {
     get(target, property, receiver) {
       return getHandler(target, property, receiver, interceptors);
-    },
+    }
   });
 
 const proxyfySet = <T>(set: Set<T>, interceptors?: SetInterceptor<T>): Set<T> =>
   new Proxy(set, {
     get(target, property, receiver) {
       return getHandler(target, property, receiver, interceptors);
-    },
+    }
   });
 
 const proxyfyObject = <T extends object>(object: T, interceptors?: ObjectInterceptor) =>
@@ -78,7 +78,7 @@ const proxyfyObject = <T extends object>(object: T, interceptors?: ObjectInterce
     },
     defineProperty(target, property, attributes) {
       return definePropertyHandler(target, property, attributes, interceptors);
-    },
+    }
   });
 
 export function intercept<T>(value: T[], interceptions: ArrayInterceptor<T>): T[];

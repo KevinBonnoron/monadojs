@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { groupBy } from './group-by';
 
 interface Person {

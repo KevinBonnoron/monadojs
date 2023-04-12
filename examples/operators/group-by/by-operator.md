@@ -11,7 +11,7 @@ const persons = [
 ];
 
 persons.pipe(
-  groupBy((person) => person.age >= 18 ? 'Major' : 'Minor'),
+  groupBy((person) => (person.age >= 18 ? 'Major' : 'Minor')),
   tap(console.log)
 );
 

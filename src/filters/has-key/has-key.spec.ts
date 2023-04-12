@@ -1,4 +1,5 @@
-import { DEFAULT_ARRAY, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { hasKey } from './has-key';
 
 describe('has-key', () => {
@@ -17,15 +18,15 @@ describe('has-key', () => {
   });
 
   describe('Map', () => {
-    const source = DEFAULT_MAP;
+    const source = NUMBER_MAP;
 
     it('should return true', () => {
-      const operator = hasKey(1);
+      const operator = hasKey(0);
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = hasKey(0);
+      const operator = hasKey(-1);
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -37,12 +38,12 @@ describe('has-key', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(1)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(DEFAULT_ARRAY)).toBeFalsy();
+      expect(operator(NUMBER_ARRAY)).toBeFalsy();
       expect(operator(null)).toBeFalsy();
       expect(operator(undefined)).toBeFalsy();
       expect(operator(new Date())).toBeFalsy();
       expect(operator(new RegExp('a'))).toBeFalsy();
-      expect(operator(DEFAULT_SET)).toBeFalsy();
+      expect(operator(NUMBER_SET)).toBeFalsy();
       expect(operator(function () {})).toBeFalsy();
       expect(operator(() => {})).toBeFalsy();
     });

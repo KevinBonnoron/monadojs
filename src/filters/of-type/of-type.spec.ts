@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { Maybe } from '../../types';
 import { Just, Nothing } from '../../utils';
 import { ofType } from './of-type';

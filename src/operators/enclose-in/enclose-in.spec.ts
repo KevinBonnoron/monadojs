@@ -1,4 +1,5 @@
-import { DEFAULT_ARRAY, DEFAULT_DATE, DEFAULT_MAP, DEFAULT_PLAIN_OBJECT, DEFAULT_SET, DEFAULT_SYMBOL } from '../../../tests/test.data';
+import { describe, expect, it } from 'vitest';
+import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, DEFAULT_SYMBOL, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { encloseIn } from './enclose-in';
 
 describe('enclose-in', () => {
@@ -42,7 +43,7 @@ describe('enclose-in', () => {
 
   describe('Array', () => {
     it('should enclose in', () => {
-      const source = DEFAULT_ARRAY;
+      const source = NUMBER_ARRAY;
       const expected = { a: source };
 
       expect(operator(source)).toStrictEqual(expected);
@@ -51,7 +52,7 @@ describe('enclose-in', () => {
 
   describe('Set', () => {
     it('should enclose in', () => {
-      const source = DEFAULT_SET;
+      const source = NUMBER_SET;
       const expected = { a: source };
 
       expect(operator(source)).toStrictEqual(expected);
@@ -60,7 +61,7 @@ describe('enclose-in', () => {
 
   describe('Map', () => {
     it('should enclose in', () => {
-      const source = DEFAULT_MAP;
+      const source = NUMBER_MAP;
       const expected = { a: source };
 
       expect(operator(source)).toStrictEqual(expected);

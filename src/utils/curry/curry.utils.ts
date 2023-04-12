@@ -1,5 +1,5 @@
 import { functionParameterParser } from '../function/function.utils';
-import { isFunction } from '../object/object.utils';
+import { isFunction } from '../object';
 
 type Curry<T> = (arg: T) => Curry<T> | any;
 

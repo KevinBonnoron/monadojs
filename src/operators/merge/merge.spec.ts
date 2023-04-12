@@ -1,8 +1,21 @@
+import { describe, expect, it } from 'vitest';
 import { merge } from './merge';
 
 describe('merge', () => {
+  describe('Array', () => {
+    it('should merge values', () => {
+      const source = [1];
+      const sources = [2, 3];
+      const operator = merge(sources);
+
+      expect(operator(source)).toEqual([1, 2, 3]);
+      expect(sources).toStrictEqual([2, 3]);
+      expect(source).toStrictEqual([1]);
+    });
+  });
+
   describe('PlainObject', () => {
-    it('should merge values when adding property', () => {
+    it('should merge values', () => {
       const source = { a: 1 };
       const sources = { b: 2, c: { d: 3 }, e: [{ f: 4 }] };
       const operator = merge(sources);
@@ -12,7 +25,7 @@ describe('merge', () => {
       expect(source).toStrictEqual({ a: 1 });
     });
 
-    it('should merge values when replacing property', () => {
+    it('should merge values with overriding keys', () => {
       const source = { b: 1 };
       const sources = { b: 2, c: { d: 3 }, e: [{ f: 4 }] };
       const operator = merge(sources);
@@ -41,9 +54,5 @@ describe('merge', () => {
       expect(sources).toStrictEqual([{ b: 2 }, { c: { d: 3 } }, { e: [{ f: 4 }] }]);
       expect(source).toStrictEqual({ e: [{ g: 5 }] });
     });
-  });
-
-  describe('Array', () => {
-    // TODO
   });
 });
