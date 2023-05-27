@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import {
+  DEFAULT_DATE,
+  DEFAULT_PLAIN_OBJECT,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_SET,
+  NUMBER_ARRAY,
+  NUMBER_MAP,
+  NUMBER_SET
+} from '../../../tests/test.data';
 import { LOOSE_EQUALITY } from '../../utils';
 import { eq } from './eq';
 
@@ -13,7 +23,7 @@ describe('eq', () => {
     });
 
     it('should return false', () => {
-      const operator = eq({});
+      const operator = eq(EMPTY_PLAIN_OBJECT);
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -27,7 +37,7 @@ describe('eq', () => {
     });
 
     it('should return false', () => {
-      const operator = eq({});
+      const operator = eq(EMPTY_PLAIN_OBJECT);
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -130,7 +140,7 @@ describe('eq', () => {
     });
 
     it('should return false', () => {
-      const operator = eq([]);
+      const operator = eq(EMPTY_ARRAY);
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -144,7 +154,7 @@ describe('eq', () => {
     });
 
     it('should return false', () => {
-      const operator = eq(new Set());
+      const operator = eq(EMPTY_SET);
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -170,7 +180,7 @@ describe('eq', () => {
     });
 
     it('should return false', () => {
-      const operator = eq(new Map());
+      const operator = eq(EMPTY_MAP);
       expect(operator(source)).toBeFalsy();
     });
   });

@@ -11,3 +11,5 @@ export type CollectionTypes = MapConstructor | SetConstructor;
 export type AllTypes = PrimitiveTypes | ObjectTypes | CollectionTypes | nil | any;
 
 export type UnwrapValue<T> = T extends Array<infer V> ? V : T extends Set<infer V> ? V : T extends Map<unknown, infer V> ? V : never;
+
+export var nil: nil;

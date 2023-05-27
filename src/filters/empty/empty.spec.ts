@@ -1,9 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import { EMPTY_ARRAY, EMPTY_MAP, EMPTY_PLAIN_OBJECT, EMPTY_SET, anonymousArrowFn, anonymousFn } from '../../../tests/test.data';
 import { empty } from './empty';
 
 describe('empty', () => {
-  const anonymousArrowFn = () => {};
-  const anonymousFn = function () {};
   const operator = empty();
 
   describe('string', () => {
@@ -44,7 +43,7 @@ describe('empty', () => {
 
   describe('PlainObject', () => {
     it('should return true', () => {
-      expect(operator({})).toBeTruthy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -54,7 +53,7 @@ describe('empty', () => {
       expect(operator({ a: false })).toBeFalsy();
       expect(operator({ a: null })).toBeFalsy();
       expect(operator({ a: undefined })).toBeFalsy();
-      expect(operator({ a: {} })).toBeFalsy();
+      expect(operator({ a: EMPTY_PLAIN_OBJECT })).toBeFalsy();
       expect(operator({ a: anonymousArrowFn })).toBeFalsy();
       expect(operator({ a: anonymousFn })).toBeFalsy();
     });
@@ -62,7 +61,7 @@ describe('empty', () => {
 
   describe('Array', () => {
     it('should return true', () => {
-      expect(operator([])).toBeTruthy();
+      expect(operator(EMPTY_ARRAY)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -72,7 +71,7 @@ describe('empty', () => {
       expect(operator([false])).toBeFalsy();
       expect(operator([null])).toBeFalsy();
       expect(operator([undefined])).toBeFalsy();
-      expect(operator([{}])).toBeFalsy();
+      expect(operator([EMPTY_PLAIN_OBJECT])).toBeFalsy();
       expect(operator([anonymousArrowFn])).toBeFalsy();
       expect(operator([anonymousFn])).toBeFalsy();
     });
@@ -80,7 +79,7 @@ describe('empty', () => {
 
   describe('Set', () => {
     it('should return true', () => {
-      expect(operator(new Set())).toBeTruthy();
+      expect(operator(EMPTY_SET)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -90,7 +89,7 @@ describe('empty', () => {
       expect(operator(new Set([false]))).toBeFalsy();
       expect(operator(new Set([null]))).toBeFalsy();
       expect(operator(new Set([undefined]))).toBeFalsy();
-      expect(operator(new Set([{}]))).toBeFalsy();
+      expect(operator(new Set([EMPTY_PLAIN_OBJECT]))).toBeFalsy();
       expect(operator(new Set([anonymousArrowFn]))).toBeFalsy();
       expect(operator(new Set([anonymousFn]))).toBeFalsy();
     });
@@ -98,7 +97,7 @@ describe('empty', () => {
 
   describe('Map', () => {
     it('should return true', () => {
-      expect(operator(new Map())).toBeTruthy();
+      expect(operator(EMPTY_MAP)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -108,7 +107,7 @@ describe('empty', () => {
       expect(operator(new Map([[0, false]]))).toBeFalsy();
       expect(operator(new Map([[0, null]]))).toBeFalsy();
       expect(operator(new Map([[0, undefined]]))).toBeFalsy();
-      expect(operator(new Map([[0, {}]]))).toBeFalsy();
+      expect(operator(new Map([[0, EMPTY_PLAIN_OBJECT]]))).toBeFalsy();
       expect(operator(new Map([[0, anonymousArrowFn]]))).toBeFalsy();
       expect(operator(new Map([[0, anonymousFn]]))).toBeFalsy();
     });

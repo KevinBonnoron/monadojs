@@ -1,4 +1,4 @@
-import { haveSameProperties } from '../have-same-properties/have-same-properties';
+import { haveSamePropertyNames } from '../have-same-property-names/have-same-property-names';
 import { haveSameSymbols } from '../have-same-symbols/have-same-symbols';
 import { isArray } from '../is-array/is-array';
 import { isDate } from '../is-date/is-date';
@@ -44,7 +44,11 @@ export const isEqual = <T, V>(o1: T, o2: V): boolean => {
   }
 
   if (isPlainObject(o1) && isPlainObject(o2)) {
-    return haveSameProperties(o1, o2) && haveSameSymbols(o1, o2);
+    return (
+      haveSamePropertyNames(o1, o2) &&
+      haveSameSymbols(o1, o2) &&
+      Object.getOwnPropertyNames(o1).every((propertyName) => isEqual((o1 as any)[propertyName], (o2 as any)[propertyName]))
+    );
   }
 
   return Object.is(o1, o2);

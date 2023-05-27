@@ -1,4 +1,16 @@
 import { describe, expect, it } from 'vitest';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../../tests/test.data';
 import { Just, Nothing } from '../../maybe/maybe.utils';
 import { isTrue } from '../is-true/is-true';
 
@@ -13,16 +25,16 @@ describe('isTrue', () => {
     expect(isTrue('a')).toBeFalsy();
     expect(isTrue(0)).toBeFalsy();
     expect(isTrue(false)).toBeFalsy();
-    expect(isTrue(Symbol())).toBeFalsy();
-    expect(isTrue(new Date())).toBeFalsy();
-    expect(isTrue(Promise.resolve())).toBeFalsy();
-    expect(isTrue(new RegExp(''))).toBeFalsy();
-    expect(isTrue([])).toBeFalsy();
-    expect(isTrue(new Set())).toBeFalsy();
-    expect(isTrue(new Map())).toBeFalsy();
-    expect(isTrue({})).toBeFalsy();
-    expect(isTrue(() => {})).toBeFalsy();
-    expect(isTrue(function () {})).toBeFalsy();
+    expect(isTrue(DEFAULT_SYMBOL)).toBeFalsy();
+    expect(isTrue(DEFAULT_DATE)).toBeFalsy();
+    expect(isTrue(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+    expect(isTrue(DEFAULT_REGEX)).toBeFalsy();
+    expect(isTrue(EMPTY_ARRAY)).toBeFalsy();
+    expect(isTrue(EMPTY_SET)).toBeFalsy();
+    expect(isTrue(EMPTY_MAP)).toBeFalsy();
+    expect(isTrue(EMPTY_PLAIN_OBJECT)).toBeFalsy();
+    expect(isTrue(anonymousArrowFn)).toBeFalsy();
+    expect(isTrue(anonymousFn)).toBeFalsy();
     expect(isTrue(Just(1))).toBeFalsy();
     expect(isTrue(Nothing)).toBeFalsy();
   });

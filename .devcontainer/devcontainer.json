@@ -1,6 +1,6 @@
 {
   "name": "Monadojs",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:18-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20-bullseye",
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
   // Use 'forwardPorts' to make a list of ports inside the container available locally.

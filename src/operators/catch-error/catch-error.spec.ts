@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { EMPTY_ARRAY } from '../../../tests/test.data';
 import { map } from '../map/map';
 import { pipe } from '../pipe/pipe';
 import { catchError } from './catch-error';
@@ -18,10 +19,10 @@ describe('catch-error', () => {
 
     const operator = pipe(
       map((person: any) => `${person.age} ${person.sex}`),
-      catchError(() => [])
+      catchError(() => EMPTY_ARRAY)
     );
 
     expect(() => operator(source)).not.toThrow();
-    expect(operator(source)).toStrictEqual([]);
+    expect(operator(source)).toStrictEqual(EMPTY_ARRAY);
   });
 });

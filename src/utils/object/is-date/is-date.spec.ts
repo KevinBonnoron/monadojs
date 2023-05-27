@@ -1,10 +1,22 @@
 import { describe, expect, it } from 'vitest';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../../tests/test.data';
 import { Just, Nothing } from '../../maybe/maybe.utils';
 import { isDate } from './is-date';
 
 describe('isDate', () => {
   it('should return true', () => {
-    expect(isDate(new Date())).toBeTruthy();
+    expect(isDate(DEFAULT_DATE)).toBeTruthy();
   });
 
   it('should return false', () => {
@@ -13,15 +25,15 @@ describe('isDate', () => {
     expect(isDate('a')).toBeFalsy();
     expect(isDate(0)).toBeFalsy();
     expect(isDate(false)).toBeFalsy();
-    expect(isDate(Symbol())).toBeFalsy();
-    expect(isDate(Promise.resolve())).toBeFalsy();
-    expect(isDate(new RegExp(''))).toBeFalsy();
-    expect(isDate([])).toBeFalsy();
-    expect(isDate(new Set())).toBeFalsy();
-    expect(isDate(new Map())).toBeFalsy();
-    expect(isDate({})).toBeFalsy();
-    expect(isDate(() => {})).toBeFalsy();
-    expect(isDate(function () {})).toBeFalsy();
+    expect(isDate(DEFAULT_SYMBOL)).toBeFalsy();
+    expect(isDate(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+    expect(isDate(DEFAULT_REGEX)).toBeFalsy();
+    expect(isDate(EMPTY_ARRAY)).toBeFalsy();
+    expect(isDate(EMPTY_SET)).toBeFalsy();
+    expect(isDate(EMPTY_MAP)).toBeFalsy();
+    expect(isDate(EMPTY_PLAIN_OBJECT)).toBeFalsy();
+    expect(isDate(anonymousArrowFn)).toBeFalsy();
+    expect(isDate(anonymousFn)).toBeFalsy();
     expect(isDate(Just(1))).toBeFalsy();
     expect(isDate(Nothing)).toBeFalsy();
   });

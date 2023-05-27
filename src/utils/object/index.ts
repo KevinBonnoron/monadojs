@@ -1,4 +1,4 @@
-export * from './have-same-properties/have-same-properties';
+export * from './have-same-property-names/have-same-property-names';
 export * from './have-same-type/have-same-type';
 export * from './is-array/is-array';
 export * from './is-boolean/is-boolean';

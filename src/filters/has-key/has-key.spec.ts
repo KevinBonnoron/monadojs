@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn, anonymousFn } from '../../../tests/test.data';
 import { hasKey } from './has-key';
 
 describe('has-key', () => {
@@ -41,11 +41,11 @@ describe('has-key', () => {
       expect(operator(NUMBER_ARRAY)).toBeFalsy();
       expect(operator(null)).toBeFalsy();
       expect(operator(undefined)).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
       expect(operator(new RegExp('a'))).toBeFalsy();
       expect(operator(NUMBER_SET)).toBeFalsy();
-      expect(operator(function () {})).toBeFalsy();
-      expect(operator(() => {})).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
     });
   });
 });

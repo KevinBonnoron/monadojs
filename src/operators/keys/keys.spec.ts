@@ -1,11 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import {
+  DEFAULT_DATE,
+  DEFAULT_PLAIN_OBJECT,
+  EMPTY_ARRAY,
+  NUMBER_ARRAY,
+  NUMBER_MAP,
+  NUMBER_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../tests/test.data';
 import { keys } from './keys';
 
 describe('keys', () => {
-  const anonymousFn = function () {};
-  const anonymousArrowFn = () => {};
-
   describe('Array', () => {
     const operator = keys();
 
@@ -46,13 +52,13 @@ describe('keys', () => {
     const operator = keys();
 
     it('should return empty array', () => {
-      expect([...operator('a')]).toStrictEqual([]);
-      expect([...operator(0)]).toStrictEqual([]);
-      expect([...operator(true)]).toStrictEqual([]);
-      expect([...operator(new Date())]).toStrictEqual([]);
-      expect([...operator(new RegExp('a'))]).toStrictEqual([]);
-      expect([...operator(anonymousFn)]).toStrictEqual([]);
-      expect([...operator(anonymousArrowFn)]).toStrictEqual([]);
+      expect([...operator('a')]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(0)]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(true)]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(DEFAULT_DATE)]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(new RegExp('a'))]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(anonymousFn)]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(anonymousArrowFn)]).toStrictEqual(EMPTY_ARRAY);
     });
   });
 });

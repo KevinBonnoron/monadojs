@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_DATE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import { DEFAULT_DATE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn } from '../../../tests/test.data';
 import { startsWith } from './starts-with';
 
 describe('starts-with', () => {
@@ -30,7 +30,7 @@ describe('starts-with', () => {
       expect(operator(NUMBER_SET)).toBeFalsy();
       expect(operator(NUMBER_MAP)).toBeFalsy();
       expect(operator(new RegExp('a'))).toBeFalsy();
-      expect(operator(() => {})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
     });
   });
 });

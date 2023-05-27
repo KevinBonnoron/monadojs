@@ -20,7 +20,7 @@ yarn add monadojs
 Then you can start using the library:
 
 ```typescript
-import { prop, tap, pipe } from 'monadojs';
+import { prop, pipe } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -31,31 +31,33 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
-  prop('firstName'),
-  tap(console.log)
-);
-
-// Or
-
-pipe(
-  prop('firstName'),
-  tap(console.log)
+// Get "firstName" for all persons into an array
+const firstNames = pipe(
+  prop('firstName')
 )(persons);
 
-// You still can use regular functions
-console.log(persons.map(prop('firstName')));
+// Or store a mapper function and apply it later
+const firstNameMapper = prop('firstName');
+const firstNames = firstNameMapper(persons);
+
+// You still can use regular map functions if needed
+persons.map(prop('firstName'));
+
+// You can even use the .pipe syntax (non recommanded)
+const firstNames: string[] = persons.pipe(
+  prop('firstName')
+);
 ```
 
 ## API
 
 ### Filters
 
-- after
-- before
+- [after](examples/filters/after/index.md)
+- [before](examples/filters/before/index.md)
 - empty
 - endsWith
-- [eq](examples/filters/eq/advanced.md)
+- [eq](examples/filters/eq/index.md)
 - gt
 - gte
 - has-key

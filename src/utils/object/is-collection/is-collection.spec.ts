@@ -1,12 +1,24 @@
 import { describe, expect, it } from 'vitest';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../../tests/test.data';
 import { Just, Nothing } from '../../maybe/maybe.utils';
 import { isCollection } from './is-collection';
 
 describe('isCollection', () => {
   it('should return true', () => {
-    expect(isCollection([])).toBeTruthy();
-    expect(isCollection(new Set())).toBeTruthy();
-    expect(isCollection(new Map())).toBeTruthy();
+    expect(isCollection(EMPTY_ARRAY)).toBeTruthy();
+    expect(isCollection(EMPTY_SET)).toBeTruthy();
+    expect(isCollection(EMPTY_MAP)).toBeTruthy();
   });
 
   it('should return false', () => {
@@ -15,13 +27,13 @@ describe('isCollection', () => {
     expect(isCollection('a')).toBeFalsy();
     expect(isCollection(0)).toBeFalsy();
     expect(isCollection(true)).toBeFalsy();
-    expect(isCollection(Symbol())).toBeFalsy();
-    expect(isCollection(new Date())).toBeFalsy();
-    expect(isCollection(Promise.resolve())).toBeFalsy();
-    expect(isCollection(new RegExp(''))).toBeFalsy();
-    expect(isCollection({})).toBeFalsy();
-    expect(isCollection(() => {})).toBeFalsy();
-    expect(isCollection(function () {})).toBeFalsy();
+    expect(isCollection(DEFAULT_SYMBOL)).toBeFalsy();
+    expect(isCollection(DEFAULT_DATE)).toBeFalsy();
+    expect(isCollection(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+    expect(isCollection(DEFAULT_REGEX)).toBeFalsy();
+    expect(isCollection(EMPTY_PLAIN_OBJECT)).toBeFalsy();
+    expect(isCollection(anonymousArrowFn)).toBeFalsy();
+    expect(isCollection(anonymousFn)).toBeFalsy();
     expect(isCollection(Just(1))).toBeFalsy();
     expect(isCollection(Nothing)).toBeFalsy();
   });

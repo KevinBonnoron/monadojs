@@ -1,5 +1,14 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { NUMBER_ARRAY, NUMBER_SET, STRING_MAP } from '../../../tests/test.data';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  EMPTY_PLAIN_OBJECT,
+  NUMBER_ARRAY,
+  NUMBER_SET,
+  STRING_MAP,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../tests/test.data';
 import { walk } from './walk';
 
 describe('walk', () => {
@@ -156,7 +165,7 @@ describe('walk', () => {
     });
 
     it('should walk with recursive object', () => {
-      const source = { a: 1, b: { c: 2, d: { e: 3 } }, g: {} };
+      const source = { a: 1, b: { c: 2, d: { e: 3 } }, g: EMPTY_PLAIN_OBJECT };
       const child = { f: 4, h: source };
       source.g = child;
 
@@ -166,7 +175,7 @@ describe('walk', () => {
 
   describe('others', () => {
     const operator = walk(fn);
-    const sources = [1, 'a', true, function () {}, () => {}, new Date(), new RegExp('')] as const;
+    const sources = [1, 'a', true, anonymousFn, anonymousArrowFn, DEFAULT_DATE, DEFAULT_REGEX] as const;
 
     it('should walk', () => {
       sources.forEach((source) => expect(operator(source)).toStrictEqual(source));

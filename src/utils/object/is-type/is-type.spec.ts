@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { EMPTY_PLAIN_OBJECT } from '../../../../tests/test.data';
 import { isType } from './is-type';
 
 class Dummy {}
@@ -10,6 +11,6 @@ describe('isType', () => {
   });
 
   it('should return false', () => {
-    expect(isType(Dummy)({})).toBeFalsy();
+    expect(isType(Dummy)(EMPTY_PLAIN_OBJECT)).toBeFalsy();
   });
 });

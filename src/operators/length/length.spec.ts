@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import { DEFAULT_DATE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn, anonymousFn } from '../../../tests/test.data';
 import { length } from './length';
 
 describe('length', () => {
@@ -46,10 +46,10 @@ describe('length', () => {
       expect(operator('a')).toStrictEqual(0);
       expect(operator(0)).toStrictEqual(0);
       expect(operator(true)).toStrictEqual(0);
-      expect(operator(new Date())).toStrictEqual(0);
+      expect(operator(DEFAULT_DATE)).toStrictEqual(0);
       expect(operator(new RegExp('a'))).toStrictEqual(0);
-      expect(operator(function () {})).toStrictEqual(0);
-      expect(operator(() => {})).toStrictEqual(0);
+      expect(operator(anonymousFn)).toStrictEqual(0);
+      expect(operator(anonymousArrowFn)).toStrictEqual(0);
     });
   });
 });

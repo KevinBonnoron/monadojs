@@ -14,8 +14,14 @@ const persons = [
 
 const firstNameEq = (firstName: string) => pipe(prop('firstName'), eq(firstName));
 
-persons.pipe(filter(firstNameEq('James')), tap(console.log));
+persons.pipe(
+  filter(firstNameEq('James')),
+  tap(console.log)
+);
+
 /*
-[ { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' } ]
+  [
+    { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' }
+  ]
 */
 ```

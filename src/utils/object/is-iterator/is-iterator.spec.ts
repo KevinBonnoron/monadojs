@@ -1,25 +1,37 @@
 import { describe, expect, it } from 'vitest';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../../tests/test.data';
 import { Just, Nothing } from '../../maybe/maybe.utils';
 import { isIterator } from './is-iterator';
 
 describe('isIterator', () => {
-  // TODO: put "should return true" tests
+  // TODO: add a "should return true" test
   it('should return false', () => {
     expect(isIterator(null)).toBeFalsy();
     expect(isIterator(undefined)).toBeFalsy();
     expect(isIterator('a')).toBeFalsy();
     expect(isIterator(0)).toBeFalsy();
     expect(isIterator(true)).toBeFalsy();
-    expect(isIterator(Symbol())).toBeFalsy();
-    expect(isIterator(new Date())).toBeFalsy();
-    expect(isIterator(Promise.resolve())).toBeFalsy();
-    expect(isIterator(new RegExp(''))).toBeFalsy();
-    expect(isIterator([])).toBeFalsy();
-    expect(isIterator(new Set())).toBeFalsy();
-    expect(isIterator(new Map())).toBeFalsy();
-    expect(isIterator({})).toBeFalsy();
-    expect(isIterator(() => {})).toBeFalsy();
-    expect(isIterator(function () {})).toBeFalsy();
+    expect(isIterator(DEFAULT_SYMBOL)).toBeFalsy();
+    expect(isIterator(DEFAULT_DATE)).toBeFalsy();
+    expect(isIterator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+    expect(isIterator(DEFAULT_REGEX)).toBeFalsy();
+    expect(isIterator(EMPTY_ARRAY)).toBeFalsy();
+    expect(isIterator(EMPTY_SET)).toBeFalsy();
+    expect(isIterator(EMPTY_MAP)).toBeFalsy();
+    expect(isIterator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
+    expect(isIterator(anonymousArrowFn)).toBeFalsy();
+    expect(isIterator(anonymousFn)).toBeFalsy();
     expect(isIterator(Just(1))).toBeFalsy();
     expect(isIterator(Nothing)).toBeFalsy();
   });

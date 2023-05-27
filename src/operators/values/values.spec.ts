@@ -1,16 +1,27 @@
 import { describe, expect, it } from 'vitest';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  DIVERSE_SET,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../tests/test.data';
+import { Just, Nothing } from '../../utils';
 import { values } from './values';
 
 describe('values', () => {
-  const anonymousFn = function () {};
-  const anonymousArrowFn = () => {};
-
   describe('Array', () => {
     const operator = values();
 
     it('should return values', () => {
-      const source = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
-      const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
+      const source = [1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn];
+      const expected = [1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn];
 
       expect([...operator(source)]).toStrictEqual(expected);
     });
@@ -20,8 +31,26 @@ describe('values', () => {
     const operator = values();
 
     it('should return values', () => {
-      const source = new Set([1, true, 'a', [], {}, anonymousFn, anonymousArrowFn]);
-      const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
+      const source = DIVERSE_SET;
+      const expected = [
+        null,
+        undefined,
+        'a',
+        0,
+        true,
+        DEFAULT_SYMBOL,
+        DEFAULT_DATE,
+        EMPTY_RESOLVED_PROMISE,
+        DEFAULT_REGEX,
+        EMPTY_ARRAY,
+        EMPTY_SET,
+        EMPTY_MAP,
+        EMPTY_PLAIN_OBJECT,
+        anonymousArrowFn,
+        anonymousFn,
+        Just(1),
+        Nothing
+      ];
 
       expect([...operator(source)]).toStrictEqual(expected);
     });
@@ -35,13 +64,13 @@ describe('values', () => {
         ['a', 1],
         ['b', true],
         ['c', 'a'],
-        ['d', []],
-        ['e', {}],
+        ['d', EMPTY_ARRAY],
+        ['e', EMPTY_PLAIN_OBJECT],
         ['f', anonymousFn],
         ['g', anonymousArrowFn]
       ]);
 
-      const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
+      const expected = [1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn];
 
       expect([...operator(source)]).toStrictEqual(expected);
     });
@@ -51,8 +80,8 @@ describe('values', () => {
     const operator = values();
 
     it('should return values', () => {
-      const source = { a: 1, b: true, c: 'a', d: [], e: {}, f: anonymousFn, g: anonymousArrowFn };
-      const expected = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
+      const source = { a: 1, b: true, c: 'a', d: EMPTY_ARRAY, e: EMPTY_PLAIN_OBJECT, f: anonymousFn, g: anonymousArrowFn };
+      const expected = [1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn];
 
       expect([...operator(source)]).toStrictEqual(expected);
     });
@@ -62,13 +91,13 @@ describe('values', () => {
     const operator = values();
 
     it('should return empty array', () => {
-      expect([...operator('a')]).toStrictEqual([]);
-      expect([...operator(0)]).toStrictEqual([]);
-      expect([...operator(true)]).toStrictEqual([]);
-      expect([...operator(new Date())]).toStrictEqual([]);
-      expect([...operator(new RegExp('a'))]).toStrictEqual([]);
-      expect([...operator(anonymousFn)]).toStrictEqual([]);
-      expect([...operator(anonymousArrowFn)]).toStrictEqual([]);
+      expect([...operator('a')]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(0)]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(true)]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(DEFAULT_DATE)]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(new RegExp('a'))]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(anonymousFn)]).toStrictEqual(EMPTY_ARRAY);
+      expect([...operator(anonymousArrowFn)]).toStrictEqual(EMPTY_ARRAY);
     });
   });
 });

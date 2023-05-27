@@ -1,21 +1,19 @@
 import { describe, expect, it } from 'vitest';
+import { EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousArrowFn, anonymousFn } from '../../../tests/test.data';
 import { entries } from './entries';
 
 describe('entries', () => {
-  const anonymousFn = function () {};
-  const anonymousArrowFn = () => {};
-
   describe('Array', () => {
     const operator = entries();
 
     it('should return entries', () => {
-      const source = [1, true, 'a', [], {}, anonymousFn, anonymousArrowFn];
+      const source = [1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn];
       const expected = [
         [0, 1],
         [1, true],
         [2, 'a'],
-        [3, []],
-        [4, {}],
+        [3, EMPTY_ARRAY],
+        [4, EMPTY_PLAIN_OBJECT],
         [5, anonymousFn],
         [6, anonymousArrowFn]
       ];
@@ -31,8 +29,8 @@ describe('entries', () => {
         ['a', 1],
         ['b', true],
         ['c', 'a'],
-        ['d', []],
-        ['e', {}],
+        ['d', EMPTY_ARRAY],
+        ['e', EMPTY_PLAIN_OBJECT],
         ['f', anonymousFn],
         ['g', anonymousArrowFn]
       ]);
@@ -40,8 +38,8 @@ describe('entries', () => {
         ['a', 1],
         ['b', true],
         ['c', 'a'],
-        ['d', []],
-        ['e', {}],
+        ['d', EMPTY_ARRAY],
+        ['e', EMPTY_PLAIN_OBJECT],
         ['f', anonymousFn],
         ['g', anonymousArrowFn]
       ];
@@ -53,13 +51,13 @@ describe('entries', () => {
     const operator = entries();
 
     it('should return entries', () => {
-      const source = new Set<any>([1, true, 'a', [], {}, anonymousFn, anonymousArrowFn]);
+      const source = new Set<any>([1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn]);
       const expected = [
         [0, 1],
         [1, true],
         [2, 'a'],
-        [3, []],
-        [4, {}],
+        [3, EMPTY_ARRAY],
+        [4, EMPTY_PLAIN_OBJECT],
         [5, anonymousFn],
         [6, anonymousArrowFn]
       ];
@@ -71,13 +69,13 @@ describe('entries', () => {
     const operator = entries();
 
     it('should return entries', () => {
-      const source = { a: 1, b: true, c: 'a', d: [], e: {}, f: anonymousFn, g: anonymousArrowFn };
+      const source = { a: 1, b: true, c: 'a', d: EMPTY_ARRAY, e: EMPTY_PLAIN_OBJECT, f: anonymousFn, g: anonymousArrowFn };
       const expected = [
         ['a', 1],
         ['b', true],
         ['c', 'a'],
-        ['d', []],
-        ['e', {}],
+        ['d', EMPTY_ARRAY],
+        ['e', EMPTY_PLAIN_OBJECT],
         ['f', anonymousFn],
         ['g', anonymousArrowFn]
       ];

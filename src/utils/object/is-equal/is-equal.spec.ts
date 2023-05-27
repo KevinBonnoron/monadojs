@@ -1,6 +1,19 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_DATE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../../tests/test.data';
-import { nil } from '../../../filters';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  NUMBER_ARRAY,
+  NUMBER_MAP,
+  NUMBER_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../../tests/test.data';
 import { Just, Nothing } from '../../maybe/maybe.utils';
 import { isEqual } from './is-equal';
 
@@ -14,20 +27,19 @@ describe('isEqual', () => {
 
     it('should return false', () => {
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -42,20 +54,19 @@ describe('isEqual', () => {
 
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -71,20 +82,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -100,20 +110,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -129,49 +138,47 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
 
   describe('symbol', () => {
-    const value = Symbol();
+    const value = DEFAULT_SYMBOL;
 
     it('should return true', () => {
-      expect(isEqual(value, value)).toBeTruthy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeTruthy();
     });
 
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
       expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -187,20 +194,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
       expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -217,20 +223,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -246,20 +251,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -275,20 +279,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -304,20 +307,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -348,20 +350,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
@@ -377,20 +378,19 @@ describe('isEqual', () => {
     it('should return false', () => {
       expect(isEqual(value, null)).toBeFalsy();
       expect(isEqual(value, undefined)).toBeFalsy();
-      expect(isEqual(value, nil)).toBeFalsy();
       expect(isEqual(value, 'a')).toBeFalsy();
       expect(isEqual(value, 1)).toBeFalsy();
       expect(isEqual(value, true)).toBeFalsy();
-      expect(isEqual(value, Symbol())).toBeFalsy();
-      expect(isEqual(value, new Date())).toBeFalsy();
-      expect(isEqual(value, Promise.resolve())).toBeFalsy();
-      expect(isEqual(value, new RegExp(''))).toBeFalsy();
-      expect(isEqual(value, [])).toBeFalsy();
-      expect(isEqual(value, new Set())).toBeFalsy();
-      expect(isEqual(value, new Map())).toBeFalsy();
-      expect(isEqual(value, {})).toBeFalsy();
-      expect(isEqual(value, () => {})).toBeFalsy();
-      expect(isEqual(value, function () {})).toBeFalsy();
+      expect(isEqual(value, DEFAULT_SYMBOL)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_DATE)).toBeFalsy();
+      expect(isEqual(value, EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(isEqual(value, DEFAULT_REGEX)).toBeFalsy();
+      expect(isEqual(value, EMPTY_ARRAY)).toBeFalsy();
+      expect(isEqual(value, EMPTY_SET)).toBeFalsy();
+      expect(isEqual(value, EMPTY_MAP)).toBeFalsy();
+      expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
+      expect(isEqual(value, anonymousFn)).toBeFalsy();
       expect(isEqual(value, Just(1))).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });

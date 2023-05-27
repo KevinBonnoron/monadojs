@@ -1,16 +1,18 @@
-import { expectTypeOf, test } from 'vitest';
-import { person } from '../../../tests/test.data';
+import { describe, expectTypeOf, it } from 'vitest';
+import { fooBar } from '../../../tests/test.data';
 import { pick } from './pick';
 
-test('that types works properly', () => {
-  expectTypeOf(pick('id')(person)).toMatchTypeOf<{ id: number }>();
-  expectTypeOf(pick('name')(person)).toMatchTypeOf<{ name: string }>();
-  expectTypeOf(pick('birthDate')(person)).toMatchTypeOf<{ birthDate: Date }>();
-  expectTypeOf(pick('id', 'name')(person)).toMatchTypeOf<{ id: number; name: string }>();
-  expectTypeOf(pick('id', 'name', 'birthDate')(person)).toMatchTypeOf<{ id: number; name: string; birthDate: Date }>();
+describe('pick', () => {
+  it('should have correct types', () => {
+    expectTypeOf(pick('id')(fooBar)).toMatchTypeOf<{ id: number }>();
+    expectTypeOf(pick('name')(fooBar)).toMatchTypeOf<{ name: string }>();
+    expectTypeOf(pick('birthDate')(fooBar)).toMatchTypeOf<{ birthDate: Date }>();
+    expectTypeOf(pick('id', 'name')(fooBar)).toMatchTypeOf<{ id: number; name: string }>();
+    expectTypeOf(pick('id', 'name', 'birthDate')(fooBar)).toMatchTypeOf<{ id: number; name: string; birthDate: Date }>();
 
-  // @ts-expect-error
-  assertType(pick('id')({ noId: 0 }));
-  // @ts-expect-error
-  assertType(pick('Id')(person));
+    // @ts-expect-error
+    assertType(pick('id')({ noId: 0 }));
+    // @ts-expect-error
+    assertType(pick('Id')(fooBar));
+  });
 });

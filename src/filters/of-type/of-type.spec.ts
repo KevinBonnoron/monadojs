@@ -1,13 +1,21 @@
 import { describe, expect, it } from 'vitest';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../tests/test.data';
 import { Maybe } from '../../types';
 import { Just, Nothing } from '../../utils';
 import { ofType } from './of-type';
 
 describe('of-type', () => {
-  const anonymousArrowFn = () => {};
-  const anonymousFn = function () {};
-  const emptyResolvedPromise = Promise.resolve();
-
   describe('null', () => {
     const operator = ofType(null);
 
@@ -20,14 +28,14 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -47,14 +55,14 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -74,14 +82,14 @@ describe('of-type', () => {
       expect(operator(undefined)).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -101,14 +109,14 @@ describe('of-type', () => {
       expect(operator(undefined)).toBeFalsy();
       expect(operator('a')).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -128,14 +136,14 @@ describe('of-type', () => {
       expect(operator(undefined)).toBeFalsy();
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -147,7 +155,7 @@ describe('of-type', () => {
     const operator = ofType(Symbol);
 
     it('should return true', () => {
-      expect(operator(Symbol())).toBeTruthy();
+      expect(operator(DEFAULT_SYMBOL)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -156,13 +164,13 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -174,7 +182,7 @@ describe('of-type', () => {
     const operator = ofType(Date);
 
     it('should return true', () => {
-      expect(operator(new Date())).toBeTruthy();
+      expect(operator(DEFAULT_DATE)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -183,13 +191,13 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -201,7 +209,7 @@ describe('of-type', () => {
     const operator = ofType(Promise);
 
     it('should return true', () => {
-      expect(operator(emptyResolvedPromise)).toBeTruthy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -210,13 +218,13 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -228,7 +236,7 @@ describe('of-type', () => {
     const operator = ofType(RegExp);
 
     it('should return true', () => {
-      expect(operator(new RegExp(''))).toBeTruthy();
+      expect(operator(DEFAULT_REGEX)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -237,13 +245,13 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -255,7 +263,7 @@ describe('of-type', () => {
     const operator = ofType(Array);
 
     it('should return true', () => {
-      expect(operator([])).toBeTruthy();
+      expect(operator(EMPTY_ARRAY)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -264,13 +272,13 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -282,7 +290,7 @@ describe('of-type', () => {
     const operator = ofType(Set);
 
     it('should return true', () => {
-      expect(operator(new Set())).toBeTruthy();
+      expect(operator(EMPTY_SET)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -291,13 +299,13 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -309,7 +317,7 @@ describe('of-type', () => {
     const operator = ofType(Map);
 
     it('should return true', () => {
-      expect(operator(new Map())).toBeTruthy();
+      expect(operator(EMPTY_MAP)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -318,13 +326,13 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
@@ -336,24 +344,24 @@ describe('of-type', () => {
     const operator = ofType(Object);
 
     it('should return true', () => {
-      expect(operator(new Date())).toBeTruthy();
-      expect(operator(emptyResolvedPromise)).toBeTruthy();
-      expect(operator(new RegExp(''))).toBeTruthy();
-      expect(operator(new Set())).toBeTruthy();
-      expect(operator(new Map())).toBeTruthy();
-      expect(operator({})).toBeTruthy();
+      expect(operator(DEFAULT_DATE)).toBeTruthy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeTruthy();
+      expect(operator(DEFAULT_REGEX)).toBeTruthy();
+      expect(operator(EMPTY_SET)).toBeTruthy();
+      expect(operator(EMPTY_MAP)).toBeTruthy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeTruthy();
       expect(operator(Just(1))).toBeTruthy();
       expect(operator(Nothing)).toBeTruthy();
     });
 
     it('should return false', () => {
-      expect(operator([])).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
       expect(operator(null)).toBeFalsy();
       expect(operator(undefined)).toBeFalsy();
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
     });
@@ -373,14 +381,14 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(Just(1))).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
@@ -400,14 +408,14 @@ describe('of-type', () => {
       expect(operator('a')).toBeFalsy();
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();
-      expect(operator(Symbol())).toBeFalsy();
-      expect(operator(new Date())).toBeFalsy();
-      expect(operator(emptyResolvedPromise)).toBeFalsy();
-      expect(operator(new RegExp(''))).toBeFalsy();
-      expect(operator([])).toBeFalsy();
-      expect(operator(new Set())).toBeFalsy();
-      expect(operator(new Map())).toBeFalsy();
-      expect(operator({})).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
     });

@@ -1,6 +1,31 @@
 import { describe, expect, it } from 'vitest';
-import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import {
+  NUMBER_ARRAY,
+  NUMBER_MAP,
+  NUMBER_SET,
+  OBJECT_SET,
+  STRING_ARRAY,
+  STRING_MAP,
+  STRING_SET,
+  babyDoe,
+  fooBar,
+  janeDoe,
+  johnDoe
+} from '../../../tests/test.data';
+import { Collection } from '../../types';
+import { isEqual, isSet } from '../../utils';
 import { clone } from './clone';
+
+const deleteElementFromCollection = <T>(value: T, collection: Collection<T>) => {
+  if (isSet(collection)) {
+    collection.forEach((element) => {
+      if (isEqual(value, element)) {
+        collection.delete(element);
+        return;
+      }
+    });
+  }
+};
 
 describe('clone', () => {
   const operator = clone();
@@ -18,7 +43,18 @@ describe('clone', () => {
   });
 
   describe('Array', () => {
-    it('should clone', () => {
+    it('should clone strings', () => {
+      const source = STRING_ARRAY;
+      const cloned = operator(source);
+      cloned.push('A');
+      cloned.shift();
+
+      expect(cloned).not.toBe(source);
+      expect(cloned).toStrictEqual('bcdefghijklmnopqrstuvwxyzA'.split(''));
+      expect(source).toStrictEqual('abcdefghijklmnopqrstuvwxyz'.split(''));
+    });
+
+    it('should clone numbers', () => {
       const source = NUMBER_ARRAY;
       const cloned = operator(source);
       cloned.push(10);
@@ -31,7 +67,18 @@ describe('clone', () => {
   });
 
   describe('Set', () => {
-    it('should clone', () => {
+    it('should clone strings', () => {
+      const source = STRING_SET;
+      const cloned = operator(source);
+      cloned.add('A');
+      cloned.delete('a');
+
+      expect(cloned).not.toBe(source);
+      expect(cloned).toStrictEqual(new Set('bcdefghijklmnopqrstuvwxyzA'.split('')));
+      expect(source).toStrictEqual(new Set('abcdefghijklmnopqrstuvwxyz'));
+    });
+
+    it('should clone numbers', () => {
       const source = NUMBER_SET;
       const cloned = operator(source);
       cloned.add(10);
@@ -41,10 +88,89 @@ describe('clone', () => {
       expect(cloned).toStrictEqual(new Set([2, 3, 4, 5, 6, 7, 8, 9, 10]));
       expect(source).toStrictEqual(new Set([1, 2, 3, 4, 5, 6, 7, 8, 9]));
     });
+
+    it('should clone objects', () => {
+      const source = OBJECT_SET;
+      const cloned = operator(source);
+      cloned.add(babyDoe);
+      deleteElementFromCollection(fooBar, cloned);
+
+      expect(cloned).not.toBe(source);
+      expect(cloned).toStrictEqual(new Set([johnDoe, janeDoe, babyDoe]));
+      expect(source).toStrictEqual(new Set([fooBar, johnDoe, janeDoe]));
+    });
   });
 
   describe('Map', () => {
-    it('should clone', () => {
+    it('should clone strings', () => {
+      const source = STRING_MAP;
+      const cloned = operator(source);
+      cloned.set(25, 'A');
+      cloned.delete(0);
+
+      expect(cloned).not.toBe(source);
+      expect(cloned).toStrictEqual(
+        new Map([
+          [1, 'b'],
+          [2, 'c'],
+          [3, 'd'],
+          [4, 'e'],
+          [5, 'f'],
+          [6, 'g'],
+          [7, 'h'],
+          [8, 'i'],
+          [9, 'j'],
+          [10, 'k'],
+          [11, 'l'],
+          [12, 'm'],
+          [13, 'n'],
+          [14, 'o'],
+          [15, 'p'],
+          [16, 'q'],
+          [17, 'r'],
+          [18, 's'],
+          [19, 't'],
+          [20, 'u'],
+          [21, 'v'],
+          [22, 'w'],
+          [23, 'x'],
+          [24, 'y'],
+          [25, 'A']
+        ])
+      );
+      expect(source).toStrictEqual(
+        new Map([
+          [0, 'a'],
+          [1, 'b'],
+          [2, 'c'],
+          [3, 'd'],
+          [4, 'e'],
+          [5, 'f'],
+          [6, 'g'],
+          [7, 'h'],
+          [8, 'i'],
+          [9, 'j'],
+          [10, 'k'],
+          [11, 'l'],
+          [12, 'm'],
+          [13, 'n'],
+          [14, 'o'],
+          [15, 'p'],
+          [16, 'q'],
+          [17, 'r'],
+          [18, 's'],
+          [19, 't'],
+          [20, 'u'],
+          [21, 'v'],
+          [22, 'w'],
+          [23, 'x'],
+          [24, 'y'],
+          [25, 'z']
+        ])
+      );
+    });
+
+    it('should clone numbers', () => {
       const source = NUMBER_MAP;
       const cloned = operator(source);
       cloned.set(9, 10);

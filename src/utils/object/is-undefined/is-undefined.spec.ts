@@ -1,4 +1,16 @@
 import { describe, expect, it } from 'vitest';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../../tests/test.data';
 import { Just, Nothing } from '../../maybe/maybe.utils';
 import { isUndefined } from './is-undefined';
 
@@ -12,16 +24,16 @@ describe('isUndefined', () => {
     expect(isUndefined('a')).toBeFalsy();
     expect(isUndefined(0)).toBeFalsy();
     expect(isUndefined(true)).toBeFalsy();
-    expect(isUndefined(Symbol())).toBeFalsy();
-    expect(isUndefined(new Date())).toBeFalsy();
-    expect(isUndefined(Promise.resolve())).toBeFalsy();
-    expect(isUndefined(new RegExp(''))).toBeFalsy();
-    expect(isUndefined([])).toBeFalsy();
-    expect(isUndefined(new Set())).toBeFalsy();
-    expect(isUndefined(new Map())).toBeFalsy();
-    expect(isUndefined({})).toBeFalsy();
-    expect(isUndefined(() => {})).toBeFalsy();
-    expect(isUndefined(function () {})).toBeFalsy();
+    expect(isUndefined(DEFAULT_SYMBOL)).toBeFalsy();
+    expect(isUndefined(DEFAULT_DATE)).toBeFalsy();
+    expect(isUndefined(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+    expect(isUndefined(DEFAULT_REGEX)).toBeFalsy();
+    expect(isUndefined(EMPTY_ARRAY)).toBeFalsy();
+    expect(isUndefined(EMPTY_SET)).toBeFalsy();
+    expect(isUndefined(EMPTY_MAP)).toBeFalsy();
+    expect(isUndefined(EMPTY_PLAIN_OBJECT)).toBeFalsy();
+    expect(isUndefined(anonymousArrowFn)).toBeFalsy();
+    expect(isUndefined(anonymousFn)).toBeFalsy();
     expect(isUndefined(Just(1))).toBeFalsy();
     expect(isUndefined(Nothing)).toBeFalsy();
   });

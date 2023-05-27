@@ -1,4 +1,16 @@
 import { describe, expect, it } from 'vitest';
+import {
+  DEFAULT_DATE,
+  DEFAULT_REGEX,
+  DEFAULT_SYMBOL,
+  EMPTY_ARRAY,
+  EMPTY_MAP,
+  EMPTY_PLAIN_OBJECT,
+  EMPTY_RESOLVED_PROMISE,
+  EMPTY_SET,
+  anonymousArrowFn,
+  anonymousFn
+} from '../../../../tests/test.data';
 import { Just, Nothing } from '../../maybe/maybe.utils';
 import { isPrimitive } from './is-primitive';
 
@@ -7,21 +19,21 @@ describe('isPrimitive', () => {
     expect(isPrimitive('a')).toBeTruthy();
     expect(isPrimitive(0)).toBeTruthy();
     expect(isPrimitive(true)).toBeTruthy();
-    expect(isPrimitive(Symbol())).toBeTruthy();
+    expect(isPrimitive(DEFAULT_SYMBOL)).toBeTruthy();
   });
 
   it('should return false', () => {
     expect(isPrimitive(null)).toBeFalsy();
     expect(isPrimitive(undefined)).toBeFalsy();
-    expect(isPrimitive(new Date())).toBeFalsy();
-    expect(isPrimitive(Promise.resolve())).toBeFalsy();
-    expect(isPrimitive(new RegExp(''))).toBeFalsy();
-    expect(isPrimitive([])).toBeFalsy();
-    expect(isPrimitive(new Set())).toBeFalsy();
-    expect(isPrimitive(new Map())).toBeFalsy();
-    expect(isPrimitive({})).toBeFalsy();
-    expect(isPrimitive(() => {})).toBeFalsy();
-    expect(isPrimitive(function () {})).toBeFalsy();
+    expect(isPrimitive(DEFAULT_DATE)).toBeFalsy();
+    expect(isPrimitive(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+    expect(isPrimitive(DEFAULT_REGEX)).toBeFalsy();
+    expect(isPrimitive(EMPTY_ARRAY)).toBeFalsy();
+    expect(isPrimitive(EMPTY_SET)).toBeFalsy();
+    expect(isPrimitive(EMPTY_MAP)).toBeFalsy();
+    expect(isPrimitive(EMPTY_PLAIN_OBJECT)).toBeFalsy();
+    expect(isPrimitive(anonymousArrowFn)).toBeFalsy();
+    expect(isPrimitive(anonymousFn)).toBeFalsy();
     expect(isPrimitive(Just(1))).toBeFalsy();
     expect(isPrimitive(Nothing)).toBeFalsy();
   });

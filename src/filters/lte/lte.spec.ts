@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_DATE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import { DEFAULT_DATE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn } from '../../../tests/test.data';
 import { lte } from './lte';
 
 describe('lte', () => {
@@ -43,7 +43,7 @@ describe('lte', () => {
       expect(operator(NUMBER_ARRAY)).toBeFalsy();
       expect(operator(NUMBER_SET)).toBeFalsy();
       expect(operator(NUMBER_MAP)).toBeFalsy();
-      expect(operator(() => {})).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
     });
   });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, EMPTY_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { LOOSE_EQUALITY } from '../../utils';
 import { neq } from './neq';
 
@@ -8,7 +8,7 @@ describe('neq', () => {
     const source = null;
 
     it('should return true', () => {
-      const operator = neq({});
+      const operator = neq(EMPTY_PLAIN_OBJECT);
       expect(operator(source)).toBeTruthy();
     });
 
@@ -22,7 +22,7 @@ describe('neq', () => {
     const source = undefined;
 
     it('should return true', () => {
-      const operator = neq({});
+      const operator = neq(EMPTY_PLAIN_OBJECT);
       expect(operator(source)).toBeTruthy();
     });
 

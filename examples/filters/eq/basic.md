@@ -1,3 +1,5 @@
+This example show how to filter object having firstName with value 'James'
+
 ```typescript
 import { filter, like, pipe, prop, tap } from 'monadojs';
 
@@ -10,8 +12,16 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(filter(pipe(prop('firstName'), eq('James'))), tap(console.log));
+persons.pipe(
+  filter(
+    pipe(prop('firstName'), eq('James'))
+  ),
+  tap(console.log)
+);
+
 /*
-[ { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' } ]
+  [
+    { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' }
+  ]
 */
 ```
