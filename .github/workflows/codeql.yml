@@ -1,6 +1,9 @@
 name: codeql
 
-on: push
+on:
+  push: 
+    branches: [main]
+  pull_request:
 
 jobs:
   codeql:
@@ -13,7 +16,7 @@ jobs:
       - name: initialize codeql
         uses: github/codeql-action/init@v2
         with:
-          languages: typescript
+          languages: javascript
 
       - name: perform codeql analysis
         uses: github/codeql-action/analyze@v2
