@@ -565,13 +565,13 @@
     magic-string "^0.27.0"
 
 "@rollup/plugin-terser@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-terser/-/plugin-terser-0.4.0.tgz#4c76249ad337f3eb04ab409332f23717af2c1fbf"
-  integrity sha512-Ipcf3LPNerey1q9ZMjiaWHlNPEHNU/B5/uh9zXLltfEQ1lVSLLeZSgAtTPWGyw8Ip1guOeq+mDtdOlEj/wNxQw==
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-terser/-/plugin-terser-0.4.3.tgz#c2bde2fe3a85e45fa68a454d48f4e73e57f98b30"
+  integrity sha512-EF0oejTMtkyhrkwCdg0HJ0IpkcaVg1MMSf2olHb2Jp+1mnLM04OhjpJWGma4HobiDTF0WCyViWuvadyE9ch2XA==
   dependencies:
-    serialize-javascript "^6.0.0"
-    smob "^0.0.6"
-    terser "^5.15.1"
+    serialize-javascript "^6.0.1"
+    smob "^1.0.0"
+    terser "^5.17.4"
 
 "@rollup/pluginutils@^5.0.1":
   version "5.0.2"
@@ -4651,7 +4651,7 @@ semver@^7.3.2:
   dependencies:
     lru-cache "^6.0.0"
 
-serialize-javascript@^6.0.0:
+serialize-javascript@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-6.0.1.tgz#b206efb27c3da0b0ab6b52f48d170b7996458e5c"
   integrity sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==
@@ -4744,10 +4744,10 @@ smart-buffer@^4.2.0:
   resolved "https://registry.npmjs.org/smart-buffer/-/smart-buffer-4.2.0.tgz"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-smob@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/smob/-/smob-0.0.6.tgz#09b268fea916158a2781c152044c6155adbb8aa1"
-  integrity sha512-V21+XeNni+tTyiST1MHsa84AQhT1aFZipzPpOFAVB8DkHzwJyjjAmt9bgwnuZiZWnIbMo2duE29wybxv/7HWUw==
+smob@^1.0.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/smob/-/smob-1.4.0.tgz#ac9751fe54b1fc1fc8286a628d4e7f824273b95a"
+  integrity sha512-MqR3fVulhjWuRNSMydnTlweu38UhQ0HXM4buStD/S3mc/BzX3CuM9OmhyQpmtYCvoYdl5ris6TI0ZqH355Ymqg==
 
 socks-proxy-agent@5, socks-proxy-agent@^5.0.0:
   version "5.0.1"
@@ -4976,10 +4976,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-terser@^5.15.1:
-  version "5.16.5"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.16.5.tgz#1c285ca0655f467f92af1bbab46ab72d1cb08e5a"
-  integrity sha512-qcwfg4+RZa3YvlFh0qjifnzBHjKGNbtDo9yivMqMFDy9Q6FSaQWSB/j1xKhsoUFJIqDOM3TsN6D5xbrMrFcHbg==
+terser@^5.17.4:
+  version "5.17.6"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.6.tgz#d810e75e1bb3350c799cd90ebefe19c9412c12de"
+  integrity sha512-V8QHcs8YuyLkLHsJO5ucyff1ykrLVsR4dNnS//L5Y3NiSXpbK1J+WMVUs67eI0KTxs9JtHhgEQpXQVHlHI92DQ==
   dependencies:
     "@jridgewell/source-map" "^0.3.2"
     acorn "^8.5.0"
