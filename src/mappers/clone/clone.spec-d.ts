@@ -11,7 +11,7 @@ describe('clone', () => {
     expectTypeOf(clone()('a')).toMatchTypeOf<string>();
     expectTypeOf(clone()(1.0)).toMatchTypeOf<number>();
     expectTypeOf(clone()(true)).toMatchTypeOf<boolean>();
-    expectTypeOf(clone()(DEFAULT_SYMBOL)).toMatchTypeOf<Symbol>();
+    expectTypeOf(clone()(DEFAULT_SYMBOL)).toMatchTypeOf<symbol>();
     expectTypeOf(clone()(DEFAULT_DATE)).toMatchTypeOf<Date>();
     expectTypeOf(clone()(EMPTY_RESOLVED_PROMISE)).toMatchTypeOf<Promise<unknown>>();
     expectTypeOf(clone()(DEFAULT_REGEX)).toMatchTypeOf<RegExp>();

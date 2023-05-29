@@ -9,8 +9,7 @@ type PropertyType<T, Path extends string> = Path extends keyof T
   : never;
 
 export const get =
-  <P extends string>(path: P, defaultValue: any = null) =>
-  <S>(source: S): PropertyType<S, P> => {
+  <P extends string>(path: P, defaultValue: any = null) => <S>(source: S): PropertyType<S, P> => {
     const paths = path
       .split('.')
       .map((value) => {

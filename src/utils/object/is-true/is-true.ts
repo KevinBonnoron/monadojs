@@ -3,4 +3,4 @@
  * @param value
  * @returns boolean
  */
-export const isTrue = (value: any): value is true => value === true;
+export const isTrue = (value: unknown): value is true => value === true;

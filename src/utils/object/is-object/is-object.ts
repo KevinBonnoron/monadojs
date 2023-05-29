@@ -6,4 +6,4 @@ import { isNil } from '../is-nil/is-nil';
  * @param value
  * @returns boolean
  */
-export const isObject = <T>(value: any): value is T & object => !isNil(value) && typeof value === 'object' && !isArray(value);
+export const isObject = <T>(value: unknown): value is T & object => !isNil(value) && typeof value === 'object' && !isArray(value);

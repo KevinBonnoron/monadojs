@@ -5,7 +5,7 @@ const COMMA = ',';
 const SINGLE_QUOTE = "'";
 const DOUBLE_QUOTE = '"';
 const ESCAPE = '\\';
-export const functionParameterParser = (fn: Function) => {
+export const functionParameterParser = (fn: (...args: any[]) => unknown) => {
   const getFnParameterString = (fnString: string) => {
     fnString = ~fnString.indexOf(`(`) ? fnString.slice(fnString.indexOf(`(`)) : fnString;
     fnString = (fnString.match(/(^[a-z_](?=(=>|=>{)))|((^\([^)].+\)|\(\))(?=(=>|{)))/i) || [fnString])[0];
@@ -34,7 +34,7 @@ export const functionParameterParser = (fn: Function) => {
 
     const parameter: any = {
       name: currentParameterName,
-      required,
+      required
     };
 
     if (currentParameterValue !== '') {
@@ -107,6 +107,6 @@ export const functionParameterParser = (fn: Function) => {
   return {
     all: parameters,
     required: parameters.filter((parameter) => parameter.required),
-    optionals: parameters.filter((parameter) => !parameter.required),
+    optionals: parameters.filter((parameter) => !parameter.required)
   };
 };

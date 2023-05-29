@@ -6,8 +6,7 @@ export interface SorterOptions {
 }
 
 export const compare =
-  (options?: SorterOptions) =>
-  <T>(a: T, b: T) => {
+  (options?: SorterOptions) => <T>(a: T, b: T) => {
     if (options?.nullsAs) {
       if (a === null && b !== null) {
         return options.nullsAs === 'first' ? -1 : 1;
@@ -28,8 +27,7 @@ export const compare =
   };
 
 export const ɵsorter =
-  <T>(sortFn: (a: T, b: T) => number): Sorter<T> =>
-  (a: T, b?: T) => {
+  <T>(sortFn: (a: T, b: T) => number): Sorter<T> => (a: T, b?: T) => {
     if (isArray<T>(a) && isNil(b)) {
       b = a[1];
       a = a[0];

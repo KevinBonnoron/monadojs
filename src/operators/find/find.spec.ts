@@ -47,9 +47,7 @@ describe('find', () => {
   describe('Map', () => {
     const source = NUMBER_MAP;
     const valueEq =
-      (expected: any) =>
-      ([_, value]: [key: any, value: any]) =>
-        value === expected;
+      (expected: any) => ([_, value]: [key: any, value: any]) => value === expected;
 
     it('should return true', () => {
       expect(find(valueEq(1))(source)).toBeTruthy();
@@ -71,9 +69,7 @@ describe('find', () => {
   describe('PlainObject', () => {
     const source = DEFAULT_PLAIN_OBJECT;
     const keyEq =
-      (expected: any) =>
-      ([key]: [key: any]) =>
-        key === expected;
+      (expected: any) => ([key]: [key: any]) => key === expected;
 
     it('should return true', () => {
       expect(find(keyEq('a'))(source)).toBeTruthy();

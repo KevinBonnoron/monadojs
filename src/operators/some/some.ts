@@ -3,8 +3,7 @@ import { Filter } from '../../types/filter.type';
 import { isCollection, isFunction } from '../../utils/object';
 
 export const some =
-  <P>(predicate: P | Filter) =>
-  <S>(source: S) => {
+  <P>(predicate: P | Filter) => <S>(source: S) => {
     if (!isFunction(predicate)) {
       predicate = eq(predicate);
     }

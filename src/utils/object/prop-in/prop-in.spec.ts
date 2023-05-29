@@ -3,7 +3,7 @@ import { DEFAULT_PLAIN_OBJECT } from '../../../../tests/test.data';
 import { propIn } from './prop-in';
 
 describe('propIn', () => {
-  const source = DEFAULT_PLAIN_OBJECT as unknown;
+  const source = DEFAULT_PLAIN_OBJECT;
 
   it('should return true', () => {
     expect(propIn(source, 'a')).toBeTruthy();

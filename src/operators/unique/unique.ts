@@ -6,8 +6,7 @@ import { identity } from '../identity/identity';
 import { pipe } from '../pipe/pipe';
 
 export const unique =
-  (operator: Operator = identity()) =>
-  <S>(source: S) => {
+  (operator: Operator = identity()) => <S>(source: S) => {
     // For Map we must extract the value
     const valueOperator = isMap(source) ? ([, value]: any) => operator(value) : operator;
     const uniqueImpl = (value: any, index: number, array: any) => findIndex(pipe(valueOperator, eq(valueOperator(value))))(array) === index;

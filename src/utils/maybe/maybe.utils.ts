@@ -2,7 +2,6 @@ import { pipe } from '../../operators/pipe/pipe';
 import { AnyFunction, Maybe, MonotypeOperator } from '../../types';
 import { isMaybe, isNil } from '../object';
 
-interface DefaultMaybe<T> extends Maybe<T> {}
 abstract class DefaultMaybe<T> implements Maybe<T> {
   expect(error: string) {
     if (this.isNothing) {
@@ -24,6 +23,18 @@ abstract class DefaultMaybe<T> implements Maybe<T> {
     return this.isNothing ? fn() : this.value;
   }
 
+  pipe<O>(): Maybe<O> {
+    throw new Error('Method not implemented.');
+  }
+
+  equals(value: unknown): boolean {
+    throw new Error('Method not implemented.');
+  }
+
+  get value(): T {
+    throw new Error('Method not implemented.');
+  }
+
   get isNothing() {
     return !this.isJust;
   }
@@ -42,11 +53,11 @@ class JustImpl<T> extends DefaultMaybe<T> {
     super();
   }
 
-  pipe<O>(...operators: MonotypeOperator[]) {
+  override pipe<O>(...operators: MonotypeOperator[]) {
     return Just(pipe<T, O>(...operators)(this._value));
   }
 
-  equals(other: unknown) {
+  override equals(other: unknown) {
     if (isMaybe(other)) {
       return other.isJust && other.equals(this._value);
     }
@@ -54,17 +65,17 @@ class JustImpl<T> extends DefaultMaybe<T> {
     return this._value === other;
   }
 
-  get value(): T {
+  override get value(): T {
     return this._value;
   }
 }
 
 class NothingImpl extends DefaultMaybe<null> {
-  pipe() {
+  override pipe() {
     return Nothing;
   }
 
-  equals(other: unknown) {
+  override equals(other: unknown) {
     if (isMaybe(other)) {
       return other.isNothing;
     }
@@ -72,7 +83,7 @@ class NothingImpl extends DefaultMaybe<null> {
     return other === null || other === undefined;
   }
 
-  get value() {
+  override get value() {
     return null;
   }
 }

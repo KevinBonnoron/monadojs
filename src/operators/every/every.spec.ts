@@ -32,13 +32,9 @@ describe('every', () => {
   describe('Map', () => {
     const source = NUMBER_MAP;
     const keyIsString =
-      () =>
-      ([key]: [key: any]) =>
-        isString(key);
+      () => ([key]: [key: any]) => isString(key);
     const keyIsNumber =
-      () =>
-      ([key]: [key: any]) =>
-        isNumber(key);
+      () => ([key]: [key: any]) => isNumber(key);
 
     it('should return true', () => {
       expect(every(keyIsNumber())(source)).toBeTruthy();
@@ -52,13 +48,9 @@ describe('every', () => {
   describe('PlainObject', () => {
     const source = DEFAULT_PLAIN_OBJECT;
     const keyIsString =
-      () =>
-      ([key]: [key: any]) =>
-        isString(key);
+      () => ([key]: [key: any]) => isString(key);
     const keyIsNumber =
-      () =>
-      ([key]: [key: any]) =>
-        isNumber(key);
+      () => ([key]: [key: any]) => isNumber(key);
 
     it('should return true', () => {
       expect(every(keyIsString())(source)).toBeTruthy();

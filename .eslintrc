@@ -4,13 +4,22 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["plugin:prettier/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
     "implicit-arrow-linebreak": ["error", "beside"]
-  }
+  },
+  "root": true
 }

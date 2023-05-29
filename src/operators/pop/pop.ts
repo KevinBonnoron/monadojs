@@ -12,6 +12,4 @@ const collectionPopImpl = (collection: Collection) => {
 };
 
 export const pop =
-  () =>
-  <S>(source: S) =>
-    isCollection(source) ? collectionPopImpl(source) : source;
+  () => <S>(source: S) => isCollection(source) ? collectionPopImpl(source) : source;

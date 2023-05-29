@@ -1,8 +1,7 @@
 import { isArray } from '../is-array/is-array';
 import { isNil } from '../is-nil/is-nil';
 
-export const haveSameType = <T, S>(o1: T, o2: S) =>
-  isNil(o1)
+export const haveSameType = <T, S>(o1: T, o2: S) => isNil(o1)
     ? false
     : isNil(o2)
     ? false

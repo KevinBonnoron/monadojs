@@ -8,7 +8,7 @@ export interface Maybe<T = any> {
   unwrapOrElse<E>(fn: AnyFunction<E>): T | E;
 
   pipe<O>(...operators: Operator[]): Maybe<O>;
-  equals(value: unknown): boolean;
+  equals(other: unknown): boolean;
 
   get isJust(): boolean;
   get isNothing(): boolean;
@@ -20,24 +20,30 @@ export interface MaybeConstructor {
 }
 
 class MaybeImpl implements Maybe {
-  expect(error: string) {}
-  unwrap() {}
-  unwrapOr<V>(value: V) {}
-  unwrapOrElse<E>(fn: AnyFunction<E>) {}
+  expect() {/**/}
 
-  pipe<O>(...operators: Operator[]) {
+  unwrap() {/**/}
+
+  unwrapOr() {/**/}
+
+  unwrapOrElse() {/**/}
+
+  pipe<O>() {
     return this as unknown as Maybe<O>;
   }
-  equals(value: unknown) {
+
+  equals() {
     return false;
   }
 
   get isJust() {
     return false;
   }
+
   get isNothing() {
     return false;
   }
+
   get value() {
     return null;
   }

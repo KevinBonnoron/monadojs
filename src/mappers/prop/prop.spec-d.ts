@@ -9,30 +9,30 @@ describe('prop', () => {
     expectTypeOf(prop('id')(fooBar)).toMatchTypeOf<number>();
     expectTypeOf(prop('id')(fooBar)).toMatchTypeOf<number>();
     expectTypeOf(pipe(prop('id'))(fooBar)).toMatchTypeOf<number>();
-    // @ts-expect-error
+    // @ts-expect-error id should be present in passed source
     assertType(prop('id')({ noId: 0 }));
 
     // name
     expectTypeOf(prop('name')(fooBar)).toMatchTypeOf<string>();
     expectTypeOf(prop('name')(fooBar)).toMatchTypeOf<string>();
     expectTypeOf(pipe(prop('name'))(fooBar)).toMatchTypeOf<string>();
-    // @ts-expect-error
+    // @ts-expect-error name should be present in passed source
     assertType(prop('name')({ noName: '' }));
 
     // birthDate
     expectTypeOf(prop('birthDate')(fooBar)).toMatchTypeOf<Date>();
     expectTypeOf(prop('birthDate')(fooBar)).toMatchTypeOf<Date>();
     expectTypeOf(pipe(prop('birthDate'))(fooBar)).toMatchTypeOf<Date>();
-    // @ts-expect-error
+    // @ts-expect-error birthDate should be present in passed source
     assertType(prop('birthDate')({ noBirthDate: DEFAULT_DATE }));
 
-    // @ts-expect-error
+    // @ts-expect-error name should be present in passed source
     assertType(prop('name')([]));
-    // @ts-expect-error
+    // @ts-expect-error name should be present in passed source
     assertType(prop('name')(new Map()));
-    // @ts-expect-error
+    // @ts-expect-error name should be present in passed source
     assertType(prop('name')(new Set()));
-    // @ts-expect-error
+    // @ts-expect-error name should be present in passed source
     assertType(prop('name')(DEFAULT_DATE));
   });
 });

@@ -12,5 +12,4 @@ export const catchError = (callback: Operator) => {
   return impl;
 };
 
-export const ɵisCatchOperator = (value: unknown): value is ReturnType<typeof catchError> =>
-  isFunction(value) && !isNil(value.prototype) && value.prototype[CATCH_ERROR_SYMBOL];
+export const ɵisCatchOperator = (value: unknown): value is ReturnType<typeof catchError> => isFunction(value) && !isNil(value.prototype) && value.prototype[CATCH_ERROR_SYMBOL];

@@ -17,8 +17,6 @@ const applySpecImpl = <T, V>(specs: Specs<T>, accumulator: T, value: V) => {
 };
 
 export const applySpec =
-  <S>(specs: Specs<S>) =>
-  <T>(source: T) =>
-    isArray<T>(source)
+  <S>(specs: Specs<S>) => <T>(source: T) => isArray<T>(source)
       ? source.reduce((accumulator, value) => applySpecImpl(specs, accumulator, value), {} as S)
       : applySpecImpl(specs, {} as S, source);

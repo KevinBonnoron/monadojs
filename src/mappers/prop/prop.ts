@@ -7,7 +7,4 @@ import { isMap, isObject } from '../../utils';
  * @param defaultValue
  * @returns any
  */
-export const prop =
-  <P extends PropertyKey>(property: P, defaultValue?: any) =>
-  <S extends Record<P, O>, O>(source: S): S[P] =>
-    isMap(source) ? source.get(property) ?? defaultValue : isObject(source) ? source[property as keyof typeof source] ?? defaultValue : defaultValue;
+export const prop = <P extends PropertyKey>(property: P, defaultValue?: any) => <S extends Record<P, O>, O>(source: S): S[P] => isMap(source) ? source.get(property) ?? defaultValue : isObject(source) ? source[property as keyof typeof source] ?? defaultValue : defaultValue;

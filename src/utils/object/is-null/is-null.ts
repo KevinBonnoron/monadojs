@@ -4,4 +4,4 @@
  * @param value
  * @returns boolean
  */
-export const isNull = (value: any): value is null => value === null;
+export const isNull = (value: unknown): value is null => value === null;

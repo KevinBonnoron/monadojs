@@ -33,9 +33,7 @@ describe('none', () => {
   describe('Map', () => {
     const source = NUMBER_MAP;
     const valueEq =
-      (expected: any) =>
-      ([_, value]: [key: any, value: any]) =>
-        value === expected;
+      (expected: unknown) => ([, value]: [key: unknown, value: unknown]) => value === expected;
 
     it('should return true', () => {
       expect(none(valueEq(10))(source)).toBeTruthy();

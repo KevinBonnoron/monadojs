@@ -8,4 +8,3 @@ export * from './operator.type';
 export * from './reducer.type';
 export * from './sorter.type';
 
-export type Type<T> = new (...args: any[]) => T;

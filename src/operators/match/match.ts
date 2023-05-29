@@ -20,8 +20,7 @@ const returnResult = <S, O>(match: Match<S, O>, value: S) => {
 const matchJust = (value: unknown) => (isMaybe(value) && value.isJust) || !isNil(value);
 
 const matchImpl =
-  <S, O>(ifMatches: Match<S, O>[], elseMatch?: Match<S, O>) =>
-  (source: S): O => {
+  <S, O>(ifMatches: Match<S, O>[], elseMatch?: Match<S, O>) => (source: S): O => {
     const value = isMaybe(source) ? source.value : source;
     for (const match of ifMatches) {
       // handle Maybe constructor
@@ -52,6 +51,5 @@ export const match = <S = any, O = any>(matches: Match<S, O>[]) => {
     elseMatch = { then: (value: S) => value as unknown as O };
   }
 
-  return (source: Collection<S> | S) =>
-    isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source);
+  return (source: Collection<S> | S) => isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source);
 };

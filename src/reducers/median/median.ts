@@ -1,9 +1,7 @@
 import { ɵsingleOperationReducer } from '../../utils';
 
 export const median =
-  () =>
-  <T extends number>(previousValue: T, currentValue: T, currentIndex: number, array: T[]) =>
-    ɵsingleOperationReducer(previousValue, currentValue, currentIndex, array, () => {
+  () => <T extends number>(previousValue: T, currentValue: T, currentIndex: number, array: T[]) => ɵsingleOperationReducer(previousValue, currentValue, currentIndex, array, () => {
       if (array.length === 0) {
         return undefined;
       }

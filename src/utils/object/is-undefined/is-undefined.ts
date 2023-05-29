@@ -3,4 +3,4 @@
  * @param value
  * @returns boolean
  */
-export const isUndefined = (value: any): value is undefined => value === undefined;
+export const isUndefined = (value: unknown): value is undefined => value === undefined;

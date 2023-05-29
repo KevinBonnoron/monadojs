@@ -53,7 +53,7 @@ describe('ValidationUtils', () => {
     });
 
     it('should force returning a value', () => {
-      const object: any = intercept({}, { get: { a: () => '2' } });
+      const object: any = intercept({}, { get: { 'a': () => '2' } });
       object.a = '1';
       expect({ ...object }).toStrictEqual({ a: '2' });
     });

@@ -1,1 +1,1 @@
-export const isMap = <K, V>(value: any): value is Map<K, V> => value instanceof Map;
+export const isMap = <K, V>(value: unknown): value is Map<K, V> => value instanceof Map;

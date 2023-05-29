@@ -48,7 +48,7 @@ export const curry = <FN extends (...args: any[]) => any, STARTING_ARGS extends 
   targetFn: FN,
   ...existingArgs: STARTING_ARGS
 ): CurriedFunction<STARTING_ARGS, FN> => {
-  return function (...args: any[]) {
+  return function (...args) {
     const totalArgs = [...existingArgs, ...args];
     const parameters = functionParameterParser(targetFn);
     if (totalArgs.length >= parameters.required.length) {

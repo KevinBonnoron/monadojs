@@ -8,9 +8,7 @@ type Container<T> = Array<T> | Map<any, T> | Set<T> | string;
  * @returns boolean
  */
 export const includes =
-  <T>(searchElement: T) =>
-  (source: Container<T>) =>
-    isArray<T>(source)
+  <T>(searchElement: T) => (source: Container<T>) => isArray<T>(source)
       ? source.includes(searchElement)
       : isCollection(source)
       ? [...source.values()].includes(searchElement)

@@ -12,6 +12,4 @@ const collectionShiftImpl = (collection: Collection) => {
 };
 
 export const shift =
-  () =>
-  <S>(source: S) =>
-    isCollection(source) ? collectionShiftImpl(source) : source;
+  () => <S>(source: S) => isCollection(source) ? collectionShiftImpl(source) : source;

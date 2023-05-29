@@ -15,9 +15,7 @@ import { isSymbol } from '../is-symbol/is-symbol';
 import { isUndefined } from '../is-undefined/is-undefined';
 
 export const isType =
-  <T>(type: AllTypes) =>
-  (value: any): value is T =>
-    type === null
+  <T>(type: AllTypes) => (value: unknown): value is T => type === null
       ? isNull(value)
       : type === undefined
       ? isUndefined(value)

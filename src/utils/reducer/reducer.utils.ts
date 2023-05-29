@@ -31,8 +31,7 @@ export const ɵarrayAccumulator = <T>(previousValue: T, currentValue: T, current
  * @returns
  */
 export const ɵobjectAccumulator2 =
-  <T, U = any>(appender: (accumulator: U, value: T) => U) =>
-  (previousValue: T | U, currentValue: T, currentIndex: number, array: T[]) => {
+  <T, U = any>(appender: (accumulator: U, value: T) => U) => (previousValue: T | U, currentValue: T, currentIndex: number, array: T[]) => {
     let accumulator: U = {} as U;
     // If previousValue is ArrayOrMap and currentValue not, then we passed the accumulator
     if (isObject<U>(previousValue) && !haveSamePropertyNames(previousValue, currentValue)) {
@@ -80,5 +79,4 @@ export const ɵobjectAccumulator = <T, U = any>(
  * @param operation
  * @returns
  */
-export const ɵsingleOperationReducer = <T>(previousValue: T, _currentValue: T, currentIndex: number, _array: T[], operation: () => any) =>
-  currentIndex > 1 ? previousValue : operation();
+export const ɵsingleOperationReducer = <T>(previousValue: T, _currentValue: T, currentIndex: number, _array: T[], operation: () => any) => currentIndex > 1 ? previousValue : operation();

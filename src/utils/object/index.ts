@@ -29,3 +29,4 @@ export * from './is-true/is-true';
 export * from './is-type/is-type';
 export * from './is-undefined/is-undefined';
 export * from './prop-in/prop-in';
+

@@ -5,5 +5,4 @@ import { trunc } from '../trunc/trunc';
 
 type MathFunctions = 'ceil' | 'floor' | 'trunc' | 'pow';
 
-export const math = (mathFn: MathFunctions, extraArg: any) =>
-  mathFn === 'ceil' ? ceil() : mathFn === 'floor' ? floor() : mathFn === 'trunc' ? trunc() : mathFn === 'pow' ? pow(extraArg) : () => NaN;
+export const math = (mathFn: MathFunctions, extraArg: any) => mathFn === 'ceil' ? ceil() : mathFn === 'floor' ? floor() : mathFn === 'trunc' ? trunc() : mathFn === 'pow' ? pow(extraArg) : () => NaN;

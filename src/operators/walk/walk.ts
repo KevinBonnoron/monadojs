@@ -27,6 +27,4 @@ const walkImpl = <T>(value: T, operator: Operator<T, void>, context: { visitedOb
 };
 
 export const walk =
-  (operator: Operator<any, void>) =>
-  <S>(source: S) =>
-    walkImpl(source, operator);
+  (operator: Operator<any, void>) => <S>(source: S) => walkImpl(source, operator);

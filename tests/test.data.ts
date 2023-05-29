@@ -6,8 +6,8 @@ export interface Person {
   birthDate: Date;
 }
 
-export const anonymousArrowFn = () => {};
-export const anonymousFn = function () {};
+export const anonymousArrowFn = () => {/**/};
+export const anonymousFn = function () {/**/};
 
 export const EMPTY_RESOLVED_PROMISE = Promise.resolve();
 export const EMPTY_PLAIN_OBJECT = {} as const;

@@ -81,7 +81,7 @@ const PIPE_PROPERTY_DESCRIPTOR: PropertyDescriptor = {
   value: pipeFn,
   enumerable: false,
   writable: true,
-  configurable: true,
+  configurable: true
 };
 
 Object.defineProperty(Array.prototype, 'pipe', PIPE_PROPERTY_DESCRIPTOR);

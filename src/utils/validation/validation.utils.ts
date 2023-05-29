@@ -1,7 +1,7 @@
 import { isArray, isFunction, isPlainObject, isSet } from '../object';
 
 interface ArrayInterceptor<T> {
-  push?: (value: T) => boolean;
+  push?: (_value: T) => boolean;
 }
 
 interface SetInterceptor<T> {
@@ -10,11 +10,11 @@ interface SetInterceptor<T> {
 
 interface ObjectInterceptor {
   defineProperty?: (property: string) => boolean;
-  get?: Record<PropertyKey, (value: any) => any>;
+  get?: Record<PropertyKey, () => any>;
 }
 
-const getHandler = <T extends object>(target: T, property: any, receiver: any, interceptors?: Record<any, any>) => {
-  const rawValue: any = Reflect.get(target, property, receiver);
+const getHandler = <T extends object>(target: T, property: PropertyKey, receiver: any, interceptors?: Record<PropertyKey, any>) => {
+  const rawValue = Reflect.get(target, property, receiver);
 
   if (interceptors) {
     // We try to call a method
@@ -57,22 +57,19 @@ const definePropertyHandler = <T extends object>(
   return true;
 };
 
-const proxyfyArray = <T>(array: T[], interceptors?: ArrayInterceptor<T>): T[] =>
-  new Proxy(array, {
+const proxyfyArray = <T>(array: T[], interceptors?: ArrayInterceptor<T>): T[] => new Proxy(array, {
     get(target, property, receiver) {
       return getHandler(target, property, receiver, interceptors);
     }
   });
 
-const proxyfySet = <T>(set: Set<T>, interceptors?: SetInterceptor<T>): Set<T> =>
-  new Proxy(set, {
+const proxyfySet = <T>(set: Set<T>, interceptors?: SetInterceptor<T>): Set<T> => new Proxy(set, {
     get(target, property, receiver) {
       return getHandler(target, property, receiver, interceptors);
     }
   });
 
-const proxyfyObject = <T extends object>(object: T, interceptors?: ObjectInterceptor) =>
-  new Proxy(object, {
+const proxyfyObject = <T extends object>(object: T, interceptors?: ObjectInterceptor) => new Proxy(object, {
     get(target, property, receiver) {
       return getHandler(target, property, receiver, interceptors?.get);
     },

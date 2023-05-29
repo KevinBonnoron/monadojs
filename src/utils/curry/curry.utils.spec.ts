@@ -3,7 +3,7 @@ import { curry, uncurry } from './curry.utils';
 
 describe('CurryUtils', () => {
   it('should curry a function', () => {
-    const add = (a: number, b: number, c: number = 0) => a + b + c;
+    const add = (a: number, b: number, c = 0) => a + b + c;
     const curryAdd = curry(add);
     expect(curryAdd(1)).toEqual(expect.any(Function));
     expect(curryAdd(1)(2)).toStrictEqual(3);

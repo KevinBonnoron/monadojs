@@ -23,8 +23,7 @@ import { isString } from '../is-string/is-string';
  * @param value
  * @returns boolean
  */
-export const isEmpty = <T>(value: any): value is Required<NoUndefinedField<T>> =>
-  isNil(value)
+export const isEmpty = <T>(value: unknown): value is Required<NoUndefinedField<T>> => isNil(value)
     ? true
     : isString(value)
     ? value.length === 0

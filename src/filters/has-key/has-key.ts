@@ -8,6 +8,4 @@ import { isMap, isObject } from '../../utils';
  * @returns boolean
  */
 export const hasKey =
-  <K>(key: K) =>
-  <S>(source: S) =>
-    isMap<K, S>(source) ? source.has(key) : isObject(source) ? source[key as keyof S] : false;
+  <K>(key: K) => <S>(source: S) => isMap<K, S>(source) ? source.has(key) : isObject(source) ? source[key as keyof S] : false;

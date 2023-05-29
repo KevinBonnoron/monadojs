@@ -1,3 +1,3 @@
 import { slice } from '../slice/slice';
 
-export const tail = (length: number = 1) => slice(-length);
+export const tail = (length = 1) => slice(-length);

@@ -30,9 +30,7 @@ describe('filter', () => {
 
     it('should filter', () => {
       const keepGreaterThan =
-        (threshold: number) =>
-        ([, value]: [number, number]) =>
-          value > threshold;
+        (threshold: number) => ([, value]: [number, number]) => value > threshold;
       const operator = filter(keepGreaterThan(1));
 
       expect(operator(source)).toStrictEqual(
