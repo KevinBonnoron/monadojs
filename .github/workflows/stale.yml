@@ -1,0 +1,16 @@
+name: stale
+
+on:
+  schedule:
+    - cron: '0 0 * * * '
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  close-stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: close stale pull requests
+        uses: actions/stale@v8
