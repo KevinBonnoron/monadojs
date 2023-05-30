@@ -7,7 +7,7 @@ describe('after', () => {
     const operator = after(DEFAULT_DATE);
 
     it('should return true', () => {
-      expect(operator('2020-02-01T00:00:00Z')).toBeFalsy();
+      expect(operator('2020-02-01T00:00:00Z')).toBeTruthy();
     });
 
     it('should return false', () => {
