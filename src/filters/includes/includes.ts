@@ -1,4 +1,4 @@
-import { isArray, isCollection, isEqual, isString } from '../../utils';
+import { isArray, isCollection, isEqual, isPrimitive } from '../../utils';
 
 type Container<T> = Array<T> | Map<any, T> | Set<T> | string;
 
@@ -8,10 +8,9 @@ type Container<T> = Array<T> | Map<any, T> | Set<T> | string;
  * @returns boolean
  */
 export const includes =
-  <T>(searchElement: T) => (source: Container<T>) => isArray<T>(source)
-      ? source.includes(searchElement)
-      : isCollection(source)
-      ? [...source.values()].includes(searchElement)
-      : isString(source)
-      ? source.includes(searchElement as string)
-      : isEqual(source, searchElement);
+  <T>(searchElement: T) => (source: Container<T>) => (
+    isArray<T>(source) ? source.some((value) => isEqual(value, searchElement)) :
+      isCollection(source) ? [...source.values()].some((value) => isEqual(value, searchElement)) :
+        isPrimitive(source) ? source.includes(searchElement as string) :
+          isEqual(source, searchElement)
+  );

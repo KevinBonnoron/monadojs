@@ -1,11 +1,10 @@
-import { includes } from '../../filters/includes/includes';
 import { Operator } from '../../types/operator.type';
 import { isArray, isMap, isObject, isPrimitive, isSet } from '../../utils/object';
 import { entries } from '../entries/entries';
 import { values } from '../values/values';
 
 const walkImpl = <T>(value: T, operator: Operator<T, void>, context: { visitedObjects: any[] } = { visitedObjects: [] }) => {
-  if (!includes(value)(context.visitedObjects)) {
+  if (!context.visitedObjects.includes(value)) {
     if (!isPrimitive(value)) {
       context.visitedObjects.push(value);
     }

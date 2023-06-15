@@ -116,6 +116,7 @@ Operators are functions that can be applyed on both object or array.
 - catch-error
 - [combine](examples/operators/combine/index.md)
 - concat
+- difference
 - encloseIn
 - entries
 - every
