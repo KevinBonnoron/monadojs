@@ -52,7 +52,7 @@
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-typescript": "^1.0.1",
     "typescript": "^5.0.4",
-    "vitest": "^0.31.1"
+    "vitest": "^0.32.2"
   },
   "repository": "https://github.com/KevinBonnoron/monadojs.git",
   "private": false
