@@ -15,12 +15,20 @@ export default [
     plugins: [esbuild(), terser()],
     output: [
       {
-        file: packageConfig.module,
+        file: 'dist/monadojs.mjs',
         format: 'es',
         sourcemap: true,
       },
     ],
   }),
+  bundle({
+    plugins: [dts()],
+    output: {
+      file: 'dist/monadojs.d.ts',
+      format: 'es',
+    },
+  }),
+
   bundle({
     plugins: [typescript(), commonjs(), terser()],
     output: [
@@ -34,8 +42,9 @@ export default [
   bundle({
     plugins: [dts()],
     output: {
-      file: packageConfig.types,
-      format: 'es',
+      file: 'dist/monadojs.d.cts',
+      format: 'commonjs',
     },
   }),
+  
 ];

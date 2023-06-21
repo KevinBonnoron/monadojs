@@ -3,18 +3,23 @@
   "version": "0.0.19",
   "description": "A library to perform operations on arrays and objects at once",
   "type": "module",
-  "main": "dist/monadojs.cjs",
-  "module": "dist/monadojs.mjs",
-  "types": "dist/monadojs.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/monadojs.mjs",
-      "require": "./dist/monadojs.cjs"
+      "import": {
+        "types": "./types/monadojs.d.ts",
+        "default": "./dist/monadojs.mjs"
+      },
+      "require": {
+        "types": "./types/monadojs.d.cts",
+        "default": "./dist/monadojs.cjs"
+      }
     }
   },
+  "types": "./dist/monadojs.d.ts",
+  "main": "./dist/monadojs.cjs",
   "packageManager": "yarn@1.22.15",
   "publishConfig": {
     "access": "public",
