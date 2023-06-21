@@ -9,6 +9,12 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/monadojs.mjs",
+      "require": "./dist/monadojs.cjs"
+    }
+  },
   "packageManager": "yarn@1.22.15",
   "publishConfig": {
     "access": "public",
