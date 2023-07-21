@@ -1,4 +1,5 @@
 export * from './any-function.type';
+export * from './filter-property.type';
 export * from './filter.type';
 export * from './language.type';
 export * from './mapper.type';
@@ -7,4 +8,3 @@ export * from './no-undefined-field.type';
 export * from './operator.type';
 export * from './reducer.type';
 export * from './sorter.type';
-

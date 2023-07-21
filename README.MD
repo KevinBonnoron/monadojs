@@ -69,7 +69,6 @@ const firstNames: string[] = persons.pipe(
 - neq
 - nil
 - ofType
-- startsWith
 
 ### Logical Operators
 

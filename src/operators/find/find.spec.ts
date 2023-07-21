@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { eq } from '../../filters';
 import { find } from './find';
 
@@ -67,18 +67,11 @@ describe('find', () => {
   });
 
   describe('PlainObject', () => {
-    const source = DEFAULT_PLAIN_OBJECT;
-    const keyEq =
-      (expected: any) => ([key]: [key: any]) => key === expected;
+    const source = { a: 0, b: 1, c: 2, d: 3 };
 
-    it('should return true', () => {
-      expect(find(keyEq('a'))(source)).toBeTruthy();
-      expect(find(keyEq('b'))(source)).toBeTruthy();
-      expect(find(keyEq('c'))(source)).toBeTruthy();
-    });
-
-    it('should return false', () => {
-      expect(find(keyEq('d'))(source)).toBeFalsy();
+    it('should filter object', () => {
+      const operator = find(() => true);
+      expect(operator(source)).toStrictEqual(source);
     });
   });
 });

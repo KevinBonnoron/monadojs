@@ -1,5 +1,11 @@
 import { Filter } from '../../types';
-import { isString } from '../../utils';
+import { isRegExp, isString } from '../../utils';
 
-export const like =
-  <S>(expected: RegExp): Filter<S> => (source: S) => isString(source) ? expected.test(source) : false;
+export const like = <S>(expected: RegExp | string): Filter<S> => (source: S) => {
+  let regexp = expected;
+  if (!isRegExp(regexp)) {
+    regexp = new RegExp(expected);
+  }
+
+  return isString(source) ? regexp.test(source) : false
+};

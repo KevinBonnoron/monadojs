@@ -1,11 +1,11 @@
-import { Filter } from '../../types';
-import { isCollection, isPlainObject } from '../../utils';
+import { Collection, Filter, FilterPropertyType } from '../../types';
+import { isCollection } from '../../utils';
+import { toFilterFn } from '../../utils/filters/filters.utils';
 
-export const find =
-  (predicate: Filter) => <S>(source: S) => isCollection<S>(source)
-      ? [...source].find(predicate)
-      : isPlainObject(source)
-      ? Object.entries(source).find(predicate)
-      : predicate(source)
-      ? source
-      : undefined;
+export function find(predicate: Filter): <S>(source: S) => S;
+export function find<E extends Record<string, unknown>>(predicate: FilterPropertyType<E>): <S extends E>(source: S | Collection<S>) => S;
+export function find(predicate: Filter | FilterPropertyType<unknown>) {
+  const predicateFn = toFilterFn(predicate);
+
+  return <S>(source: S) => isCollection(source) ? [...source].find(predicateFn) : predicateFn(source) ? source : undefined;
+}

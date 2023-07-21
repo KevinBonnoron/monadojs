@@ -1,7 +1,6 @@
-import { or } from '../../logicals';
-import { isNumber, isString } from '../../utils';
+import { isDate } from '../../utils';
 
-const isStringOrNumber = or(isString, isNumber);
-
-export const lt =
-  (expected: number | string) => <S = number | string>(source: S): boolean => isStringOrNumber(source) ? source < expected : false;
+export const lt = <E = number | string | Date>(expected: E) => <S extends E>(source: S) => (
+  isDate(source) && isDate(expected) ? source.getTime() < expected.getTime() :
+  source < expected
+  );
