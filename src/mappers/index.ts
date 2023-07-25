@@ -1,3 +1,4 @@
+export * from './abs/abs';
 export * from './capitalize/capitalize';
 export * from './ceil/ceil';
 export * from './clone/clone';
@@ -6,7 +7,6 @@ export * from './exclude/exclude';
 export * from './floor/floor';
 export * from './lower/lower';
 export * from './math/math';
-export * from './maybe/maybe';
 export * from './minus/minus';
 export * from './modulo/modulo';
 export * from './pick/pick';

@@ -1,25 +1,18 @@
-import { UnwrapValue } from '../../types';
-import { isArray, isCollection, isMap, isSet } from '../../utils';
+import { Maybe, MaybeConstructor } from '../../types';
+import { toType } from '../../utils';
 
-const toSet = <S>(source: S): Set<S> => (isArray(source) || isMap(source) ? new Set([...source]) : source) as Set<S>;
-
-const toArray = <S>(source: S) => (isCollection(source) ? [...source] : source) as S[];
-
-const toMap = <S>(source: S, keyFn: (value: S) => PropertyKey) => (isArray<S>(source)
-    ? new Map([...source.map((value) => [keyFn(value), value])] as any)
-    : isSet<S>(source)
-    ? new Map([...[...source].map((value) => [keyFn(value), value])] as any)
-    : source) as Map<any, S>;
-
-export function to(type: SetConstructor): <S>(source: S) => Set<UnwrapValue<S>>;
-export function to(type: ArrayConstructor): <S>(source: S) => UnwrapValue<S>[];
-export function to<S, P extends PropertyKey>(type: MapConstructor, keyFn: (value: S) => P): (source: S) => Map<P, UnwrapValue<S>>;
-export function to(type: SetConstructor | ArrayConstructor | MapConstructor, keyFn?: (value: unknown) => PropertyKey) {
-  return (source: unknown) => type.prototype === Set.prototype
-      ? toSet(source)
-      : type.prototype === Array.prototype
-      ? toArray(source)
-      : type.prototype === Map.prototype && keyFn
-      ? toMap(source, keyFn)
-      : source;
+export function to(type: null): (value: unknown) => null;
+export function to(type: undefined): (value: unknown) => undefined;
+export function to(type: StringConstructor): (value: unknown) => string;
+export function to(type: NumberConstructor): (value: unknown) => number;
+export function to(type: BooleanConstructor): (value: unknown) => boolean;
+export function to(type: SymbolConstructor): (value: unknown) => symbol;
+export function to(type: DateConstructor): (value: unknown) => Date;
+export function to(type: RegExpConstructor): (value: unknown) => RegExp;
+export function to(type: ArrayConstructor): <V>(value: V) => V[];
+export function to(type: SetConstructor): <V>(value: V) => Set<V>;
+export function to<K, V>(type: MapConstructor, keyFn: (value: V, index: number) => K): <S extends V>(value: S) => Map<K, S>;
+export function to(type: MaybeConstructor): <V>(value: V) => Maybe<V>;
+export function to(type: any, keyFn?: (value: unknown, index: number) => unknown): unknown {
+  return keyFn ? toType(type, keyFn) : toType(type);
 }

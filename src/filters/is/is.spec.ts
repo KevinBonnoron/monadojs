@@ -13,11 +13,11 @@ import {
 } from '../../../tests/test.data';
 import { Maybe } from '../../types';
 import { Just, Nothing } from '../../utils';
-import { ofType } from './of-type';
+import { is } from './is';
 
-describe('of-type', () => {
+describe('is', () => {
   describe('null', () => {
-    const operator = ofType(null);
+    const operator = is(null);
 
     it('should return true', () => {
       expect(operator(null)).toBeTruthy();
@@ -44,7 +44,7 @@ describe('of-type', () => {
   });
 
   describe('undefined', () => {
-    const operator = ofType(undefined);
+    const operator = is(undefined);
 
     it('should return true', () => {
       expect(operator(undefined)).toBeTruthy();
@@ -71,7 +71,7 @@ describe('of-type', () => {
   });
 
   describe('string', () => {
-    const operator = ofType(String);
+    const operator = is(String);
 
     it('should return true', () => {
       expect(operator('a')).toBeTruthy();
@@ -98,7 +98,7 @@ describe('of-type', () => {
   });
 
   describe('number', () => {
-    const operator = ofType(Number);
+    const operator = is(Number);
 
     it('should return true', () => {
       expect(operator(0)).toBeTruthy();
@@ -125,7 +125,7 @@ describe('of-type', () => {
   });
 
   describe('boolean', () => {
-    const operator = ofType(Boolean);
+    const operator = is(Boolean);
 
     it('should return true', () => {
       expect(operator(true)).toBeTruthy();
@@ -152,7 +152,7 @@ describe('of-type', () => {
   });
 
   describe('symbol', () => {
-    const operator = ofType(Symbol);
+    const operator = is(Symbol);
 
     it('should return true', () => {
       expect(operator(DEFAULT_SYMBOL)).toBeTruthy();
@@ -179,7 +179,7 @@ describe('of-type', () => {
   });
 
   describe('Date', () => {
-    const operator = ofType(Date);
+    const operator = is(Date);
 
     it('should return true', () => {
       expect(operator(DEFAULT_DATE)).toBeTruthy();
@@ -206,7 +206,7 @@ describe('of-type', () => {
   });
 
   describe('Promise', () => {
-    const operator = ofType(Promise);
+    const operator = is(Promise);
 
     it('should return true', () => {
       expect(operator(EMPTY_RESOLVED_PROMISE)).toBeTruthy();
@@ -233,7 +233,7 @@ describe('of-type', () => {
   });
 
   describe('RegExp', () => {
-    const operator = ofType(RegExp);
+    const operator = is(RegExp);
 
     it('should return true', () => {
       expect(operator(DEFAULT_REGEX)).toBeTruthy();
@@ -260,7 +260,7 @@ describe('of-type', () => {
   });
 
   describe('Array', () => {
-    const operator = ofType(Array);
+    const operator = is(Array);
 
     it('should return true', () => {
       expect(operator(EMPTY_ARRAY)).toBeTruthy();
@@ -287,7 +287,7 @@ describe('of-type', () => {
   });
 
   describe('Set', () => {
-    const operator = ofType(Set);
+    const operator = is(Set);
 
     it('should return true', () => {
       expect(operator(EMPTY_SET)).toBeTruthy();
@@ -314,7 +314,7 @@ describe('of-type', () => {
   });
 
   describe('Map', () => {
-    const operator = ofType(Map);
+    const operator = is(Map);
 
     it('should return true', () => {
       expect(operator(EMPTY_MAP)).toBeTruthy();
@@ -341,7 +341,7 @@ describe('of-type', () => {
   });
 
   describe('Object', () => {
-    const operator = ofType(Object);
+    const operator = is(Object);
 
     it('should return true', () => {
       expect(operator(DEFAULT_DATE)).toBeTruthy();
@@ -368,7 +368,7 @@ describe('of-type', () => {
   });
 
   describe('Function', () => {
-    const operator = ofType(Function);
+    const operator = is(Function);
 
     it('should return true', () => {
       expect(operator(anonymousArrowFn)).toBeTruthy();
@@ -395,7 +395,7 @@ describe('of-type', () => {
   });
 
   describe('Maybe', () => {
-    const operator = ofType(Maybe);
+    const operator = is(Maybe);
 
     it('should return true', () => {
       expect(operator(Just(1))).toBeTruthy();

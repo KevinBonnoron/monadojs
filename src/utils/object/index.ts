@@ -1,3 +1,4 @@
+export * from './coalesce/coalesce';
 export * from './have-same-property-names/have-same-property-names';
 export * from './have-same-type/have-same-type';
 export * from './is-array/is-array';
@@ -29,4 +30,17 @@ export * from './is-true/is-true';
 export * from './is-type/is-type';
 export * from './is-undefined/is-undefined';
 export * from './prop-in/prop-in';
-
+export * from './to-array/to-array';
+export * from './to-boolean/to-boolean';
+export * from './to-date/to-date';
+export * from './to-function/to-function';
+export * from './to-map/to-map';
+export * from './to-maybe/to-maybe';
+export * from './to-null/to-null';
+export * from './to-number/to-number';
+export * from './to-regexp/to-regexp';
+export * from './to-set/to-set';
+export * from './to-string/to-string';
+export * from './to-symbol/to-symbol';
+export * from './to-type/to-type';
+export * from './to-undefined/to-undefined';

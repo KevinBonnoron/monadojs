@@ -7,4 +7,4 @@ import { isUndefined } from '../is-undefined/is-undefined';
  * @param value
  * @returns boolean
  */
-export const isNil = (value: unknown): value is nil => isNull(value) || isUndefined(value);
+export const isNil = (value: unknown): value is nil => value === nil || isNull(value) || isUndefined(value);

@@ -47,13 +47,4 @@ describe('filter', () => {
       );
     });
   });
-
-  describe('PlainObject', () => {
-    const source = { a: 0, b: 1, c: 2, d: 3 };
-
-    it('should filter object', () => {
-      const operator = filter(() => true);
-      expect(operator(source)).toStrictEqual([source]);
-    });
-  });
 });

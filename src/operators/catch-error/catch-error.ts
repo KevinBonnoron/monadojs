@@ -1,5 +1,6 @@
 import { Operator } from '../../types';
-import { isFunction, isNil } from '../../utils/object';
+import { isFunction } from '../../utils/object/is-function/is-function';
+import { isNil } from '../../utils/object/is-nil/is-nil';
 
 const CATCH_ERROR_SYMBOL = Symbol('CATCH_ERROR');
 

@@ -1,6 +1,7 @@
 import { pipe } from '../../operators/pipe/pipe';
 import { AnyFunction, Maybe, MonotypeOperator } from '../../types';
-import { isMaybe, isNil } from '../object';
+import { isMaybe } from '../object/is-maybe/is-maybe';
+import { isNil } from '../object/is-nil/is-nil';
 
 abstract class DefaultMaybe<T> implements Maybe<T> {
   expect(error: string) {

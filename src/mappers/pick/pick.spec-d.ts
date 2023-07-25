@@ -1,4 +1,4 @@
-import { describe, expectTypeOf, it } from 'vitest';
+import { assertType, describe, expectTypeOf, it } from 'vitest';
 import { fooBar } from '../../../tests/test.data';
 import { pick } from './pick';
 
@@ -10,9 +10,9 @@ describe('pick', () => {
     expectTypeOf(pick('id', 'name')(fooBar)).toMatchTypeOf<{ id: number; name: string }>();
     expectTypeOf(pick('id', 'name', 'birthDate')(fooBar)).toMatchTypeOf<{ id: number; name: string; birthDate: Date }>();
 
-    // @ts-expect-error
+    // @ts-expect-error id does not exist in passed object
     assertType(pick('id')({ noId: 0 }));
-    // @ts-expect-error
-    assertType(pick('Id')(fooBar));
+    // @ts-expect-error age does not exist in passed object
+    assertType(pick('age')(fooBar));
   });
 });

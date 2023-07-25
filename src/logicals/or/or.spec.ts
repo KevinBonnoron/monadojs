@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { nil } from '../../filters';
-import { filter, throwError } from '../../operators';
+import { throwError } from '../../operators';
 import { FALSE, TRUE } from '../../utils';
 import { or } from './or';
 
@@ -23,6 +23,6 @@ describe('or', () => {
   });
 
   it('should return when one operand is true', () => {
-    filter(or(nil(), throwError(new Error('should not happend'))))(undefined);
+    or(nil(), throwError(new Error('should not happend')))(undefined);
   });
 });

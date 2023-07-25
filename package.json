@@ -29,7 +29,6 @@
     "prepare": "husky install",
     "test": "vitest",
     "typecheck": "vitest typecheck",
-    "bench": "vitest bench",
     "prebuild": "rimraf --glob dist/**",
     "build": "rollup -c",
     "lint": "eslint . --fix",
@@ -62,7 +61,7 @@
     "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-typescript": "^1.0.1",
-    "typescript": "^5.0.4",
+    "typescript": "^5.1.6",
     "vitest": "^0.32.2"
   },
   "repository": "https://github.com/KevinBonnoron/monadojs.git",
