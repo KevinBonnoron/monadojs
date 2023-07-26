@@ -4,11 +4,11 @@ import { pick } from './pick';
 
 describe('pick', () => {
   it('should have correct types', () => {
-    expectTypeOf(pick('id')(fooBar)).toMatchTypeOf<{ id: number }>();
-    expectTypeOf(pick('name')(fooBar)).toMatchTypeOf<{ name: string }>();
-    expectTypeOf(pick('birthDate')(fooBar)).toMatchTypeOf<{ birthDate: Date }>();
-    expectTypeOf(pick('id', 'name')(fooBar)).toMatchTypeOf<{ id: number; name: string }>();
-    expectTypeOf(pick('id', 'name', 'birthDate')(fooBar)).toMatchTypeOf<{ id: number; name: string; birthDate: Date }>();
+    expectTypeOf(pick('id')(fooBar)).toEqualTypeOf<{ id: number }>();
+    expectTypeOf(pick('name')(fooBar)).toEqualTypeOf<{ name: string }>();
+    expectTypeOf(pick('birthDate')(fooBar)).toEqualTypeOf<{ birthDate: Date }>();
+    expectTypeOf(pick('id', 'name')(fooBar)).toEqualTypeOf<{ id: number; name: string }>();
+    expectTypeOf(pick('id', 'name', 'birthDate')(fooBar)).toEqualTypeOf<{ id: number; name: string; birthDate: Date }>();
 
     // @ts-expect-error id does not exist in passed object
     assertType(pick('id')({ noId: 0 }));

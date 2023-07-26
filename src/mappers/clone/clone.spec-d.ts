@@ -5,21 +5,21 @@ import { clone } from './clone';
 
 describe('clone', () => {
   it('should have correct types', () => {
-    expectTypeOf(clone()(null)).toMatchTypeOf<null>();
-    expectTypeOf(clone()(undefined)).toMatchTypeOf<undefined>();
-    expectTypeOf(clone()(nil)).toMatchTypeOf<nil>();
-    expectTypeOf(clone()('a')).toMatchTypeOf<string>();
-    expectTypeOf(clone()(1.0)).toMatchTypeOf<number>();
-    expectTypeOf(clone()(true)).toMatchTypeOf<boolean>();
-    expectTypeOf(clone()(DEFAULT_SYMBOL)).toMatchTypeOf<symbol>();
-    expectTypeOf(clone()(DEFAULT_DATE)).toMatchTypeOf<Date>();
-    expectTypeOf(clone()(EMPTY_RESOLVED_PROMISE)).toMatchTypeOf<Promise<unknown>>();
-    expectTypeOf(clone()(DEFAULT_REGEX)).toMatchTypeOf<RegExp>();
-    expectTypeOf(clone()([])).toMatchTypeOf<Array<unknown>>();
-    expectTypeOf(clone()(new Set())).toMatchTypeOf<Set<unknown>>();
-    expectTypeOf(clone()(new Map())).toMatchTypeOf<Map<unknown, unknown>>();
-    expectTypeOf(clone()({})).toMatchTypeOf<object>();
-    expectTypeOf(clone()(anonymousArrowFn)).toMatchTypeOf<Function>();
-    expectTypeOf(clone()(anonymousFn)).toMatchTypeOf<Function>();
+    expectTypeOf(clone()(null)).toEqualTypeOf<null>();
+    expectTypeOf(clone()(undefined)).toEqualTypeOf<undefined>();
+    expectTypeOf(clone()(nil)).toEqualTypeOf<nil>();
+    expectTypeOf(clone()('a')).toEqualTypeOf<string>();
+    expectTypeOf(clone()(1.0)).toEqualTypeOf<number>();
+    expectTypeOf(clone()(true)).toEqualTypeOf<boolean>();
+    expectTypeOf(clone()(DEFAULT_SYMBOL)).toEqualTypeOf<symbol>();
+    expectTypeOf(clone()(DEFAULT_DATE)).toEqualTypeOf<Date>();
+    expectTypeOf(clone()(EMPTY_RESOLVED_PROMISE)).toEqualTypeOf<Promise<void>>();
+    expectTypeOf(clone()(DEFAULT_REGEX)).toEqualTypeOf<RegExp>();
+    expectTypeOf(clone()([])).toEqualTypeOf<never[]>();
+    expectTypeOf(clone()(new Set())).toEqualTypeOf<Set<unknown>>();
+    expectTypeOf(clone()(new Map())).toEqualTypeOf<Map<any, any>>();
+    expectTypeOf(clone()({})).toEqualTypeOf<object>();
+    expectTypeOf(clone()(anonymousArrowFn)).toEqualTypeOf<() => void>();
+    expectTypeOf(clone()(anonymousFn)).toEqualTypeOf<() => void>();
   });
 });

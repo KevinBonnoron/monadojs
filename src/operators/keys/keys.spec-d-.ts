@@ -3,13 +3,13 @@ import { keys } from './keys';
 
 describe('keys', () => {
   it('should have correct types', () => {
-    expectTypeOf(keys()([1, 2, 3])).toMatchTypeOf<IterableIterator<number>>();
-    expectTypeOf(keys()(['1', '2', '3'])).toMatchTypeOf<IterableIterator<number>>();
-    expectTypeOf(keys()([{ id: 1 }, { id: 2 }, { id: 3 }])).toMatchTypeOf<IterableIterator<number>>();
+    expectTypeOf(keys()([1, 2, 3])).toEqualTypeOf<IterableIterator<number>>();
+    expectTypeOf(keys()(['1', '2', '3'])).toEqualTypeOf<IterableIterator<number>>();
+    expectTypeOf(keys()([{ id: 1 }, { id: 2 }, { id: 3 }])).toEqualTypeOf<IterableIterator<number>>();
 
-    expectTypeOf(keys()(new Set([1, 2, 3]))).toMatchTypeOf<IterableIterator<number>>();
-    expectTypeOf(keys()(new Set(['1', '2', '3']))).toMatchTypeOf<IterableIterator<number>>();
-    expectTypeOf(keys()(new Set([{ id: 1 }, { id: 2 }, { id: 3 }]))).toMatchTypeOf<IterableIterator<number>>();
+    expectTypeOf(keys()(new Set([1, 2, 3]))).toEqualTypeOf<IterableIterator<number>>();
+    expectTypeOf(keys()(new Set(['1', '2', '3']))).toEqualTypeOf<IterableIterator<number>>();
+    expectTypeOf(keys()(new Set([{ id: 1 }, { id: 2 }, { id: 3 }]))).toEqualTypeOf<IterableIterator<number>>();
 
     expectTypeOf(
       keys()(
@@ -19,7 +19,7 @@ describe('keys', () => {
           [3, 'c']
         ])
       )
-    ).toMatchTypeOf<IterableIterator<number>>();
+    ).toEqualTypeOf<IterableIterator<number>>();
     expectTypeOf(
       keys()(
         new Map([
@@ -28,9 +28,9 @@ describe('keys', () => {
           [3, { id: 3 }]
         ])
       )
-    ).toMatchTypeOf<IterableIterator<number>>();
+    ).toEqualTypeOf<IterableIterator<number>>();
 
-    expectTypeOf(keys()({ 1: 'a', 2: 'b', 3: 'c' })).toMatchTypeOf<IterableIterator<number>>();
-    expectTypeOf(keys()({ a: 1, b: 2, c: 3 })).toMatchTypeOf<IterableIterator<string>>();
+    expectTypeOf(keys()({ 1: 'a', 2: 'b', 3: 'c' })).toEqualTypeOf<IterableIterator<number>>();
+    expectTypeOf(keys()({ a: 1, b: 2, c: 3 })).toEqualTypeOf<IterableIterator<string>>();
   });
 });

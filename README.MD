@@ -49,9 +49,12 @@ const firstNames: string[] = persons.pipe(
 );
 ```
 
-## API
+# Content
+This package contains various operators as well as helper functions
 
-### Filters
+# API
+
+## Filters
 
 - [after](examples/filters/after/index.md)
 - [before](examples/filters/before/index.md)
@@ -70,7 +73,7 @@ const firstNames: string[] = persons.pipe(
 - nil
 - ofType
 
-### Logical Operators
+## Logicals
 
 Logical operators are function that can be used in combination with `filter` operator.
 
@@ -81,8 +84,9 @@ Logical operators are function that can be used in combination with `filter` ope
 - or
 - xor
 
-### Mapper
+## Mappers
 
+- abs
 - capitalize
 - ceil
 - clone
@@ -91,7 +95,6 @@ Logical operators are function that can be used in combination with `filter` ope
 - floor
 - lower
 - math
-- maybe
 - minus
 - modulo
 - pick
@@ -107,7 +110,7 @@ Logical operators are function that can be used in combination with `filter` ope
 - trunc
 - upper
 
-### Operators
+## Operators
 
 Operators are functions that can be applyed on both object or array.
 
@@ -150,7 +153,7 @@ Operators are functions that can be applyed on both object or array.
 - values
 - walk
 
-### Reducers
+## Reducers
 
 Reducers are functions that produce a single result by iterating over the passed array.
 
@@ -171,7 +174,12 @@ Reducers are functions that produce a single result by iterating over the passed
 - tail
 - zip
 
-### Sorters
+## Sorters
 
 - asc
 - desc
+
+## Utils
+
+- [coalesce](examples/utils/coalesce/index.md)
+- ensure

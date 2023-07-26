@@ -12,7 +12,7 @@ export const anonymousFn = function () {/**/};
 export const EMPTY_RESOLVED_PROMISE = Promise.resolve();
 export const EMPTY_PLAIN_OBJECT = {} as const;
 export const DEFAULT_DATE = new Date('2020-01-01T00:00:00Z');
-export const DEFAULT_SYMBOL = Symbol('SYMBOL');
+export const DEFAULT_SYMBOL = Symbol('SYMBOL') as symbol;
 export const DEFAULT_PLAIN_OBJECT = { a: 1, b: 2, c: 3 } as const;
 export const DEFAULT_REGEX = new RegExp('');
 

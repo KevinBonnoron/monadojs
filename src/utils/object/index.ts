@@ -1,4 +1,5 @@
 export * from './coalesce/coalesce';
+export * from './ensure/ensure';
 export * from './have-same-property-names/have-same-property-names';
 export * from './have-same-type/have-same-type';
 export * from './is-array/is-array';

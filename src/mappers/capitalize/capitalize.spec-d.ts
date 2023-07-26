@@ -3,6 +3,6 @@ import { capitalize } from './capitalize';
 
 describe('capitalize', () => {
   it('should have correct types', () => {
-    expectTypeOf(capitalize()('a')).toMatchTypeOf<string>();
+    expectTypeOf(capitalize()('a')).toEqualTypeOf<string>();
   });
 });
