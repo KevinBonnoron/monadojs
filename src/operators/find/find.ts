@@ -1,6 +1,6 @@
 import { Collection, Filter, ObjectFilterType } from '../../types';
 import { isCollection } from '../../utils';
-import { toFilterFn } from '../../utils/filters/filters.utils';
+import { toFilterFn } from '../../utils/filter/filter.utils';
 
 export function find(predicate: Filter): <S>(source: S) => S;
 export function find<E extends Record<string, unknown>>(predicate: ObjectFilterType<E>): <S extends E>(source: S | Collection<S>) => S;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_DATE, DEFAULT_REGEX, DEFAULT_SYMBOL, EMPTY_PLAIN_OBJECT, EMPTY_RESOLVED_PROMISE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn, anonymousFn } from '../../../../tests/test.data';
-import { Just, Nothing } from '../../maybe/maybe.utils';
+import { DEFAULT_DATE, DEFAULT_MAYBE, DEFAULT_REGEX, DEFAULT_SYMBOL, EMPTY_PLAIN_OBJECT, EMPTY_RESOLVED_PROMISE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn, anonymousFn } from '../../../../tests/test.data';
+import { Nothing } from '../../maybe/maybe.utils';
 import { toArray } from './to-array';
 
 describe('toArray', () => {
@@ -20,7 +20,7 @@ describe('toArray', () => {
     expect(toArray(EMPTY_PLAIN_OBJECT)).toStrictEqual([EMPTY_PLAIN_OBJECT]);
     expect(toArray(anonymousArrowFn)).toStrictEqual([anonymousArrowFn]);
     expect(toArray(anonymousFn)).toStrictEqual([anonymousFn]);
-    expect(toArray(Just(1))).toStrictEqual([Just(1)]);
+    expect(toArray(DEFAULT_MAYBE)).toStrictEqual([DEFAULT_MAYBE]);
     expect(toArray(Nothing)).toStrictEqual([Nothing]);
   });
 });

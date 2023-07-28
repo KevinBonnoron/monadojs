@@ -1,5 +1,5 @@
-import { entries } from '../../operators/entries/entries';
 import { isArray, isCollection, isDate, isObject, ɵcopyCollection } from '../../utils';
+import { entries } from '../entries/entries';
 
 const cloneImpl = <T>(object: T) => {
   const cloned: any = {};
@@ -17,11 +17,9 @@ const cloneImpl = <T>(object: T) => {
   return cloned as T;
 };
 
-export const clone =
-  () => <S>(source: S): S => isCollection(source)
-      ? (ɵcopyCollection(source, [...source].map(clone())) as S)
-      : isDate(source)
-      ? (new Date(+source) as S)
-      : isObject<S>(source)
-      ? cloneImpl<S>(source)
-      : source;
+export const clone = () => <S>(source: S): S => (
+  isCollection(source) ? (ɵcopyCollection(source, [...source].map(clone())) as S) :
+    isDate(source) ? (new Date(+source) as S) :
+      isObject<S>(source) ? cloneImpl<S>(source) :
+        source
+);

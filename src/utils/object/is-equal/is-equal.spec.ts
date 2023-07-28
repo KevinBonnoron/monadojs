@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   DEFAULT_SYMBOL,
   EMPTY_ARRAY,
@@ -14,7 +15,7 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../../tests/test.data';
-import { Just, Nothing } from '../../maybe/maybe.utils';
+import { Nothing } from '../../maybe/maybe.utils';
 import { isEqual } from './is-equal';
 
 describe('isEqual', () => {
@@ -40,7 +41,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -67,7 +68,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -95,7 +96,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -123,7 +124,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -151,7 +152,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -179,7 +180,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -207,7 +208,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -236,7 +237,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -264,7 +265,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -292,7 +293,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -320,7 +321,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -363,7 +364,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });
@@ -391,7 +392,7 @@ describe('isEqual', () => {
       expect(isEqual(value, EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(isEqual(value, anonymousArrowFn)).toBeFalsy();
       expect(isEqual(value, anonymousFn)).toBeFalsy();
-      expect(isEqual(value, Just(1))).toBeFalsy();
+      expect(isEqual(value, DEFAULT_MAYBE)).toBeFalsy();
       expect(isEqual(value, Nothing)).toBeFalsy();
     });
   });

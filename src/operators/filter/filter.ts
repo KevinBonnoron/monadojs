@@ -1,6 +1,6 @@
 import { Filter, ObjectFilterType } from '../../types';
 import { isCollection, ɵcopyCollection } from '../../utils';
-import { toFilterFn } from '../../utils/filters/filters.utils';
+import { toFilterFn } from '../../utils/filter/filter.utils';
 
 export function filter(predicate: Filter): <S>(source: S) => S;
 export function filter<E>(predicate: ObjectFilterType<Partial<E>>): <S extends E>(source: S) => S;

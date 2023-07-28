@@ -1,4 +1,4 @@
-import { hasKey } from '../../filters/has-key/has-key';
+import { has } from '../../filters/has/has';
 import { isArray, isPlainObject } from '../../utils';
 import { isEqual } from '../../utils/object/is-equal/is-equal';
 import { keys } from '../keys/keys';
@@ -9,7 +9,7 @@ interface DifferenceOptions {
 }
 
 const objectDifferenceImpl = (object: object, source: object, { bothWays, compareFn }: Required<DifferenceOptions>) => [...keys()(source)].reduce((result, key) => {
-  if (!hasKey(key)(object)) {
+  if (!has(key)(object)) {
     result.push(key);
   } else if (compareFn(object[key], source[key])) {
     const index = result.indexOf(key);

@@ -9,6 +9,6 @@ describe('ensure', () => {
     expectTypeOf(ensure(null, new Error('Custom error'))).toEqualTypeOf<never>();
     expectTypeOf(ensure(null, { defaultValue: new Error('Wanted error') })).toEqualTypeOf<Error>();
     expectTypeOf(ensure(null, { error: new Error('Custom error') })).toEqualTypeOf<never>();
-    expectTypeOf(ensure(null, {})).toEqualTypeOf<object>();
+    expectTypeOf(ensure(null, {})).toEqualTypeOf<NonNullable<unknown>>();
   });
 });

@@ -1,10 +1,10 @@
-import { NoUndefinedField } from '../../../types';
-import { isArray } from '../is-array/is-array';
+import { DeepNonNullable } from '../../../types/deep-non-nullable.type';
 import { isCollection } from '../is-collection/is-collection';
 import { isDate } from '../is-date/is-date';
 import { isFunction } from '../is-function/is-function';
+import { isMaybe } from '../is-maybe/is-maybe';
 import { isNil } from '../is-nil/is-nil';
-import { isObject } from '../is-object/is-object';
+import { isPlainObject } from '../is-plain-object/is-plain-object';
 import { isPrimitive } from '../is-primitive/is-primitive';
 import { isPromise } from '../is-promise/is-promise';
 import { isRegExp } from '../is-regexp/is-regexp';
@@ -23,24 +23,13 @@ import { isString } from '../is-string/is-string';
  * @param value
  * @returns boolean
  */
-export const isEmpty = <T>(value: unknown): value is Required<NoUndefinedField<T>> => isNil(value)
-    ? true
-    : isString(value)
-    ? value.length === 0
-    : isPrimitive(value)
-    ? false
-    : isFunction(value)
-    ? false
-    : isArray(value)
-    ? value.length === 0
-    : isCollection(value)
-    ? [...value].length === 0
-    : isPromise(value)
-    ? false
-    : isDate(value)
-    ? !isNaN(Number(value))
-    : isRegExp(value)
-    ? false
-    : isObject(value)
-    ? Object.keys(value).length === 0
-    : false;
+export const isEmpty = <T>(value: T): value is T & DeepNonNullable<T> => (
+  isNil(value) ? true :
+  isString(value) ? value.length === 0 :
+  isPrimitive(value) || isFunction(value) || isPromise(value) || isRegExp(value) ? false :
+  isCollection(value) ? [...value].length === 0 :
+  isDate(value) ? !isNaN(Number(value)) :
+  isMaybe(value) ? value.isNothing :
+  isPlainObject(value) ? Object.keys(value).length === 0
+  : false
+);

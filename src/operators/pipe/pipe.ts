@@ -1,5 +1,5 @@
 import { not } from '../../logicals/not/not';
-import { MonotypeOperator, Operator } from '../../types';
+import { Operator, Operators } from '../../types';
 import { ɵisCatchOperator } from '../catch-error/catch-error';
 
 export function pipe<A>(): Operator<A, A>;
@@ -41,11 +41,16 @@ export function pipe<A, B, C, D, E, F, G, H, I>(
   o7: Operator<G, H>,
   o8: Operator<H, I>
 ): Operator<A, I>;
-export function pipe<A, B>(...operators: MonotypeOperator[]): Operator<A, B>;
-export function pipe(...operators: MonotypeOperator[]) {
+export function pipe<A, B>(...operators: Operators): Operator<A, B>;
+export function pipe(...operators: Operators) {
+  const catchOperator = operators.find(ɵisCatchOperator);
+  const realOperators = operators.slice().filter(not(ɵisCatchOperator));
   return (source: unknown) => {
-    const catchOperator = operators.find(ɵisCatchOperator);
-    return operators.filter(not(ɵisCatchOperator)).reduce((value, operator, _, array) => {
+    if (realOperators.length === 0) {
+      return source;
+    }
+
+    return realOperators.reduce((value, operator, _, array) => {
       try {
         return operator(value);
       } catch (e: unknown) {

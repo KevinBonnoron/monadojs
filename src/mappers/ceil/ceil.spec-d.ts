@@ -3,6 +3,8 @@ import { ceil } from './ceil';
 
 describe('ceil', () => {
   it('should have correct types', () => {
-    expectTypeOf(ceil()(1.0)).toEqualTypeOf<number>();
+    const operator = ceil();
+
+    expectTypeOf(operator(1.0)).toEqualTypeOf<number>();
   });
 });

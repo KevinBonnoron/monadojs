@@ -5,6 +5,7 @@ const COMMA = ',';
 const SINGLE_QUOTE = "'";
 const DOUBLE_QUOTE = '"';
 const ESCAPE = '\\';
+
 export const functionParameterParser = (fn: (...args: any[]) => unknown) => {
   const getFnParameterString = (fnString: string) => {
     fnString = ~fnString.indexOf(`(`) ? fnString.slice(fnString.indexOf(`(`)) : fnString;

@@ -29,9 +29,14 @@ export function combine<A, B, C, D, E, F, G>(
 ): Operator<A, [B, C, D, E, F, G]>;
 export function combine<A, B>(...operators: MonotypeOperator[]): Operator<A, B>;
 export function combine(...operators: MonotypeOperator[]) {
+  const catchOperator = operators.find(ɵisCatchOperator);
+  const realOperators = operators.slice().filter(not(ɵisCatchOperator));
   return (source: unknown) => {
-    const catchOperator = operators.find(ɵisCatchOperator);
-    return operators.filter(not(ɵisCatchOperator)).reduce((accumulator, operator, _, array) => {
+    if (realOperators.length === 0) {
+      return source;
+    }
+
+    return realOperators.reduce((accumulator, operator, _, array) => {
       try {
         return accumulator.concat([operator(source)]);
       } catch (e) {
@@ -43,6 +48,6 @@ export function combine(...operators: MonotypeOperator[]) {
 
         throw e;
       }
-    }, [] as any[]);
+    }, [] as unknown[]);
   };
 }

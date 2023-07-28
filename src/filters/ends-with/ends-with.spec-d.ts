@@ -1,6 +1,7 @@
 import { describe, expectTypeOf, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   EMPTY_ARRAY,
   EMPTY_MAP,
@@ -10,7 +11,7 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../tests/test.data';
-import { Just, Nothing } from '../../utils';
+import { Nothing } from '../../utils';
 import { endsWith } from './ends-with';
 
 describe('endsWith', () => {
@@ -29,7 +30,7 @@ describe('endsWith', () => {
     expectTypeOf(endsWith('a')(EMPTY_PLAIN_OBJECT)).toEqualTypeOf<boolean>();
     expectTypeOf(endsWith('a')(anonymousArrowFn)).toEqualTypeOf<boolean>();
     expectTypeOf(endsWith('a')(anonymousFn)).toEqualTypeOf<boolean>();
-    expectTypeOf(endsWith('a')(Just(1))).toEqualTypeOf<boolean>();
+    expectTypeOf(endsWith('a')(DEFAULT_MAYBE)).toEqualTypeOf<boolean>();
     expectTypeOf(endsWith('a')(Nothing)).toEqualTypeOf<boolean>();
   });
 });

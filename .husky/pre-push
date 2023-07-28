@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn test --watch=false && yarn typecheck --watch=false && yarn build
+yarn test && yarn typecheck && yarn build

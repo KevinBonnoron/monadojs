@@ -1,5 +1,5 @@
-import { clone } from '../../mappers/clone/clone';
 import { isPlainObject } from '../../utils';
+import { clone } from '../clone/clone';
 import { entries } from '../entries/entries';
 
 export const freeze =

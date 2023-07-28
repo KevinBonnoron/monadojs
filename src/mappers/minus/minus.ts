@@ -1,2 +1,1 @@
-export const minus =
-  (amount = 1) => (source: number) => source - amount;
+export const minus = <S extends number>(amount = 1) => (source: S) => source - amount;

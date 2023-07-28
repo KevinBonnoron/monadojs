@@ -10,7 +10,7 @@ import { isRegExp } from '../is-regexp/is-regexp';
 import { isSet } from '../is-set/is-set';
 
 export const isEqual = <T, V>(o1: T, o2: V): boolean => {
-  const notBoth = (fn: (value: any) => boolean) => (fn(o1) && !fn(o2)) || (!fn(o1) && fn(o2));
+  const notBoth = (fn: (value: unknown) => boolean) => (fn(o1) && !fn(o2)) || (!fn(o1) && fn(o2));
   if (notBoth(isDate) || notBoth(isPromise) || notBoth(isArray) || notBoth(isSet) || notBoth(isMap) || notBoth(isMaybe) || notBoth(isRegExp)) {
     return false;
   }

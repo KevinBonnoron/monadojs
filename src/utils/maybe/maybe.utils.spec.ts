@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { DEFAULT_MAYBE } from '../../../tests/test.data';
 import { prop } from '../../mappers';
 import { Just, Nothing } from './maybe.utils';
 
@@ -44,20 +45,20 @@ describe('MaybeUtils', () => {
   });
 
   it('should return if values are equals', () => {
-    expect(Just(1).equals(1)).toBeTruthy();
-    expect(Just(1).equals(Just(1))).toBeTruthy();
-    expect(Just(1).equals(Nothing)).toBeFalsy();
+    expect(DEFAULT_MAYBE.equals(1)).toBeTruthy();
+    expect(DEFAULT_MAYBE.equals(DEFAULT_MAYBE)).toBeTruthy();
+    expect(DEFAULT_MAYBE.equals(Nothing)).toBeFalsy();
     expect(Just(null).equals(1)).toBeFalsy();
-    expect(Just(null).equals(Just(1))).toBeFalsy();
+    expect(Just(null).equals(DEFAULT_MAYBE)).toBeFalsy();
     expect(Just(null).equals(Nothing)).toBeTruthy();
     expect(Nothing.equals(1)).toBeFalsy();
-    expect(Nothing.equals(Just(1))).toBeFalsy();
+    expect(Nothing.equals(DEFAULT_MAYBE)).toBeFalsy();
     expect(Nothing.equals(Nothing)).toBeTruthy();
   });
 
   it('should return if values are defined', () => {
-    expect(Just(1).isJust).toBeTruthy();
-    expect(Just(1).isNothing).toBeFalsy();
+    expect(DEFAULT_MAYBE.isJust).toBeTruthy();
+    expect(DEFAULT_MAYBE.isNothing).toBeFalsy();
     expect(Just(null).isJust).toBeFalsy();
     expect(Just(null).isNothing).toBeTruthy();
     expect(Nothing.isJust).toBeFalsy();

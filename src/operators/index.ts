@@ -1,5 +1,6 @@
 export * from './apply-spec/apply-spec';
 export * from './catch-error/catch-error';
+export * from './clone/clone';
 export * from './combine/combine';
 export * from './concat/concat';
 export * from './difference/difference';
@@ -37,4 +38,3 @@ export * from './to/to';
 export * from './unique/unique';
 export * from './values/values';
 export * from './walk/walk';
-

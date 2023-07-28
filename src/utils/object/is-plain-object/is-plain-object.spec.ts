@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   DEFAULT_SYMBOL,
   EMPTY_ARRAY,
@@ -11,7 +12,7 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../../tests/test.data';
-import { Just, Nothing } from '../../maybe/maybe.utils';
+import { Nothing } from '../../maybe/maybe.utils';
 import { isPlainObject } from './is-plain-object';
 
 describe('isPlainObject', () => {
@@ -34,7 +35,7 @@ describe('isPlainObject', () => {
     expect(isPlainObject(EMPTY_MAP)).toBeFalsy();
     expect(isPlainObject(anonymousArrowFn)).toBeFalsy();
     expect(isPlainObject(anonymousFn)).toBeFalsy();
-    expect(isPlainObject(Just(1))).toBeFalsy();
+    expect(isPlainObject(DEFAULT_MAYBE)).toBeFalsy();
     expect(isPlainObject(Nothing)).toBeFalsy();
   });
 });
