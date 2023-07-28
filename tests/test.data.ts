@@ -4,6 +4,7 @@ export interface Person {
   id: number;
   name: string;
   birthDate: Date;
+  sex: 'M' | 'F';
 }
 
 export const anonymousArrowFn = () => {/**/};
@@ -15,11 +16,12 @@ export const DEFAULT_DATE = new Date('2020-01-01T00:00:00Z');
 export const DEFAULT_SYMBOL = Symbol('SYMBOL') as symbol;
 export const DEFAULT_PLAIN_OBJECT = { a: 1, b: 2, c: 3 } as const;
 export const DEFAULT_REGEX = new RegExp('');
+export const DEFAULT_MAYBE = Just(1);
 
-export const fooBar: Person = { id: 1, name: 'Foo Bar', birthDate: new Date('2020-01-01') } as const;
-export const johnDoe: Person = { id: 2, name: 'John Doe', birthDate: new Date('2021-01-01') } as const;
-export const janeDoe: Person = { id: 3, name: 'Jane Doe', birthDate: new Date('2022-01-01') } as const;
-export const babyDoe: Person = { id: 4, name: 'Baby Doe', birthDate: new Date('2023-01-01') } as const;
+export const fooBar: Person = { id: 1, name: 'Foo Bar', birthDate: new Date('2020-01-01'), sex: 'M' } as const;
+export const johnDoe: Person = { id: 2, name: 'John Doe', birthDate: new Date('2021-01-01'), sex: 'M' } as const;
+export const janeDoe: Person = { id: 3, name: 'Jane Doe', birthDate: new Date('2022-01-01'), sex: 'F' } as const;
+export const babyDoe: Person = { id: 4, name: 'Baby Doe', birthDate: new Date('2023-01-01'), sex: 'F' } as const;
 
 export const EMPTY_ARRAY = [];
 export const NUMBER_ARRAY = Array.from({ length: 9 }, (_, i) => i + 1);
@@ -41,9 +43,9 @@ export const DIVERSE_ARRAY = [
   {},
   anonymousArrowFn,
   anonymousFn,
-  Just(1),
+  DEFAULT_MAYBE,
   Nothing
-];
+] as const;
 
 export const EMPTY_SET = new Set();
 export const NUMBER_SET = new Set(NUMBER_ARRAY);

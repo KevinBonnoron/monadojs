@@ -4,6 +4,7 @@ All operators should handle Map & Set as `source`.
 
 - [ ] apply-spec
 - [x] catch-error (not affected)
+- [x] clone
 - [x] combine
 - [x] concat
 - [x] enclose-in

@@ -1,6 +1,6 @@
-import { clone } from '../../mappers/clone/clone';
 import { Operator } from '../../types';
 import { isArray, isObject } from '../../utils';
+import { clone } from '../clone/clone';
 import { entries } from '../entries/entries';
 
 const mergeImpl = <T, V>(target: T, ...sources: V[]): any => {

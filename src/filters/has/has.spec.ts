@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn, anonymousFn } from '../../../tests/test.data';
-import { hasKey } from './has-key';
+import { has } from './has';
 
-describe('has-key', () => {
+describe('has', () => {
   describe('PlainObject', () => {
     const source = DEFAULT_PLAIN_OBJECT;
 
     it('should return true', () => {
-      const operator = hasKey('a');
+      const operator = has('a');
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = hasKey('d');
+      const operator = has('d');
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -21,18 +21,18 @@ describe('has-key', () => {
     const source = NUMBER_MAP;
 
     it('should return true', () => {
-      const operator = hasKey(0);
+      const operator = has(0);
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = hasKey(-1);
+      const operator = has(-1);
       expect(operator(source)).toBeFalsy();
     });
   });
 
   describe('others', () => {
-    const operator = hasKey('a');
+    const operator = has('a');
 
     it('should return false', () => {
       expect(operator('a')).toBeFalsy();

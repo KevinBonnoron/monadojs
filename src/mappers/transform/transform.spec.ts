@@ -12,6 +12,7 @@ describe('transform', () => {
       const expected = { a: 'ABC', b: 'def', c: { d: 2 } };
 
       expect(operator(source)).toStrictEqual(expected);
+      expect(source).toStrictEqual({ a: 'abc', b: 'DEF', c: { d: 1 } });
     });
   });
 });

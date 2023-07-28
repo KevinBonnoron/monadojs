@@ -9,4 +9,4 @@
  * range(0, 10, 0, 50)(2) // returns 10
  * @returns
  */
-export const range = (inMin: number, inMax: number, outMin: number, outMax: number) => (source: number) => ((source - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+export const mapRange = <S extends number>(inMin: number, inMax: number, outMin: number, outMax: number) => (source: S) => ((source - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;

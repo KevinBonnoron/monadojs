@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   DEFAULT_SYMBOL,
   EMPTY_ARRAY,
@@ -11,7 +12,7 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../../tests/test.data';
-import { Just, Nothing } from '../../maybe/maybe.utils';
+import { Nothing } from '../../maybe/maybe.utils';
 import { isCollection } from './is-collection';
 
 describe('isCollection', () => {
@@ -34,7 +35,7 @@ describe('isCollection', () => {
     expect(isCollection(EMPTY_PLAIN_OBJECT)).toBeFalsy();
     expect(isCollection(anonymousArrowFn)).toBeFalsy();
     expect(isCollection(anonymousFn)).toBeFalsy();
-    expect(isCollection(Just(1))).toBeFalsy();
+    expect(isCollection(DEFAULT_MAYBE)).toBeFalsy();
     expect(isCollection(Nothing)).toBeFalsy();
   });
 });

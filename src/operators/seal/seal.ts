@@ -1,5 +1,5 @@
-import { clone } from '../../mappers/clone/clone';
 import { isPlainObject } from '../../utils/object/is-plain-object/is-plain-object';
+import { clone } from '../clone/clone';
 import { entries } from '../entries/entries';
 
 export const seal = (deep = true) => <S>(source: S) => {

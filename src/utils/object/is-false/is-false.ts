@@ -3,4 +3,4 @@
  * @param value
  * @returns boolean
  */
-export const isFalse = (value: any): value is false => value === false;
+export const isFalse = (value: unknown): value is false => value === false;

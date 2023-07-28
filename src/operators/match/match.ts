@@ -8,6 +8,7 @@ interface Match<S, O> {
   if?: Filter<S> | Maybe<S> | typeof Just | RegExp;
   then: O | Mapper<S, O>;
 }
+type Matches<S, O> = Match<S, O>[];
 
 const returnResult = <S, O>(match: Match<S, O>, value: S) => {
   if (isFunction(match.then)) {
@@ -19,8 +20,7 @@ const returnResult = <S, O>(match: Match<S, O>, value: S) => {
 
 const matchJust = (value: unknown) => (isMaybe(value) && value.isJust) || !isNil(value);
 
-const matchImpl =
-  <S, O>(ifMatches: Match<S, O>[], elseMatch?: Match<S, O>) => (source: S): O => {
+const matchImpl = <S, O>(ifMatches: Matches<S, O>, elseMatch?: Match<S, O>) => (source: S): O => {
     const value = isMaybe(source) ? source.value : source;
     for (const match of ifMatches) {
       // handle Maybe constructor

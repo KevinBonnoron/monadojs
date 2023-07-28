@@ -63,15 +63,14 @@ This package contains various operators as well as helper functions
 - [eq](examples/filters/eq/index.md)
 - gt
 - gte
-- has-key
+- has
 - iin
 - includes
+- is
 - [like](examples/filters/like/index.md)
 - lt
 - lte
 - neq
-- nil
-- ofType
 
 ## Logicals
 
@@ -89,11 +88,11 @@ Logical operators are function that can be used in combination with `filter` ope
 - abs
 - capitalize
 - ceil
-- clone
 - divide
 - exclude
 - floor
 - lower
+- mapRange
 - math
 - minus
 - modulo
@@ -101,7 +100,6 @@ Logical operators are function that can be used in combination with `filter` ope
 - plus
 - pow
 - [prop](examples/mappers/prop/index.md)
-- range
 - replace
 - round
 - substring
@@ -116,6 +114,7 @@ Operators are functions that can be applyed on both object or array.
 
 - applySpec
 - catch-error
+- clone
 - [combine](examples/operators/combine/index.md)
 - concat
 - difference

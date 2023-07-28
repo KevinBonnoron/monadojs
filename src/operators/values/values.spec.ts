@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   DEFAULT_SYMBOL,
   DIVERSE_SET,
@@ -12,7 +13,7 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../tests/test.data';
-import { Just, Nothing } from '../../utils';
+import { Nothing } from '../../utils';
 import { values } from './values';
 
 describe('values', () => {
@@ -48,7 +49,7 @@ describe('values', () => {
         EMPTY_PLAIN_OBJECT,
         anonymousArrowFn,
         anonymousFn,
-        Just(1),
+        DEFAULT_MAYBE,
         Nothing
       ];
 

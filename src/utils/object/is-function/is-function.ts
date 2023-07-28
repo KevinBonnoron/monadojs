@@ -5,4 +5,4 @@ import { AnyFunction } from '../../../types';
  * @param value
  * @returns boolean
  */
-export const isFunction = (value: any): value is AnyFunction => typeof value === 'function';
+export const isFunction = <T>(value: unknown): value is AnyFunction<T> => typeof value === 'function';

@@ -1,1 +1,1 @@
-export const pow = (power: number) => (source: number) => Math.pow(source, power);
+export const pow = <S extends number>(power: number) => (source: S) => Math.pow(source, power);

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   DEFAULT_SYMBOL,
   EMPTY_ARRAY,
@@ -11,7 +12,7 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../../tests/test.data';
-import { Just, Nothing } from '../../maybe/maybe.utils';
+import { Nothing } from '../../maybe/maybe.utils';
 import { isPrimitive } from './is-primitive';
 
 describe('isPrimitive', () => {
@@ -34,7 +35,7 @@ describe('isPrimitive', () => {
     expect(isPrimitive(EMPTY_PLAIN_OBJECT)).toBeFalsy();
     expect(isPrimitive(anonymousArrowFn)).toBeFalsy();
     expect(isPrimitive(anonymousFn)).toBeFalsy();
-    expect(isPrimitive(Just(1))).toBeFalsy();
+    expect(isPrimitive(DEFAULT_MAYBE)).toBeFalsy();
     expect(isPrimitive(Nothing)).toBeFalsy();
   });
 });

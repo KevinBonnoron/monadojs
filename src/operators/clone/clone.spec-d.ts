@@ -18,7 +18,7 @@ describe('clone', () => {
     expectTypeOf(clone()([])).toEqualTypeOf<never[]>();
     expectTypeOf(clone()(new Set())).toEqualTypeOf<Set<unknown>>();
     expectTypeOf(clone()(new Map())).toEqualTypeOf<Map<any, any>>();
-    expectTypeOf(clone()({})).toEqualTypeOf<object>();
+    expectTypeOf(clone()({})).toEqualTypeOf<NonNullable<unknown>>();
     expectTypeOf(clone()(anonymousArrowFn)).toEqualTypeOf<() => void>();
     expectTypeOf(clone()(anonymousFn)).toEqualTypeOf<() => void>();
   });

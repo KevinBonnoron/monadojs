@@ -1,6 +1,6 @@
 import { isArray, isCollection, isEqual, isPrimitive } from '../../utils';
 
-type Container<T> = Array<T> | Map<any, T> | Set<T> | string;
+type Container<T> = Array<T> | Map<unknown, T> | Set<T> | string;
 
 /**
  * Return true if `source` contains `searchElement` or is equal to it

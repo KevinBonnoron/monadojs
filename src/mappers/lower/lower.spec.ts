@@ -2,8 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { lower } from './lower';
 
 describe('lower', () => {
-  it('should return lowercase string', () => {
-    expect(['Abc', 'DEF'].map(lower())).toStrictEqual(['abc', 'def']);
-    expect(lower()('Abc')).toStrictEqual('abc');
+  const operator = lower();
+
+  describe('string', () => {
+    it('should return lowercase string', () => {
+      expect(['Abc', 'DEF'].map(operator)).toStrictEqual(['abc', 'def']);
+      expect(operator('Abc')).toStrictEqual('abc');
+    });
   });
 });

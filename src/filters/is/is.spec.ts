@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   DEFAULT_SYMBOL,
   EMPTY_ARRAY,
@@ -11,8 +12,8 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../tests/test.data';
-import { Maybe } from '../../types';
-import { Just, Nothing } from '../../utils';
+import { Maybe, nil } from '../../types';
+import { Nothing } from '../../utils';
 import { is } from './is';
 
 describe('is', () => {
@@ -38,7 +39,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -65,7 +66,34 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
+      expect(operator(Nothing)).toBeFalsy();
+    });
+  });
+
+  describe('nil', () => {
+    const operator = is(nil);
+
+    it('should return true', () => {
+      expect(operator(null)).toBeTruthy();
+      expect(operator(undefined)).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(operator('a')).toBeFalsy();
+      expect(operator(0)).toBeFalsy();
+      expect(operator(true)).toBeFalsy();
+      expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
+      expect(operator(DEFAULT_DATE)).toBeFalsy();
+      expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
+      expect(operator(DEFAULT_REGEX)).toBeFalsy();
+      expect(operator(EMPTY_ARRAY)).toBeFalsy();
+      expect(operator(EMPTY_SET)).toBeFalsy();
+      expect(operator(EMPTY_MAP)).toBeFalsy();
+      expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
+      expect(operator(anonymousArrowFn)).toBeFalsy();
+      expect(operator(anonymousFn)).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -92,7 +120,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -119,7 +147,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -146,7 +174,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -173,7 +201,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -200,7 +228,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -227,7 +255,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -254,7 +282,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -281,7 +309,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -308,7 +336,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -335,7 +363,7 @@ describe('is', () => {
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -350,7 +378,7 @@ describe('is', () => {
       expect(operator(EMPTY_SET)).toBeTruthy();
       expect(operator(EMPTY_MAP)).toBeTruthy();
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeTruthy();
-      expect(operator(Just(1))).toBeTruthy();
+      expect(operator(DEFAULT_MAYBE)).toBeTruthy();
       expect(operator(Nothing)).toBeTruthy();
     });
 
@@ -389,7 +417,7 @@ describe('is', () => {
       expect(operator(EMPTY_SET)).toBeFalsy();
       expect(operator(EMPTY_MAP)).toBeFalsy();
       expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
-      expect(operator(Just(1))).toBeFalsy();
+      expect(operator(DEFAULT_MAYBE)).toBeFalsy();
       expect(operator(Nothing)).toBeFalsy();
     });
   });
@@ -398,7 +426,7 @@ describe('is', () => {
     const operator = is(Maybe);
 
     it('should return true', () => {
-      expect(operator(Just(1))).toBeTruthy();
+      expect(operator(DEFAULT_MAYBE)).toBeTruthy();
       expect(operator(Nothing)).toBeTruthy();
     });
 

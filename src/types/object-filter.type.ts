@@ -1,4 +1,5 @@
-import { Collection, UnwrapCollectionValue, nil } from './language.type';
+import { Collection, nil } from './language.type';
+import { UnwrapCollectionValue } from './unwrap-collection-value.type';
 
 export type PropertyFilterType<T, K extends keyof T> = {
   $eq?: T[K];

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   DEFAULT_SYMBOL,
   EMPTY_ARRAY,
@@ -11,7 +12,7 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../../tests/test.data';
-import { Just, Nothing } from '../../maybe/maybe.utils';
+import { Nothing } from '../../maybe/maybe.utils';
 import { isIterator } from './is-iterator';
 
 describe('isIterator', () => {
@@ -32,7 +33,7 @@ describe('isIterator', () => {
     expect(isIterator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
     expect(isIterator(anonymousArrowFn)).toBeFalsy();
     expect(isIterator(anonymousFn)).toBeFalsy();
-    expect(isIterator(Just(1))).toBeFalsy();
+    expect(isIterator(DEFAULT_MAYBE)).toBeFalsy();
     expect(isIterator(Nothing)).toBeFalsy();
   });
 });

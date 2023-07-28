@@ -31,7 +31,7 @@ const parseOperator = (operatorKey: keyof PropertyFilterType<any, any>, operator
 
 export const toFilterFn = (predicate: Filter | ObjectFilterType<object>): Filter => {
   if (isFunction(predicate)) {
-    return predicate;
+    return predicate as Filter;
   }
 
   return (element) => {

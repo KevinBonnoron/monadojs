@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_DATE,
+  DEFAULT_MAYBE,
   DEFAULT_REGEX,
   DEFAULT_SYMBOL,
   EMPTY_ARRAY,
@@ -11,7 +12,7 @@ import {
   anonymousArrowFn,
   anonymousFn
 } from '../../../../tests/test.data';
-import { Just, Nothing } from '../../maybe/maybe.utils';
+import { Nothing } from '../../maybe/maybe.utils';
 import { isIterable } from './is-iterable';
 
 describe('isIterable', () => {
@@ -34,7 +35,7 @@ describe('isIterable', () => {
     expect(isIterable(EMPTY_PLAIN_OBJECT)).toBeFalsy();
     expect(isIterable(anonymousArrowFn)).toBeFalsy();
     expect(isIterable(anonymousFn)).toBeFalsy();
-    expect(isIterable(Just(1))).toBeFalsy();
+    expect(isIterable(DEFAULT_MAYBE)).toBeFalsy();
     expect(isIterable(Nothing)).toBeFalsy();
   });
 });

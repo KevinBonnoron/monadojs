@@ -2,9 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { capitalize } from './capitalize';
 
 describe('capitalize', () => {
-  it('should return capitalize string', () => {
-    expect(['abc'].map(capitalize())).toStrictEqual(['Abc']);
-    expect(['abc', 'DEF'].map(capitalize())).toStrictEqual(['Abc', 'Def']);
-    expect(capitalize()('abc')).toStrictEqual('Abc');
+  const operator = capitalize();
+
+  describe('string', () => {
+    it('should return capitalize string', () => {
+      expect(['abc'].map(operator)).toStrictEqual(['Abc']);
+      expect(['abc', 'DEF'].map(operator)).toStrictEqual(['Abc', 'Def']);
+      expect(operator('abc')).toStrictEqual('Abc');
+    });
   });
 });
