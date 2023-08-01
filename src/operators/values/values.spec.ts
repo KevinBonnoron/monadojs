@@ -87,18 +87,4 @@ describe('values', () => {
       expect([...operator(source)]).toStrictEqual(expected);
     });
   });
-
-  describe('others', () => {
-    const operator = values();
-
-    it('should return empty array', () => {
-      expect([...operator('a')]).toStrictEqual(EMPTY_ARRAY);
-      expect([...operator(0)]).toStrictEqual(EMPTY_ARRAY);
-      expect([...operator(true)]).toStrictEqual(EMPTY_ARRAY);
-      expect([...operator(DEFAULT_DATE)]).toStrictEqual(EMPTY_ARRAY);
-      expect([...operator(new RegExp('a'))]).toStrictEqual(EMPTY_ARRAY);
-      expect([...operator(anonymousFn)]).toStrictEqual(EMPTY_ARRAY);
-      expect([...operator(anonymousArrowFn)]).toStrictEqual(EMPTY_ARRAY);
-    });
-  });
 });

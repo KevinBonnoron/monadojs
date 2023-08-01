@@ -1,4 +1,8 @@
-import { isArray, isCollection, isEqual, isPrimitive } from '../../utils';
+import { isArray } from '../../utils/object/is-array/is-array';
+import { isCollection } from '../../utils/object/is-collection/is-collection';
+import { isEqual } from '../../utils/object/is-equal/is-equal';
+import { isPrimitive } from '../../utils/object/is-primitive/is-primitive';
+
 
 type Container<T> = Array<T> | Map<unknown, T> | Set<T> | string;
 

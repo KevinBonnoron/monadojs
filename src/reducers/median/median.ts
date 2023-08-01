@@ -1,4 +1,4 @@
-import { ɵsingleOperationReducer } from '../../utils';
+import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
 export const median = <T extends number>() => ɵsingleOperationReducer<T>((array) => {
   if (array.length === 0) {

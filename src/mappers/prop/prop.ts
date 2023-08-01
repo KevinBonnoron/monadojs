@@ -1,4 +1,4 @@
-import { isMap, isObject } from '../../utils';
+import { isMap, isPlainObject } from '../../utils';
 
 /**
  * Return the corresponding `property` of the `source` (for Map the corresponding key is used).
@@ -7,4 +7,8 @@ import { isMap, isObject } from '../../utils';
  * @param defaultValue
  * @returns any
  */
-export const prop = <P extends PropertyKey>(property: P, defaultValue?: any) => <S extends Record<P, O>, O>(source: S): S[P] => isMap(source) ? source.get(property) ?? defaultValue : isObject(source) ? source[property as keyof typeof source] ?? defaultValue : defaultValue;
+export const prop = <P extends PropertyKey>(property: P, defaultValue?: any) => <S extends Record<P, unknown>>(source: S): S[P] => (
+  isMap(source) ? source.get(property) ?? defaultValue :
+    isPlainObject(source) ? source[property] ?? defaultValue :
+      defaultValue
+);

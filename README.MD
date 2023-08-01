@@ -1,10 +1,6 @@
 # MonadoJs
 
-This library allow developpers to do common operations on arrays and objects (eg: filtering, mapping, reducing and sorting) without really caring on what the function is applied.
-
-The idea came when i've wanted to do sum on nested properties of object, and having to declare intermediate variables and calling popular libraries helper functions to do what i wanted.
-
-Also i wanted to have the ability to use the functions from the library with common js functions (like filter, reducer, map...) without the need to always use the `pipe` functions like in other libraries.
+Utility library for manipulating array, set, map & plain objects (à la lodash). Available in nodejs & in the browser.
 
 # Getting started
 
@@ -12,7 +8,7 @@ To install just run
 
 ```bash
 # npm
-npm install monadojs
+npm i monadojs
 # yarn
 yarn add monadojs
 ```
@@ -20,7 +16,7 @@ yarn add monadojs
 Then you can start using the library:
 
 ```typescript
-import { prop, pipe } from 'monadojs';
+import { createFilterFn, filter, map, pipe, prop } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -32,20 +28,32 @@ const persons = [
 ];
 
 // Get "firstName" for all persons into an array
-const firstNames = pipe(
+const firstNameMapper = map(
   prop('firstName')
+);
+const firstNames = firstNameMapper(persons);
+
+// Filter peoples which are older than 20
+const firstNames = pipe(
+  filter({ age: { $gt: 20 } }),
+  map(
+    prop('firstName')
+  )
 )(persons);
 
-// Or store a mapper function and apply it later
-const firstNameMapper = prop('firstName');
-const firstNames = persons.map(firstNameMapper);
+// You can create operator for later use
+const ageGreaterThan = (age: number) => createFilterFn({ age: { $gt: age } });
+const getFirstName = prop('firstName');
+const firstNames2 = pipe(
+  filter(ageGreaterThan(20)),
+  map(getFirstName)
+)(persons);
 
-// You still can use regular map functions if needed
-persons.map(prop('firstName'));
+// You still can use regular array functions if needed
+const firstNames3 = persons.filter(ageGreaterThan(20)).map(getFirstName);
 ```
 
-# Content
-This package contains various operators as well as helper functions
+There are some examples provided [here](./examples/index.md)
 
 # API
 
@@ -121,14 +129,14 @@ Operators are functions that can be applyed on both object or array.
 - findIndex
 - freeze
 - get
-- groupBy
+- [groupBy](examples/operators/group-by/index.md)
 - identity
 - [iif](examples/operators/iif/index.md)
 - indexOf
 - keys
 - length
-- [match](examples/operators/match/index.md)
 - [map](examples/operators/map/index.md)
+- [match](examples/operators/match/index.md)
 - merge
 - [none](examples/operators/none/index.md)
 - pipe
@@ -176,4 +184,4 @@ Reducers are functions that produce a single result by iterating over the passed
 ## Utils
 
 - [coalesce](examples/utils/coalesce/index.md)
-- ensure
+- [ensure](examples/utils/ensure/index.md)

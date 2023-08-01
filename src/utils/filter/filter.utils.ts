@@ -1,13 +1,12 @@
 import { eq, gt, gte, iin, includes, is, like, lt, lte, neq } from '../../filters';
 import { and, not, or } from '../../logicals';
-import { entries } from '../../operators/entries/entries';
 import { pipe } from '../../operators/pipe/pipe';
 import { Filter, ObjectFilterType, Operator, Operators, PropertyFilterType } from '../../types';
-import { isEqual, isFunction, isPlainObject } from '../object';
+import { entriesOf, isEqual, isFunction, isPlainObject } from '../object';
 import { FALSE } from '../object/object.utils';
 
 const parseOperators = <K extends keyof PropertyFilterType<any, any>>(operatorConfig: Record<K, PropertyFilterType<any, any>[K]>): Operators  => {
-  return [...entries()(operatorConfig)].reduce((accumulator, [operatorKey, operatorValue]) => accumulator.concat(parseOperator(operatorKey, operatorValue)), [] as Operators);
+  return [...entriesOf(operatorConfig)].reduce((accumulator, [operatorKey, operatorValue]) => accumulator.concat(parseOperator(operatorKey, operatorValue)), [] as Operators);
 };
 
 const parseOperator = (operatorKey: keyof PropertyFilterType<any, any>, operatorValue: any): Operator => {
@@ -29,12 +28,14 @@ const parseOperator = (operatorKey: keyof PropertyFilterType<any, any>, operator
   );
 };
 
-export const toFilterFn = (predicate: Filter | ObjectFilterType<object>): Filter => {
+export function createFilterFn<E>(predicate: Filter<E>): Filter<E>;
+export function createFilterFn<E extends object>(predicate: ObjectFilterType<E>): Filter<E>;
+export function createFilterFn <E>(predicate: any): Filter<E> {
   if (isFunction(predicate)) {
     return predicate as Filter;
   }
 
-  return (element) => {
+  return (element: any) => {
     return Object.entries(predicate).reduce((accumulator, [property, filterConfigs]) => accumulator && isPlainObject(filterConfigs) ? parseOperators(filterConfigs).every((operator) => operator(element[property])) : isEqual(element[property], filterConfigs), true);
   }
-};
+}

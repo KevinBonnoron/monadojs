@@ -1,5 +1,6 @@
 import { Filters } from '../../types';
-import { isTrue, ɵsingleOperationReducer } from '../../utils';
+import { isTrue } from '../../utils/object/is-true/is-true';
+import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
 const andImpl = (...values: boolean[]) => values.every(isTrue);
 

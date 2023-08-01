@@ -1,4 +1,4 @@
-import { Collection } from '../../types/language.type';
+import { Collection } from '../../types/collection.type';
 import { isArray } from '../object/is-array/is-array';
 import { isEqual } from '../object/is-equal/is-equal';
 import { isMap } from '../object/is-map/is-map';

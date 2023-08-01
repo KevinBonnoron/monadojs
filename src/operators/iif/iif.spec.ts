@@ -10,7 +10,7 @@ describe('iif', () => {
     expect(iif(isFalse, mapTo('a'))(true)).toEqual(undefined);
   });
 
-  it('should return trueValue when condition is met else falseValue', () => {
+  it('should return trueValue when condition is met otherwise falseValue', () => {
     expect(iif(isTrue, mapTo('a'), mapTo('b'))(true)).toEqual('a');
     expect(iif(isFalse, mapTo('a'), mapTo('b'))(true)).toEqual('b');
   });

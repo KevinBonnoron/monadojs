@@ -1,5 +1,6 @@
 export * from './collection/collection.utils';
 export * from './curry/curry.utils';
+export * from './filter/filter.utils';
 export * from './function/function.utils';
 export * from './maybe/maybe.utils';
 export * from './object';

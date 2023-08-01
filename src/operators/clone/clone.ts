@@ -1,16 +1,17 @@
-import { isArray, isCollection, isDate, isObject, ɵcopyCollection } from '../../utils';
-import { entries } from '../entries/entries';
+import { entriesOf, isArray, isCollection, isDate, isObject, isPlainObject, ɵcopyCollection } from '../../utils';
 
 const cloneImpl = <T>(object: T) => {
   const cloned: any = {};
 
-  for (const [key, value] of entries()(object as any)) {
-    if (isObject(value)) {
-      cloned[key] = clone()(value);
-    } else if (isArray(value)) {
-      cloned[key] = value.map(clone());
-    } else {
-      cloned[key] = value;
+  if (isPlainObject(object)) {
+    for (const [key, value] of entriesOf(object as any)) {
+      if (isObject(value)) {
+        cloned[key] = clone()(value);
+      } else if (isArray(value)) {
+        cloned[key] = value.map(clone());
+      } else {
+        cloned[key] = value;
+      }
     }
   }
 

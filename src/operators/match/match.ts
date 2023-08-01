@@ -1,14 +1,14 @@
 import { not } from '../../logicals/not/not';
 import { prop } from '../../mappers/prop/prop';
 import { pipe } from '../../operators/pipe/pipe';
-import { Collection, Filter, Mapper, Maybe } from '../../types';
+import { Filter, Mapper, Maybe } from '../../types';
 import { Just, isCollection, isFunction, isMaybe, isNil, isRegExp, isString } from '../../utils';
 
-interface Match<S, O> {
+interface Match<S = any, O = any> {
   if?: Filter<S> | Maybe<S> | typeof Just | RegExp;
   then: O | Mapper<S, O>;
 }
-type Matches<S, O> = Match<S, O>[];
+type Matches<S = any, O = any> = Match<S, O>[];
 
 const returnResult = <S, O>(match: Match<S, O>, value: S) => {
   if (isFunction(match.then)) {
@@ -20,7 +20,7 @@ const returnResult = <S, O>(match: Match<S, O>, value: S) => {
 
 const matchJust = (value: unknown) => (isMaybe(value) && value.isJust) || !isNil(value);
 
-const matchImpl = <S, O>(ifMatches: Matches<S, O>, elseMatch?: Match<S, O>) => (source: S): O => {
+const matchImpl = (ifMatches: Matches, elseMatch?: Match) => <S>(source: S) => {
     const value = isMaybe(source) ? source.value : source;
     for (const match of ifMatches) {
       // handle Maybe constructor
@@ -44,12 +44,12 @@ const matchImpl = <S, O>(ifMatches: Matches<S, O>, elseMatch?: Match<S, O>) => (
     return value;
   };
 
-export const match = <S = any, O = any>(matches: Match<S, O>[]) => {
+export const match = (matches: Matches) => {
   const ifMatches = matches.filter(pipe(prop('if'), not(isNil)));
   let elseMatch = matches.find(pipe(prop('if'), isNil));
   if (!elseMatch) {
-    elseMatch = { then: (value: S) => value as unknown as O };
+    elseMatch = { then: (value: unknown) => value };
   }
 
-  return (source: Collection<S> | S) => isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source);
+  return <S>(source: S) => isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source);
 };

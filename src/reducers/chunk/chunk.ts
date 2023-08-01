@@ -1,4 +1,4 @@
-import { ɵsingleOperationReducer } from '../../utils';
+import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
 export const chunk = <T>(length = 2) => ɵsingleOperationReducer<T>((array) => {
   const result: T[][] = [];

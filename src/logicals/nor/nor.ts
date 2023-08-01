@@ -1,5 +1,5 @@
 import { Filters } from '../../types';
-import { ɵsingleOperationReducer } from '../../utils';
+import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
 const norImpl = (...values: boolean[]) => !values.some((value) => value);
 

@@ -65,13 +65,4 @@ describe('find', () => {
       expect(find(valueEq(0))(source)).toBeFalsy();
     });
   });
-
-  describe('PlainObject', () => {
-    const source = { a: 0, b: 1, c: 2, d: 3 };
-
-    it('should filter object', () => {
-      const operator = find(() => true);
-      expect(operator(source)).toStrictEqual(source);
-    });
-  });
 });

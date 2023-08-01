@@ -1,4 +1,4 @@
-import { isString } from '../../utils';
+import { isString } from '../../utils/object/is-string/is-string';
 
 const beforeImpl = (date: Date, beforeDate: Date) => date.getTime() < beforeDate.getTime();
 

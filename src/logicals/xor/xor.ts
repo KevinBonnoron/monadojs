@@ -1,5 +1,5 @@
 import { Filters } from '../../types';
-import { ɵsingleOperationReducer } from '../../utils';
+import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
 const xorImpl = (...values: boolean[]) => values.reduce((a, b) => a !== b);
 

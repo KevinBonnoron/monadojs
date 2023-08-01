@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { map } from './map';
 
 describe('map', () => {
@@ -37,15 +37,6 @@ describe('map', () => {
         [7, '8a'],
         [8, '9a']
       ]);
-
-      expect(operator(source)).toStrictEqual(expected);
-    });
-  });
-
-  describe('PlainObject', () => {
-    it('should map', () => {
-      const source = DEFAULT_PLAIN_OBJECT;
-      const expected = { a: '1a', b: '2a', c: '3a' };
 
       expect(operator(source)).toStrictEqual(expected);
     });

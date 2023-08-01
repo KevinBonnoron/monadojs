@@ -1,1 +1,3 @@
-export const trunc = <S extends number>() => (source: S) => Math.trunc(source);
+import { isNumber } from '../../utils';
+
+export const trunc = () => <S>(source: S) => isNumber(source) ? Math.trunc(source) : NaN;

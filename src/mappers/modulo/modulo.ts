@@ -1,1 +1,1 @@
-export const modulo = <S extends number>(amount = 1) => (source: S) => source % amount;
+export const modulo = (amount = 1) => <S extends number>(source: S) => source % amount;

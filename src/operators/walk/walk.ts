@@ -1,29 +1,23 @@
-import { Operator } from '../../types/operator.type';
-import { isArray, isMap, isObject, isPrimitive, isSet } from '../../utils/object';
-import { entries } from '../entries/entries';
-import { values } from '../values/values';
+import { isPlainObject, isPrimitive, valuesOf } from '../../utils/object';
 
-const walkImpl = <T>(value: T, operator: Operator<T, void>, context: { visitedObjects: any[] } = { visitedObjects: [] }) => {
-  if (!context.visitedObjects.includes(value)) {
-    if (!isPrimitive(value)) {
-      context.visitedObjects.push(value);
-    }
+export const walk = (operator: (value: unknown, index?: PropertyKey) => void) => <S>(source: S) => {
+  const visitedObjects: unknown[] = [];
 
-    operator(value);
-
-    if (isMap<any, T>(value)) {
-      for (const subValue of entries()(value)) {
-        walkImpl<any>(subValue, operator, context);
+  const walkImpl = <T>(element: T) => {
+    if (!visitedObjects.includes(element)) {
+      if (!isPrimitive(element)) {
+        visitedObjects.push(element);
       }
-    } else if (isObject<T>(value) || isArray<T>(value) || isSet<T>(value)) {
-      for (const subValue of values()(value)) {
-        walkImpl<any>(subValue, operator, context);
+  
+      operator(element);
+
+      if (isPlainObject(element)) {
+        [...valuesOf(element)].forEach(walkImpl);
       }
     }
-  }
+  
+    return element;
+  };
 
-  return value;
-};
-
-export const walk =
-  (operator: Operator<any, void>) => <S>(source: S) => walkImpl(source, operator);
+  return walkImpl(source);
+}

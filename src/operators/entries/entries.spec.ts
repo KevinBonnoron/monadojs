@@ -21,6 +21,24 @@ describe('entries', () => {
     });
   });
 
+  describe('Set', () => {
+    const operator = entries();
+
+    it('should return entries', () => {
+      const source = new Set<any>([1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn]);
+      const expected = [
+        [0, 1],
+        [1, true],
+        [2, 'a'],
+        [3, EMPTY_ARRAY],
+        [4, EMPTY_PLAIN_OBJECT],
+        [5, anonymousFn],
+        [6, anonymousArrowFn]
+      ];
+      expect([...operator(source)]).toStrictEqual(expected);
+    });
+  });
+
   describe('Map', () => {
     const operator = entries();
 
@@ -42,24 +60,6 @@ describe('entries', () => {
         ['e', EMPTY_PLAIN_OBJECT],
         ['f', anonymousFn],
         ['g', anonymousArrowFn]
-      ];
-      expect([...operator(source)]).toStrictEqual(expected);
-    });
-  });
-
-  describe('Set', () => {
-    const operator = entries();
-
-    it('should return entries', () => {
-      const source = new Set<any>([1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn]);
-      const expected = [
-        [0, 1],
-        [1, true],
-        [2, 'a'],
-        [3, EMPTY_ARRAY],
-        [4, EMPTY_PLAIN_OBJECT],
-        [5, anonymousFn],
-        [6, anonymousArrowFn]
       ];
       expect([...operator(source)]).toStrictEqual(expected);
     });
