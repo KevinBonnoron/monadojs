@@ -1,5 +1,7 @@
 # MonadoJs
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 Utility library for manipulating array, set, map & plain objects (à la lodash). Available in nodejs & in the browser.
 
 # Getting started
