@@ -1,7 +1,7 @@
 This example show how to compute avg, sum, min & max from the same inputs at once.
 
 ```typescript
-import { avg, combine, max, min, prop, reduce, sum, tap } from 'monadojs';
+import { avg, combine, map, max, min, pipe, prop, reduce, sum, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -12,7 +12,16 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(prop('age'), combine(reduce(avg()), reduce(sum()), reduce(min()), reduce(max())), tap(console.log));
+pipe(
+  map(prop('age')),
+  combine(
+    reduce(avg()),
+    reduce(sum()),
+    reduce(min()),
+    reduce(max())
+  ),
+  tap(console.log)
+)(persons);
 
-// [ 24.833333333333332, 149, 7, 52 ]
+// [ 24.83, 149, 7, 52 ]
 ```

@@ -1,9 +1,9 @@
 import { Operator } from '../../types';
 
-export function iif<T, I = any>(testFn: Operator<I>, trueFn: Operator<I, T>): <S extends I>(source: S) => T | undefined;
-export function iif<T, F, I = any>(testFn: Operator<I>, trueFn: Operator<I, T>, falseFn: Operator<I, F>): <S extends I>(source: S) => T | F;
-export function iif(testFn: Operator, trueFn: Operator, falseFn?: Operator) {
+export function iif<C extends Operator<I>, T extends Operator<I>, I = any>(condition: C, trueFn: T): <S extends I>(source: S) => ReturnType<T> | undefined;
+export function iif<C extends Operator<I>, T extends Operator<I>, F extends Operator<I>, I = any>(condition: C, trueFn: T, falseFn: F): <S extends I>(source: S) => ReturnType<T> | ReturnType<F>;
+export function iif(condition: Operator, trueFn: Operator, falseFn?: Operator) {
   return (source: unknown) => {
-    return testFn(source) ? trueFn(source) : falseFn ? falseFn(source) : undefined;
+    return condition(source) ? trueFn(source) : falseFn ? falseFn(source) : undefined;
   };
 }

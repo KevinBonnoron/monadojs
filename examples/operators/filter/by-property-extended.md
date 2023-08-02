@@ -1,7 +1,7 @@
 This example show how to keep products having `price` property strictly greater than 5.0 or lesser than 1.0
 
 ```typescript
-import { pipe, filter, gt, lt, or, prop, tap } from 'monadojs';
+import { filter, gt, lt, or, pipe, prop, tap } from 'monadojs';
 
 const products = [
   { id: 1, label: 'Apple', price: 1.35 },
@@ -12,7 +12,18 @@ const products = [
   { id: 6, label: 'Stawberry', price: 8.6 },
 ];
 
-products.pipe(filter(pipe(prop('price'), or(gt(5.0), lt(1.0)))), tap(console.log));
+pipe(
+  filter(
+    pipe(
+      prop('price'),
+      or(
+        gt(5.0),
+        lt(1.0)
+      )
+    )
+  ),
+  tap(console.log)
+)(products);
 
 /*
 [

@@ -1,7 +1,7 @@
 This example show how to log into console current value.
 
 ```typescript
-import { tap } from 'monadojs';
+import { pipe, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -12,7 +12,9 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(tap(console.log));
+pipe(
+  tap(console.log)
+)(persons);
 
 /*
 [

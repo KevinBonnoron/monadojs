@@ -1,7 +1,7 @@
 This example show how to convert array to Set.
 
 ```typescript
-import { tap } from 'monadojs';
+import { pipe, tap, to } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -12,7 +12,10 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(to(Set), tap(console.log));
+pipe(
+  to(Set),
+  tap(console.log)
+)(persons);
 
 /*
 Set(6) {

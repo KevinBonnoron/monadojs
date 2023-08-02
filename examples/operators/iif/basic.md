@@ -1,5 +1,5 @@
 ```typescript
-import { pipe, gt, iif, map, prop, tap } from 'monadojs';
+import { gt, iif, map, pipe, prop, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -11,7 +11,13 @@ const persons = [
 ];
 
 const ageGreaterThan = (age: number) => pipe(prop('age'), gt(age));
-persons.pipe(map(iif(ageGreaterThan(10), prop('firstName'), prop('lastName'))), tap(console.log));
 
-// [ 'James', 'Robert', 'Mary', 'John', 'Patricia', 'Smith' ]
+pipe(
+  map(
+    iif(ageGreaterThan(15), prop('firstName'), prop('lastName'))
+  ),
+  tap(console.log)
+)(persons);
+
+// [ 'Brown', 'Robert', 'Mary', 'John', 'Patricia', 'Smith' ]
 ```

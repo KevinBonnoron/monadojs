@@ -1,7 +1,7 @@
 This example show how to use custom reducer function (note: using `map` & `prop` would be a better choice here).
 
 ```typescript
-import { reduce, tap } from 'monadojs';
+import { pipe, reduce, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -12,10 +12,10 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
+pipe(
   reduce((prev: any, cur: any) => prev.concat(`${cur.firstName} ${cur.lastName}`), []),
   tap(console.log)
-);
+)(persons);
 
 /*
 [

@@ -1,5 +1,5 @@
 ```typescript
-import { pipe, lower, map, prop, tap } from 'monadojs';
+import { lower, map, pipe, prop, tap } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -10,7 +10,15 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(map(pipe(prop('firstName'), lower())), tap(console.log));
+pipe(
+  map(
+    pipe(
+      prop('firstName'),
+      lower(),
+    )
+  ),
+  tap(console.log),
+)(persons);
 
 // [ 'james', 'robert', 'mary', 'john', 'patricia', 'jennifer' ]
 ```

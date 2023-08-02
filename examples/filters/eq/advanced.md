@@ -14,10 +14,10 @@ const persons = [
 
 const firstNameEq = (firstName: string) => pipe(prop('firstName'), eq(firstName));
 
-persons.pipe(
+pipe(
   filter(firstNameEq('James')),
   tap(console.log)
-);
+)(persons);
 
 /*
   [

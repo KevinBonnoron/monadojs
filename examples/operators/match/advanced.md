@@ -1,4 +1,4 @@
-This example show how to use `match` as a grouping function
+This example show how to use `match` as a grouping function.
 
 ```typescript
 import { groupBy, gte, match, pipe, prop, tap } from 'monadojs';
@@ -12,7 +12,18 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(groupBy(pipe(prop('age'), match([{ if: gte(18), then: 'Major' }, { then: 'Minor' }]))), tap(console.log));
+pipe(
+  groupBy(
+    pipe(
+      prop('age'),
+      match([
+        { if: gte(18), then: 'Major' },
+        { then: 'Minor' }
+      ])
+    )
+  ),
+  tap(console.log)
+)(persons);
 /*
 {
   Minor: [

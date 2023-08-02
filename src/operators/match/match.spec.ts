@@ -11,7 +11,7 @@ import {
   STRING_SET
 } from '../../../tests/test.data';
 import { eq } from '../../filters';
-import { modulo } from '../../mappers';
+import { math } from '../../mappers/math/math';
 import { Just, Nothing } from '../../utils';
 import { identity } from '../identity/identity';
 import { pipe } from '../pipe/pipe';
@@ -63,8 +63,8 @@ describe('match', () => {
     it('should return values that match with operator', () => {
       const source = NUMBER_ARRAY;
       const operator = match([
-        { if: pipe(modulo(3), eq(0)), then: 'zero' },
-        { if: pipe(modulo(3), eq(1)), then: 'one' }
+        { if: pipe(math.modulo(3), eq(0)), then: 'zero' },
+        { if: pipe(math.modulo(3), eq(1)), then: 'one' }
       ]);
       const expected = ['one', 2, 'zero', 'one', 5, 'zero', 'one', 8, 'zero'];
 
@@ -108,7 +108,7 @@ describe('match', () => {
 
     it('should return values that match default', () => {
       const source = NUMBER_ARRAY;
-      const operator = match([{ if: pipe(modulo(3), eq(0)), then: 'zero' }, { then: 'one' }]);
+      const operator = match([{ if: pipe(math.modulo(3), eq(0)), then: 'zero' }, { then: 'one' }]);
       const expected = ['one', 'one', 'zero', 'one', 'one', 'zero', 'one', 'one', 'zero'];
 
       expect(operator(source)).toStrictEqual(expected);
@@ -160,8 +160,8 @@ describe('match', () => {
     it('should return values that match with operator', () => {
       const source = NUMBER_SET;
       const operator = match([
-        { if: pipe(modulo(3), eq(0)), then: 'zero' },
-        { if: pipe(modulo(3), eq(1)), then: 'one' }
+        { if: pipe(math.modulo(3), eq(0)), then: 'zero' },
+        { if: pipe(math.modulo(3), eq(1)), then: 'one' }
       ]);
       const expected = ['one', 2, 'zero', 'one', 5, 'zero', 'one', 8, 'zero'];
 
@@ -205,7 +205,7 @@ describe('match', () => {
 
     it('should return values that match default', () => {
       const source = NUMBER_SET;
-      const operator = match([{ if: pipe(modulo(3), eq(0)), then: 'zero' }, { then: 'one' }]);
+      const operator = match([{ if: pipe(math.modulo(3), eq(0)), then: 'zero' }, { then: 'one' }]);
       const expected = ['one', 'one', 'zero', 'one', 'one', 'zero', 'one', 'one', 'zero'];
 
       expect(operator(source)).toStrictEqual(expected);
@@ -257,8 +257,8 @@ describe('match', () => {
     it('should return values that match with operator', () => {
       const source = NUMBER_MAP;
       const operator = match([
-        { if: pipe(modulo(3), eq(0)), then: 'zero' },
-        { if: pipe(modulo(3), eq(1)), then: 'one' }
+        { if: pipe(math.modulo(3), eq(0)), then: 'zero' },
+        { if: pipe(math.modulo(3), eq(1)), then: 'one' }
       ]);
       const expected = ['one', 2, 'zero', 'one', 5, 'zero', 'one', 8, 'zero'];
 
@@ -302,7 +302,7 @@ describe('match', () => {
 
     it('should return values that match default', () => {
       const source = NUMBER_MAP;
-      const operator = match([{ if: pipe(modulo(3), eq(0)), then: 'zero' }, { then: 'one' }]);
+      const operator = match([{ if: pipe(math.modulo(3), eq(0)), then: 'zero' }, { then: 'one' }]);
       const expected = ['one', 'one', 'zero', 'one', 'one', 'zero', 'one', 'one', 'zero'];
 
       expect(operator(source)).toStrictEqual(expected);

@@ -14,5 +14,4 @@ const zipImpl = <T>(accumulator: Matrix<T>, value: T[]) => {
   return accumulator;
 };
 
-export const zip =
-  <T>() => (previousValue: T[], currentValue: T[], currentIndex: number) => ɵarrayAccumulator<T[]>(previousValue, currentValue, currentIndex, zipImpl);
+export const zip = <T>() => ɵarrayAccumulator<T[]>(zipImpl);

@@ -6,4 +6,3 @@
 
 - [Basic](./basic.md)
 - [Object by property](./object-by-property.md)
-- [Map by key](./map-by-key.md)

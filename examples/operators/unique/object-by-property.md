@@ -1,7 +1,7 @@
 This example show how to remove duplicate objects based on their `sex` property.
 
 ```typescript
-import { prop, tap, unique } from 'monadojs';
+import { pipe, prop, tap, unique } from 'monadojs';
 
 const persons = [
   { id: 1, firstName: 'James', lastName: 'Brown', age: 15, sex: 'M' },
@@ -12,7 +12,12 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(unique(prop('sex')), tap(console.log));
+pipe(
+  unique(
+    prop('sex')
+  ),
+  tap(console.log),
+)(persons);
 
 /*
 [

@@ -12,14 +12,14 @@ const persons = [
   { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
 ];
 
-persons.pipe(
+pipe(
   match([
-    { if: pipe(prop('sex', eq('M'))), then: (value: any) => `Mr ${value.firstName} ${value.lastName}` },
-    { if: pipe(prop('age', lt(18))), then: (value: any) => `Miss ${value.firstName} ${value.lastName}` },
+    { if: pipe(prop('sex'), eq('M')), then: (value: any) => `Mr ${value.firstName} ${value.lastName}` },
+    { if: pipe(prop('age'), lt(18)), then: (value: any) => `Miss ${value.firstName} ${value.lastName}` },
     { then: (value: any) => `Mrs ${value.firstName} ${value.lastName}` },
   ]),
   tap(console.log)
-);
+)(persons);
 /*
 [
   'Mr James Brown',

@@ -90,27 +90,16 @@ Logical operators are function that can be used in combination with `filter` ope
 
 ## Mappers
 
-- abs
 - capitalize
-- ceil
-- divide
 - exclude
-- floor
 - lower
 - mapRange
-- math
-- minus
-- modulo
+- [math](examples/mappers/math/index.md)
 - pick
-- plus
-- pow
 - [prop](examples/mappers/prop/index.md)
 - replace
-- round
 - substring
-- times
 - transform
-- trunc
 - upper
 
 ## Operators
