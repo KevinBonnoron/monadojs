@@ -56,7 +56,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.2",
     "lint-staged": "^14.0.1",
