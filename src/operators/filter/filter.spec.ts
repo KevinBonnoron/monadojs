@@ -1,36 +1,60 @@
 import { describe, expect, it } from 'vitest';
-import { NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, OBJECT_ARRAY, OBJECT_SET, babyDoe, janeDoe, johnDoe } from '../../../tests/test.data';
 import { filter } from './filter';
 
 describe('filter', () => {
   describe('Array', () => {
-    const source = [0, 1, 2, 3];
-
-    it('should filter', () => {
+    it('should filter by function', () => {
+      const source = NUMBER_ARRAY;
       const keepGreaterThan = (threshold: number) => (value: number) => value > threshold;
       const operator = filter(keepGreaterThan(1));
 
-      expect(operator(source)).toStrictEqual([2, 3]);
+      expect(operator(source)).toStrictEqual([2, 3, 4, 5, 6, 7, 8, 9]);
+    });
+
+    it('should filter by QueryFilterType', () => {
+      const source = OBJECT_ARRAY;
+      const operator = filter({ id: { $gt: 1 } });
+
+      expect(operator(source)).toStrictEqual([johnDoe, janeDoe, babyDoe]);
+    });
+
+    it('should filter by FilterType', () => {
+      const source = NUMBER_ARRAY;
+      const operator = filter({ $gt: 1 });
+
+      expect(operator(source)).toStrictEqual([2, 3, 4, 5, 6, 7, 8, 9]);
     });
   });
 
   describe('Set', () => {
-    const source = NUMBER_SET;
-
-    it('should filter', () => {
+    it('should filter by function', () => {
+      const source = NUMBER_SET;
       const keepGreaterThan = (threshold: number) => (value: number) => value > threshold;
       const operator = filter(keepGreaterThan(1));
+
+      expect(operator(source)).toStrictEqual(new Set([2, 3, 4, 5, 6, 7, 8, 9]));
+    });
+
+    it('should filter by QueryFilterType', () => {
+      const source = OBJECT_SET;
+      const operator = filter({ id: { $gt: 1 } });
+
+      expect(operator(source)).toStrictEqual(new Set([johnDoe, janeDoe, babyDoe]));
+    });
+
+    it('should filter by FilterType', () => {
+      const source = NUMBER_SET;
+      const operator = filter({ $gt: 1 });
 
       expect(operator(source)).toStrictEqual(new Set([2, 3, 4, 5, 6, 7, 8, 9]));
     });
   });
 
   describe('Map', () => {
-    const source = NUMBER_MAP;
-
-    it('should filter', () => {
-      const keepGreaterThan =
-        (threshold: number) => ([, value]: [number, number]) => value > threshold;
+    it('should filter by function', () => {
+      const source = NUMBER_MAP;
+      const keepGreaterThan = (threshold: number) => ([, value]: [number, number]) => value > threshold;
       const operator = filter(keepGreaterThan(1));
 
       expect(operator(source)).toStrictEqual(
@@ -46,5 +70,13 @@ describe('filter', () => {
         ])
       );
     });
+
+    // TODO
+    // it('should filter by QueryFilterType', () => {
+    //   const source = NUMBER_OBJECT_MAP;
+    //   const operator = filter({ id: { $gt: 1 } });
+
+    //   expect(operator(source)).toStrictEqual(new Set([johnDoe, janeDoe, babyDoe]));
+    // });
   });
 });

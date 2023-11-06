@@ -1,4 +1,3 @@
-export * from './apply-spec/apply-spec';
 export * from './catch-error/catch-error';
 export * from './clone/clone';
 export * from './combine/combine';
@@ -20,7 +19,7 @@ export * from './keys/keys';
 export * from './length/length';
 export * from './map/map';
 export * from './match/match';
-export * from './merge/merge';
+export * from './merge-with/merge-with';
 export * from './none/none';
 export * from './one/one';
 export * from './pipe/pipe';
@@ -38,3 +37,4 @@ export * from './to/to';
 export * from './unique/unique';
 export * from './values/values';
 export * from './walk/walk';
+

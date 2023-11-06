@@ -1,1 +1,1 @@
-export type AnyFunction<T = void> = (...args: any[]) => T;
+export type AnyFunction<R = any> = (...args: any[]) => R;

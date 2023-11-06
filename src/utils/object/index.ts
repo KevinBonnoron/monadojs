@@ -32,6 +32,7 @@ export * from './is-true/is-true';
 export * from './is-type/is-type';
 export * from './is-undefined/is-undefined';
 export * from './keys-of/keys-of';
+export * from './merge/merge';
 export * from './prop-in/prop-in';
 export * from './to-array/to-array';
 export * from './to-boolean/to-boolean';

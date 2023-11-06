@@ -1,18 +1,27 @@
 import { describe, expectTypeOf, it } from 'vitest';
 import { babyDoe, fooBar, janeDoe, johnDoe } from '../../../tests/test.data';
+import { string } from '../../wrappers';
 import { map } from './map';
 
 describe('map', () => {
   it('should have correct types', () => {
-    const operator = map((person) => ({ name: person.name }));
-
+    const mapByFn = map((person) => ({ name: person.name }));
+    const mapByObjectMapperType = map({ name: string.toUpperCase() });
+    const mapByProperty = map('name');
+    
     const personArray = [fooBar, johnDoe, janeDoe, babyDoe];
-    const personSet = new Set([fooBar, johnDoe, janeDoe, babyDoe]);
-    const personMap = new Map([[fooBar.name, fooBar], [johnDoe.name, johnDoe], [janeDoe.name, janeDoe], [babyDoe.name, babyDoe]]);
+    expectTypeOf(mapByFn(personArray)).toEqualTypeOf<{ name: any}[]>();
+    expectTypeOf(mapByObjectMapperType(personArray)).toEqualTypeOf<{ name: unknown}[]>();
+    expectTypeOf(mapByProperty(personArray)).toEqualTypeOf<string[]>();
 
-    // TODO find a way to infer the actual type into the mapper function
-    expectTypeOf(operator(personArray)).toEqualTypeOf<{ name: any}[]>();
-    expectTypeOf(operator(personSet)).toEqualTypeOf<Set<{ name: any}>>();
-    expectTypeOf(operator(personMap)).toEqualTypeOf<Map<string, { name: any}>>();
+    const personSet = new Set([fooBar, johnDoe, janeDoe, babyDoe]);
+    expectTypeOf(mapByFn(personSet)).toEqualTypeOf<Set<{ name: any}>>();
+    expectTypeOf(mapByObjectMapperType(personSet)).toEqualTypeOf<Set<{ name: unknown}>>();
+    expectTypeOf(mapByProperty(personSet)).toEqualTypeOf<Set<string>>();
+
+    const personMap = new Map([[fooBar.name, fooBar], [johnDoe.name, johnDoe], [janeDoe.name, janeDoe], [babyDoe.name, babyDoe]]);    
+    expectTypeOf(mapByFn(personMap)).toEqualTypeOf<Map<string, { name: any}>>();
+    expectTypeOf(mapByObjectMapperType(personMap)).toEqualTypeOf<Map<string, { name: unknown}>>();
+    expectTypeOf(mapByProperty(personMap)).toEqualTypeOf<Map<string, string>>();
   });
 });

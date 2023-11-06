@@ -4,6 +4,7 @@ import {
   NUMBER_MAP,
   NUMBER_SET,
   OBJECT_SET,
+  Person,
   STRING_ARRAY,
   STRING_MAP,
   STRING_SET,
@@ -92,12 +93,13 @@ describe('clone', () => {
     it('should clone objects', () => {
       const source = OBJECT_SET;
       const cloned = operator(source);
-      cloned.add(babyDoe);
+      const person: Person = { id: 5, name: 'John Doe Jr', birthDate: new Date('2023-01-01'), sex: 'M' }
+      cloned.add(person);
       deleteElementFromCollection(fooBar, cloned);
 
       expect(cloned).not.toBe(source);
-      expect(cloned).toStrictEqual(new Set([johnDoe, janeDoe, babyDoe]));
-      expect(source).toStrictEqual(new Set([fooBar, johnDoe, janeDoe]));
+      expect(cloned).toStrictEqual(new Set([johnDoe, janeDoe, babyDoe, person]));
+      expect(source).toStrictEqual(new Set([fooBar, johnDoe, janeDoe, babyDoe]));
     });
   });
 

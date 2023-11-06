@@ -1,22 +1,27 @@
 import { describe, expectTypeOf, it } from 'vitest';
-import { Person, babyDoe, fooBar, janeDoe, johnDoe } from '../../../tests/test.data';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, OBJECT_ARRAY, OBJECT_SET, Person, STRING_OBJECT_MAP } from '../../../tests/test.data';
 import { filter } from './filter';
 
 describe('filter', () => {
   it('should have correct types', () => {
-    const filterByProperty = filter({ id: { $gt: 0 } });
-    const filterByFn = filter((person) => person.id > 0);
+    const filterPersonByFn = filter<Person>((person) => person.id > 0);
+    const filterPersonByObjectFilterType = filter({ id: { $gt: 0 } });
+    const filterNumberByFn = filter<number>((value) => value > 0);
+    const filterNumberByObjectFilterType = filter<number>({ $gt: 0 });
 
-    const personArray = [fooBar, johnDoe, janeDoe, babyDoe];
-    expectTypeOf(filterByProperty(personArray)).toEqualTypeOf<Person[]>();
-    expectTypeOf(filterByFn(personArray)).toEqualTypeOf<Person[]>();
+    expectTypeOf(filterPersonByFn(OBJECT_ARRAY)).toEqualTypeOf<Person[]>();
+    expectTypeOf(filterPersonByObjectFilterType(OBJECT_ARRAY)).toEqualTypeOf<Person[]>();
+    expectTypeOf(filterNumberByFn(NUMBER_ARRAY)).toEqualTypeOf<number[]>();
+    expectTypeOf(filterNumberByObjectFilterType(NUMBER_ARRAY)).toEqualTypeOf<number[]>();
 
-    const personSet = new Set([fooBar, johnDoe, janeDoe, babyDoe]);
-    expectTypeOf(filterByProperty(personSet)).toEqualTypeOf<Set<Person>>();
-    expectTypeOf(filterByFn(personSet)).toEqualTypeOf<Set<Person>>();
+    expectTypeOf(filterPersonByFn(OBJECT_SET)).toEqualTypeOf<Set<Person>>();
+    expectTypeOf(filterPersonByObjectFilterType(OBJECT_SET)).toEqualTypeOf<Set<Person>>();
+    expectTypeOf(filterNumberByFn(NUMBER_SET)).toEqualTypeOf<Set<number>>();
+    expectTypeOf(filterNumberByObjectFilterType(NUMBER_SET)).toEqualTypeOf<Set<number>>();
 
-    const personMap = new Map([[fooBar.name, fooBar], [johnDoe.name, johnDoe], [janeDoe.name, janeDoe], [babyDoe.name, babyDoe]]);
-    expectTypeOf(filterByProperty(personMap)).toEqualTypeOf<Map<string, Person>>();
-    expectTypeOf(filterByFn(personMap)).toEqualTypeOf<Map<string, Person>>();
+    expectTypeOf(filterPersonByFn(STRING_OBJECT_MAP)).toEqualTypeOf<Map<string, Person>>();
+    expectTypeOf(filterPersonByObjectFilterType(STRING_OBJECT_MAP)).toEqualTypeOf<Map<string, Person>>();
+    expectTypeOf(filterNumberByFn(NUMBER_MAP)).toEqualTypeOf<Map<number, number>>();
+    expectTypeOf(filterNumberByObjectFilterType(NUMBER_MAP)).toEqualTypeOf<Map<number, number>>();
   });
 });

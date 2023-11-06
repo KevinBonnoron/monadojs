@@ -1,15 +1,15 @@
 import { eq, gt, gte, iin, includes, is, like, lt, lte, neq } from '../../filters';
 import { and, not, or } from '../../logicals';
 import { pipe } from '../../operators/pipe/pipe';
-import { Filter, ObjectFilterType, Operator, Operators, PropertyFilterType } from '../../types';
+import { Filter, Operator, Operators, QueryFilterType } from '../../types';
 import { entriesOf, isEqual, isFunction, isPlainObject } from '../object';
 import { FALSE } from '../object/object.utils';
 
-const parseOperators = <K extends keyof PropertyFilterType<any, any>>(operatorConfig: Record<K, PropertyFilterType<any, any>[K]>): Operators  => {
+const parseOperators = <K extends keyof QueryFilterType<any>>(operatorConfig: Record<K, QueryFilterType<any>[K]>): Operators  => {
   return [...entriesOf(operatorConfig)].reduce((accumulator, [operatorKey, operatorValue]) => accumulator.concat(parseOperator(operatorKey, operatorValue)), [] as Operators);
 };
 
-const parseOperator = (operatorKey: keyof PropertyFilterType<any, any>, operatorValue: any): Operator => {
+const parseOperator = (operatorKey: keyof QueryFilterType<any>, operatorValue: any): Operator => {
   return (
     operatorKey === '$eq' ? eq(operatorValue) :
     operatorKey === '$neq' ? neq(operatorValue) :
@@ -29,13 +29,17 @@ const parseOperator = (operatorKey: keyof PropertyFilterType<any, any>, operator
 };
 
 export function createFilterFn<E>(predicate: Filter<E>): Filter<E>;
-export function createFilterFn<E extends object>(predicate: ObjectFilterType<E>): Filter<E>;
-export function createFilterFn <E>(predicate: any): Filter<E> {
+export function createFilterFn<E>(predicate: QueryFilterType<E>): Filter<E>;
+export function createFilterFn<E>(predicate: unknown) {
   if (isFunction(predicate)) {
     return predicate as Filter;
   }
 
-  return (element: any) => {
-    return Object.entries(predicate).reduce((accumulator, [property, filterConfigs]) => accumulator && isPlainObject(filterConfigs) ? parseOperators(filterConfigs).every((operator) => operator(element[property])) : isEqual(element[property], filterConfigs), true);
+  return (element: E) => {
+    if (isPlainObject(element)) {
+      return [...entriesOf(predicate)].reduce((accumulator, [property, filterConfigs]) => accumulator && isPlainObject(filterConfigs) ? parseOperators(filterConfigs).every((operator) => operator(element[property])) : isEqual(element[property], filterConfigs), true);
+    }
+
+    return [...entriesOf(predicate)].every(([operatorKey, operatorValue]) => parseOperator(operatorKey, operatorValue)(element));
   }
 }

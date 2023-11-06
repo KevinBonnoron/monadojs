@@ -1,4 +1,5 @@
 export * from './any-function.type';
+export * from './any-record.type';
 export * from './collection.type';
 export * from './deep-non-nullable.type';
 export * from './deep-partial.type';
@@ -6,8 +7,9 @@ export * from './filter.type';
 export * from './language.type';
 export * from './mapper.type';
 export * from './maybe.type';
-export * from './object-filter.type';
+export * from './object-mapper.type';
 export * from './object-path.type';
 export * from './operator.type';
+export * from './query-filter.type';
 export * from './reducer.type';
 export * from './sorter.type';
