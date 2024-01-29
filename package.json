@@ -27,12 +27,10 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "vitest --watch=false",
-    "test:watch": "vitest",
+    "test": "vitest --typecheck --watch=false",
+    "test:watch": "vitest --typecheck",
     "bench": "vitest bench --watch=false",
     "bench:watch": "vitest bench",
-    "typecheck": "vitest typecheck --watch=false",
-    "typecheck:watch": "vitest typecheck",
     "prebuild": "rimraf --glob dist/**",
     "build": "rollup -c",
     "lint": "eslint . --fix",
@@ -67,7 +65,7 @@
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-typescript": "^1.0.1",
     "typescript": "^5.1.6",
-    "vitest": "^0.34.6"
+    "vitest": "^1.2.2"
   },
   "repository": "https://github.com/KevinBonnoron/monadojs.git",
   "private": false
