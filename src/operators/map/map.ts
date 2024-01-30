@@ -11,8 +11,8 @@ type ToCollectionType<C extends Collection, V> = (
 );
 
 export function map<M extends Mapper>(predicate: M): <S extends Collection>(source: S) => M extends Mapper<unknown> ? ToCollectionType<S, ReturnType<M>> : never;
-export function map<E extends Record<PropertyKey, any>, O extends ObjectMapperType<E>>(predicate: O): <S extends Collection<E>>(source: S) => ToCollectionType<S, E>;
 export function map<P extends PropertyKey>(predicate: P): <S>(source: S) => S extends Collection<Record<P, infer V>> ? ToCollectionType<S, V> : never;
+export function map<E>(predicate: ObjectMapperType<E>): <S extends Collection<E>>(source: S) => ToCollectionType<S, E>;
 export function map<E>(predicate: any) {
   const predicateFn = createMapperFn(predicate);
 

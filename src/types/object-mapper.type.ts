@@ -11,5 +11,5 @@ export type PropertyMapperType<T, K extends keyof T> =
   never;
 
 export type ObjectMapperType<T> = {
-  [K in keyof T]: Mapper<any, T[K]>;
+  [K in keyof T]: Mapper<T[K]>;
 }

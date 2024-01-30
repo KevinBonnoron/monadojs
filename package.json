@@ -9,13 +9,16 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./types/monadojs.d.ts",
+        "types": "./dist/monadojs.d.ts",
         "default": "./dist/monadojs.mjs"
       },
       "require": {
-        "types": "./types/monadojs.d.cts",
+        "types": "./dist/monadojs.d.cts",
         "default": "./dist/monadojs.cjs"
       }
+    },
+    "./package.json": {
+      "default": "./package.json"
     }
   },
   "types": "./dist/monadojs.d.ts",

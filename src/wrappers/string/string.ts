@@ -1,4 +1,4 @@
-const wrapOperator = <F extends (...args: any[]) => unknown>(fn: F, ...args: Parameters<F>) => <S>(source: S) => fn.call(source, ...args) as ReturnType<F>;
+const wrapOperator = <F extends (...args: any[]) => unknown>(fn: F, ...args: Parameters<F>) => (source: string) => fn.call(source, ...args) as ReturnType<F>;
 
 export const string = {
   capitalize: () => (source: string) => `${source.charAt(0).toUpperCase()}${source.slice(1).toLowerCase()}`,
