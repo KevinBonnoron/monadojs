@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close stale pull requests
-        uses: actions/stale@v8
+        uses: actions/stale@v9
