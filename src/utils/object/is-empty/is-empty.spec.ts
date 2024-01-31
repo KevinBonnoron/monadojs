@@ -19,7 +19,6 @@ describe('isEmpty', () => {
   it('should return true', () => {
     expect(isEmpty(null)).toBeTruthy();
     expect(isEmpty(undefined)).toBeTruthy();
-    expect(isEmpty(DEFAULT_DATE)).toBeTruthy();
     expect(isEmpty(EMPTY_ARRAY)).toBeTruthy();
     expect(isEmpty(EMPTY_SET)).toBeTruthy();
     expect(isEmpty(EMPTY_MAP)).toBeTruthy();
@@ -31,6 +30,7 @@ describe('isEmpty', () => {
     expect(isEmpty('a')).toBeFalsy();
     expect(isEmpty(0)).toBeFalsy();
     expect(isEmpty(false)).toBeFalsy();
+    expect(isEmpty(DEFAULT_DATE)).toBeFalsy();
     expect(isEmpty(DEFAULT_SYMBOL)).toBeFalsy();
     expect(isEmpty(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
     expect(isEmpty(DEFAULT_REGEX)).toBeFalsy();
