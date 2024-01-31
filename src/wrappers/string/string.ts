@@ -1,3 +1,5 @@
+import { empty } from '../../filters';
+
 const wrapOperator = <F extends (...args: any[]) => unknown>(fn: F, ...args: Parameters<F>) => (source: string) => fn.call(source, ...args) as ReturnType<F>;
 
 export const string = {
@@ -7,12 +9,15 @@ export const string = {
   codePointAt: (pos: number) => wrapOperator(String.prototype.codePointAt, pos),
   concat: (...strings: string[]) => wrapOperator(String.prototype.concat, ...strings),
   endsWith: (searchString: string, endPosition?: number) => wrapOperator(String.prototype.endsWith, searchString, endPosition),
+  empty,
   indexOf: (searchString: string, position?: number) => wrapOperator(String.prototype.indexOf, searchString, position),
   lastIndexOf: (searchString: string, position?: number) => wrapOperator(String.prototype.lastIndexOf, searchString, position),
   normalize: (form: "NFC" | "NFD" | "NFKC" | "NFKD") => wrapOperator(String.prototype.normalize, form),
   replace: (search: string | RegExp, replacement: string) => (source: string) => source.replace(search, replacement),
   startsWith: (searchString: string, position?: number) => wrapOperator(String.prototype.startsWith, searchString, position),
   substring: (start: number, length?: number) => (source: string) => source.substring(start, length !== undefined ? start + length : undefined),
+  toLocaleLowerCase: () => wrapOperator(String.prototype.toLocaleLowerCase),
+  toLocaleUpperCase: () => wrapOperator(String.prototype.toLocaleUpperCase),
   toLowerCase: () => wrapOperator(String.prototype.toLowerCase),
   toUpperCase: () => wrapOperator(String.prototype.toUpperCase),
 };

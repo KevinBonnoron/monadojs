@@ -12,6 +12,17 @@ describe('string', () => {
     });
   });
 
+  describe('empty', () => {
+    const operator = string.empty();
+
+    it('should return true for empty string', () => {
+      expect([''].map(operator)).toStrictEqual([true]);
+      expect(['', 'abc'].map(operator)).toStrictEqual([true, false]);
+      expect(operator('')).toStrictEqual(true);
+      expect(operator('abc')).toStrictEqual(false);
+    })
+  });
+
   describe('replace', () => {
     it('should return a replaced string', () => {
       expect(['ABC'].map(string.replace('A', 'C'))).toStrictEqual(['CBC']);
@@ -32,6 +43,24 @@ describe('string', () => {
       expect(string.substring(1)('ABC')).toStrictEqual('BC');
       expect(string.substring(1, 1)('ABC')).toStrictEqual('B');
       expect(string.substring(-1)('ABC')).toStrictEqual('ABC');
+    });
+  });
+
+  describe('toLocaleLowerCase', () => {
+    const operator = string.toLocaleLowerCase();
+
+    it('should return lowercase string', () => {
+      expect(['Abc', 'DEF'].map(operator)).toStrictEqual(['abc', 'def']);
+      expect(operator('Abc')).toStrictEqual('abc');
+    });
+  });
+
+  describe('toLocaleUpperCase', () => {
+    const operator = string.toLocaleUpperCase();
+
+    it('should return uppercase string', () => {
+      expect(['abc', 'DEF'].map(operator)).toStrictEqual(['ABC', 'DEF']);
+      expect(operator('abc')).toStrictEqual('ABC');
     });
   });
 
