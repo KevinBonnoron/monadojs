@@ -1,4 +1,4 @@
-export type ObjectPath<T, P extends string | number, Separator extends string = '.' | '['> =
+export type ObjectPath<T, P extends string | number> =
   // Last element
   P extends '' ? T :
   // Access array element

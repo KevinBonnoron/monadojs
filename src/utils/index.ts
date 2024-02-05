@@ -1,3 +1,4 @@
+export * from './builder/builder.utils';
 export * from './collection/collection.utils';
 export * from './curry/curry.utils';
 export * from './filter/filter.utils';

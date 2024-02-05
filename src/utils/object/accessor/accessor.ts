@@ -13,7 +13,7 @@ const accessorBuilder = <P, T extends keyof P>(parent: P, property: T): Accessor
   set: (value: P[T]) => parent[property] = value
 });
 
-const EMPTY_ACCESSOR: Accessor<unknown> = { get: () => undefined, set: (_value: unknown) => {/***/} };
+const EMPTY_ACCESSOR: Accessor<unknown> = { get: () => undefined, set: () => {/***/} };
 
 export const accessor = <T, P extends keyof T & string>(object: T, path: P): Accessor<ObjectPath<T, P>> => {
   const paths = path.split('.').map((value) => {
@@ -37,7 +37,7 @@ export const accessor = <T, P extends keyof T & string>(object: T, path: P): Acc
   }).flat();
 
   if (paths.length === 0) {
-    return EMPTY_ACCESSOR as any;
+    return EMPTY_ACCESSOR as Accessor<ObjectPath<T, P>>;
   }
 
   let parent: any = object;
@@ -49,7 +49,7 @@ export const accessor = <T, P extends keyof T & string>(object: T, path: P): Acc
     }
 
     if (isNil(parent)) {
-      return EMPTY_ACCESSOR as any;
+      return EMPTY_ACCESSOR as Accessor<ObjectPath<T, P>>;
     }
   }
 

@@ -7,6 +7,7 @@ export interface Person {
   sex: 'M' | 'F';
 }
 
+export const NOW = new Date('2020-01-01');
 export const anonymousArrowFn = () => {/**/};
 export const anonymousFn = function () {/**/};
 
