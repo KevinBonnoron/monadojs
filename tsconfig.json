@@ -3,6 +3,7 @@
     "target": "es2019",
     "module": "esnext",
     "esModuleInterop": true,
+    "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
