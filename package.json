@@ -59,7 +59,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-promise": "^6.1.1",
-    "husky": "^8.0.2",
+    "husky": "^9.0.10",
     "lint-staged": "^15.2.2",
     "release-it": "^16.1.5",
     "rimraf": "^5.0.1",
