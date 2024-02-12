@@ -24,7 +24,7 @@ export const johnDoe: Person = { id: 2, name: 'John Doe', birthDate: new Date('2
 export const janeDoe: Person = { id: 3, name: 'Jane Doe', birthDate: new Date('2022-01-01'), sex: 'F' } as const;
 export const babyDoe: Person = { id: 4, name: 'Baby Doe', birthDate: new Date('2023-01-01'), sex: 'F' } as const;
 
-export const EMPTY_ARRAY = [];
+export const EMPTY_ARRAY = [] as unknown[];
 export const NUMBER_ARRAY = Array.from({ length: 9 }, (_, i) => i + 1);
 export const STRING_ARRAY = 'abcdefghijklmnopqrstuvwxyz'.split('');
 export const OBJECT_ARRAY = [fooBar, johnDoe, janeDoe, babyDoe];
