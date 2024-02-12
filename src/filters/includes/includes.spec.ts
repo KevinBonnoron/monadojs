@@ -54,7 +54,7 @@ describe('includes', () => {
     });
 
     it('should return false', () => {
-      const operator = includes(10);
+      const operator = includes(0);
       expect(operator(source)).toBeFalsy();
     });
   });

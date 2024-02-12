@@ -1,4 +1,5 @@
 export * from './coalesce/coalesce';
+export * from './contains/contains';
 export * from './ensure/ensure';
 export * from './entries-of/entries-of';
 export * from './have-same-property-names/have-same-property-names';
@@ -49,3 +50,4 @@ export * from './to-symbol/to-symbol';
 export * from './to-type/to-type';
 export * from './to-undefined/to-undefined';
 export * from './values-of/values-of';
+
