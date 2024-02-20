@@ -7,7 +7,7 @@ describe('haveSameType', () => {
       expect(haveSameType([0, 'a'], [0, 'a'])).toBeTruthy();
       expect(haveSameType([0, 'a'], [1, 'b'])).toBeTruthy();
     });
-  
+
     it('should return false', () => {
       expect(haveSameType([0, 'a'], ['a', 0])).toBeFalsy();
       expect(haveSameType([['a'], ['b']], [1, 2])).toBeFalsy();

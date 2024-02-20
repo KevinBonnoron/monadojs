@@ -1,6 +1,7 @@
 import { AnyFunction } from './any-function.type';
 import { Operator } from './operator.type';
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export interface Maybe<T = any> {
   expect(error: string): T;
   unwrap(): T;
@@ -20,13 +21,21 @@ export interface MaybeConstructor {
 }
 
 class MaybeImpl implements Maybe {
-  expect() {/**/}
+  expect() {
+    /**/
+  }
 
-  unwrap() {/**/}
+  unwrap() {
+    /**/
+  }
 
-  unwrapOr() {/**/}
+  unwrapOr() {
+    /**/
+  }
 
-  unwrapOrElse() {/**/}
+  unwrapOrElse() {
+    /**/
+  }
 
   pipe<O>() {
     return this as unknown as Maybe<O>;

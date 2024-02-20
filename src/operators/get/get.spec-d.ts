@@ -6,24 +6,18 @@ describe('get', () => {
     const source = {
       a: {
         b: {
-          c: 1
-        }
+          c: 1,
+        },
       },
-      d: [
-        { e: 'a', f: [2], g: [true] }
-      ],
+      d: [{ e: 'a', f: [2], g: [true] }],
       h: true,
-      hi: [
-        [
-          { j: 3 }
-        ]
-      ]
+      hi: [[{ j: 3 }]],
     };
 
     expectTypeOf(get('a')(source)).toEqualTypeOf<{ b: { c: number } }>();
     expectTypeOf(get('a.b')(source)).toEqualTypeOf<{ c: number }>();
     expectTypeOf(get('a.b.c')(source)).toEqualTypeOf<number>();
-    expectTypeOf(get('d[0]')(source)).toEqualTypeOf<{ e: string, f: number[], g: boolean[]}>();
+    expectTypeOf(get('d[0]')(source)).toEqualTypeOf<{ e: string; f: number[]; g: boolean[] }>();
     expectTypeOf(get('d[0].e')(source)).toEqualTypeOf<string>();
     expectTypeOf(get('d[0].f')(source)).toEqualTypeOf<number[]>();
     expectTypeOf(get('d[0].g')(source)).toEqualTypeOf<boolean[]>();

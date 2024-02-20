@@ -8,7 +8,7 @@ describe('set', () => {
     it('should change property', () => {
       const operator = set('a', 2);
       operator(source);
-      expect(source).toStrictEqual({ a: 2, b: { c: [{ d: 2 }] } })
+      expect(source).toStrictEqual({ a: 2, b: { c: [{ d: 2 }] } });
     });
   });
 });

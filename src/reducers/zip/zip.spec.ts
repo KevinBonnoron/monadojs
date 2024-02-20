@@ -4,15 +4,16 @@ import { zip } from './zip';
 
 describe('zip', () => {
   it('should zip values', () => {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const source: any = [
       ['a', 'b'],
       ['d', 'e'],
-      ['f', 'g']
+      ['f', 'g'],
     ];
     const operator = zip();
     const expected = [
       ['a', 'd', 'f'],
-      ['b', 'e', 'g']
+      ['b', 'e', 'g'],
     ];
 
     expect(reduce(operator)(source)).toStrictEqual(expected);
@@ -20,15 +21,16 @@ describe('zip', () => {
   });
 
   it('should zip values', () => {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const source: any = [
       ['a', 'd', 'f'],
-      ['b', 'e', 'g']
+      ['b', 'e', 'g'],
     ];
     const operator = zip();
     const expected = [
       ['a', 'b'],
       ['d', 'e'],
-      ['f', 'g']
+      ['f', 'g'],
     ];
 
     expect(reduce(operator)(source)).toStrictEqual(expected);

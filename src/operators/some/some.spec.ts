@@ -37,7 +37,11 @@ describe('some', () => {
   describe('Map', () => {
     const source = NUMBER_MAP;
     const valueEq =
-      (expected: any) => ([_, value]: [key: any, value: any]) => value === expected;
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        (expected: any) =>
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        ([_, value]: [key: any, value: any]) =>
+          value === expected;
 
     it('should return true', () => {
       expect(some(valueEq(1))(source)).toBeTruthy();

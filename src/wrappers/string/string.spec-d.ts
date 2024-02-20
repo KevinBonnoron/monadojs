@@ -13,7 +13,7 @@ describe('string', () => {
   describe('replace', () => {
     it('should have correct types', () => {
       const operator = string.replace('a', 'b');
-  
+
       expectTypeOf(operator('a')).toEqualTypeOf<string>();
     });
   });
@@ -21,7 +21,7 @@ describe('string', () => {
   describe('toLowerCase', () => {
     it('should have correct types', () => {
       const operator = string.toLowerCase();
-  
+
       expectTypeOf(operator('A')).toEqualTypeOf<string>();
     });
   });
@@ -29,7 +29,7 @@ describe('string', () => {
   describe('toUpperCase', () => {
     it('should have correct types', () => {
       const operator = string.toUpperCase();
-  
+
       expectTypeOf(operator('a')).toEqualTypeOf<string>();
     });
   });
@@ -37,7 +37,7 @@ describe('string', () => {
   describe('substring', () => {
     it('should have correct types', () => {
       const operator = string.substring(0);
-  
+
       expectTypeOf(operator('a')).toEqualTypeOf<string>();
     });
   });

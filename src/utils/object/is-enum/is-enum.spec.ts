@@ -1,23 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import {
-  DEFAULT_DATE,
-  DEFAULT_MAYBE,
-  DEFAULT_REGEX,
-  DEFAULT_SYMBOL,
-  EMPTY_ARRAY,
-  EMPTY_MAP,
-  EMPTY_PLAIN_OBJECT,
-  EMPTY_RESOLVED_PROMISE,
-  EMPTY_SET,
-  anonymousArrowFn,
-  anonymousFn
-} from '../../../../tests/test.data';
+import { DEFAULT_DATE, DEFAULT_MAYBE, DEFAULT_REGEX, DEFAULT_SYMBOL, EMPTY_ARRAY, EMPTY_MAP, EMPTY_PLAIN_OBJECT, EMPTY_RESOLVED_PROMISE, EMPTY_SET, anonymousArrowFn, anonymousFn } from '../../../../tests/test.data';
 import { Nothing } from '../../maybe/maybe.utils';
 import { isEnum } from './is-enum';
 
 enum DummyEnum {
-  FOO,
-  BAR
+  FOO = 0,
+  BAR = 1,
 }
 
 describe('isEnum', () => {

@@ -40,15 +40,13 @@ export const isEqual = <T, V>(o1: T, o2: V): boolean => {
   }
 
   if (isPromise(o1) && isPromise(o2)) {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     return Object.getOwnPropertySymbols(o1).every((symbol) => (o1 as any)[symbol] === (o2 as any)[symbol]);
   }
 
   if (isPlainObject(o1) && isPlainObject(o2)) {
-    return (
-      haveSamePropertyNames(o1, o2) &&
-      haveSameSymbols(o1, o2) &&
-      Object.getOwnPropertyNames(o1).every((propertyName) => isEqual((o1 as any)[propertyName], (o2 as any)[propertyName]))
-    );
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    return haveSamePropertyNames(o1, o2) && haveSameSymbols(o1, o2) && Object.getOwnPropertyNames(o1).every((propertyName) => isEqual((o1 as any)[propertyName], (o2 as any)[propertyName]));
   }
 
   return Object.is(o1, o2);

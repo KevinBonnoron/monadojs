@@ -7,8 +7,8 @@ import { isMap, isPlainObject } from '../../utils';
  * @param defaultValue
  * @returns any
  */
-export const prop = <P extends PropertyKey>(property: P, defaultValue?: any) => <S extends Record<P, unknown>>(source: S): S[P] => (
-  isMap(source) ? source.get(property) ?? defaultValue :
-    isPlainObject(source) ? source[property] ?? defaultValue :
-      defaultValue
-);
+export const prop =
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    <P extends PropertyKey>(property: P, defaultValue?: any) =>
+    <S extends Record<P, unknown>>(source: S): S[P] =>
+      isMap(source) ? source.get(property) ?? defaultValue : isPlainObject(source) ? source[property] ?? defaultValue : defaultValue;

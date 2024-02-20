@@ -9,7 +9,12 @@ describe('find', () => {
 
     const personArray = [fooBar, johnDoe, janeDoe, babyDoe];
     const personSet = new Set([fooBar, johnDoe, janeDoe, babyDoe]);
-    const personMap = new Map([[fooBar.name, fooBar], [johnDoe.name, johnDoe], [janeDoe.name, janeDoe], [babyDoe.name, babyDoe]]);
+    const personMap = new Map([
+      [fooBar.name, fooBar],
+      [johnDoe.name, johnDoe],
+      [janeDoe.name, janeDoe],
+      [babyDoe.name, babyDoe],
+    ]);
 
     expectTypeOf(findByProperty(personArray)).toEqualTypeOf<Person>();
     expectTypeOf(findByProperty(personSet)).toEqualTypeOf<Person>();

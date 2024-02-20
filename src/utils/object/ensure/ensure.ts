@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import { isObject } from '../is-object/is-object';
 
 interface ErrorEnsureOptions {
@@ -42,6 +41,6 @@ export function ensure<T>(value: T | undefined, options?: T | Error | EnsureOpti
 
     throw error;
   }
-  
+
   return value;
 }

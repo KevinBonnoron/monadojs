@@ -14,11 +14,15 @@ const transformImpl = <T>(source: T, transformations: Transformation<T>) => {
     if (isMapper(transformation)) {
       object[key] = transformation(value);
     } else {
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       object[key] = transformImpl(source[key], transformation as any);
     }
 
     return object;
   }, {} as T);
-}
+};
 
-export const transform = <I extends Record<PropertyKey, unknown>>(transformations: Transformation<I>) => <S extends I>(source: S) => transformImpl(source, transformations);
+export const transform =
+  <I extends Record<PropertyKey, unknown>>(transformations: Transformation<I>) =>
+  <S extends I>(source: S) =>
+    transformImpl(source, transformations);

@@ -3,4 +3,4 @@
  * @param value
  * @returns
  */
-export const isPromise = <T>(value: any): value is Promise<T> => value instanceof Promise;
+export const isPromise = <T>(value: unknown): value is Promise<T> => value instanceof Promise;

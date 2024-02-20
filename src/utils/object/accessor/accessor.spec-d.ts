@@ -8,8 +8,8 @@ describe('accessor', () => {
       a: '1',
       b: 2,
       c: {
-        d: NOW
-      }
+        d: NOW,
+      },
     };
 
     expectTypeOf(accessor(value, 'a').get).toEqualTypeOf<(defaultValue?: string) => string>();

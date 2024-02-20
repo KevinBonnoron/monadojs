@@ -37,15 +37,15 @@ describe('math', () => {
   describe('round', () => {
     it('should have correct types', () => {
       const operator = math.round();
-  
+
       expectTypeOf(operator(1)).toEqualTypeOf<number>();
     });
   });
-  
+
   describe('sign', () => {
     it('should have correct types', () => {
       const operator = math.sign();
-  
+
       expectTypeOf(operator(1)).toEqualTypeOf<number>();
     });
   });
@@ -53,7 +53,7 @@ describe('math', () => {
   describe('trunc', () => {
     it('should have correct types', () => {
       const operator = math.trunc();
-  
+
       expectTypeOf(operator(1)).toEqualTypeOf<number>();
     });
   });

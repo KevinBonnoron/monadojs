@@ -1,8 +1,12 @@
 import { round } from '../../utils/number/number.utils';
 
-type OmitFirstArg<T extends unknown[]> = T extends [unknown, ...infer U] ? U : []
+type OmitFirstArg<T extends unknown[]> = T extends [unknown, ...infer U] ? U : [];
 
-const wrapOperator = <F extends (...args: any[]) => unknown>(fn: F, ...args: OmitFirstArg<Parameters<F>>) => (source: number) => fn(source, ...args) as ReturnType<F>;
+const wrapOperator =
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    <F extends (...args: any[]) => unknown>(fn: F, ...args: OmitFirstArg<Parameters<F>>) =>
+    (source: number) =>
+      fn(source, ...args) as ReturnType<F>;
 
 export const math = {
   abs: () => wrapOperator(Math.abs),

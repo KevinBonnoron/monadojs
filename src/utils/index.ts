@@ -1,5 +1,5 @@
-export * from './builder/builder.utils';
 export * from './collection/collection.utils';
+export * from './create-builder/create-builder.utils';
 export * from './curry/curry.utils';
 export * from './filter/filter.utils';
 export * from './function/function.utils';

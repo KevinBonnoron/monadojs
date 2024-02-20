@@ -1,20 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  DEFAULT_DATE,
-  DEFAULT_MAYBE,
-  DEFAULT_REGEX,
-  DEFAULT_SYMBOL,
-  EMPTY_ARRAY,
-  EMPTY_MAP,
-  EMPTY_PLAIN_OBJECT,
-  EMPTY_RESOLVED_PROMISE,
-  EMPTY_SET,
-  NUMBER_ARRAY,
-  NUMBER_MAP,
-  NUMBER_SET,
-  anonymousArrowFn,
-  anonymousFn
-} from '../../../../tests/test.data';
+import { DEFAULT_DATE, DEFAULT_MAYBE, DEFAULT_REGEX, DEFAULT_SYMBOL, EMPTY_ARRAY, EMPTY_MAP, EMPTY_PLAIN_OBJECT, EMPTY_RESOLVED_PROMISE, EMPTY_SET, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn, anonymousFn } from '../../../../tests/test.data';
 import { Nothing } from '../../maybe/maybe.utils';
 import { isEqual } from './is-equal';
 
@@ -243,10 +228,10 @@ describe('isEqual', () => {
   });
 
   describe('RegExp', () => {
-    const value = new RegExp('[a-z]+');
+    const value = /[a-z]+/;
 
     it('should return true', () => {
-      expect(isEqual(value, new RegExp('[a-z]+'))).toBeTruthy();
+      expect(isEqual(value, /[a-z]+/)).toBeTruthy();
     });
 
     it('should return false', () => {
@@ -342,9 +327,9 @@ describe('isEqual', () => {
             [5, 6],
             [6, 7],
             [7, 8],
-            [8, 9]
-          ])
-        )
+            [8, 9],
+          ]),
+        ),
       ).toBeTruthy();
     });
 

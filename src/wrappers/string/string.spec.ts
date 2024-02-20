@@ -20,7 +20,7 @@ describe('string', () => {
       expect(['', 'abc'].map(operator)).toStrictEqual([true, false]);
       expect(operator('')).toStrictEqual(true);
       expect(operator('abc')).toStrictEqual(false);
-    })
+    });
   });
 
   describe('replace', () => {
@@ -34,7 +34,7 @@ describe('string', () => {
       expect(string.replace(/A/g, 'C')('ABCABC')).toStrictEqual('CBCCBC');
     });
   });
-  
+
   describe('substring', () => {
     it('should return substring of values', () => {
       expect(['ABC'].map(string.substring(1))).toStrictEqual(['BC']);

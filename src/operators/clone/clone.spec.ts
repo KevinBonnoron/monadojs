@@ -1,30 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import {
-  NUMBER_ARRAY,
-  NUMBER_MAP,
-  NUMBER_SET,
-  OBJECT_SET,
-  Person,
-  STRING_ARRAY,
-  STRING_MAP,
-  STRING_SET,
-  babyDoe,
-  fooBar,
-  janeDoe,
-  johnDoe
-} from '../../../tests/test.data';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, PERSON_SET, Person, STRING_ARRAY, STRING_MAP, STRING_SET, babyDoe, fooBar, janeDoe, johnDoe } from '../../../tests/test.data';
 import { Collection } from '../../types';
 import { isEqual, isSet } from '../../utils';
 import { clone } from './clone';
 
 const deleteElementFromCollection = <T>(value: T, collection: Collection<T>) => {
   if (isSet(collection)) {
-    collection.forEach((element) => {
+    for (const element of collection) {
       if (isEqual(value, element)) {
         collection.delete(element);
         return;
       }
-    });
+    }
   }
 };
 
@@ -91,9 +78,9 @@ describe('clone', () => {
     });
 
     it('should clone objects', () => {
-      const source = OBJECT_SET;
+      const source = PERSON_SET;
       const cloned = operator(source);
-      const person: Person = { id: 5, name: 'John Doe Jr', birthDate: new Date('2023-01-01'), sex: 'M' }
+      const person: Person = { id: 5, name: 'John Doe Jr', birthDate: new Date('2023-01-01'), sex: 'M' };
       cloned.add(person);
       deleteElementFromCollection(fooBar, cloned);
 
@@ -137,8 +124,8 @@ describe('clone', () => {
           [22, 'w'],
           [23, 'x'],
           [24, 'y'],
-          [25, 'A']
-        ])
+          [25, 'A'],
+        ]),
       );
       expect(source).toStrictEqual(
         new Map([
@@ -167,8 +154,8 @@ describe('clone', () => {
           [22, 'w'],
           [23, 'x'],
           [24, 'y'],
-          [25, 'z']
-        ])
+          [25, 'z'],
+        ]),
       );
     });
 
@@ -189,8 +176,8 @@ describe('clone', () => {
           [6, 7],
           [7, 8],
           [8, 9],
-          [9, 10]
-        ])
+          [9, 10],
+        ]),
       );
       expect(source).toStrictEqual(
         new Map([
@@ -202,14 +189,15 @@ describe('clone', () => {
           [5, 6],
           [6, 7],
           [7, 8],
-          [8, 9]
-        ])
+          [8, 9],
+        ]),
       );
     });
   });
 
   describe('PlainObject', () => {
     it('should clone', () => {
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       const source: any = { a: { b: 1, c: { d: [2] } } };
       const cloned = operator(source);
       cloned.a.c.d.push(5);

@@ -14,12 +14,12 @@ describe('catch-error', () => {
       { id: 4, firstName: 'John', lastName: 'David', age: 26, sex: 'M' },
       undefined,
       { id: 5, firstName: 'Patricia', lastName: 'Brown', age: 52, sex: 'F' },
-      { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' }
+      { id: 6, firstName: 'Jennifer', lastName: 'Smith', age: 7, sex: 'F' },
     ];
 
     const operator = pipe(
-      map((person: any) => `${person.age} ${person.sex}`),
-      catchError(() => EMPTY_ARRAY)
+      map((person) => `${person.age} ${person.sex}`),
+      catchError(() => EMPTY_ARRAY),
     );
 
     expect(() => operator(source)).not.toThrow();

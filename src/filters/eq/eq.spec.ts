@@ -1,15 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  DEFAULT_DATE,
-  DEFAULT_PLAIN_OBJECT,
-  EMPTY_ARRAY,
-  EMPTY_MAP,
-  EMPTY_PLAIN_OBJECT,
-  EMPTY_SET,
-  NUMBER_ARRAY,
-  NUMBER_MAP,
-  NUMBER_SET
-} from '../../../tests/test.data';
+import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, EMPTY_ARRAY, EMPTY_MAP, EMPTY_PLAIN_OBJECT, EMPTY_SET, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { LOOSE_EQUALITY } from '../../utils';
 import { eq } from './eq';
 
@@ -121,12 +111,12 @@ describe('eq', () => {
     const source = /[0-9]/g;
 
     it('should return true', () => {
-      const operator = eq(new RegExp('[0-9]', 'g'));
+      const operator = eq(/[0-9]/g);
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = eq(new RegExp('[0-9]'));
+      const operator = eq(/[0-9]/);
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -173,8 +163,8 @@ describe('eq', () => {
           [5, 6],
           [6, 7],
           [7, 8],
-          [8, 9]
-        ])
+          [8, 9],
+        ]),
       );
       expect(operator(source)).toBeTruthy();
     });

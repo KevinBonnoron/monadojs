@@ -17,6 +17,7 @@ describe('clone', () => {
     expectTypeOf(clone()(DEFAULT_REGEX)).toEqualTypeOf<RegExp>();
     expectTypeOf(clone()([])).toEqualTypeOf<never[]>();
     expectTypeOf(clone()(new Set())).toEqualTypeOf<Set<unknown>>();
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     expectTypeOf(clone()(new Map())).toEqualTypeOf<Map<any, any>>();
     expectTypeOf(clone()({})).toEqualTypeOf<NonNullable<unknown>>();
     expectTypeOf(clone()(anonymousArrowFn)).toEqualTypeOf<() => void>();

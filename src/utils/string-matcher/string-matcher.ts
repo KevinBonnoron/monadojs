@@ -1,5 +1,5 @@
 import { AnyFunction } from '../../types';
-import { isEqual } from '../object';
+import { isEqual, isRegExp } from '../object';
 
 interface Matcher {
   regex: RegExp;
@@ -16,11 +16,15 @@ class StringMatcher {
 
   /**
    * Add a new matcher to this string matcher. Adding an already added regex will replace it.
-   * @param regex 
-   * @param callback 
-   * @returns 
+   * @param regex
+   * @param callback
+   * @returns
    */
-  match(regex: RegExp, callback: AnyFunction = defaultCallback) {
+  match(regex: RegExp | string, callback: AnyFunction = defaultCallback): this {
+    if (!isRegExp(regex)) {
+      return this.match(new RegExp(regex), callback);
+    }
+
     let existingMatcher = this.matchers.find((matcher) => isEqual(matcher.regex, regex));
     if (existingMatcher === undefined) {
       existingMatcher = { regex, callback };
@@ -34,7 +38,8 @@ class StringMatcher {
 
   /**
    * Run all the matchers against the passed string until either string is completely parsed or no match are found.
-   * 
+   * Matcher that return false will be ignored and the next matchers will be tested.
+   *
    * @param value the string to be checked
    * @returns void
    * @throws Error when no match are found
@@ -48,7 +53,7 @@ class StringMatcher {
         if (matches) {
           const result = callback(matches.slice(1));
           if (result === false) {
-            break;
+            continue;
           }
 
           currentValue = currentValue.replace(regex, '');

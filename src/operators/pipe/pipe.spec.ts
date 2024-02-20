@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
+import { AnyRecord } from '../../types';
 import { catchError } from '../catch-error/catch-error';
 import { pipe } from './pipe';
 
 describe('pipe', () => {
-  const pickOperator = (property: string) => (object: any) => object[property];
+  const pickOperator = (property: string) => (object: AnyRecord) => object[property];
   const addOperator = (value: number) => (source: number) => value + source;
 
   it('should execute operators in the order', () => {
@@ -22,8 +23,8 @@ describe('pipe', () => {
         pickOperator('a'),
         pickOperator('b'),
         addOperator(2),
-        catchError(() => 0)
-      )(source)
+        catchError(() => 0),
+      )(source),
     ).toStrictEqual(expected);
   });
 });

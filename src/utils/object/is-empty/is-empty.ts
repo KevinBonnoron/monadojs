@@ -26,13 +26,19 @@ import { isString } from '../is-string/is-string';
  * @param value
  * @returns boolean
  */
-export const isEmpty = <T>(value: T): value is T & DeepNonNullable<T> => (
-  isNil(value) ? true :
-  isString(value) ? value.length === 0 :
-  isPrimitive(value) || isFunction(value) || isPromise(value) || isRegExp(value) ? false :
-  isCollection(value) ? [...value].length === 0 :
-  isDate(value) ? isNaN(Number(value)) :
-  isMaybe(value) ? value.isNothing :
-  isPlainObject(value) ? Object.keys(value).length === 0
-  : false
-);
+export const isEmpty = <T>(value: T): value is T & DeepNonNullable<T> =>
+  isNil(value)
+    ? true
+    : isString(value)
+      ? value.length === 0
+      : isPrimitive(value) || isFunction(value) || isPromise(value) || isRegExp(value)
+        ? false
+        : isCollection(value)
+          ? [...value].length === 0
+          : isDate(value)
+            ? Number.isNaN(Number(value))
+            : isMaybe(value)
+              ? value.isNothing
+              : isPlainObject(value)
+                ? Object.keys(value).length === 0
+                : false;

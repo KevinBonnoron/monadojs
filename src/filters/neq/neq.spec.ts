@@ -111,12 +111,12 @@ describe('neq', () => {
     const source = /[0-9]/g;
 
     it('should return true', () => {
-      const operator = neq(new RegExp('[0-9]'));
+      const operator = neq(/[0-9]/);
       expect(operator(source)).toBeTruthy();
     });
 
     it('should return false', () => {
-      const operator = neq(new RegExp('[0-9]', 'g'));
+      const operator = neq(/[0-9]/g);
       expect(operator(source)).toBeFalsy();
     });
   });
@@ -162,8 +162,8 @@ describe('neq', () => {
           [4, 5],
           [5, 6],
           [6, 7],
-          [7, 8]
-        ])
+          [7, 8],
+        ]),
       );
       expect(operator(source)).toBeTruthy();
     });
@@ -179,8 +179,8 @@ describe('neq', () => {
           [5, 6],
           [6, 7],
           [7, 8],
-          [8, 9]
-        ])
+          [8, 9],
+        ]),
       );
       expect(operator(source)).toBeFalsy();
     });

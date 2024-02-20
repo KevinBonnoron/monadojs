@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, OBJECT_ARRAY, OBJECT_SET, babyDoe, janeDoe, johnDoe } from '../../../tests/test.data';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, PERSON_ARRAY, PERSON_SET, babyDoe, janeDoe, johnDoe } from '../../../tests/test.data';
 import { filter } from './filter';
 
 describe('filter', () => {
@@ -13,7 +13,7 @@ describe('filter', () => {
     });
 
     it('should filter by QueryFilterType', () => {
-      const source = OBJECT_ARRAY;
+      const source = PERSON_ARRAY;
       const operator = filter({ id: { $gt: 1 } });
 
       expect(operator(source)).toStrictEqual([johnDoe, janeDoe, babyDoe]);
@@ -37,7 +37,7 @@ describe('filter', () => {
     });
 
     it('should filter by QueryFilterType', () => {
-      const source = OBJECT_SET;
+      const source = PERSON_SET;
       const operator = filter({ id: { $gt: 1 } });
 
       expect(operator(source)).toStrictEqual(new Set([johnDoe, janeDoe, babyDoe]));
@@ -54,7 +54,10 @@ describe('filter', () => {
   describe('Map', () => {
     it('should filter by function', () => {
       const source = NUMBER_MAP;
-      const keepGreaterThan = (threshold: number) => ([, value]: [number, number]) => value > threshold;
+      const keepGreaterThan =
+        (threshold: number) =>
+        ([, value]: [number, number]) =>
+          value > threshold;
       const operator = filter(keepGreaterThan(1));
 
       expect(operator(source)).toStrictEqual(
@@ -66,8 +69,8 @@ describe('filter', () => {
           [5, 6],
           [6, 7],
           [7, 8],
-          [8, 9]
-        ])
+          [8, 9],
+        ]),
       );
     });
 

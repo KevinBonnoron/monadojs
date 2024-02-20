@@ -9,8 +9,8 @@ describe('accessor', () => {
         a: '1',
         b: 2,
         c: {
-          d: NOW
-        }
+          d: NOW,
+        },
       };
 
       expect(accessor(value, 'a').get()).toStrictEqual('1');
@@ -23,8 +23,8 @@ describe('accessor', () => {
         a: '1',
         b: 2,
         c: {
-          d: NOW
-        }
+          d: NOW,
+        },
       };
 
       accessor(value, 'a').set('2');

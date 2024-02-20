@@ -15,6 +15,7 @@ export function createMapperFn<E>(predicate: Mapper | PropertyKey | ObjectMapper
   }
 
   return (element: E) => {
+    // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
     return [...entriesOf(predicate)].reduce((accumulator, [property, mapper]) => ({ ...accumulator, [property]: mapper(element[property]) }), {});
-  }
+  };
 }

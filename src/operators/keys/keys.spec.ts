@@ -1,10 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  DEFAULT_PLAIN_OBJECT,
-  NUMBER_ARRAY,
-  NUMBER_MAP,
-  NUMBER_SET
-} from '../../../tests/test.data';
+import { DEFAULT_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../tests/test.data';
 import { keys } from './keys';
 
 describe('keys', () => {

@@ -6,32 +6,32 @@ export interface SorterOptions {
 }
 
 export const compare =
-  (options?: SorterOptions) => <T>(a: T, b: T) => {
+  (options?: SorterOptions) =>
+  <T>(a: T, b: T) => {
     if (options?.nullsAs) {
       if (a === null && b !== null) {
         return options.nullsAs === 'first' ? -1 : 1;
-      } else if (a !== null && b === null) {
+      }
+      if (a !== null && b === null) {
         return options.nullsAs === 'first' ? 1 : -1;
-      } else if (a === null && b === null) {
+      }
+      if (a === null && b === null) {
         return 0;
       }
     }
 
-    return isString(a) && isString(b)
-      ? a.localeCompare(b)
-      : isDate(a) && isDate(b)
-      ? a.getTime() - b.getTime()
-      : isNumber(a) && isNumber(b)
-      ? a - b
-      : 0;
+    return isString(a) && isString(b) ? a.localeCompare(b) : isDate(a) && isDate(b) ? a.getTime() - b.getTime() : isNumber(a) && isNumber(b) ? a - b : 0;
   };
 
 export const ɵsorter =
-  <T>(sortFn: (a: T, b: T) => number): Sorter<T> => (a: T, b?: T) => {
+  <T>(sortFn: (a: T, b: T) => number): Sorter<T> =>
+  (a: T, b?: T) => {
+    let first = a;
+    let second = b as T;
     if (isArray<T>(a) && isNil(b)) {
-      b = a[1];
-      a = a[0];
+      second = a[1];
+      first = a[0];
     }
 
-    return sortFn(a as T, b as T);
+    return sortFn(first, second);
   };

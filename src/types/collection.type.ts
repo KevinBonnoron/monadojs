@@ -5,9 +5,4 @@ export type CollectionTypes = ArrayConstructor | SetConstructor | MapConstructor
 /**
  * Return the collection enclosed value
  */
-export type UnwrapCollectionValue<T> =
-  T extends Array<infer V> ? V :
-  T extends Set<infer V> ? V :
-  T extends Map<unknown, infer V> ? V :
-  never
-  ;
+export type UnwrapCollectionValue<T> = T extends Array<infer V> ? V : T extends Set<infer V> ? V : T extends Map<unknown, infer V> ? V : never;

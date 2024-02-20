@@ -47,7 +47,7 @@ describe('length', () => {
       expect(operator(0)).toStrictEqual(0);
       expect(operator(true)).toStrictEqual(0);
       expect(operator(DEFAULT_DATE)).toStrictEqual(0);
-      expect(operator(new RegExp('a'))).toStrictEqual(0);
+      expect(operator(/a/)).toStrictEqual(0);
       expect(operator(anonymousFn)).toStrictEqual(0);
       expect(operator(anonymousArrowFn)).toStrictEqual(0);
     });

@@ -6,4 +6,7 @@ import { contains } from '../../utils/object/contains/contains';
  * @param searchElement
  * @returns boolean
  */
-export const includes = <T>(searchElement: T) => (source: Collection<T> | string) => contains(source, searchElement);
+export const includes =
+  <T>(searchElement: T) =>
+  (source: Collection<T> | string) =>
+    contains(source, searchElement);

@@ -15,7 +15,7 @@ describe('entries', () => {
         [3, EMPTY_ARRAY],
         [4, EMPTY_PLAIN_OBJECT],
         [5, anonymousFn],
-        [6, anonymousArrowFn]
+        [6, anonymousArrowFn],
       ];
       expect([...operator(source)]).toStrictEqual(expected);
     });
@@ -25,7 +25,7 @@ describe('entries', () => {
     const operator = entries();
 
     it('should return entries', () => {
-      const source = new Set<any>([1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn]);
+      const source = new Set<unknown>([1, true, 'a', EMPTY_ARRAY, EMPTY_PLAIN_OBJECT, anonymousFn, anonymousArrowFn]);
       const expected = [
         [0, 1],
         [1, true],
@@ -33,7 +33,7 @@ describe('entries', () => {
         [3, EMPTY_ARRAY],
         [4, EMPTY_PLAIN_OBJECT],
         [5, anonymousFn],
-        [6, anonymousArrowFn]
+        [6, anonymousArrowFn],
       ];
       expect([...operator(source)]).toStrictEqual(expected);
     });
@@ -43,14 +43,14 @@ describe('entries', () => {
     const operator = entries();
 
     it('should return entries', () => {
-      const source = new Map<any, any>([
+      const source = new Map<string, unknown>([
         ['a', 1],
         ['b', true],
         ['c', 'a'],
         ['d', EMPTY_ARRAY],
         ['e', EMPTY_PLAIN_OBJECT],
         ['f', anonymousFn],
-        ['g', anonymousArrowFn]
+        ['g', anonymousArrowFn],
       ]);
       const expected = [
         ['a', 1],
@@ -59,7 +59,7 @@ describe('entries', () => {
         ['d', EMPTY_ARRAY],
         ['e', EMPTY_PLAIN_OBJECT],
         ['f', anonymousFn],
-        ['g', anonymousArrowFn]
+        ['g', anonymousArrowFn],
       ];
       expect([...operator(source)]).toStrictEqual(expected);
     });
@@ -77,7 +77,7 @@ describe('entries', () => {
         ['d', EMPTY_ARRAY],
         ['e', EMPTY_PLAIN_OBJECT],
         ['f', anonymousFn],
-        ['g', anonymousArrowFn]
+        ['g', anonymousArrowFn],
       ];
       expect([...operator(source)]).toStrictEqual(expected);
     });

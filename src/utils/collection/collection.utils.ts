@@ -11,11 +11,7 @@ export function ɵcopyCollection<T>(collection: T[], values: Iterable<T>): T[];
 export function ɵcopyCollection<T>(collection: Set<T>, values: Iterable<T>): Set<T>;
 export function ɵcopyCollection<K, V>(collection: Map<K, V>, values: Iterable<[K, V]>): Map<K, V>;
 export function ɵcopyCollection<T>(collection: Collection<T>, values: Collection<T>): Collection<T>;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function ɵcopyCollection<T>(collection: Collection<T>, values: any): Collection<T> {
-  return (
-    isArray(collection) ? [...values] :
-      isSet(collection) ? new Set(values) :
-        isMap<unknown, T>(collection) ? new Map(values) :
-          collection
-  );
+  return isArray(collection) ? [...values] : isSet(collection) ? new Set(values) : isMap<unknown, T>(collection) ? new Map(values) : collection;
 }

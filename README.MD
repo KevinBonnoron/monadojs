@@ -3,6 +3,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Utility library for manipulating array, set, map & plain objects (à la lodash). Available in nodejs & in the browser.
+Contains also some utilities.
 
 # Getting started
 
@@ -56,6 +57,7 @@ const firstNames3 = persons.filter(ageGreaterThan(20)).map(getFirstName);
 ```
 
 There are some examples provided [here](./examples/index.md)
+
 
 # API
 
@@ -174,5 +176,6 @@ Reducers are functions that produce a single result by iterating over the passed
 
 ## Utils
 
+- [builder](examples/utils/builder/index.md)
 - [coalesce](examples/utils/coalesce/index.md)
 - [ensure](examples/utils/ensure/index.md)

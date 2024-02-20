@@ -9,5 +9,5 @@ export type nil = null | undefined;
 
 export type AllTypes = PrimitiveTypes | ObjectTypes | CollectionTypes | null | undefined;
 
-// eslint-disable-next-line no-var
+// biome-ignore lint/style/noVar: <explanation>
 export var nil: nil = Symbol() as unknown as nil;

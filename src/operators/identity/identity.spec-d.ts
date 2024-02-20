@@ -14,6 +14,7 @@ describe('identity', () => {
     expectTypeOf(operator(EMPTY_PLAIN_OBJECT)).toEqualTypeOf<typeof EMPTY_PLAIN_OBJECT>();
     expectTypeOf(operator(EMPTY_ARRAY)).toEqualTypeOf<unknown[]>();
     expectTypeOf(operator(EMPTY_SET)).toEqualTypeOf<Set<unknown>>();
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     expectTypeOf(operator(EMPTY_MAP)).toEqualTypeOf<Map<any, any>>();
   });
 });

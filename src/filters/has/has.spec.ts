@@ -42,7 +42,7 @@ describe('has', () => {
       expect(operator(null)).toBeFalsy();
       expect(operator(undefined)).toBeFalsy();
       expect(operator(DEFAULT_DATE)).toBeFalsy();
-      expect(operator(new RegExp('a'))).toBeFalsy();
+      expect(operator(/a/)).toBeFalsy();
       expect(operator(NUMBER_SET)).toBeFalsy();
       expect(operator(anonymousFn)).toBeFalsy();
       expect(operator(anonymousArrowFn)).toBeFalsy();

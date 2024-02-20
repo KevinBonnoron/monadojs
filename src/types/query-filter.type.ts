@@ -13,13 +13,13 @@ type PrimitiveQueryFilterType<T> = {
   $in?: Collection<T>;
 };
 
-type CollectionQueryFilterType<T> = T extends Collection ? { $includes?: UnwrapCollectionValue<T>; } : never;
+type CollectionQueryFilterType<T> = T extends Collection ? { $includes?: UnwrapCollectionValue<T> } : never;
 
 type LogicalQueryFilterType<T> = {
   $and?: PrimitiveQueryFilterType<T>[];
   $or?: PrimitiveQueryFilterType<T>[];
   $not?: PrimitiveQueryFilterType<T>;
-}
+};
 
 type CommonQueryFilterType<T> = PrimitiveQueryFilterType<T> | CollectionQueryFilterType<T> | LogicalQueryFilterType<T>;
 

@@ -4,10 +4,12 @@ import { pipe } from '../../operators/pipe/pipe';
 import { Filter, Mapper, Maybe } from '../../types';
 import { Just, isCollection, isFunction, isMaybe, isNil, isRegExp, isString } from '../../utils';
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 interface Match<S = any, O = any> {
   if?: Filter<S> | Maybe<S> | typeof Just | RegExp;
   then: O | Mapper<S, O>;
 }
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 type Matches<S = any, O = any> = Match<S, O>[];
 
 const returnResult = <S, O>(match: Match<S, O>, value: S) => {
@@ -20,7 +22,9 @@ const returnResult = <S, O>(match: Match<S, O>, value: S) => {
 
 const matchJust = (value: unknown) => (isMaybe(value) && value.isJust) || !isNil(value);
 
-const matchImpl = (ifMatches: Matches, elseMatch?: Match) => <S>(source: S) => {
+const matchImpl =
+  (ifMatches: Matches, elseMatch?: Match) =>
+  <S>(source: S) => {
     const value = isMaybe(source) ? source.value : source;
     for (const match of ifMatches) {
       // handle Maybe constructor
@@ -28,11 +32,7 @@ const matchImpl = (ifMatches: Matches, elseMatch?: Match) => <S>(source: S) => {
         if (matchJust(value)) {
           return returnResult(match, value);
         }
-      } else if (
-        (isFunction(match.if) && match.if(value)) ||
-        (isMaybe(match.if) && match.if.equals(value)) ||
-        (isRegExp(match.if) && isString(value) && match.if.test(value))
-      ) {
+      } else if ((isFunction(match.if) && match.if(value)) || (isMaybe(match.if) && match.if.equals(value)) || (isRegExp(match.if) && isString(value) && match.if.test(value))) {
         return returnResult(match, value);
       }
     }
@@ -51,5 +51,5 @@ export const match = (matches: Matches) => {
     elseMatch = { then: (value: unknown) => value };
   }
 
-  return <S>(source: S) => isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source);
+  return <S>(source: S) => (isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source));
 };

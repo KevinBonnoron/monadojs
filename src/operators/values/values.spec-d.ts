@@ -16,18 +16,18 @@ describe('values', () => {
         new Map([
           [1, 'a'],
           [2, 'b'],
-          [3, 'c']
-        ])
-      )
+          [3, 'c'],
+        ]),
+      ),
     ).toEqualTypeOf<IterableIterator<string>>();
     expectTypeOf(
       values()(
         new Map([
           [1, { id: 1 }],
           [2, { id: 2 }],
-          [3, { id: 3 }]
-        ])
-      )
+          [3, { id: 3 }],
+        ]),
+      ),
     ).toEqualTypeOf<IterableIterator<{ id: number }>>();
 
     expectTypeOf(values()({ 1: 'a', 2: 'b', 3: 'c' })).toEqualTypeOf<IterableIterator<string>>();

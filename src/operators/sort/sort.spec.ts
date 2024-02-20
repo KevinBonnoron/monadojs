@@ -24,7 +24,7 @@ describe('sort', () => {
     it('should not sort Map', () => {
       const source = new Map([
         ['a', 2],
-        ['b', 1]
+        ['b', 1],
       ]);
       const operator = sort(ascSort);
       const expected = source;
@@ -63,7 +63,7 @@ describe('sort', () => {
     it('should not sort Map', () => {
       const source = new Map([
         ['a', 2],
-        ['b', 1]
+        ['b', 1],
       ]);
       const operator = sort(descSort);
       const expected = source;

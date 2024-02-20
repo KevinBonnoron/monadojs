@@ -31,26 +31,42 @@ export function isType(type: SetConstructor): (value: unknown) => value is Set<u
 export function isType(type: MapConstructor): (value: unknown) => value is Map<unknown, unknown>;
 export function isType(type: MaybeConstructor): (value: unknown) => value is Maybe;
 export function isType(type: ObjectConstructor): (value: unknown) => value is object;
-export function isType(type: FunctionConstructor): (value: unknown) => value is (...args: any[]) => any;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export function isType(type: FunctionConstructor): (value: unknown) => value is (...args: any[]) => unknown;
 export function isType<T>(type: T): (value: unknown) => value is T;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function isType(type: any) {
-  return (
-    type === null ? isNull :
-      type === undefined ? isUndefined :
-        type === nil ? isNil :
-          type === String ? isString :
-            type === Number ? isNumber :
-              type === Boolean ? isBoolean :
-                type === Symbol ? isSymbol :
-                  type === Promise ? isPromise :
-                    type === Date ? isDate :
-                      type === RegExp ? isRegExp :
-                        type === Array ? isArray :
-                          type === Set ? isSet :
-                            type === Map ? isMap :
-                              type === Maybe ? isMaybe :
-                                type === Object ? isObject :
-                                  type === Function ? isFunction :
-                                    (value: unknown) => value?.constructor === type
-  );
+  return type === null
+    ? isNull
+    : type === undefined
+      ? isUndefined
+      : type === nil
+        ? isNil
+        : type === String
+          ? isString
+          : type === Number
+            ? isNumber
+            : type === Boolean
+              ? isBoolean
+              : type === Symbol
+                ? isSymbol
+                : type === Promise
+                  ? isPromise
+                  : type === Date
+                    ? isDate
+                    : type === RegExp
+                      ? isRegExp
+                      : type === Array
+                        ? isArray
+                        : type === Set
+                          ? isSet
+                          : type === Map
+                            ? isMap
+                            : type === Maybe
+                              ? isMaybe
+                              : type === Object
+                                ? isObject
+                                : type === Function
+                                  ? isFunction
+                                  : (value: unknown) => value?.constructor === type;
 }

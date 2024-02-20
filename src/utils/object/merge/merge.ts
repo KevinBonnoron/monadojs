@@ -36,14 +36,15 @@ const mergeImpl = (target: unknown, ...sources: unknown[]): unknown => {
 
 /**
  * Merge 2 objets or array together in an immutable fashion.
- * @param o1 
- * @param o2 
- * @returns 
+ * @param o1
+ * @param o2
+ * @returns
  */
 export const merge = <T, S>(o1: T, o2: S): T & S => {
   if (isArray(o1) && isPlainObject(o2)) {
     throw new Error(`Can't merge array with object`);
-  } else if (isPlainObject(o1) && isArray(o2)) {
+  }
+  if (isPlainObject(o1) && isArray(o2)) {
     throw new Error(`Can't merge object with array`);
   }
 

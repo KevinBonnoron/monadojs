@@ -1,16 +1,5 @@
 import { describe, expectTypeOf, it } from 'vitest';
-import {
-  DEFAULT_DATE,
-  DEFAULT_MAYBE,
-  DEFAULT_REGEX,
-  EMPTY_ARRAY,
-  EMPTY_MAP,
-  EMPTY_PLAIN_OBJECT,
-  EMPTY_RESOLVED_PROMISE,
-  EMPTY_SET,
-  anonymousArrowFn,
-  anonymousFn
-} from '../../../tests/test.data';
+import { DEFAULT_DATE, DEFAULT_MAYBE, DEFAULT_REGEX, EMPTY_ARRAY, EMPTY_MAP, EMPTY_PLAIN_OBJECT, EMPTY_RESOLVED_PROMISE, EMPTY_SET, anonymousArrowFn, anonymousFn } from '../../../tests/test.data';
 import { Nothing } from '../../utils';
 import { endsWith } from './ends-with';
 

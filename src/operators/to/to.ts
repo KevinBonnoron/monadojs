@@ -13,6 +13,7 @@ export function to(type: ArrayConstructor): <V>(value: V) => V[];
 export function to(type: SetConstructor): <V>(value: V) => Set<V>;
 export function to<K, V>(type: MapConstructor, keyFn: (value: V, index: number) => K): <S extends V>(value: S) => Map<K, S>;
 export function to(type: MaybeConstructor): <V>(value: V) => Maybe<V>;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function to(type: any, keyFn?: (value: unknown, index: number) => unknown): unknown {
   return keyFn ? toType(type, keyFn) : toType(type);
 }

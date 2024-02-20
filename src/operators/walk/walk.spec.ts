@@ -1,11 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import {
-  DEFAULT_DATE,
-  DEFAULT_PLAIN_OBJECT,
-  DEFAULT_REGEX,
-  EMPTY_PLAIN_OBJECT,
-  NUMBER_ARRAY, NUMBER_SET, STRING_MAP, anonymousArrowFn, anonymousFn
-} from '../../../tests/test.data';
+import { DEFAULT_DATE, DEFAULT_PLAIN_OBJECT, DEFAULT_REGEX, EMPTY_PLAIN_OBJECT, NUMBER_ARRAY, NUMBER_SET, STRING_MAP, anonymousArrowFn, anonymousFn } from '../../../tests/test.data';
 import { walk } from './walk';
 
 describe('walk', () => {
@@ -74,12 +68,10 @@ describe('walk', () => {
 
   describe('others', () => {
     const operator = walk(fn);
-    const sources = [1, 'a', true, anonymousFn, anonymousArrowFn, DEFAULT_DATE, DEFAULT_REGEX] as const;
 
-    it('should walk', () => {
-      sources.forEach((source) => expect(operator(source)).toStrictEqual(source));
-      expect(fn).toHaveBeenCalledTimes(sources.length);
-      sources.forEach((source) => expect(fn).toHaveBeenCalledWith(source));
+    it.each([{ source: 1 }, { source: 'a' }, { source: true }, { source: anonymousFn }, { source: anonymousArrowFn }, { source: DEFAULT_DATE }, { source: DEFAULT_REGEX }])('should walk', ({ source }) => {
+      expect(operator(source)).toStrictEqual(source);
+      expect(fn).toHaveBeenCalledWith(source);
     });
   });
 });

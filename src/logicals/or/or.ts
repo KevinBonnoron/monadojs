@@ -4,7 +4,7 @@ import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
 const orImpl = (...values: boolean[]) => values.some(isTrue);
 
-export const or = (...operators: Filters) => <S>(source: S) => operators
-  .map((operator) => operator(source))
-  .reduce(ɵsingleOperationReducer((array) => orImpl(...array))
-  );
+export const or =
+  (...operators: Filters) =>
+  <S>(source: S) =>
+    operators.map((operator) => operator(source)).reduce(ɵsingleOperationReducer((array) => orImpl(...array)));

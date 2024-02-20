@@ -1,23 +1,25 @@
 import { isPlainObject, isPrimitive, valuesOf } from '../../utils/object';
 
-export const walk = (operator: (value: unknown, index?: PropertyKey) => void) => <S>(source: S) => {
-  const visitedObjects: unknown[] = [];
+export const walk =
+  (operator: (value: unknown, index?: PropertyKey) => void) =>
+  <S>(source: S) => {
+    const visitedObjects: unknown[] = [];
 
-  const walkImpl = <T>(element: T) => {
-    if (!visitedObjects.includes(element)) {
-      if (!isPrimitive(element)) {
-        visitedObjects.push(element);
-      }
-  
-      operator(element);
+    const walkImpl = <T>(element: T) => {
+      if (!visitedObjects.includes(element)) {
+        if (!isPrimitive(element)) {
+          visitedObjects.push(element);
+        }
 
-      if (isPlainObject(element)) {
-        [...valuesOf(element)].forEach(walkImpl);
+        operator(element);
+
+        if (isPlainObject(element)) {
+          [...valuesOf(element)].forEach(walkImpl);
+        }
       }
-    }
-  
-    return element;
+
+      return element;
+    };
+
+    return walkImpl(source);
   };
-
-  return walkImpl(source);
-}

@@ -17,19 +17,19 @@ describe('unique', () => {
       const source = [
         { a: 1, b: 2 },
         { a: 2, b: 2 },
-        { a: 1, b: 1 }
+        { a: 1, b: 1 },
       ];
       const operator = unique(prop('a'));
       const expected = [
         { a: 1, b: 2 },
-        { a: 2, b: 2 }
+        { a: 2, b: 2 },
       ];
 
       expect(operator(source)).toStrictEqual(expected);
       expect(source).toStrictEqual([
         { a: 1, b: 2 },
         { a: 2, b: 2 },
-        { a: 1, b: 1 }
+        { a: 1, b: 1 },
       ]);
     });
   });
@@ -48,12 +48,12 @@ describe('unique', () => {
       const source = new Set([
         { a: 1, b: 2 },
         { a: 2, b: 2 },
-        { a: 1, b: 1 }
+        { a: 1, b: 1 },
       ]);
       const operator = unique(prop('a'));
       const expected = new Set([
         { a: 1, b: 2 },
-        { a: 2, b: 2 }
+        { a: 2, b: 2 },
       ]);
 
       expect(operator(source)).toStrictEqual(expected);
@@ -61,8 +61,8 @@ describe('unique', () => {
         new Set([
           { a: 1, b: 2 },
           { a: 2, b: 2 },
-          { a: 1, b: 1 }
-        ])
+          { a: 1, b: 1 },
+        ]),
       );
     });
   });
@@ -72,12 +72,12 @@ describe('unique', () => {
       const source = new Map([
         [0, 1],
         [1, 1],
-        [2, 2]
+        [2, 2],
       ]);
       const operator = unique();
       const expected = new Map([
         [0, 1],
-        [2, 2]
+        [2, 2],
       ]);
 
       expect(operator(source)).toStrictEqual(expected);
@@ -85,8 +85,8 @@ describe('unique', () => {
         new Map([
           [0, 1],
           [1, 1],
-          [2, 2]
-        ])
+          [2, 2],
+        ]),
       );
     });
 
@@ -94,12 +94,12 @@ describe('unique', () => {
       const source = new Map([
         [0, { a: 1, b: 2 }],
         [1, { a: 2, b: 2 }],
-        [2, { a: 1, b: 1 }]
+        [2, { a: 1, b: 1 }],
       ]);
       const operator = unique(prop('a'));
       const expected = new Map([
         [0, { a: 1, b: 2 }],
-        [1, { a: 2, b: 2 }]
+        [1, { a: 2, b: 2 }],
       ]);
 
       expect(operator(source)).toStrictEqual(expected);
@@ -107,8 +107,8 @@ describe('unique', () => {
         new Map([
           [0, { a: 1, b: 2 }],
           [1, { a: 2, b: 2 }],
-          [2, { a: 1, b: 1 }]
-        ])
+          [2, { a: 1, b: 1 }],
+        ]),
       );
     });
   });

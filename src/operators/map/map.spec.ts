@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, OBJECT_ARRAY, OBJECT_SET } from '../../../tests/test.data';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, PERSON_ARRAY, PERSON_SET } from '../../../tests/test.data';
 import { string } from '../../wrappers';
 import { map } from './map';
 
@@ -14,7 +14,7 @@ describe('map', () => {
     });
 
     it('should map by ObjectMapperType', () => {
-      const source = OBJECT_ARRAY;
+      const source = PERSON_ARRAY;
       const operator = map({ name: string.toLowerCase() });
       const expected = [{ name: 'foo bar' }, { name: 'john doe' }, { name: 'jane doe' }, { name: 'baby doe' }];
 
@@ -22,7 +22,7 @@ describe('map', () => {
     });
 
     it('should map by PropertyKey', () => {
-      const source = OBJECT_ARRAY;
+      const source = PERSON_ARRAY;
       const operator = map('name');
       const expected = ['Foo Bar', 'John Doe', 'Jane Doe', 'Baby Doe'];
 
@@ -40,7 +40,7 @@ describe('map', () => {
     });
 
     it('should map by ObjectMapperType', () => {
-      const source = OBJECT_SET;
+      const source = PERSON_SET;
       const operator = map({ name: string.toLowerCase() });
       const expected = new Set([{ name: 'foo bar' }, { name: 'john doe' }, { name: 'jane doe' }, { name: 'baby doe' }]);
 
@@ -48,7 +48,7 @@ describe('map', () => {
     });
 
     it('should map by PropertyKey', () => {
-      const source = OBJECT_SET;
+      const source = PERSON_SET;
       const operator = map('name');
       const expected = new Set(['Foo Bar', 'John Doe', 'Jane Doe', 'Baby Doe']);
 
@@ -69,7 +69,7 @@ describe('map', () => {
         [5, '6a'],
         [6, '7a'],
         [7, '8a'],
-        [8, '9a']
+        [8, '9a'],
       ]);
 
       expect(operator(source)).toStrictEqual(expected);
