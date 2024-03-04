@@ -44,7 +44,7 @@
   "author": "Kevin Bonnoron <2421321+KevinBonnoron@users.noreply.github.com>",
   "license": "ISC",
   "devDependencies": {
-    "@commitlint/cli": "^18.6.0",
+    "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^18.6.0",
     "@release-it/conventional-changelog": "^7.0.1",
     "@rollup/plugin-commonjs": "^25.0.3",
