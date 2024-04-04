@@ -2,9 +2,6 @@ import { prop } from '../../mappers';
 import { Mapper, ObjectMapperType } from '../../types';
 import { entriesOf, isFunction, isPropertyKey } from '../object';
 
-export function createMapperFn<E extends Mapper>(predicate: E): Mapper;
-export function createMapperFn(predicate: PropertyKey): Mapper;
-export function createMapperFn<E>(predicate: ObjectMapperType<E>): Mapper;
 export function createMapperFn<E>(predicate: Mapper | PropertyKey | ObjectMapperType<E>): Mapper {
   if (isFunction(predicate)) {
     return predicate as Mapper;

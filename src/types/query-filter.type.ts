@@ -23,4 +23,4 @@ type LogicalQueryFilterType<T> = {
 
 type CommonQueryFilterType<T> = PrimitiveQueryFilterType<T> | CollectionQueryFilterType<T> | LogicalQueryFilterType<T>;
 
-export type QueryFilterType<T> = T extends object ? { [K in keyof T]: T[K] | CommonQueryFilterType<T[K]> } : CommonQueryFilterType<T>;
+export type QueryFilterType<T> = T extends object ? { [K in keyof T]: T[K] | CommonQueryFilterType<T[K]> } : never;

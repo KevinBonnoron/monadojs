@@ -44,7 +44,7 @@ const parseOperator = (operatorKey: keyof QueryFilterType<any>, operatorValue: a
 };
 
 export function createFilterFn<E>(predicate: Filter<E>): Filter<E>;
-export function createFilterFn<E>(predicate: QueryFilterType<E>): Filter<E>;
+export function createFilterFn<E extends object>(predicate: QueryFilterType<E>): Filter<E>;
 export function createFilterFn<E>(predicate: unknown) {
   if (isFunction(predicate)) {
     return predicate as Filter;

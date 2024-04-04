@@ -7,9 +7,8 @@ type ToCollectionType<C extends Collection, V> = C extends Array<unknown> ? V[] 
 
 export function map<M extends Mapper>(predicate: M): <S extends Collection>(source: S) => M extends Mapper<unknown> ? ToCollectionType<S, ReturnType<M>> : never;
 export function map<P extends PropertyKey>(predicate: P): <S>(source: S) => S extends Collection<Record<P, infer V>> ? ToCollectionType<S, V> : never;
-export function map<E>(predicate: ObjectMapperType<E>): <S extends Collection<E>>(source: S) => ToCollectionType<S, E>;
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export function map<E>(predicate: any) {
+export function map<E extends object>(predicate: ObjectMapperType<E>): <S extends Collection<E>>(source: S) => ToCollectionType<S, E>;
+export function map<E>(predicate: Mapper | PropertyKey | ObjectMapperType<E>) {
   const predicateFn = createMapperFn(predicate);
 
   return (source: E) =>
@@ -21,7 +20,6 @@ export function map<E>(predicate: any) {
           ? new Map([...source].map(([key, value]) => [key, predicateFn(value)]))
           : isPlainObject(source)
             ? // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
-              // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-              [...entries()(source)].reduce((object, [key, value]) => ({ ...object, [key]: predicateFn(value, key as any) }), {})
+              [...entries()(source)].reduce((object, [key, value]) => ({ ...object, [key]: predicateFn(value, key) }), {})
             : predicateFn(source);
 }
