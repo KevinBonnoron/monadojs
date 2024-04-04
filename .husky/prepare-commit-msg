@@ -1,19 +1,11 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# $2 contains the source of the commit message.
-# It can be message, template, merge, squash, or commit (for git commit --amend)
-if [ "$2" = "commit" ]; then
-  echo "Skipping prepare-commit-msg hook due to amend."
-  exit 0
+# Only run commitizen if no commit message was already provided.
+if [ -z "${2-}" ]; then
+  export CZ_TYPE="${CZ_TYPE:-feat}"
+  export CZ_MAX_HEADER_WIDTH=$COMMITLINT_MAX_WIDTH
+  export CZ_MAX_LINE_WIDTH=$CZ_MAX_HEADER_WIDTH
+  # By default git hooks are not interactive. exec < /dev/tty allows a users terminal to interact with commitizen.
+  exec < /dev/tty && npx cz --hook || true
 fi
-
-# If we're in the middle of an interactive rebase, GIT_SEQUENCE_EDITOR will be set.
-# We'll skip the hook in this case as well.
-if [ -n "$GIT_SEQUENCE_EDITOR" ]; then
-  echo "Skipping prepare-commit-msg hook due to rebase."
-  exit 0
-fi
-
-
-exec < /dev/tty && npx cz --hook || true
