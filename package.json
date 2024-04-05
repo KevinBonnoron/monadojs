@@ -38,6 +38,7 @@
     "@biomejs/biome": "^1.5.3",
     "@commitlint/cli": "^19.2.0",
     "@commitlint/config-conventional": "^19.1.0",
+    "@release-it/bumper": "^6.0.1",
     "@release-it/conventional-changelog": "^7.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.20.0",
@@ -49,7 +50,10 @@
     "vite-plugin-dts": "^3.8.1",
     "vitest": "^1.2.2"
   },
-  "repository": "https://github.com/KevinBonnoron/monadojs.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinBonnoron/monadojs.git"
+  },
   "private": false,
   "dependencies": {}
 }

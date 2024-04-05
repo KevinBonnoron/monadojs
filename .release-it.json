@@ -9,5 +9,13 @@
   "@release-it/conventional-changelog": {
     "preset": "conventionalcommits",
     "infile": "CHANGELOG.md"
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "out": {
+        "file": "jsr.json",
+        "type": "application/json"
+      }
+    }
   }
 }
