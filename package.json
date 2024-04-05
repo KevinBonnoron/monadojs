@@ -1,11 +1,9 @@
 {
   "name": "monadojs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A library to perform operations on arrays and objects at once",
   "type": "module",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "main": "./dist/monadojs.cjs",
   "module": "./dist/monadojs.mjs",
   "types": "./dist/monadojs.d.ts",
