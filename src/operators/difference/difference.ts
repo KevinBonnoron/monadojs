@@ -7,7 +7,7 @@ interface DifferenceOptions {
   compareFn?: <T, V>(o1: T, o2: V) => boolean;
 }
 
-const objectDifferenceImpl = (object: object, source: object, { bothWays, compareFn }: Required<DifferenceOptions>) =>
+const objectDifferenceImpl = (object: object, source: object, { bothWays, compareFn }: Required<DifferenceOptions>): never[] =>
   [...entriesOf(source)].reduce(
     (result, [key, value]) => {
       if (propIn(object, key) && compareFn(object[key], value)) {
@@ -21,7 +21,7 @@ const objectDifferenceImpl = (object: object, source: object, { bothWays, compar
     bothWays ? [...keysOf(object)] : [],
   );
 
-const arrayDifferenceImpl = <T, S>(object: T[], source: S[], { bothWays, compareFn }: Required<DifferenceOptions>) =>
+const arrayDifferenceImpl = <T, S>(object: T[], source: S[], { bothWays, compareFn }: Required<DifferenceOptions>): number[] =>
   [...entriesOf(source)].reduce(
     (result, [index, value]) => {
       if (object[index] !== undefined && compareFn(value, object[index])) {
@@ -37,5 +37,5 @@ const arrayDifferenceImpl = <T, S>(object: T[], source: S[], { bothWays, compare
 
 export const difference =
   <O>(object: O, { bothWays = false, compareFn = isEqual }: DifferenceOptions = {}) =>
-  <S>(source: S) =>
+  <S>(source: S): number[] =>
     isPlainObject(source) && isPlainObject(object) ? objectDifferenceImpl(object, source, { bothWays, compareFn }) : isArray(source) && isArray(object) ? arrayDifferenceImpl(object, source, { bothWays, compareFn }) : [];

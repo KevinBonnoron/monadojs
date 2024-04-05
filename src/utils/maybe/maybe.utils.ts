@@ -4,7 +4,7 @@ import { isMaybe } from '../object/is-maybe/is-maybe';
 import { isNil } from '../object/is-nil/is-nil';
 
 abstract class DefaultMaybe<T> implements Maybe<T> {
-  expect(error: string) {
+  expect(error: string): T {
     if (this.isNothing) {
       throw new Error(error);
     }
@@ -12,15 +12,15 @@ abstract class DefaultMaybe<T> implements Maybe<T> {
     return this.value;
   }
 
-  unwrap() {
+  unwrap(): T {
     return this.expect('unwrap called on Nothing');
   }
 
-  unwrapOr<V>(defaultValue: V) {
+  unwrapOr<V>(defaultValue: V): T | V {
     return this.isNothing ? defaultValue : this.value;
   }
 
-  unwrapOrElse<E>(fn: AnyFunction<E>) {
+  unwrapOrElse<V>(fn: AnyFunction<V>): T | V {
     return this.isNothing ? fn() : this.value;
   }
 
@@ -36,15 +36,15 @@ abstract class DefaultMaybe<T> implements Maybe<T> {
     throw new Error('Method not implemented.');
   }
 
-  get isNothing() {
+  get isNothing(): boolean {
     return !this.isJust;
   }
 
-  get isJust() {
+  get isJust(): boolean {
     return !isNil(this.value);
   }
 
-  static [Symbol.toStringTag]() {
+  static [Symbol.toStringTag](): string {
     return 'Maybe';
   }
 }
@@ -54,11 +54,11 @@ class JustImpl<T> extends DefaultMaybe<T> {
     super();
   }
 
-  override pipe<O>(...operators: MonotypeOperator[]) {
+  override pipe<O>(...operators: MonotypeOperator[]): Maybe<O> {
     return Just(pipe<T, O>(...operators)(this._value));
   }
 
-  override equals(other: unknown) {
+  override equals(other: unknown): boolean {
     if (isMaybe(other)) {
       return other.isJust && other.equals(this._value);
     }

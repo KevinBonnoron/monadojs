@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { FunctionUtils } from './function.utils';
+import { parseFunction } from './function.utils';
 
 describe('FunctionUtils', () => {
   // it('should return the function number of parameter', () => {
@@ -34,8 +34,8 @@ describe('FunctionUtils', () => {
           ],
         },
       },
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       {
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         fn: function test(a: any, b: any, c: unknown) {},
         expected: {
           name: 'test',
@@ -68,8 +68,8 @@ describe('FunctionUtils', () => {
           ],
         },
       },
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       {
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         fn: (a: any, b: any, c: unknown) => {},
         expected: {
           name: '',
@@ -80,8 +80,8 @@ describe('FunctionUtils', () => {
           ],
         },
       },
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       {
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         fn: (a: any, b: any, c = 5) => {},
         expected: {
           name: '',
@@ -93,7 +93,7 @@ describe('FunctionUtils', () => {
         },
       },
     ])('should return function parameters', ({ fn, expected }) => {
-      expect(FunctionUtils.parseFunction(fn)).toStrictEqual(expected);
+      expect(parseFunction(fn)).toStrictEqual(expected);
     });
   });
 });

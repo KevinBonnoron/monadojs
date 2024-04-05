@@ -1,11 +1,11 @@
 import { eq } from '../../filters';
-import { Filter, Operator } from '../../types';
+import { Filter } from '../../types';
 import { isCollection, isFunction } from '../../utils';
 
 export const one =
   <P>(predicate: P | Filter) =>
-  <S>(source: S) => {
-    let operator = predicate as Operator;
+  <S>(source: S): boolean => {
+    let operator = predicate as Filter;
     if (!isFunction(predicate)) {
       operator = eq(predicate);
     }

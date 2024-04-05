@@ -7,7 +7,7 @@ export interface SorterOptions {
 
 export const compare =
   (options?: SorterOptions) =>
-  <T>(a: T, b: T) => {
+  <T>(a: T, b: T): number => {
     if (options?.nullsAs) {
       if (a === null && b !== null) {
         return options.nullsAs === 'first' ? -1 : 1;

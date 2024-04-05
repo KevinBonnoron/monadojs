@@ -4,7 +4,7 @@ import { isNil } from '../../utils/object/is-nil/is-nil';
 
 const CATCH_ERROR_SYMBOL = Symbol('CATCH_ERROR');
 
-export const catchError = (callback: Operator) => {
+export const catchError = (callback: Operator): ((e: unknown) => ReturnType<typeof callback>) => {
   function impl(e: unknown) {
     return callback(e);
   }

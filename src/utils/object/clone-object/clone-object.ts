@@ -6,7 +6,7 @@ import { isDate } from '../is-date/is-date';
 import { isObject } from '../is-object/is-object';
 import { isPlainObject } from '../is-plain-object/is-plain-object';
 
-const cloneImpl = <T>(object: T) => {
+const cloneImpl = <T>(object: T): T => {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const cloned: any = {};
 

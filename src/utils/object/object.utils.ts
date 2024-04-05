@@ -7,7 +7,8 @@ import { isObject } from './is-object/is-object';
 import { isSet } from './is-set/is-set';
 import { isString } from './is-string/is-string';
 
-export const getTypeDefault = (value: unknown) => (isString(value) ? '' : isNumber(value) ? 0 : isBoolean(value) ? false : isArray(value) ? [] : isDate(value) ? new Date() : isMap(value) ? new Map() : isSet(value) ? new Set() : isObject(value) ? {} : null);
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
+export const getTypeDefault = (value: unknown): {} | null => (isString(value) ? '' : isNumber(value) ? 0 : isBoolean(value) ? false : isArray(value) ? [] : isDate(value) ? new Date() : isMap(value) ? new Map() : isSet(value) ? new Set() : isObject(value) ? {} : null);
 
 export const TRUE = () => true;
 export const FALSE = () => false;

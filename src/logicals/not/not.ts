@@ -2,5 +2,5 @@ import { Filter } from '../../types';
 
 export const not =
   (operator: Filter) =>
-  <S>(source: S) =>
+  <S>(source: S): boolean =>
     !operator(source);

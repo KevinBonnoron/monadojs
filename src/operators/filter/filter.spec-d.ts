@@ -4,10 +4,10 @@ import { filter } from './filter';
 
 describe('filter', () => {
   it('should have correct types', () => {
-    const filterPersonByFn = filter<Person>((person) => person.id > 0);
+    const filterPersonByFn = filter((person) => person.id > 0);
     const filterPersonByObjectFilterType = filter({ id: { $gt: 0 } });
-    const filterNumberByFn = filter<number>((value) => value > 0);
-    const filterNumberByObjectFilterType = filter<number>({ $gt: 0 });
+    const filterNumberByFn = filter((value: number) => value > 0);
+    const filterNumberByObjectFilterType = filter({ $gt: 0 });
 
     expectTypeOf(filterPersonByFn(PERSON_ARRAY)).toEqualTypeOf<Person[]>();
     expectTypeOf(filterPersonByObjectFilterType(PERSON_ARRAY)).toEqualTypeOf<Person[]>();

@@ -1,7 +1,7 @@
 import { not } from '../../logicals/not/not';
 import { prop } from '../../mappers/prop/prop';
 import { pipe } from '../../operators/pipe/pipe';
-import { Filter, Mapper, Maybe } from '../../types';
+import { Filter, Mapper, Maybe, Operator } from '../../types';
 import { Just, isCollection, isFunction, isMaybe, isNil, isRegExp, isString } from '../../utils';
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -12,7 +12,7 @@ interface Match<S = any, O = any> {
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 type Matches<S = any, O = any> = Match<S, O>[];
 
-const returnResult = <S, O>(match: Match<S, O>, value: S) => {
+const returnResult = <S, O>(match: Match<S, O>, value: S): O => {
   if (isFunction(match.then)) {
     return match.then(value);
   }
@@ -20,11 +20,12 @@ const returnResult = <S, O>(match: Match<S, O>, value: S) => {
   return match.then;
 };
 
-const matchJust = (value: unknown) => (isMaybe(value) && value.isJust) || !isNil(value);
+const matchJust = (value: unknown): value is typeof Just => (isMaybe(value) && value.isJust) || !isNil(value);
 
 const matchImpl =
   (ifMatches: Matches, elseMatch?: Match) =>
-  <S>(source: S) => {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  <S>(source: S): any => {
     const value = isMaybe(source) ? source.value : source;
     for (const match of ifMatches) {
       // handle Maybe constructor
@@ -44,12 +45,12 @@ const matchImpl =
     return value;
   };
 
-export const match = (matches: Matches) => {
+export const match = (matches: Matches): Operator => {
   const ifMatches = matches.filter(pipe(prop('if'), not(isNil)));
   let elseMatch = matches.find(pipe(prop('if'), isNil));
   if (!elseMatch) {
     elseMatch = { then: (value: unknown) => value };
   }
 
-  return <S>(source: S) => (isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source));
+  return <S>(source: S): unknown => (isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source));
 };

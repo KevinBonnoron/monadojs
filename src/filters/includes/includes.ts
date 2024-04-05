@@ -8,5 +8,5 @@ import { contains } from '../../utils/object/contains/contains';
  */
 export const includes =
   <T>(searchElement: T) =>
-  (source: Collection<T> | string) =>
+  (source: Collection<T> | string): boolean =>
     contains(source, searchElement);

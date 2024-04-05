@@ -1,5 +1,6 @@
 {
   "name": "@kevinbonnoron/monadojs",
+  "description": "A library to perform operations on arrays and objects at once",
   "version": "0.2.0",
   "exports": "./mod.ts"
 }
