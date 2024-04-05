@@ -9,5 +9,4 @@ export type nil = null | undefined;
 
 export type AllTypes = PrimitiveTypes | ObjectTypes | CollectionTypes | null | undefined;
 
-// biome-ignore lint/style/noVar: <explanation>
-export var nil: nil = Symbol() as unknown as nil;
+export const nil: nil = Symbol() as unknown as nil;

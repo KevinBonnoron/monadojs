@@ -1,28 +1,21 @@
 {
   "name": "monadojs",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A library to perform operations on arrays and objects at once",
   "type": "module",
   "files": [
     "dist"
   ],
+  "main": "./dist/monadojs.cjs",
+  "module": "./dist/monadojs.mjs",
+  "types": "./dist/monadojs.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/monadojs.d.ts",
-        "default": "./dist/monadojs.mjs"
-      },
-      "require": {
-        "types": "./dist/monadojs.d.cts",
-        "default": "./dist/monadojs.cjs"
-      }
-    },
-    "./package.json": {
-      "default": "./package.json"
+      "require": "./dist/monadojs.cjs",
+      "import": "./dist/monadojs.mjs",
+      "types": "./dist/index.d.ts"
     }
   },
-  "types": "./dist/monadojs.d.ts",
-  "main": "./dist/monadojs.cjs",
   "packageManager": "yarn@1.22.15",
   "publishConfig": {
     "access": "public",
@@ -34,8 +27,7 @@
     "test:watch": "vitest --typecheck",
     "bench": "vitest bench --watch=false",
     "bench:watch": "vitest bench",
-    "prebuild": "rimraf --glob dist/**",
-    "build": "rollup -c",
+    "build": "vite build",
     "lint": "biome lint ./src --apply",
     "format": "biome format ./src --write",
     "prepack": "yarn build",
@@ -49,20 +41,14 @@
     "@commitlint/cli": "^19.2.0",
     "@commitlint/config-conventional": "^19.1.0",
     "@release-it/conventional-changelog": "^7.0.1",
-    "@rollup/plugin-commonjs": "^25.0.3",
-    "@rollup/plugin-terser": "^0.4.0",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.20.0",
     "husky": "^9.0.10",
     "lint-staged": "^15.2.2",
     "release-it": "^16.1.5",
-    "rimraf": "^5.0.1",
-    "rollup": "^3.18.0",
-    "rollup-plugin-dts": "^6.0.2",
-    "rollup-plugin-esbuild": "^6.1.1",
-    "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^2.6.2",
     "typescript": "^5.1.6",
+    "vite-plugin-dts": "^3.8.1",
     "vitest": "^1.2.2"
   },
   "repository": "https://github.com/KevinBonnoron/monadojs.git",
