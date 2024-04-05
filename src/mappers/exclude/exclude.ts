@@ -1,7 +1,7 @@
 import { keys } from '../../operators/keys/keys';
 import { isPlainObject } from '../../utils';
 
-const excludeImpl = <T extends Record<P, V>, P extends PropertyKey, V>(value: T, ...properties: P[]) =>
+const excludeImpl = <T extends Record<P, V>, P extends PropertyKey, V>(value: T, ...properties: P[]): Partial<T> =>
   [...keys()(value)].reduce(
     (object, key) => {
       if (!properties.includes(key as P)) {

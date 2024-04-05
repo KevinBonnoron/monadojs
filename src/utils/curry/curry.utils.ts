@@ -1,4 +1,5 @@
-import { FunctionUtils } from '../function/function.utils';
+import { AnyFunction } from '../../types';
+import { parseFunction } from '../function/function.utils';
 import { isFunction, isTrue } from '../object';
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -39,7 +40,7 @@ type CurriedFunction<PROVIDED extends any[], FN extends (...args: any[]) => any>
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const curry = <FN extends (...args: any[]) => any, STARTING_ARGS extends PartialParameters<FN>>(targetFn: FN, ...existingArgs: STARTING_ARGS): CurriedFunction<STARTING_ARGS, FN> => {
-  const { parameters } = FunctionUtils.parseFunction(targetFn);
+  const { parameters } = parseFunction(targetFn);
   const requiredParameters = parameters.map((parameter) => parameter.required).filter(isTrue);
 
   return (...args) => {
@@ -52,7 +53,7 @@ export const curry = <FN extends (...args: any[]) => any, STARTING_ARGS extends 
   };
 };
 
-export const uncurry = <T>(fn: Curry<T>) => {
+export const uncurry = <T>(fn: Curry<T>): AnyFunction<T> => {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   return (...args: any[]) => {
     let current = fn;

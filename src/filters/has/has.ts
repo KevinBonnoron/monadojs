@@ -10,5 +10,5 @@ import { propIn } from '../../utils/object/prop-in/prop-in';
  */
 export const has =
   <K>(key: K) =>
-  <S>(source: S) =>
+  <S>(source: S): boolean =>
     isMap<K, S>(source) ? source.has(key) : propIn(source, key as keyof S);

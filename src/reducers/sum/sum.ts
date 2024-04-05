@@ -4,5 +4,5 @@ const sumImpl = <T extends number | string>(a: T, b: T) => (isNumber(a) && isNum
 
 export const sum =
   <T extends number | string>(sumFn: (a: T, b: T) => T = sumImpl) =>
-  (previousValue: T, currentValue: T) =>
+  (previousValue: T, currentValue: T): T =>
     sumFn(previousValue, currentValue);

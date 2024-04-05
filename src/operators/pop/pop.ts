@@ -1,7 +1,7 @@
 import { Collection } from '../../types';
 import { isArray, isCollection } from '../../utils';
 
-const collectionPopImpl = (collection: Collection) => {
+const collectionPopImpl = (collection: Collection): unknown => {
   if (isArray(collection)) {
     return collection.pop();
   }
@@ -13,5 +13,5 @@ const collectionPopImpl = (collection: Collection) => {
 
 export const pop =
   () =>
-  <S>(source: S) =>
+  <S>(source: S): unknown =>
     isCollection(source) ? collectionPopImpl(source) : source;

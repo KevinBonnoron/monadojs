@@ -9,8 +9,8 @@ export type PropertyKeyAccumulator<T> = Record<PropertyKey, T[]>;
  * @returns
  */
 export const ɵarrayAccumulator =
-  <T>(appender: (accumulator: T[], value: T) => T[]) =>
-  (previousValue: T, currentValue: T, currentIndex: number) => {
+  <T>(appender: (accumulator: T[], value: T) => T[]): Reducer<T> =>
+  (previousValue: T, currentValue: T, currentIndex: number): T[] => {
     let accumulator: T[] = [];
     // If previousValue is an Array and currentValue is not, then previousValue is the accumulator
     if (isArray<T>(previousValue) && (!isArray(currentValue) || (currentIndex > 1 && !haveSameType(previousValue, currentValue)))) {
@@ -27,7 +27,7 @@ export const ɵarrayAccumulator =
  * @param appender
  * @returns
  */
-export const ɵobjectAccumulator = <T, U extends PropertyKeyAccumulator<T>, K extends PropertyKey>(keyGeneratorFn: (value: T) => K) => {
+export const ɵobjectAccumulator = <T, U extends PropertyKeyAccumulator<T>, K extends PropertyKey>(keyGeneratorFn: (value: T) => K): Reducer<T> => {
   const appender = (accumulator: PropertyKeyAccumulator<T>, value: T) => {
     const key = keyGeneratorFn(value);
     if (accumulator[key] === undefined) {
@@ -58,10 +58,9 @@ export const ɵobjectAccumulator = <T, U extends PropertyKeyAccumulator<T>, K ex
  * @param operation
  * @returns
  */
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const ɵsingleOperationReducer =
-  <T>(operation: (array: T[]) => any) =>
-  (previousValue: T, _currentValue: T, currentIndex: number, array: T[]) =>
+  <T, R>(operation: (array: T[]) => R) =>
+  (previousValue: T | R, _currentValue: T, currentIndex: number, array: T[]): T | R =>
     currentIndex > 1 ? previousValue : operation(array);
 
 /**
@@ -70,7 +69,7 @@ export const ɵsingleOperationReducer =
  * @param reducer
  * @returns
  */
-export const ɵbreakableReducer = <T>(conditionReducer: Reducer<T, boolean>, reducer: Reducer<T>) => {
+export const ɵbreakableReducer = <T>(conditionReducer: Reducer<T, boolean>, reducer: Reducer<T>): Reducer<T> => {
   let broke = false;
 
   return (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => {

@@ -1,8 +1,8 @@
 import { isString } from '../../utils/object/is-string/is-string';
 
-const afterImpl = (date: Date, afterDate: Date) => date.getTime() > afterDate.getTime();
+const afterImpl = (date: Date, afterDate: Date): boolean => date.getTime() > afterDate.getTime();
 
 export const after =
   (afterDate: Date) =>
-  <S extends Date | string>(source: S) =>
+  <S extends Date | string>(source: S): boolean =>
     isString(source) ? afterImpl(new Date(source), afterDate) : afterImpl(source, afterDate);

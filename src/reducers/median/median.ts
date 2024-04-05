@@ -1,9 +1,10 @@
+import { Reducer } from '../../types';
 import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
-export const median = <T extends number>() =>
-  ɵsingleOperationReducer<T>((array) => {
+export const median = (): Reducer =>
+  ɵsingleOperationReducer((array: number[]): number => {
     if (array.length === 0) {
-      return undefined;
+      return 0;
     }
 
     const sortedArray = [...array].sort((a, b) => a - b);
