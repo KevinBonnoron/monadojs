@@ -3,6 +3,7 @@ export * from './create-builder/create-builder.utils';
 export * from './curry/curry.utils';
 export * from './filter/filter.utils';
 export * from './function/function.utils';
+export * from './map/map.utils';
 export * from './maybe/maybe.utils';
 export * from './object';
 export * from './object/object.utils';

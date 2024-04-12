@@ -3,9 +3,7 @@ import { DEFAULT_DATE, DEFAULT_REGEX, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anon
 import { like } from './like';
 
 describe('like', () => {
-  describe('string', () => {
-    const operator = like(/[a-z]/);
-
+  describe.each([{ operator: like(/[a-z]/) }, { operator: like('a') }])('string', ({ operator }) => {
     it('should return true', () => {
       const source = 'abc';
       expect(operator(source)).toBeTruthy();
@@ -17,9 +15,7 @@ describe('like', () => {
     });
   });
 
-  describe('others', () => {
-    const operator = like(/[0-9]/);
-
+  describe.each([{ operator: like(/[a-z]/) }, { operator: like('a') }])('others', ({ operator }) => {
     it('should return false', () => {
       expect(operator(0)).toBeFalsy();
       expect(operator(true)).toBeFalsy();

@@ -1,4 +1,4 @@
-import { ObjectPath } from '../../../types/object-path.type';
+import type { ObjectPath } from '../../../types/object-path.type';
 import { isArray } from '../is-array/is-array';
 import { isNil } from '../is-nil/is-nil';
 import { isPlainObject } from '../is-plain-object/is-plain-object';
@@ -22,7 +22,7 @@ const EMPTY_ACCESSOR: Accessor<unknown> = {
   },
 };
 
-export const accessor = <T, P extends keyof T & string>(object: T, path: P): Accessor<ObjectPath<T, P>> => {
+export function accessor<T, P extends keyof T & string>(object: T, path: P): Accessor<ObjectPath<T, P>> {
   const paths = path.split('.').flatMap((value) => {
     let matches = /([a-z]+)(\[([0-9]+)\]){0,1}/.exec(value);
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -34,12 +34,12 @@ export const accessor = <T, P extends keyof T & string>(object: T, path: P): Acc
       }
 
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      matches[1] = parseInt(matches[1]) as any;
+      matches[1] = Number.parseInt(matches[1]) as any;
     }
 
     result.push(matches[1]);
     if (matches[3] !== undefined) {
-      result.push(parseInt(matches[3]));
+      result.push(Number.parseInt(matches[3]));
     }
 
     return result;
@@ -65,4 +65,4 @@ export const accessor = <T, P extends keyof T & string>(object: T, path: P): Acc
 
   const key = paths.shift();
   return accessorBuilder(parent, key);
-};
+}

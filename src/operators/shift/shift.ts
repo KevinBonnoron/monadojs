@@ -1,4 +1,4 @@
-import { Collection } from '../../types';
+import type { Collection } from '../../types';
 import { isArray, isCollection } from '../../utils';
 
 const collectionShiftImpl = (collection: Collection): unknown => {
@@ -11,7 +11,6 @@ const collectionShiftImpl = (collection: Collection): unknown => {
   return result;
 };
 
-export const shift =
-  () =>
-  <S>(source: S): unknown =>
-    isCollection(source) ? collectionShiftImpl(source) : source;
+export function shift() {
+  return <S>(source: S): unknown => (isCollection(source) ? collectionShiftImpl(source) : source);
+}

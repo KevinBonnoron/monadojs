@@ -1,4 +1,6 @@
-import { Reducer } from '../../types';
+import type { Reducer } from '../../types';
 import { nth } from '../nth/nth';
 
-export const last = (): Reducer => nth(-1);
+export function last(): Reducer {
+  return nth(-1);
+}

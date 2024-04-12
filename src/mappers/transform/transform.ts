@@ -1,5 +1,5 @@
 import { entries } from '../../operators/entries/entries';
-import { Mapper } from '../../types';
+import type { Mapper, Operator } from '../../types';
 import { isFunction } from '../../utils';
 
 type Transformation<T, O = unknown> = {
@@ -21,7 +21,6 @@ const transformImpl = <T>(source: T, transformations: Transformation<T>): T => {
   }, {} as T);
 };
 
-export const transform =
-  <I extends Record<PropertyKey, unknown>>(transformations: Transformation<I>) =>
-  <S extends I>(source: S): I =>
-    transformImpl(source, transformations);
+export function transform<I extends Record<PropertyKey, unknown>>(transformations: Transformation<I>): Operator<I, I> {
+  return <S extends I>(source: S): I => transformImpl(source, transformations);
+}

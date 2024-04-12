@@ -1,4 +1,6 @@
-import { Reducer } from '../../types';
+import type { Reducer } from '../../types';
 import { slice } from '../slice/slice';
 
-export const tail = (length = 1): Reducer => slice(-length);
+export function tail(length = 1): Reducer {
+  return slice(-length);
+}

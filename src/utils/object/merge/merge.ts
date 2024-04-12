@@ -40,7 +40,7 @@ const mergeImpl = (target: unknown, ...sources: unknown[]): unknown => {
  * @param o2
  * @returns
  */
-export const merge = <T, S>(o1: T, o2: S): T & S => {
+export function merge<T, S>(o1: T, o2: S): T & S {
   if (isArray(o1) && isPlainObject(o2)) {
     throw new Error(`Can't merge array with object`);
   }
@@ -56,4 +56,4 @@ export const merge = <T, S>(o1: T, o2: S): T & S => {
   }
 
   return mergeImpl(result, o1, o2) as T & S;
-};
+}

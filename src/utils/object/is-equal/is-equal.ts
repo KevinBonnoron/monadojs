@@ -9,7 +9,7 @@ import { isPromise } from '../is-promise/is-promise';
 import { isRegExp } from '../is-regexp/is-regexp';
 import { isSet } from '../is-set/is-set';
 
-export const isEqual = <T, V>(o1: T, o2: V): boolean => {
+export function isEqual<T, V>(o1: T, o2: V): boolean {
   const notBoth = (fn: (value: unknown) => boolean) => (fn(o1) && !fn(o2)) || (!fn(o1) && fn(o2));
   if (notBoth(isDate) || notBoth(isPromise) || notBoth(isArray) || notBoth(isSet) || notBoth(isMap) || notBoth(isMaybe) || notBoth(isRegExp)) {
     return false;
@@ -50,4 +50,4 @@ export const isEqual = <T, V>(o1: T, o2: V): boolean => {
   }
 
   return Object.is(o1, o2);
-};
+}

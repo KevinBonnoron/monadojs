@@ -21,7 +21,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "vitest --typecheck --watch=false",
+    "test": "vitest --typecheck --watch=false --coverage",
     "test:watch": "vitest --typecheck",
     "bench": "vitest bench --watch=false",
     "bench:watch": "vitest bench",
@@ -40,6 +40,7 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@release-it/bumper": "^6.0.1",
     "@release-it/conventional-changelog": "^7.0.1",
+    "@vitest/coverage-v8": "^1.5.0",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.20.0",
     "husky": "^9.0.10",

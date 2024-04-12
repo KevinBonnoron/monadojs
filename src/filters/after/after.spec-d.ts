@@ -4,7 +4,9 @@ import { after } from './after';
 
 describe('after', () => {
   it('should have correct types', () => {
-    expectTypeOf(after(DEFAULT_DATE)(new Date('2020-01-01'))).toEqualTypeOf<boolean>();
-    expectTypeOf(after(DEFAULT_DATE)('2020-01-01')).toEqualTypeOf<boolean>();
+    const operator = after(DEFAULT_DATE);
+
+    expectTypeOf(operator(new Date('2020-01-01'))).toEqualTypeOf<boolean>();
+    expectTypeOf(operator('2020-01-01')).toEqualTypeOf<boolean>();
   });
 });

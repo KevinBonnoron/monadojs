@@ -26,4 +26,6 @@ const cloneImpl = <T>(object: T): T => {
   return cloned as T;
 };
 
-export const cloneObject = <S>(source: S): S => (isCollection(source) ? (ɵcopyCollection(source, [...source].map(cloneObject)) as S) : isDate(source) ? (new Date(+source) as S) : isObject<S>(source) ? cloneImpl<S>(source) : source);
+export function cloneObject<S>(source: S): S {
+  return isCollection(source) ? (ɵcopyCollection(source, [...source].map(cloneObject)) as S) : isDate(source) ? (new Date(+source) as S) : isObject<S>(source) ? cloneImpl<S>(source) : source;
+}

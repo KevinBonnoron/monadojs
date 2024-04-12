@@ -1,5 +1,5 @@
 import { pipe } from '../../operators/pipe/pipe';
-import { AnyFunction, Maybe, MonotypeOperator } from '../../types';
+import type { AnyFunction, Maybe, MonotypeOperator } from '../../types';
 import { isMaybe } from '../object/is-maybe/is-maybe';
 import { isNil } from '../object/is-nil/is-nil';
 
@@ -30,6 +30,10 @@ abstract class DefaultMaybe<T> implements Maybe<T> {
 
   equals(value: unknown): boolean {
     throw new Error('Method not implemented.');
+  }
+
+  toString(): string {
+    return '[object Maybe]';
   }
 
   get value(): T {
@@ -89,5 +93,8 @@ class NothingImpl extends DefaultMaybe<null> {
   }
 }
 
-export const Just = <T>(value: T): Maybe<T> => (value === null || value === undefined ? Nothing : new JustImpl<T>(value));
+export function Just<T>(value: T): Maybe<T> {
+  return value === null || value === undefined ? Nothing : new JustImpl<T>(value);
+}
+
 export const Nothing: Maybe = new NothingImpl();

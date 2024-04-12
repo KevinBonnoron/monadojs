@@ -1,4 +1,4 @@
-import { Reducer } from '../../types';
+import type { Reducer } from '../../types';
 import { haveSamePropertyNames, haveSameType, isArray, isObject } from '../object';
 
 export type PropertyKeyAccumulator<T> = Record<PropertyKey, T[]>;

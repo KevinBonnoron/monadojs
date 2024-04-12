@@ -1,8 +1,8 @@
-import { Reducer } from '../../types';
+import type { Reducer } from '../../types';
 import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
-export const median = (): Reducer =>
-  ɵsingleOperationReducer((array: number[]): number => {
+export function median(): Reducer {
+  return ɵsingleOperationReducer((array: number[]): number => {
     if (array.length === 0) {
       return 0;
     }
@@ -11,3 +11,4 @@ export const median = (): Reducer =>
     const half = Math.floor(sortedArray.length / 2);
     return sortedArray.length % 2 === 0 ? (sortedArray[half - 1] + sortedArray[half]) / 2 : sortedArray[half];
   });
+}

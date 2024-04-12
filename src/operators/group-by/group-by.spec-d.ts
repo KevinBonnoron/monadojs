@@ -1,5 +1,5 @@
 import { assertType, describe, expectTypeOf, it } from 'vitest';
-import { Person, babyDoe, fooBar, janeDoe, johnDoe } from '../../../tests/test.data';
+import { type Person, babyDoe, fooBar, janeDoe, johnDoe } from '../../../tests/test.data';
 import { groupBy } from './group-by';
 
 describe('groupBy', () => {

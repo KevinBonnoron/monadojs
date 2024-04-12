@@ -1,3 +1,5 @@
 import { entriesOf } from '../../utils';
 
-export const entries = () => entriesOf;
+export function entries() {
+  return entriesOf;
+}

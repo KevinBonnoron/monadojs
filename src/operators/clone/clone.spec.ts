@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, PERSON_SET, Person, STRING_ARRAY, STRING_MAP, STRING_SET, babyDoe, fooBar, janeDoe, johnDoe } from '../../../tests/test.data';
-import { Collection } from '../../types';
+import { NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, PERSON_SET, type Person, STRING_ARRAY, STRING_MAP, STRING_SET, babyDoe, fooBar, janeDoe, johnDoe } from '../../../tests/test.data';
+import type { Collection } from '../../types';
 import { isEqual, isSet } from '../../utils';
 import { clone } from './clone';
 

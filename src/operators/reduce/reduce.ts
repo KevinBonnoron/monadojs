@@ -1,4 +1,4 @@
-import { Collection, Reducer } from '../../types';
+import type { Collection, Reducer } from '../../types';
 import { isCollection, isEmpty, isUndefined } from '../../utils';
 
 const collectionReduceImpl = <T, U>(source: Collection<T>, predicate: Reducer, initialValue?: U) => (isUndefined(initialValue) ? [...source].reduce(predicate) : [...source].reduce(predicate, initialValue));

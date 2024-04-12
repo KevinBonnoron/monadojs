@@ -1,4 +1,4 @@
-import { AnyFunction } from '../../types';
+import type { AnyFunction } from '../../types';
 import { isEqual, isRegExp } from '../object';
 
 interface Matcher {

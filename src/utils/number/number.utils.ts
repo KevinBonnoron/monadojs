@@ -1,1 +1,3 @@
-export const round = (source: number, decimalCount = 2): number => Math.floor(source * 10 ** decimalCount) / 10 ** decimalCount;
+export function round(source: number, decimalCount = 2): number {
+  return Math.floor(source * 10 ** decimalCount) / 10 ** decimalCount;
+}

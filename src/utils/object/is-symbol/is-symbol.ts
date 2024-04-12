@@ -3,4 +3,6 @@
  * @param value
  * @returns boolean
  */
-export const isSymbol = (value: unknown): value is symbol => typeof value === 'symbol';
+export function isSymbol(value: unknown): value is symbol {
+  return typeof value === 'symbol';
+}

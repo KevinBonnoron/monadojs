@@ -1,4 +1,4 @@
-import { DeepNonNullable } from '../../../types/deep-non-nullable.type';
+import type { DeepNonNullable } from '../../../types/deep-non-nullable.type';
 import { isCollection } from '../is-collection/is-collection';
 import { isDate } from '../is-date/is-date';
 import { isFunction } from '../is-function/is-function';
@@ -26,8 +26,8 @@ import { isString } from '../is-string/is-string';
  * @param value
  * @returns boolean
  */
-export const isEmpty = <T>(value: T): value is T & DeepNonNullable<T> =>
-  isNil(value)
+export function isEmpty<T>(value: T): value is T & DeepNonNullable<T> {
+  return isNil(value)
     ? true
     : isString(value)
       ? value.length === 0
@@ -42,3 +42,4 @@ export const isEmpty = <T>(value: T): value is T & DeepNonNullable<T> =>
               : isPlainObject(value)
                 ? Object.keys(value).length === 0
                 : false;
+}

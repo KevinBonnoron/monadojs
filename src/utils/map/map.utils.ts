@@ -1,5 +1,5 @@
 import { prop } from '../../mappers';
-import { Mapper, ObjectMapperType } from '../../types';
+import type { Mapper, ObjectMapperType } from '../../types';
 import { entriesOf, isFunction, isPropertyKey } from '../object';
 
 export function createMapperFn<E>(predicate: Mapper | PropertyKey | ObjectMapperType<E>): Mapper {

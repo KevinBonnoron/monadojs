@@ -1,6 +1,5 @@
-import { Filter } from '../../types';
+import type { Filter, Operator } from '../../types';
 
-export const not =
-  (operator: Filter) =>
-  <S>(source: S): boolean =>
-    !operator(source);
+export function not<S>(operator: Filter): Operator<S, boolean> {
+  return (source: S): boolean => !operator(source);
+}

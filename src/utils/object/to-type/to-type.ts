@@ -1,4 +1,4 @@
-import { AllTypes, Maybe, MaybeConstructor } from '../../../types';
+import { type AllTypes, Maybe, type MaybeConstructor } from '../../../types';
 import { toArray } from '../to-array/to-array';
 import { toBoolean } from '../to-boolean/to-boolean';
 import { toDate } from '../to-date/to-date';

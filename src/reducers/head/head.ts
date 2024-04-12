@@ -1,4 +1,6 @@
-import { Reducer } from '../../types';
+import type { Reducer } from '../../types';
 import { slice } from '../slice/slice';
 
-export const head = (length = 1): Reducer => slice(0, length);
+export function head(length = 1): Reducer {
+  return slice(0, length);
+}

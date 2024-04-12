@@ -1,20 +1,15 @@
-import { keys } from '../../operators/keys/keys';
-import { isPlainObject } from '../../utils';
+import { isPlainObject, keysOf } from '../../utils';
 
-const excludeImpl = <T extends Record<P, V>, P extends PropertyKey, V>(value: T, ...properties: P[]): Partial<T> =>
-  [...keys()(value)].reduce(
-    (object, key) => {
-      if (!properties.includes(key as P)) {
-        object[key] = value[key];
-      }
+function excludeImpl<T extends Record<P, V>, P extends PropertyKey, V>(value: T, ...properties: P[]) {
+  return [...keysOf(value)].reduce((object, key) => {
+    if (!properties.includes(key as P)) {
+      object[key] = value[key];
+    }
 
-      return object;
-    },
-    {} as Partial<T>,
-  );
+    return object;
+  }, {} as T);
+}
 
-export const exclude =
-  <P extends PropertyKey>(...properties: P[]) =>
-  <S extends Record<P, O>, O>(source: S): Omit<S, P> =>
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    isPlainObject(source) ? excludeImpl(source, ...properties) : ({} as any);
+export function exclude<P extends PropertyKey>(...properties: P[]): <S extends Record<P, O>, O>(source: S) => Omit<S, P> {
+  return <S extends Record<P, O>, O>(source: S): Omit<S, P> => (isPlainObject(source) ? excludeImpl(source, ...properties) : ({} as Omit<S, P>));
+}

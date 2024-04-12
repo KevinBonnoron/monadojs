@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from 'vitest';
-import { Builder, createBuilder } from './create-builder.utils';
+import { type Builder, createBuilder } from './create-builder.utils';
 
 interface Dummy {
   a: number;

@@ -1,6 +1,9 @@
 /**
  * Type guard for `value instanceof Promise`
+ *
  * @param value
  * @returns
  */
-export const isPromise = <T>(value: unknown): value is Promise<T> => value instanceof Promise;
+export function isPromise<T>(value: unknown): value is Promise<T> {
+  return value instanceof Promise;
+}

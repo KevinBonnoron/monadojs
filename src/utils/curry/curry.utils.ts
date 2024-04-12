@@ -1,4 +1,4 @@
-import { AnyFunction } from '../../types';
+import type { AnyFunction } from '../../types';
 import { parseFunction } from '../function/function.utils';
 import { isFunction, isTrue } from '../object';
 

@@ -1,5 +1,5 @@
-import { AnyFunction } from './any-function.type';
-import { Operator } from './operator.type';
+import type { AnyFunction } from './any-function.type';
+import type { Operator } from './operator.type';
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export interface Maybe<T = any> {

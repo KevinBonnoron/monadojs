@@ -1,4 +1,4 @@
-import { nil } from '../../../types';
+import type { nil } from '../../../types';
 import { isNil } from '../is-nil/is-nil';
 
 type FirstNonNil<T extends unknown[]> = T extends [infer F, ...infer R] ? (F extends nil ? FirstNonNil<R> : F) : never;

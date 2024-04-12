@@ -1,4 +1,6 @@
-import { Reducer } from '../../types';
+import type { Reducer } from '../../types';
 import { ɵsingleOperationReducer } from '../../utils/reducer/reducer.utils';
 
-export const flatten = <T>(depth = 1): Reducer => ɵsingleOperationReducer((array: T[]) => array.flat(depth));
+export function flatten<T>(depth = 1): Reducer {
+  return ɵsingleOperationReducer((array: T[]) => array.flat(depth));
+}

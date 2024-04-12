@@ -1,8 +1,8 @@
+import type { Collection, Operator } from '../../types';
 import { includes } from '../includes/includes';
 
-type Container<T> = Array<T> | Map<unknown, T> | Set<T> | string;
+type Container<T> = Collection<T> | string;
 
-export const iin =
-  <S>(container: Container<S>) =>
-  (source: S): boolean =>
-    includes(source)(container);
+export function iin<S>(container: Container<S>): Operator<S, boolean> {
+  return (source: S) => includes(source)(container);
+}

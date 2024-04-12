@@ -1,8 +1,7 @@
 import { isPlainObject, isPrimitive, valuesOf } from '../../utils/object';
 
-export const walk =
-  (operator: (value: unknown, index?: PropertyKey) => void) =>
-  <S>(source: S): S => {
+export function walk(operator: (value: unknown, index?: PropertyKey) => void) {
+  return <S>(source: S): S => {
     const visitedObjects: unknown[] = [];
 
     const walkImpl = <T>(element: T) => {
@@ -23,3 +22,4 @@ export const walk =
 
     return walkImpl(source);
   };
+}

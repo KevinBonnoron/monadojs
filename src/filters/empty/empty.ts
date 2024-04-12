@@ -1,3 +1,6 @@
+import type { Operator } from '../../types';
 import { isEmpty } from '../../utils/object/is-empty/is-empty';
 
-export const empty = () => isEmpty;
+export function empty(): Operator<unknown, boolean> {
+  return isEmpty;
+}

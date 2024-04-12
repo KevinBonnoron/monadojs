@@ -1,3 +1,5 @@
 import { valuesOf } from '../../utils';
 
-export const values = () => valuesOf;
+export function values() {
+  return valuesOf;
+}

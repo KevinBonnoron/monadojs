@@ -1,4 +1,4 @@
-import { Maybe, MaybeConstructor, nil } from '../../../types';
+import { Maybe, type MaybeConstructor, nil } from '../../../types';
 import { isArray } from '../is-array/is-array';
 import { isBoolean } from '../is-boolean/is-boolean';
 import { isDate } from '../is-date/is-date';

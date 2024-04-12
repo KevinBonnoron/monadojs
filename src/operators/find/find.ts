@@ -1,4 +1,4 @@
-import { Collection, Filter, QueryFilterType, UnwrapCollectionValue } from '../../types';
+import type { Collection, Filter, QueryFilterType, UnwrapCollectionValue } from '../../types';
 import { createFilterFn } from '../../utils/filter/filter.utils';
 
 export function find(predicate: Filter): <S extends Collection>(source: S) => UnwrapCollectionValue<S>;

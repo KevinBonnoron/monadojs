@@ -1,7 +1,5 @@
-import { isCollection, isNil, isPlainObject } from '../../utils';
-import { keys } from '../keys/keys';
+import { isCollection, isNil, isPlainObject, keysOf } from '../../utils';
 
-export const length =
-  () =>
-  <S>(source: S): number =>
-    isNil(source) ? 0 : isCollection<S>(source) ? [...source.entries()].length : isPlainObject<S>(source) ? [...keys()(source)].length : 0;
+export function length() {
+  return <S>(source: S): number => (isNil(source) ? 0 : isCollection<S>(source) ? [...source.entries()].length : isPlainObject<S>(source) ? [...keysOf(source)].length : 0);
+}

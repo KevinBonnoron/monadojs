@@ -1,5 +1,5 @@
-import { Collection, UnwrapCollectionValue } from './collection.type';
-import { nil } from './language.type';
+import type { Collection, UnwrapCollectionValue } from './collection.type';
+import type { nil } from './language.type';
 
 type PrimitiveQueryFilterType<T> = {
   $eq?: T;

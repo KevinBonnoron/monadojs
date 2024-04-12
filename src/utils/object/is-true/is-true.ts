@@ -3,4 +3,6 @@
  * @param value
  * @returns boolean
  */
-export const isTrue = (value: unknown): value is true => value === true;
+export function isTrue(value: unknown): value is true {
+  return value === true;
+}

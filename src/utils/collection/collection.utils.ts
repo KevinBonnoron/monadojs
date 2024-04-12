@@ -1,11 +1,28 @@
-import { Collection } from '../../types/collection.type';
+import type { Collection } from '../../types/collection.type';
 import { isArray } from '../object/is-array/is-array';
 import { isEqual } from '../object/is-equal/is-equal';
 import { isMap } from '../object/is-map/is-map';
 import { isSet } from '../object/is-set/is-set';
 
-export const isFirst = <T>(value: T, values: T[]): boolean => isEqual(value, values[0]);
-export const isLast = <T>(value: T, values: T[]): boolean => isEqual(value, values[values.length - 1]);
+/**
+ * Return true if value is the first element of values
+ * @param value
+ * @param values
+ * @returns
+ */
+export function isFirst<T>(value: T, values: T[]): boolean {
+  return isEqual(value, values[0]);
+}
+
+/**
+ * Return true if value is the last element of values
+ * @param value
+ * @param values
+ * @returns
+ */
+export function isLast<T>(value: T, values: T[]): boolean {
+  return isEqual(value, values[values.length - 1]);
+}
 
 export function ɵcopyCollection<T>(collection: T[], values: Iterable<T>): T[];
 export function ɵcopyCollection<T>(collection: Set<T>, values: Iterable<T>): Set<T>;

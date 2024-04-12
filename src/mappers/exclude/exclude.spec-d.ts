@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from 'vitest';
-import { Person, fooBar } from '../../../tests/test.data';
+import { type Person, fooBar } from '../../../tests/test.data';
 import { exclude } from './exclude';
 
 describe('exclude', () => {

@@ -1,5 +1,5 @@
 import { not } from '../../logicals/not/not';
-import { Operator, Operators } from '../../types';
+import type { Operator, Operators } from '../../types';
 import { ɵisCatchOperator } from '../catch-error/catch-error';
 
 export function pipe<A>(): Operator<A, A>;

@@ -1,5 +1,5 @@
 import { not } from '../../logicals';
-import { MonotypeOperator, Operator } from '../../types';
+import type { MonotypeOperator, Operator } from '../../types';
 import { ɵisCatchOperator } from '../catch-error/catch-error';
 
 /**

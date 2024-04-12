@@ -6,8 +6,7 @@ describe('valuesOf', () => {
   it('should have correct types', () => {
     expectTypeOf(valuesOf(EMPTY_ARRAY)).toEqualTypeOf<IterableIterator<unknown>>();
     expectTypeOf(valuesOf(EMPTY_SET)).toEqualTypeOf<IterableIterator<unknown>>();
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    expectTypeOf(valuesOf(EMPTY_MAP)).toEqualTypeOf<IterableIterator<any>>();
+    expectTypeOf(valuesOf(EMPTY_MAP)).toEqualTypeOf<IterableIterator<string>>();
     expectTypeOf(valuesOf(EMPTY_PLAIN_OBJECT)).toEqualTypeOf<IterableIterator<never>>();
   });
 });

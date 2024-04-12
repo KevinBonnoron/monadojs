@@ -1,7 +1,7 @@
 import { not } from '../../logicals/not/not';
 import { prop } from '../../mappers/prop/prop';
 import { pipe } from '../../operators/pipe/pipe';
-import { Filter, Mapper, Maybe, Operator } from '../../types';
+import type { Filter, Mapper, Maybe, Operator } from '../../types';
 import { Just, isCollection, isFunction, isMaybe, isNil, isRegExp, isString } from '../../utils';
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -45,12 +45,13 @@ const matchImpl =
     return value;
   };
 
-export const match = (matches: Matches): Operator => {
+export function match(matches: Matches): Operator {
   const ifMatches = matches.filter(pipe(prop('if'), not(isNil)));
   let elseMatch = matches.find(pipe(prop('if'), isNil));
   if (!elseMatch) {
+    // biome-ignore lint/suspicious/noThenProperty: <explanation>
     elseMatch = { then: (value: unknown) => value };
   }
 
   return <S>(source: S): unknown => (isCollection<S>(source) ? [...source.values()].map(matchImpl(ifMatches, elseMatch)) : matchImpl(ifMatches, elseMatch)(source));
-};
+}

@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -17,6 +17,9 @@ export default defineConfig({
   },
   test: {
     passWithNoTests: true,
+    coverage: {
+      exclude: ['**/*.spec-d.ts', 'tests', 'mod.ts'],
+    },
   },
   plugins: [dts({ rollupTypes: true })],
 });

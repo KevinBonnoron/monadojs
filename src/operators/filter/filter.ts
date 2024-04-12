@@ -1,4 +1,4 @@
-import { Collection, Filter, QueryFilterType } from '../../types';
+import type { Collection, Filter, QueryFilterType } from '../../types';
 import { ɵcopyCollection } from '../../utils/collection/collection.utils';
 import { createFilterFn } from '../../utils/filter/filter.utils';
 

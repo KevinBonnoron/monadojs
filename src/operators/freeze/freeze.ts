@@ -1,12 +1,10 @@
 import { isPlainObject } from '../../utils';
-import { clone } from '../clone/clone';
+import { cloneObject } from '../../utils/object/clone-object/clone-object';
 import { entries } from '../entries/entries';
 
-export const freeze =
-  (deep = true) =>
-  <S>(source: S): S => {
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    const cloned: any = clone()(source);
+export function freeze(deep = true) {
+  return <S>(source: S): S => {
+    const cloned = cloneObject(source);
     if (deep && isPlainObject(source)) {
       for (const [key, value] of entries()(cloned)) {
         cloned[key] = freeze(deep)(value);
@@ -15,3 +13,4 @@ export const freeze =
 
     return Object.freeze(cloned);
   };
+}

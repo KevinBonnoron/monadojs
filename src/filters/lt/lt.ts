@@ -1,6 +1,6 @@
+import type { Operator } from '../../types';
 import { isDate } from '../../utils/object/is-date/is-date';
 
-export const lt =
-  <E = number | string | Date>(expected: E) =>
-  <S extends E>(source: S): boolean =>
-    isDate(source) && isDate(expected) ? source.getTime() < expected.getTime() : source < expected;
+export function lt<E = number | string | Date>(expected: E): Operator<E, boolean> {
+  return <S extends E>(source: S): boolean => (isDate(source) && isDate(expected) ? source.getTime() < expected.getTime() : source < expected);
+}

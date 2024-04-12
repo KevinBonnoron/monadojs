@@ -3,4 +3,6 @@
  * @param value
  * @returns boolean
  */
-export const isDate = (value: unknown): value is Date => value instanceof Date;
+export function isDate(value: unknown): value is Date {
+  return value instanceof Date;
+}

@@ -1,4 +1,4 @@
-import { Reducer } from '../../types';
+import type { Reducer } from '../../types';
 import { ɵarrayAccumulator } from '../../utils';
 
 type Matrix<T> = T[][];
@@ -15,4 +15,6 @@ const zipImpl = <T>(accumulator: Matrix<T>, value: T[]): Matrix<T> => {
   return accumulator;
 };
 
-export const zip = <T>(): Reducer<T[]> => ɵarrayAccumulator<T[]>(zipImpl);
+export function zip<T>(): Reducer<T[]> {
+  return ɵarrayAccumulator<T[]>(zipImpl);
+}

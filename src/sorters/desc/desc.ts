@@ -1,7 +1,7 @@
 import { prop } from '../../mappers';
 import { identity } from '../../operators';
-import { Operator, Sorter } from '../../types';
-import { SorterOptions, compare, isFunction, isPropertyKey, ɵsorter } from '../../utils';
+import type { Operator, Sorter } from '../../types';
+import { type SorterOptions, compare, isFunction, isPropertyKey, ɵsorter } from '../../utils';
 
 export function desc<T>(options?: SorterOptions): Sorter<T>;
 export function desc<T>(predicate: keyof T, options?: SorterOptions): Sorter<T>;

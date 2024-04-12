@@ -4,7 +4,10 @@ import { isUndefined } from '../is-undefined/is-undefined';
 
 /**
  * Type guard for `value === null || value === undefined`
+ *
  * @param value
  * @returns boolean
  */
-export const isNil = (value: unknown): value is nil => value === nil || isNull(value) || isUndefined(value);
+export function isNil(value: unknown): value is nil {
+  return value === nil || isNull(value) || isUndefined(value);
+}

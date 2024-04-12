@@ -1,8 +1,8 @@
-import { AnyFunction } from '../../types';
+import type { AnyFunction } from '../../types';
 
-export const tap =
-  (fn: AnyFunction) =>
-  <S>(source: S): S => {
+export function tap(fn: AnyFunction) {
+  return <S>(source: S): S => {
     fn(source);
     return source;
   };
+}

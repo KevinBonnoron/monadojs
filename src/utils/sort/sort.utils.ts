@@ -1,4 +1,4 @@
-import { Sorter } from '../../types';
+import type { Sorter } from '../../types';
 import { isArray, isDate, isNil, isNumber, isString } from '../object';
 
 export interface SorterOptions {

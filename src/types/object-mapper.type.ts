@@ -1,5 +1,5 @@
-import { math, number, string } from '../wrappers';
-import { Mapper } from './mapper.type';
+import type { math, number, string } from '../wrappers';
+import type { Mapper } from './mapper.type';
 
 type CommonPropertyMapType = 'pick';
 type StringPropertyMapType = keyof typeof string | CommonPropertyMapType;

@@ -1,3 +1,5 @@
-export const throwError = (error: Error) => () => {
-  throw error;
-};
+export function throwError(error: Error) {
+  return () => {
+    throw error;
+  };
+}

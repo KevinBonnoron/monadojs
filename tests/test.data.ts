@@ -40,7 +40,7 @@ export const STRING_SET = new Set(STRING_ARRAY);
 export const PERSON_SET = new Set(PERSON_ARRAY);
 export const DIVERSE_SET = new Set(DIVERSE_ARRAY);
 
-export const EMPTY_MAP = new Map();
+export const EMPTY_MAP = new Map<string, string>();
 export const NUMBER_MAP = new Map(NUMBER_ARRAY.map((value, index) => [index, value]));
 export const STRING_MAP = new Map(STRING_ARRAY.map((value, index) => [index, value]));
 export const NUMBER_PERSON_MAP = new Map(PERSON_ARRAY.map((value, index) => [index, value]));

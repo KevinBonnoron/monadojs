@@ -1,4 +1,4 @@
-import { Collection, Operator } from '../../types';
+import type { Collection, Operator } from '../../types';
 import { isCollection, isFunction, ɵobjectAccumulator } from '../../utils';
 
 const keyGeneratorFn =
@@ -10,6 +10,5 @@ export function groupBy<P extends PropertyKey>(predicate: P): <S extends Record<
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function groupBy<O extends PropertyKey, I = any>(predicate: Operator<I, O>): <S extends I>(source: Collection<S>) => Record<O, S[]>;
 export function groupBy(predicate: PropertyKey | Operator) {
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  return <S>(source: S) => (isCollection<S>(source) ? [...source.values()].reduce(ɵobjectAccumulator(keyGeneratorFn(predicate)), {}) : (source as any));
+  return <S>(source: S) => (isCollection<S>(source) ? [...source.values()].reduce(ɵobjectAccumulator(keyGeneratorFn(predicate)), {}) : source);
 }

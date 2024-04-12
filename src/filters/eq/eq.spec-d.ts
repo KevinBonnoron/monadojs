@@ -5,21 +5,23 @@ import { eq } from './eq';
 
 describe('eq', () => {
   it('should have correct types', () => {
-    expectTypeOf(eq('a')(undefined)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')('a')).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(1)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(true)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(Symbol())).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(DEFAULT_DATE)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(EMPTY_RESOLVED_PROMISE)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(DEFAULT_REGEX)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(EMPTY_ARRAY)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(EMPTY_SET)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(EMPTY_MAP)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(EMPTY_PLAIN_OBJECT)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(anonymousArrowFn)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(anonymousFn)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(DEFAULT_MAYBE)).toEqualTypeOf<boolean>();
-    expectTypeOf(eq('a')(Nothing)).toEqualTypeOf<boolean>();
+    const operator = eq('a');
+
+    expectTypeOf(operator(undefined)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator('a')).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(1)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(true)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(Symbol())).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(DEFAULT_DATE)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(EMPTY_RESOLVED_PROMISE)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(DEFAULT_REGEX)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(EMPTY_ARRAY)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(EMPTY_SET)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(EMPTY_MAP)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(EMPTY_PLAIN_OBJECT)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(anonymousArrowFn)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(anonymousFn)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(DEFAULT_MAYBE)).toEqualTypeOf<boolean>();
+    expectTypeOf(operator(Nothing)).toEqualTypeOf<boolean>();
   });
 });

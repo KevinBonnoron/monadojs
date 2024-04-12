@@ -35,7 +35,6 @@ const arrayDifferenceImpl = <T, S>(object: T[], source: S[], { bothWays, compare
     bothWays ? [...keysOf(object)] : [],
   );
 
-export const difference =
-  <O>(object: O, { bothWays = false, compareFn = isEqual }: DifferenceOptions = {}) =>
-  <S>(source: S): number[] =>
-    isPlainObject(source) && isPlainObject(object) ? objectDifferenceImpl(object, source, { bothWays, compareFn }) : isArray(source) && isArray(object) ? arrayDifferenceImpl(object, source, { bothWays, compareFn }) : [];
+export function difference<O>(object: O, { bothWays = false, compareFn = isEqual }: DifferenceOptions = {}) {
+  return <S>(source: S): number[] => (isPlainObject(source) && isPlainObject(object) ? objectDifferenceImpl(object, source, { bothWays, compareFn }) : isArray(source) && isArray(object) ? arrayDifferenceImpl(object, source, { bothWays, compareFn }) : []);
+}

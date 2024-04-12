@@ -1,9 +1,8 @@
-import { Operator } from '../../types';
+import type { Operator } from '../../types';
 import { merge } from '../../utils';
 
-export const mergeWith =
-  <S, V>(...sources: V[]): Operator<S, S & V> =>
-  (source: S, customizeFn?: (o1: S | V, o2: S | V) => undefined | (V & S)) =>
+export function mergeWith<S, V>(...sources: V[]): Operator<S, S & V> {
+  return (source: S, customizeFn?: (o1: S | V, o2: S | V) => undefined | (V & S)) =>
     sources.reduce((previous, current) => {
       if (customizeFn) {
         const result = customizeFn(previous, current);
@@ -14,3 +13,4 @@ export const mergeWith =
 
       return merge(previous, current);
     }, source) as S & V;
+}

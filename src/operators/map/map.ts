@@ -1,9 +1,6 @@
-import { Collection, Mapper, ObjectMapperType } from '../../types';
-import { isArray, isMap, isPlainObject, isSet } from '../../utils';
-import { createMapperFn } from '../../utils/map/map.utils';
+import type { Collection, Mapper, ObjectMapperType, ToCollectionType } from '../../types';
+import { createMapperFn, isArray, isMap, isPlainObject, isSet } from '../../utils';
 import { entries } from '../entries/entries';
-
-type ToCollectionType<C extends Collection, V> = C extends Array<unknown> ? V[] : C extends Set<unknown> ? Set<V> : C extends Map<infer K, unknown> ? Map<K, V> : never;
 
 export function map<M extends Mapper>(predicate: M): <S extends Collection>(source: S) => M extends Mapper<unknown> ? ToCollectionType<S, ReturnType<M>> : never;
 export function map<P extends PropertyKey>(predicate: P): <S>(source: S) => S extends Collection<Record<P, infer V>> ? ToCollectionType<S, V> : never;

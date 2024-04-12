@@ -3,4 +3,6 @@
  * @param value
  * @returns boolean
  */
-export const isBoolean = (value: any): value is boolean => typeof value === 'boolean';
+export function isBoolean(value: unknown): value is boolean {
+  return typeof value === 'boolean';
+}

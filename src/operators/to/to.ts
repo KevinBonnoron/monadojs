@@ -1,4 +1,4 @@
-import { Maybe, MaybeConstructor } from '../../types';
+import type { Maybe, MaybeConstructor } from '../../types';
 import { toType } from '../../utils';
 
 export function to(type: null): (value: unknown) => null;
