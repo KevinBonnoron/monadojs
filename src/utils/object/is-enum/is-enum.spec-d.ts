@@ -6,23 +6,22 @@ import { isEnum } from './is-enum';
 describe('isEnum', () => {
   it('should have correct types', () => {
     enum Dummy {}
-    const operator = isEnum(Dummy);
 
-    expectTypeOf(operator(undefined)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator('a')).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(1)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(true)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(Symbol())).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(DEFAULT_DATE)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(EMPTY_RESOLVED_PROMISE)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(DEFAULT_REGEX)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(EMPTY_ARRAY)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(EMPTY_SET)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(EMPTY_MAP)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(EMPTY_PLAIN_OBJECT)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(anonymousArrowFn)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(anonymousFn)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(DEFAULT_MAYBE)).toEqualTypeOf<boolean>();
-    expectTypeOf(operator(Nothing)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(undefined, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum('a', Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(1, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(true, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(Symbol(), Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(DEFAULT_DATE, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(EMPTY_RESOLVED_PROMISE, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(DEFAULT_REGEX, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(EMPTY_ARRAY, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(EMPTY_SET, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(EMPTY_MAP, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(EMPTY_PLAIN_OBJECT, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(anonymousArrowFn, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(anonymousFn, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(DEFAULT_MAYBE, Dummy)).toEqualTypeOf<boolean>();
+    expectTypeOf(isEnum(Nothing, Dummy)).toEqualTypeOf<boolean>();
   });
 });

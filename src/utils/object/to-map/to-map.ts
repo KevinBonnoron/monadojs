@@ -7,6 +7,6 @@ import { isSet } from '../is-set/is-set';
  * @param keyFn
  * @returns
  */
-export function toMap<K, V>(keyFn: (value: V, index: number) => K) {
-  return <S extends V>(source: S): Map<K, S> => (isArray<S>(source) ? new Map([...source.map((value, index) => [keyFn(value, index), value] as [K, V])]) : isSet<S>(source) ? new Map([...[...source].map((value, index) => [keyFn(value, index), value] as [K, V])]) : source) as Map<K, S>;
+export function toMap<K, V>(value: unknown, keyFn: (value: V, index: number) => K): Map<K, V> {
+  return isArray<V>(value) ? new Map([...value.map((v, i) => [keyFn(v, i), v] as [K, V])]) : isSet<V>(value) ? new Map([...[...value].map((value, index) => [keyFn(value, index), value] as [K, V])]) : (value as Map<K, V>);
 }

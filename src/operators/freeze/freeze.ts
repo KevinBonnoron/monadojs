@@ -1,13 +1,12 @@
-import { isPlainObject } from '../../utils';
+import { entriesOf, isPlainObject } from '../../utils';
 import { cloneObject } from '../../utils/object/clone-object/clone-object';
-import { entries } from '../entries/entries';
 
-export function freeze(deep = true) {
-  return <S>(source: S): S => {
+export function freeze(deep = true): <S>(source: S) => Readonly<S> {
+  return <S>(source: S) => {
     const cloned = cloneObject(source);
-    if (deep && isPlainObject(source)) {
-      for (const [key, value] of entries()(cloned)) {
-        cloned[key] = freeze(deep)(value);
+    if (deep && isPlainObject<S>(source)) {
+      for (const [key, value] of entriesOf(cloned)) {
+        cloned[key] = freeze(deep)(value) as S[keyof S];
       }
     }
 

@@ -11,6 +11,6 @@ const collectionShiftImpl = (collection: Collection): unknown => {
   return result;
 };
 
-export function shift() {
+export function shift(): <S>(source: S) => unknown {
   return <S>(source: S): unknown => (isCollection(source) ? collectionShiftImpl(source) : source);
 }

@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from 'vitest';
-import { type Builder, createBuilder } from './create-builder.utils';
+import { type Builder, type InitialBuilder, createBuilder } from './create-builder.utils';
 
 interface Dummy {
   a: number;
@@ -20,5 +20,9 @@ describe('createBuilder', () => {
     expectTypeOf(builder.c).toEqualTypeOf<(value: { d: Date }) => Builder<Dummy, 'a' | 'b'>>();
     expectTypeOf(builder.a(1).b('2').c({ d: new Date() })).toEqualTypeOf<Builder<Dummy, never>>();
     expectTypeOf(builder.a(1).b('2').c({ d: new Date() })).toEqualTypeOf<(overrides?: Partial<Dummy>) => Dummy>();
+    expectTypeOf(builder).toEqualTypeOf<InitialBuilder<Dummy, keyof Dummy>>();
+    expectTypeOf(builder({ a: 1 })).toEqualTypeOf<Builder<Dummy, 'b' | 'c'>>();
+    expectTypeOf(builder({ a: 1 }).b('2')).toEqualTypeOf<Builder<Dummy, 'c'>>();
+    expectTypeOf(builder({ a: 1 }).b('2').c({ d: new Date() })).toEqualTypeOf<(overrides?: Partial<Dummy>) => Dummy>();
   });
 });

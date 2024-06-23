@@ -1,7 +1,8 @@
 import type { Collection } from '../../types';
 import { isCollection, isMap, isPlainObject, keysOf, valuesOf } from '../../utils';
 
-export function indexOf<E>(searchElement: E, fromIndex?: number) {
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
+export function indexOf<E>(searchElement: E, fromIndex?: number): <S extends Collection<E> | Record<PropertyKey, E>>(source: S) => {} {
   return <S extends Collection<E> | Record<PropertyKey, E>>(source: S) =>
     isMap(source)
       ? [...keysOf(source)][[...valuesOf(source)].indexOf(searchElement, fromIndex)] ?? -1

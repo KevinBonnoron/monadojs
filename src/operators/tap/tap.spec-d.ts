@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from 'vitest';
-import { NUMBER_PERSON_MAP, PERSON_ARRAY, PERSON_SET, Person } from '../../../tests/test.data';
+import { NUMBER_PERSON_MAP, PERSON_ARRAY, PERSON_SET, type Person } from '../../../tests/test.data';
 import { tap } from './tap';
 
 describe('tap', () => {

@@ -1,7 +1,7 @@
 import { isArray } from '../../utils';
 
-export function shuffle() {
-  return <S>(source: S): S =>
+export function shuffle(): <S>(source: S) => S {
+  return <S>(source: S) =>
     isArray<S>(source)
       ? (source
           .map((value) => ({ value, sort: Math.random() }))

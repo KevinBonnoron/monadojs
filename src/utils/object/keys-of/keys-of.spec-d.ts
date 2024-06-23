@@ -6,7 +6,7 @@ describe('keysOf', () => {
   it('should have correct types', () => {
     expectTypeOf(keysOf(EMPTY_ARRAY)).toEqualTypeOf<IterableIterator<number>>();
     expectTypeOf(keysOf(EMPTY_SET)).toEqualTypeOf<IterableIterator<number>>();
-    expectTypeOf(keysOf(EMPTY_MAP)).toEqualTypeOf<IterableIterator<string>>();
+    expectTypeOf(keysOf(EMPTY_MAP)).toEqualTypeOf<IterableIterator<unknown>>();
     expectTypeOf(keysOf(EMPTY_PLAIN_OBJECT)).toEqualTypeOf<IterableIterator<never>>();
   });
 });

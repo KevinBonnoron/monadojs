@@ -1,5 +1,5 @@
 import { valuesOf } from '../../utils';
 
-export function values() {
+export function values(): ReturnType<typeof valuesOf> {
   return valuesOf;
 }

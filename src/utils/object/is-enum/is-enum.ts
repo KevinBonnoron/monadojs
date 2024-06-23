@@ -1,3 +1,3 @@
-export function isEnum<T extends object>(enumClass: T) {
-  return (value: unknown): value is T[keyof T] => Object.values(enumClass).includes(value);
+export function isEnum<T extends object>(value: unknown, enumClass: T): value is T[keyof T] {
+  return Object.values(enumClass).includes(value);
 }

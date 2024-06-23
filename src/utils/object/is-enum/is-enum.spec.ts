@@ -9,28 +9,27 @@ enum DummyEnum {
 }
 
 describe('isEnum', () => {
-  const operator = isEnum(DummyEnum);
   it('should return true', () => {
-    expect(operator(DummyEnum.FOO)).toBeTruthy();
-    expect(operator(0)).toBeTruthy();
+    expect(isEnum(DummyEnum.FOO, DummyEnum)).toBeTruthy();
+    expect(isEnum(0, DummyEnum)).toBeTruthy();
   });
 
   it('should return false', () => {
-    expect(operator(null)).toBeFalsy();
-    expect(operator(undefined)).toBeFalsy();
-    expect(operator('a')).toBeFalsy();
-    expect(operator(true)).toBeFalsy();
-    expect(operator(DEFAULT_SYMBOL)).toBeFalsy();
-    expect(operator(DEFAULT_DATE)).toBeFalsy();
-    expect(operator(EMPTY_RESOLVED_PROMISE)).toBeFalsy();
-    expect(operator(DEFAULT_REGEX)).toBeFalsy();
-    expect(operator(EMPTY_ARRAY)).toBeFalsy();
-    expect(operator(EMPTY_SET)).toBeFalsy();
-    expect(operator(EMPTY_MAP)).toBeFalsy();
-    expect(operator(EMPTY_PLAIN_OBJECT)).toBeFalsy();
-    expect(operator(anonymousArrowFn)).toBeFalsy();
-    expect(operator(anonymousFn)).toBeFalsy();
-    expect(operator(DEFAULT_MAYBE)).toBeFalsy();
-    expect(operator(Nothing)).toBeFalsy();
+    expect(isEnum(null, DummyEnum)).toBeFalsy();
+    expect(isEnum(undefined, DummyEnum)).toBeFalsy();
+    expect(isEnum('a', DummyEnum)).toBeFalsy();
+    expect(isEnum(true, DummyEnum)).toBeFalsy();
+    expect(isEnum(DEFAULT_SYMBOL, DummyEnum)).toBeFalsy();
+    expect(isEnum(DEFAULT_DATE, DummyEnum)).toBeFalsy();
+    expect(isEnum(EMPTY_RESOLVED_PROMISE, DummyEnum)).toBeFalsy();
+    expect(isEnum(DEFAULT_REGEX, DummyEnum)).toBeFalsy();
+    expect(isEnum(EMPTY_ARRAY, DummyEnum)).toBeFalsy();
+    expect(isEnum(EMPTY_SET, DummyEnum)).toBeFalsy();
+    expect(isEnum(EMPTY_MAP, DummyEnum)).toBeFalsy();
+    expect(isEnum(EMPTY_PLAIN_OBJECT, DummyEnum)).toBeFalsy();
+    expect(isEnum(anonymousArrowFn, DummyEnum)).toBeFalsy();
+    expect(isEnum(anonymousFn, DummyEnum)).toBeFalsy();
+    expect(isEnum(DEFAULT_MAYBE, DummyEnum)).toBeFalsy();
+    expect(isEnum(Nothing, DummyEnum)).toBeFalsy();
   });
 });

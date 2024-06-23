@@ -1,10 +1,10 @@
 import { describe, expectTypeOf, it } from 'vitest';
 import { EMPTY_ARRAY, EMPTY_MAP, EMPTY_PLAIN_OBJECT, EMPTY_SET } from '../../../tests/test.data';
-import { identity } from './identity';
+import { reverse } from './reverse';
 
-describe('identity', () => {
+describe('reverse', () => {
   it('should have correct types', () => {
-    const operator = identity();
+    const operator = reverse();
 
     expectTypeOf(operator(null)).toEqualTypeOf<null>();
     expectTypeOf(operator(undefined)).toEqualTypeOf<undefined>();

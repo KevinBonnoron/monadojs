@@ -76,8 +76,8 @@ class JustImpl<T> extends DefaultMaybe<T> {
 }
 
 class NothingImpl extends DefaultMaybe<null> {
-  override pipe() {
-    return Nothing;
+  override pipe<O>() {
+    return Nothing as Maybe<O>;
   }
 
   override equals(other: unknown) {
@@ -94,7 +94,7 @@ class NothingImpl extends DefaultMaybe<null> {
 }
 
 export function Just<T>(value: T): Maybe<T> {
-  return value === null || value === undefined ? Nothing : new JustImpl<T>(value);
+  return value === null || value === undefined ? (Nothing as Maybe<T>) : new JustImpl<T>(value);
 }
 
-export const Nothing: Maybe = new NothingImpl();
+export const Nothing: Maybe<null> = new NothingImpl();

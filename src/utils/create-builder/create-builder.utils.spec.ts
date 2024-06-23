@@ -25,7 +25,7 @@ describe('createBuilder', () => {
       expect(value).toStrictEqual({ a: 5, b: '2', c: { d: NOW } });
     });
 
-    it('should create object in an immutable way', () => {
+    it('should create new object each time builder is called', () => {
       const builder = createBuilder<Dummy>().a(1).b('2').c({ d: NOW });
 
       const value = builder();
@@ -34,6 +34,13 @@ describe('createBuilder', () => {
       value.c.d = new Date(0);
       expect(builder()).toEqual({ a: 1, b: '2', c: { d: NOW } });
       expect(value).toEqual({ a: 3, b: '4', c: { d: new Date(0) } });
+    });
+
+    it('should allow using object and method', () => {
+      const builder = createBuilder<Dummy>();
+
+      builder({ a: 1 }).b('2');
+      expect(builder({ a: 2 })).toEqual({ a: 2, b: '2' });
     });
   });
 });

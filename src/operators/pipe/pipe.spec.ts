@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { AnyRecord } from '../../types';
+import type { AnyRecord } from '../../types';
 import { catchError } from '../catch-error/catch-error';
 import { pipe } from './pipe';
 
