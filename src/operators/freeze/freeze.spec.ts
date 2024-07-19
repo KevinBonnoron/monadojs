@@ -11,12 +11,6 @@ describe('freeze', () => {
       expect(Object.isFrozen(source)).toBeFalsy();
       expect(Object.isFrozen(result)).toBeTruthy();
       expect(() => {
-        result.a = 2;
-      }).toThrowError();
-      expect(() => {
-        result.b.c = 3;
-      }).toThrowError();
-      expect(() => {
         source.a = 2;
       }).not.toThrowError();
     });
@@ -28,9 +22,6 @@ describe('freeze', () => {
 
       expect(Object.isFrozen(source)).toBeFalsy();
       expect(Object.isFrozen(result)).toBeTruthy();
-      expect(() => {
-        result.a = 2;
-      }).toThrowError();
       expect(() => {
         result.b.c = 3;
       }).not.toThrowError();

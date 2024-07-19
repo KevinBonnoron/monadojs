@@ -1,5 +1,5 @@
 import { entriesOf } from '../../utils';
 
-export function entries(): ReturnType<typeof entriesOf> {
+export function entries() {
   return entriesOf;
 }

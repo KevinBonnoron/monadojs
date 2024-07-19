@@ -3,6 +3,7 @@ export * from './any-record.type';
 export * from './collection.type';
 export * from './deep-non-nullable.type';
 export * from './deep-partial.type';
+export * from './deep-readonly.type';
 export * from './filter.type';
 export * from './language.type';
 export * from './mapper.type';
