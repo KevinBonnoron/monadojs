@@ -156,11 +156,11 @@
     yargs "^17.0.0"
 
 "@commitlint/config-conventional@^19.1.0":
-  version "19.1.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-19.1.0.tgz#6b4b7938aa3bc308214a683247520f602e55961e"
-  integrity sha512-KIKD2xrp6Uuk+dcZVj3++MlzIr/Su6zLE8crEDQCZNvWHNQSeeGbzOlNtsR32TUy6H3JbP7nWgduAHCaiGQ6EA==
+  version "19.8.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-19.8.1.tgz#eab42df58cda44f18410ae0cbd6785ece00f214b"
+  integrity sha512-/AZHJL6F6B/G959CsMAzrPKKZjeEiAVifRyEwXxcT6qtqbPwGw+iQxmNS+Bu+i09OCtdNRW6pNpBvgPrtMr9EQ==
   dependencies:
-    "@commitlint/types" "^19.0.3"
+    "@commitlint/types" "^19.8.1"
     conventional-changelog-conventionalcommits "^7.0.2"
 
 "@commitlint/config-validator@^19.0.3":
@@ -290,10 +290,10 @@
   dependencies:
     find-up "^7.0.0"
 
-"@commitlint/types@^19.0.3":
-  version "19.0.3"
-  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-19.0.3.tgz#feff4ecac2b5c359f2a57f9ab094b2ac80ef0266"
-  integrity sha512-tpyc+7i6bPG9mvaBbtKUeghfyZSDgWquIDfMgqYtTbmZ9Y9VzEm2je9EYcQ0aoz5o7NvGS+rcDec93yO08MHYA==
+"@commitlint/types@^19.0.3", "@commitlint/types@^19.8.1":
+  version "19.8.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-19.8.1.tgz#7971fbd56b0cfb31692a4e1941b74ac8217c44e5"
+  integrity sha512-/yCrWGCoA1SVKOks25EGadP9Pnj0oAIHGpl2wH2M2Y46dPM2ueb8wyCVOD7O3WCTkaJ0IkKvzhl1JY7+uCT2Dw==
   dependencies:
     "@types/conventional-commits-parser" "^5.0.0"
     chalk "^5.3.0"
@@ -1064,16 +1064,6 @@
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@sec-ant/readable-stream/-/readable-stream-0.4.1.tgz#60de891bb126abfdc5410fdc6166aca065f10a0c"
   integrity sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==
-
-"@semantic-release/changelog@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-6.0.3.tgz#6195630ecbeccad174461de727d5f975abc23eeb"
-  integrity sha512-dZuR5qByyfe3Y03TpmCvAxCyTnp7r5XwtHRf/8vD9EAn4ZWbavUX8adMtXYzE86EVh0gyLA7lm5yW4IV30XUag==
-  dependencies:
-    "@semantic-release/error" "^3.0.0"
-    aggregate-error "^3.0.0"
-    fs-extra "^11.0.0"
-    lodash "^4.17.4"
 
 "@semantic-release/changelog@semantic-release/changelog":
   version "0.0.0-development"
