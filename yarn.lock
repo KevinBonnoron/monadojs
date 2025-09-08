@@ -1065,16 +1065,6 @@
   resolved "https://registry.yarnpkg.com/@sec-ant/readable-stream/-/readable-stream-0.4.1.tgz#60de891bb126abfdc5410fdc6166aca065f10a0c"
   integrity sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==
 
-"@semantic-release/changelog@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-6.0.3.tgz#6195630ecbeccad174461de727d5f975abc23eeb"
-  integrity sha512-dZuR5qByyfe3Y03TpmCvAxCyTnp7r5XwtHRf/8vD9EAn4ZWbavUX8adMtXYzE86EVh0gyLA7lm5yW4IV30XUag==
-  dependencies:
-    "@semantic-release/error" "^3.0.0"
-    aggregate-error "^3.0.0"
-    fs-extra "^11.0.0"
-    lodash "^4.17.4"
-
 "@semantic-release/changelog@semantic-release/changelog":
   version "0.0.0-development"
   resolved "https://codeload.github.com/semantic-release/changelog/tar.gz/3be34e3bb0cff8471981854d0837f245225c6570"
@@ -5380,15 +5370,10 @@ treeverse@^3.0.0:
   resolved "https://registry.yarnpkg.com/treeverse/-/treeverse-3.0.0.tgz#dd82de9eb602115c6ebd77a574aae67003cb48c8"
   integrity sha512-gcANaAnd2QDZFmHFEOF4k7uc1J/6a6z3DJMd/QwEyxLoKGiptJRwid582r7QIsFlFMIZ3SnxfS52S4hm2DHkuQ==
 
-tslib@^2.1.0:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.2.tgz#1b6f07185c881557b0ffa84b111a0106989e8338"
-  integrity sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==
-
-tslib@^2.6.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
-  integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
+tslib@^2.1.0, tslib@^2.6.2:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
+  integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
 tuf-js@^2.2.1:
   version "2.2.1"
