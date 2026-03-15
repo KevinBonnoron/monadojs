@@ -1,6 +1,6 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   build: {
@@ -17,8 +17,15 @@ export default defineConfig({
   },
   test: {
     passWithNoTests: true,
+    env: { TZ: 'UTC' },
+    include: ['src/**/*.spec.ts', 'tests/**/*.spec.ts'],
+    typecheck: {
+      include: ['src/**/*.spec-d.ts'],
+    },
     coverage: {
-      exclude: ['**/*.spec-d.ts', 'tests', 'mod.ts'],
+      provider: 'istanbul',
+      include: ['src/**'],
+      exclude: ['**/*.spec-d.ts', 'mod.ts'],
     },
   },
   plugins: [dts({ rollupTypes: true })],

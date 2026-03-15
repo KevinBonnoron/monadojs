@@ -1,6 +1,6 @@
 import { isArray } from '../../utils';
 
-export function shuffle() {
+export function shuffle(): <S>(source: S) => S {
   return <S>(source: S): S =>
     isArray<S>(source)
       ? (source

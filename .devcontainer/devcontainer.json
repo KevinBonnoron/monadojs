@@ -1,9 +1,0 @@
-{
-  "name": "Monadojs",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:20-bullseye",
-  "customizations": {
-    "vscode": {
-      "extensions": ["eamodio.gitlens", "wix.vscode-import-cost", "yzhang.markdown-all-in-one", "GitHub.vscode-codeql", "biomejs.biome", "vitest.explorer"]
-    }
-  }
-}

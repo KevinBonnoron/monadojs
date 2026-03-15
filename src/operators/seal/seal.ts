@@ -2,7 +2,7 @@ import { isPlainObject } from '../../utils/object/is-plain-object/is-plain-objec
 import { clone } from '../clone/clone';
 import { entries } from '../entries/entries';
 
-export function seal(deep = true) {
+export function seal(deep = true): <S>(source: S) => S {
   return <S>(source: S): S => {
     const cloned: S = clone()(source);
     if (deep && isPlainObject<S>(source)) {

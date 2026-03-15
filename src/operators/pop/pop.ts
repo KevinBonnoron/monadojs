@@ -11,6 +11,6 @@ const collectionPopImpl = (collection: Collection): unknown => {
   return result;
 };
 
-export function pop() {
+export function pop(): <S>(source: S) => unknown {
   return <S>(source: S): unknown => (isCollection(source) ? collectionPopImpl(source) : source);
 }

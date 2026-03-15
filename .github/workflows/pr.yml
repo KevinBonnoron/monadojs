@@ -1,4 +1,4 @@
-name: Test
+name: PR
 
 on:
   pull_request:
@@ -19,12 +19,30 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           registry-url: 'https://registry.npmjs.org'
-          cache: 'yarn'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: setup bun
+        uses: oven-sh/setup-bun@v2
+
       - name: install dependencies
-        run: yarn install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: test
-        run: yarn test && yarn build
+        run: bun run test && bun run build
+
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: initialize codeql
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: perform codeql analysis
+        uses: github/codeql-action/analyze@v3

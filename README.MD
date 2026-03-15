@@ -12,8 +12,8 @@ To install just run
 ```bash
 # npm
 npm i monadojs
-# yarn
-yarn add monadojs
+# bun
+bun add monadojs
 ```
 
 Then you can start using the library:

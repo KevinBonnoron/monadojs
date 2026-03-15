@@ -9,5 +9,5 @@ import { isMap, isPlainObject } from '../../utils';
  */
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function prop<P extends PropertyKey>(property: P, defaultValue?: any): <S extends Record<P, unknown>>(source: S) => S[P] {
-  return <S extends Record<P, unknown>>(source: S): S[P] => (isMap(source) ? source.get(property) ?? defaultValue : isPlainObject(source) ? source[property] ?? defaultValue : defaultValue);
+  return <S extends Record<P, unknown>>(source: S): S[P] => (isMap(source) ? (source.get(property) ?? defaultValue) : isPlainObject(source) ? (source[property] ?? defaultValue) : defaultValue);
 }

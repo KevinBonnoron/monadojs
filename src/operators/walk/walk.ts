@@ -1,6 +1,6 @@
 import { isPlainObject, isPrimitive, valuesOf } from '../../utils/object';
 
-export function walk(operator: (value: unknown, index?: PropertyKey) => void) {
+export function walk(operator: (value: unknown, index?: PropertyKey) => void): <S>(source: S) => S {
   return <S>(source: S): S => {
     const visitedObjects: unknown[] = [];
 

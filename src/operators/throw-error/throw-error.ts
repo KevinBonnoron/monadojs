@@ -1,4 +1,4 @@
-export function throwError(error: Error) {
+export function throwError(error: Error): () => never {
   return () => {
     throw error;
   };
