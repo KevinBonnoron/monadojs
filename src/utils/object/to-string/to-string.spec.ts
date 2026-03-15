@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_DATE, DEFAULT_MAYBE, DEFAULT_REGEX, DEFAULT_SYMBOL, EMPTY_PLAIN_OBJECT, EMPTY_RESOLVED_PROMISE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET, anonymousArrowFn, anonymousFn } from '../../../../tests/test.data';
+import { anonymousArrowFn, anonymousFn, DEFAULT_DATE, DEFAULT_MAYBE, DEFAULT_REGEX, DEFAULT_SYMBOL, EMPTY_PLAIN_OBJECT, EMPTY_RESOLVED_PROMISE, NUMBER_ARRAY, NUMBER_MAP, NUMBER_SET } from '../../../../tests/test.data';
 import { Nothing } from '../../maybe/maybe.utils';
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
+// biome-ignore lint/suspicious/noShadowRestrictedNames: Function name is not used in the test, so it won't cause any issues.
 import { toString } from './to-string';
 
 describe('toDate', () => {
@@ -19,8 +19,8 @@ describe('toDate', () => {
     expect(toString(NUMBER_SET)).toStrictEqual('[object Set]');
     expect(toString(NUMBER_MAP)).toStrictEqual('[object Map]');
     expect(toString(EMPTY_PLAIN_OBJECT)).toStrictEqual('[object Object]');
-    expect(toString(anonymousArrowFn)).toStrictEqual('() => {\n}');
-    expect(toString(anonymousFn)).toStrictEqual('() => {\n}');
+    expect(toString(anonymousArrowFn)).toStrictEqual('() => {}');
+    expect(toString(anonymousFn)).toStrictEqual('() => {}');
     expect(toString(DEFAULT_MAYBE)).toStrictEqual('[object Maybe]');
     expect(toString(Nothing)).toStrictEqual('[object Maybe]');
   });

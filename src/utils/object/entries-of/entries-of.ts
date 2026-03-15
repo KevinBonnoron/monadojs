@@ -7,6 +7,6 @@ export function entriesOf<V>(source: Array<V>): IterableIterator<[number, V]>;
 export function entriesOf<V>(source: Set<V>): IterableIterator<[number, V]>;
 export function entriesOf<K, V>(source: Map<K, V>): IterableIterator<[K, V]>;
 export function entriesOf<S>(source: S): IterableIterator<[keyof S, S[keyof S]]>;
-export function entriesOf(source: unknown) {
-  return isArray(source) ? [...source].entries() : isSet(source) ? [...source].entries() : isMap(source) ? source.entries() : isPlainObject(source) ? [...Object.entries(source)] : undefined;
+export function entriesOf(source: unknown): IterableIterator<unknown> | undefined {
+  return isArray(source) ? [...source].entries() : isSet(source) ? [...source].entries() : isMap(source) ? source.entries() : isPlainObject(source) ? Object.entries(source as Record<string, unknown>).values() : undefined;
 }

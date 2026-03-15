@@ -8,12 +8,8 @@ export interface Person {
 }
 
 export const NOW = new Date('2020-01-01');
-export const anonymousArrowFn = () => {
-  /**/
-};
-export const anonymousFn = () => {
-  /**/
-};
+export const anonymousArrowFn = () => {};
+export const anonymousFn = () => {};
 
 export const EMPTY_RESOLVED_PROMISE = Promise.resolve();
 export const EMPTY_PLAIN_OBJECT = {} as const;
