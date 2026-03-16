@@ -2,7 +2,7 @@ import { isPlainObject } from '../../utils';
 import { cloneObject } from '../../utils/object/clone-object/clone-object';
 import { entries } from '../entries/entries';
 
-export function freeze(deep = true) {
+export function freeze(deep = true): <S>(source: S) => S {
   return <S>(source: S): S => {
     const cloned = cloneObject(source);
     if (deep && isPlainObject(source)) {

@@ -4,6 +4,6 @@
  * @param value
  * @returns
  */
-export function toFunction(value: unknown) {
+export function toFunction(value: unknown): () => unknown {
   return () => value;
 }

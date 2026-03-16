@@ -11,6 +11,9 @@ pre-commit:
       stage_fixed: true
 
 pre-push:
+  piped: true
   commands:
     test-and-build:
       run: bun run test && bun run build
+    jsr-dry-run:
+      run: bunx jsr publish --dry-run

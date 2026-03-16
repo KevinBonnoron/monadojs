@@ -5,7 +5,7 @@ import { findIndex } from '../find-index/find-index';
 import { identity } from '../identity/identity';
 import { pipe } from '../pipe/pipe';
 
-export function unique(operator: Operator = identity()) {
+export function unique(operator: Operator = identity()): <S>(source: S) => S | Collection<unknown> {
   return <S>(source: S): S | Collection<unknown> => {
     // For Map we must extract the value
     const valueOperator = isMap(source) ? ([, value]: [unknown, unknown]) => operator(value) : operator;
