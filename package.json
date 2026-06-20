@@ -37,7 +37,7 @@
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "^2.4.7",
-    "@commitlint/cli": "^20.4.4",
+    "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^20.4.4",
     "@semantic-release/changelog": "semantic-release/changelog",
     "@semantic-release/commit-analyzer": "^13.0.1",
