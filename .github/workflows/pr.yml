@@ -4,7 +4,37 @@ on:
   pull_request:
 
 jobs:
+  lockfile:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: setup bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: sync lockfile
+        run: bun install
+
+      - name: commit lockfile
+        run: |
+          if ! git diff --quiet bun.lock; then
+            git config user.name 'dependabot[bot]'
+            git config user.email '49699333+dependabot[bot]@users.noreply.github.com'
+            git add bun.lock
+            git commit -m 'chore: sync bun lockfile'
+            git push
+          fi
+
   test:
+    needs: [lockfile]
+    if: ${{ always() && (needs.lockfile.result == 'success' || needs.lockfile.result == 'skipped') }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
@@ -13,6 +43,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: setup node
         uses: actions/setup-node@v4
