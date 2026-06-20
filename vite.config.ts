@@ -5,12 +5,12 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   build: {
     minify: false,
-    target: 'modules',
+    target: 'es2022',
     outDir: './dist',
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
       formats: ['cjs', 'es'],
-      fileName: (format) => `monadojs.${format.replace('es', 'mjs')}`,
+      fileName: (format: string) => `monadojs.${format.replace('es', 'mjs')}`,
     },
     sourcemap: true,
     emptyOutDir: true,
@@ -28,5 +28,5 @@ export default defineConfig({
       exclude: ['**/*.spec-d.ts', 'mod.ts'],
     },
   },
-  plugins: [dts({ rollupTypes: true })],
+  plugins: [dts({ bundleTypes: true })],
 });
