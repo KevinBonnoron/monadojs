@@ -2,6 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { desc } from './desc';
 
 describe('desc', () => {
+  it('should not mutate the options argument', () => {
+    const options = { nullsAs: 'first' } as const;
+    [3, null, 1].sort(desc(options));
+    expect(options).toStrictEqual({ nullsAs: 'first' });
+  });
+
   it('should sort descending array', () => {
     expect([1, 2, 4, 3, null].sort(desc({ nullsAs: 'first' }))).toStrictEqual([null, 4, 3, 2, 1]);
     expect(['a', 'b', 'd', 'c'].sort(desc())).toStrictEqual(['d', 'c', 'b', 'a']);
